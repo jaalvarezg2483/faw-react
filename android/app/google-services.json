@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693191174572",
+    "project_id": "faw-cms",
+    "storage_bucket": "faw-cms.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693191174572:android:4f778d5f79fdc3e00e3209",
+        "android_client_info": {
+          "package_name": "com.mycompany.webfaw"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCix0UP9rYHc0G2OtQy-0QECU6dO0J67XM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
