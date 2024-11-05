@@ -1,0 +1,68 @@
+name: Azure Static Web Apps WebFaw CI/CD
+
+pr:
+  branches:
+    include:
+      - master
+      - master.deploy
+trigger:
+  branches:
+    include:
+      - master
+      - master.deploy
+
+jobs:
+- job: build_and_deploy_job
+  displayName: Build and Deploy Job
+  condition: or(eq(variables['Build.Reason'], 'Manual'), or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.Reason'], 'IndividualCI')))
+  pool:
+    vmImage: ubuntu-latest
+  variables:
+  - group: digital-team-variables
+  - name: app_location
+    value: "build/web"
+  steps:
+  - checkout: self
+    submodules: true
+    
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "$(Build.SourcesDirectory)"
+      Contents: "**/manifest.json"
+      TargetFolder: "$(Build.SourcesDirectory)/build/web"
+      
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: '**/routes.json'
+      TargetFolder: '$(Build.SourcesDirectory)/build/web'
+      
+  - script: |
+      sudo apt update
+      sudo apt install -y lib32stdc++6
+      git clone https://github.com/flutter/flutter.git --depth 1 -b 3.22.2
+      export PATH="$PATH:`pwd`/flutter/bin"
+      flutter --version
+      flutter pub get
+      if [ "$(Build.SourceBranch)" == "refs/heads/master" ]; then
+        flutter build web --web-renderer html
+      elif [ "$(Build.SourceBranch)" == "refs/heads/master.deploy" ]; then
+        flutter build web --release --web-renderer canvaskit
+      fi
+    displayName: "Install Flutter and Build web"
+    
+  - task: AzureStaticWebApp@0
+    inputs:
+      azure_static_web_apps_api_token: $(token-static-web-app-faw)
+      app_location: "$(app_location)"
+      output_location: "$(app_location)"
+      deployment_environment: "preview"
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    
+  - task: AzureStaticWebApp@0
+    inputs:
+      azure_static_web_apps_api_token: $(token-static-web-app-faw)
+      app_location: "$(app_location)"
+      output_location: "$(app_location)"
+      production_branch: "master.deploy"
+    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master.deploy'))
