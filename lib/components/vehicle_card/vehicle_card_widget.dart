@@ -146,33 +146,6 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                       Flexible(
                         child: Text(
                           valueOrDefault<String>(
-                            widget!.name,
-                            'Name',
-                          ),
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 18.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 5.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        child: Text(
-                          valueOrDefault<String>(
                             widget!.passengers,
                             'Passengers',
                           ),
@@ -182,7 +155,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                                     fontFamily: 'Inter',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    fontSize: 14.0,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -209,7 +182,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                                     fontFamily: 'Inter',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    fontSize: 14.0,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -219,8 +192,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 35.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -237,7 +209,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                                     fontFamily: 'Inter',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryBackground,
-                                    fontSize: 14.0,
+                                    fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                   ),
@@ -248,7 +220,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 10.0),
+                      EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 50.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -257,10 +229,10 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                         'Desde ',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Inter',
-                              color: FlutterFlowTheme.of(context).secondary,
+                              color: FlutterFlowTheme.of(context).alternate,
                               fontSize: 18.0,
                               letterSpacing: 0.0,
-                              fontWeight: FontWeight.normal,
+                              fontWeight: FontWeight.bold,
                             ),
                       ),
                       Text(
@@ -270,10 +242,10 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                         ),
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Inter',
-                              color: FlutterFlowTheme.of(context).secondary,
+                              color: FlutterFlowTheme.of(context).alternate,
                               fontSize: 18.0,
                               letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
+                              fontWeight: FontWeight.bold,
                             ),
                       ),
                     ],
@@ -310,6 +282,47 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ].divide(SizedBox(height: 1.0)),
+            ),
+          ),
+        ),
+        Container(
+          width: () {
+            if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
+              return 350.0;
+            } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
+              return 350.0;
+            } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
+              return 350.0;
+            } else if (MediaQuery.sizeOf(context).width < 1350.0) {
+              return 250.0;
+            } else {
+              return 290.0;
+            }
+          }(),
+          decoration: BoxDecoration(),
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Text(
+                    valueOrDefault<String>(
+                      widget!.name,
+                      'Name',
+                    ),
+                    textAlign: TextAlign.center,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Inter',
+                          color: FlutterFlowTheme.of(context).secondary,
+                          fontSize: 18.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                   ),
                 ),
               ],

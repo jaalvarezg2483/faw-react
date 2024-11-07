@@ -4,16 +4,28 @@ import '/components/nav_bar/nav_bar_widget.dart';
 import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/components/vehicle_card/vehicle_card_widget.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import 'home_widget.dart' show HomeWidget;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class HomeModel extends FlutterFlowModel<HomeWidget> {
+  ///  Local state fields for this page.
+
+  bool isIdNotSelected = false;
+
+  bool isTermsNotSelect = false;
+
+  bool selected = false;
+
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -21,36 +33,138 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   late NavBarModel navBarModel;
   // Model for NavBarMob component.
   late NavBarMobModel navBarMobModel;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode3;
-  TextEditingController? textController3;
-  String? Function(BuildContext, String?)? textController3Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode4;
-  TextEditingController? textController4;
-  String? Function(BuildContext, String?)? textController4Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode5;
-  TextEditingController? textController5;
-  String? Function(BuildContext, String?)? textController5Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode6;
-  TextEditingController? textController6;
-  String? Function(BuildContext, String?)? textController6Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode7;
-  TextEditingController? textController7;
-  String? Function(BuildContext, String?)? textController7Validator;
+  // State field(s) for ddType widget.
+  String? ddTypeValue;
+  FormFieldController<String>? ddTypeValueController;
+  // State field(s) for tf widget.
+  FocusNode? tfFocusNode;
+  TextEditingController? tfTextController;
+  String? Function(BuildContext, String?)? tfTextControllerValidator;
+  String? _tfTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for tfCedJuridica widget.
+  FocusNode? tfCedJuridicaFocusNode;
+  TextEditingController? tfCedJuridicaTextController;
+  String? Function(BuildContext, String?)? tfCedJuridicaTextControllerValidator;
+  String? _tfCedJuridicaTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for tfDIMEX widget.
+  FocusNode? tfDIMEXFocusNode;
+  TextEditingController? tfDIMEXTextController;
+  String? Function(BuildContext, String?)? tfDIMEXTextControllerValidator;
+  String? _tfDIMEXTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for tfPassport widget.
+  FocusNode? tfPassportFocusNode;
+  TextEditingController? tfPassportTextController;
+  String? Function(BuildContext, String?)? tfPassportTextControllerValidator;
+  String? _tfPassportTextControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for tfOtherId widget.
+  FocusNode? tfOtherIdFocusNode;
+  TextEditingController? tfOtherIdTextController;
+  String? Function(BuildContext, String?)? tfOtherIdTextControllerValidator;
+  String? _tfOtherIdTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for Nombre widget.
+  FocusNode? nombreFocusNode;
+  TextEditingController? nombreTextController;
+  String? Function(BuildContext, String?)? nombreTextControllerValidator;
+  String? _nombreTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for Apellido widget.
+  FocusNode? apellidoFocusNode;
+  TextEditingController? apellidoTextController;
+  String? Function(BuildContext, String?)? apellidoTextControllerValidator;
+  String? _apellidoTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for correo widget.
+  FocusNode? correoFocusNode;
+  TextEditingController? correoTextController;
+  String? Function(BuildContext, String?)? correoTextControllerValidator;
+  String? _correoTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Debes ingresar una dirección de correo válida';
+    }
+    return null;
+  }
+
+  // State field(s) for tel widget.
+  FocusNode? telFocusNode;
+  TextEditingController? telTextController;
+  String? Function(BuildContext, String?)? telTextControllerValidator;
+  String? _telTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
+  // State field(s) for comen widget.
+  FocusNode? comenFocusNode;
+  TextEditingController? comenTextController;
+  String? Function(BuildContext, String?)? comenTextControllerValidator;
+  String? _comenTextControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Campo requerido ';
+    }
+
+    return null;
+  }
+
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Validate Form] action in Button widget.
+  bool? formValidation;
   // Model for Redes component.
   late RedesModel redesModel;
   // Model for Footer component.
@@ -60,6 +174,17 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void initState(BuildContext context) {
     navBarModel = createModel(context, () => NavBarModel());
     navBarMobModel = createModel(context, () => NavBarMobModel());
+    tfTextControllerValidator = _tfTextControllerValidator;
+    tfCedJuridicaTextControllerValidator =
+        _tfCedJuridicaTextControllerValidator;
+    tfDIMEXTextControllerValidator = _tfDIMEXTextControllerValidator;
+    tfPassportTextControllerValidator = _tfPassportTextControllerValidator;
+    tfOtherIdTextControllerValidator = _tfOtherIdTextControllerValidator;
+    nombreTextControllerValidator = _nombreTextControllerValidator;
+    apellidoTextControllerValidator = _apellidoTextControllerValidator;
+    correoTextControllerValidator = _correoTextControllerValidator;
+    telTextControllerValidator = _telTextControllerValidator;
+    comenTextControllerValidator = _comenTextControllerValidator;
     redesModel = createModel(context, () => RedesModel());
     footerModel = createModel(context, () => FooterModel());
   }
@@ -68,26 +193,35 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void dispose() {
     navBarModel.dispose();
     navBarMobModel.dispose();
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    tfFocusNode?.dispose();
+    tfTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    tfCedJuridicaFocusNode?.dispose();
+    tfCedJuridicaTextController?.dispose();
 
-    textFieldFocusNode3?.dispose();
-    textController3?.dispose();
+    tfDIMEXFocusNode?.dispose();
+    tfDIMEXTextController?.dispose();
 
-    textFieldFocusNode4?.dispose();
-    textController4?.dispose();
+    tfPassportFocusNode?.dispose();
+    tfPassportTextController?.dispose();
 
-    textFieldFocusNode5?.dispose();
-    textController5?.dispose();
+    tfOtherIdFocusNode?.dispose();
+    tfOtherIdTextController?.dispose();
 
-    textFieldFocusNode6?.dispose();
-    textController6?.dispose();
+    nombreFocusNode?.dispose();
+    nombreTextController?.dispose();
 
-    textFieldFocusNode7?.dispose();
-    textController7?.dispose();
+    apellidoFocusNode?.dispose();
+    apellidoTextController?.dispose();
+
+    correoFocusNode?.dispose();
+    correoTextController?.dispose();
+
+    telFocusNode?.dispose();
+    telTextController?.dispose();
+
+    comenFocusNode?.dispose();
+    comenTextController?.dispose();
 
     redesModel.dispose();
     footerModel.dispose();

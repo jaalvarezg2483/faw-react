@@ -45,11 +45,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => HomeWidget(),
         ),
         FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => HomePageWidget(),
-        ),
-        FFRoute(
           name: 'ContactUs',
           path: '/contactUs',
           builder: (context, params) => ContactUsWidget(),
