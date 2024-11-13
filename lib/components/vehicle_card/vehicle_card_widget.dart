@@ -42,6 +42,8 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => VehicleCardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -258,8 +260,10 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          FFAppState().modelSelected = widget!.code!;
+                          FFAppState().isModelSelected = true;
+                          FFAppState().update(() {});
                         },
                         text: 'Cotizarlo',
                         options: FFButtonOptions(

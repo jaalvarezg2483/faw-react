@@ -27,6 +27,8 @@ class _TermsWidgetState extends State<TermsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TermsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -169,7 +171,7 @@ class _TermsWidgetState extends State<TermsWidget> {
                                             children: [
                                               Flexible(
                                                 child: Text(
-                                                  'El presente documento regula los términos y condiciones de acceso y uso de la página web https://subaru.cr (en adelante “sitio” o “página”), propiedad de Purdy Motor, S.A., cédula jurídica trescientos uno-cero cero cinco mil setecientos cuarenta y cuatro, en adelante, (en adelante “la Empresa”). El acceso y/o utilización del sitio, de todos o parte de sus contenidos y/o servicios significa la plena aceptación de las presentes condiciones. ',
+                                                  'El presente documento regula los términos y condiciones de acceso y uso de la página web https: (en adelante “sitio” o “página”), propiedad de Purdy Motor, S.A., cédula jurídica trescientos uno-cero cero cinco mil setecientos cuarenta y cuatro, en adelante, (en adelante “la Empresa”). El acceso y/o utilización del sitio, de todos o parte de sus contenidos y/o servicios significa la plena aceptación de las presentes condiciones. ',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

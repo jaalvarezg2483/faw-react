@@ -28,6 +28,8 @@ class _NavBarWidgetState extends State<NavBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NavBarModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -44,95 +46,99 @@ class _NavBarWidgetState extends State<NavBarWidget> {
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primary,
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-            child: InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                context.pushNamed('Home');
-              },
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(
-                  'assets/images/FAW-VerticalBlanco_(2).png',
-                  width: 100.0,
-                  height: 80.0,
-                  fit: BoxFit.cover,
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('Home');
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/images/FAW-VerticalBlanco_(2).png',
+                    width: 100.0,
+                    height: 80.0,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-          StreamBuilder<List<NavBarRecord>>(
-            stream: queryNavBarRecord(
-              queryBuilder: (navBarRecord) => navBarRecord
-                  .where(
-                    'isActive',
-                    isEqualTo: true,
-                  )
-                  .orderBy('order'),
-            ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(
-                        FlutterFlowTheme.of(context).primary,
+            StreamBuilder<List<NavBarRecord>>(
+              stream: queryNavBarRecord(
+                queryBuilder: (navBarRecord) => navBarRecord
+                    .where(
+                      'isActive',
+                      isEqualTo: true,
+                    )
+                    .orderBy('order'),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          FlutterFlowTheme.of(context).primary,
+                        ),
                       ),
                     ),
-                  ),
-                );
-              }
-              List<NavBarRecord> rowNavBarRecordList = snapshot.data!;
-
-              return Row(
-                mainAxisSize: MainAxisSize.max,
-                children: List.generate(rowNavBarRecordList.length, (rowIndex) {
-                  final rowNavBarRecord = rowNavBarRecordList[rowIndex];
-                  return InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      if (rowNavBarRecord.isLink) {
-                        await launchURL(rowNavBarRecord.urlPage);
-                      } else {
-                        await actions.navigateToPage(
-                          context,
-                          rowNavBarRecord.page,
-                        );
-                      }
-                    },
-                    child: Text(
-                      rowNavBarRecord.name,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            fontSize: 20.0,
-                            letterSpacing: 0.0,
-                          ),
-                    ),
                   );
-                })
-                    .divide(SizedBox(width: 15.0))
-                    .addToStart(SizedBox(width: 13.0))
-                    .addToEnd(SizedBox(width: 13.0)),
-              );
-            },
-          ),
-        ],
+                }
+                List<NavBarRecord> rowNavBarRecordList = snapshot.data!;
+
+                return Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children:
+                      List.generate(rowNavBarRecordList.length, (rowIndex) {
+                    final rowNavBarRecord = rowNavBarRecordList[rowIndex];
+                    return InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        if (rowNavBarRecord.isLink) {
+                          await launchURL(rowNavBarRecord.urlPage);
+                        } else {
+                          await actions.navigateToPage(
+                            context,
+                            rowNavBarRecord.page,
+                          );
+                        }
+                      },
+                      child: Text(
+                        rowNavBarRecord.name,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              fontSize: 20.0,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    );
+                  })
+                          .divide(SizedBox(width: 15.0))
+                          .addToStart(SizedBox(width: 13.0))
+                          .addToEnd(SizedBox(width: 13.0)),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

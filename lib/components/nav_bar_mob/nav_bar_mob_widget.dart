@@ -30,6 +30,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NavBarMobModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

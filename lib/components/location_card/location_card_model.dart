@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
@@ -8,6 +9,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class LocationCardModel extends FlutterFlowModel<LocationCardWidget> {
+  ///  Local state fields for this component.
+
+  bool isSelected = false;
+
+  Color? contactColor = Color(4294967295);
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for MouseRegion widget.

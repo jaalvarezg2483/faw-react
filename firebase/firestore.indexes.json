@@ -29,6 +29,20 @@
       ]
     },
     {
+      "collectionGroup": "Ubicaciones",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Models",
       "queryScope": "COLLECTION",
       "fields": [

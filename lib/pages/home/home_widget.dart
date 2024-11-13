@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar/nav_bar_widget.dart';
@@ -5,6 +6,7 @@ import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/components/vehicle_card/vehicle_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -64,6 +66,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
     _model.comenTextController ??= TextEditingController();
     _model.comenFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -75,6 +79,8 @@ class _HomeWidgetState extends State<HomeWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
@@ -342,7 +348,20 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                       ),
                       Container(
-                        width: MediaQuery.sizeOf(context).width * 1.0,
+                        width: () {
+                          if (MediaQuery.sizeOf(context).width <
+                              kBreakpointSmall) {
+                            return MediaQuery.sizeOf(context).width;
+                          } else if (MediaQuery.sizeOf(context).width <
+                              kBreakpointMedium) {
+                            return MediaQuery.sizeOf(context).width;
+                          } else if (MediaQuery.sizeOf(context).width <
+                              kBreakpointLarge) {
+                            return (MediaQuery.sizeOf(context).width * 0.60);
+                          } else {
+                            return (MediaQuery.sizeOf(context).width * 0.6);
+                          }
+                        }(),
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
@@ -350,38 +369,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               valueOrDefault<double>(
-                                () {
-                                  if (MediaQuery.sizeOf(context).width <
-                                      kBreakpointSmall) {
-                                    return 40.0;
-                                  } else if (MediaQuery.sizeOf(context).width <
-                                      kBreakpointMedium) {
-                                    return 40.0;
-                                  } else if (MediaQuery.sizeOf(context).width <
-                                      kBreakpointLarge) {
-                                    return 350.0;
-                                  } else {
-                                    return 350.0;
-                                  }
-                                }(),
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 40.0
+                                    : 100.0,
                                 0.0,
                               ),
                               0.0,
                               valueOrDefault<double>(
-                                () {
-                                  if (MediaQuery.sizeOf(context).width <
-                                      kBreakpointSmall) {
-                                    return 40.0;
-                                  } else if (MediaQuery.sizeOf(context).width <
-                                      kBreakpointMedium) {
-                                    return 40.0;
-                                  } else if (MediaQuery.sizeOf(context).width <
-                                      kBreakpointLarge) {
-                                    return 350.0;
-                                  } else {
-                                    return 350.0;
-                                  }
-                                }(),
+                                MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall
+                                    ? 40.0
+                                    : 100.0,
                                 0.0,
                               ),
                               0.0),
@@ -390,14 +389,16 @@ class _HomeWidgetState extends State<HomeWidget> {
                             children: [
                               Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 5.0),
+                                    0.0, 20.0, 0.0, 5.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Flexible(
                                       child: Text(
                                         'Solicitá información acá:',
+                                        textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineLarge
                                             .override(
@@ -432,6 +433,99 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   ],
                                 ),
                               ),
+                              if (FFAppState().isModelSelected == true)
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: 190.0,
+                                        child: Stack(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          children: [
+                                            Container(
+                                              width: 170.0,
+                                              height: 50.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                borderRadius:
+                                                    BorderRadius.circular(50.0),
+                                              ),
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      FFAppState()
+                                                          .modelSelected,
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily: 'Inter',
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            fontSize: 20.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: AlignmentDirectional(
+                                                  1.0, -1.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 15.0),
+                                                child: FlutterFlowIconButton(
+                                                  borderRadius: 100.0,
+                                                  buttonSize: 40.0,
+                                                  fillColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondary,
+                                                  icon: Icon(
+                                                    Icons.close,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                    size: 24.0,
+                                                  ),
+                                                  onPressed: () async {
+                                                    FFAppState()
+                                                            .isModelSelected =
+                                                        false;
+                                                    FFAppState().modelSelected =
+                                                        '';
+                                                    safeSetState(() {});
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               Form(
                                 key: _model.formKey,
                                 autovalidateMode: AutovalidateMode.disabled,
@@ -448,8 +542,11 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             controller:
                                                 _model.ddTypeValueController ??=
                                                     FormFieldController<String>(
-                                                        null),
-                                            options: [
+                                              _model.ddTypeValue ??= '',
+                                            ),
+                                            options: List<String>.from(
+                                                ['1', '2', '3', '4', '5']),
+                                            optionLabels: [
                                               'Cédula Física',
                                               'Cédula Jurídica',
                                               'DIMEX',
@@ -516,18 +613,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Debes seleccionar un tipo de indentificación ',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        fontSize: 10.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Inter',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    fontSize: 11.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
                                             ),
                                           ),
                                         ],
@@ -537,8 +634,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        if ((_model.ddTypeValue ==
-                                                'Cédula Física') ||
+                                        if ((_model.ddTypeValue == '1') ||
                                             (_model.ddTypeValue == null ||
                                                 _model.ddTypeValue == ''))
                                           Expanded(
@@ -651,8 +747,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (_model.ddTypeValue ==
-                                            'Cédula Jurídica')
+                                        if (_model.ddTypeValue == '2')
                                           Expanded(
                                             child: Container(
                                               width: 200.0,
@@ -755,7 +850,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (_model.ddTypeValue == 'DIMEX')
+                                        if (_model.ddTypeValue == '3')
                                           Expanded(
                                             child: Container(
                                               width: 200.0,
@@ -858,7 +953,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (_model.ddTypeValue == 'Pasaporte')
+                                        if (_model.ddTypeValue == '4')
                                           Expanded(
                                             child: Container(
                                               width: 200.0,
@@ -961,7 +1056,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ),
                                           ),
-                                        if (_model.ddTypeValue == 'Otro')
+                                        if (_model.ddTypeValue == '5')
                                           Expanded(
                                             child: Container(
                                               width: 200.0,
@@ -1687,7 +1782,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                           ),
                                           child: Checkbox(
                                             value: _model.checkboxValue ??=
-                                                false,
+                                                true,
                                             onChanged: (newValue) async {
                                               safeSetState(() => _model
                                                   .checkboxValue = newValue!);
@@ -1713,6 +1808,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         Flexible(
                                           child: Text(
                                             'Al seleccionar esta casilla, autorizo y consiento de forma libre y expresa a Grupo Purdy, sus empleados, representantes,\nasesores externos e internos a tratar, recopilar, almacenar para uso de Grupo Purdy, la infomación relativa a mis datos\npersonales, según lo indicado en este documento y/o por la Ley.',
+                                            textAlign: TextAlign.start,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
                                                 .override(
@@ -1759,8 +1855,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .error,
-                                                            fontSize: 10.0,
+                                                            fontSize: 11.0,
                                                             letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
                                                             lineHeight: 0.0,
                                                           ),
                                                     ),
@@ -1837,34 +1935,149 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       true) &&
                                                   (_model.formValidation ==
                                                       true)) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return WebViewAware(
-                                                      child: AlertDialog(
-                                                        title: Text(
-                                                            'Mensaje enviado'),
-                                                        content: Text(
-                                                            'Tu solicitud fue enviada exitosamente'),
-                                                        actions: [
-                                                          TextButton(
-                                                            onPressed: () =>
-                                                                Navigator.pop(
-                                                                    alertDialogContext),
-                                                            child: Text('Ok'),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    );
-                                                  },
+                                                _model.apiResultFormHome =
+                                                    await BackendAPIGroup
+                                                        .sendContactFormCall
+                                                        .call(
+                                                  identification: () {
+                                                    if (_model.ddTypeValue ==
+                                                        '1') {
+                                                      return _model
+                                                          .tfTextController
+                                                          .text;
+                                                    } else if (_model
+                                                            .ddTypeValue ==
+                                                        '2') {
+                                                      return _model
+                                                          .tfCedJuridicaTextController
+                                                          .text;
+                                                    } else if (_model
+                                                            .ddTypeValue ==
+                                                        '3') {
+                                                      return _model
+                                                          .tfDIMEXTextController
+                                                          .text;
+                                                    } else if (_model
+                                                            .ddTypeValue ==
+                                                        '4') {
+                                                      return _model
+                                                          .tfPassportTextController
+                                                          .text;
+                                                    } else {
+                                                      return _model
+                                                          .tfOtherIdTextController
+                                                          .text;
+                                                    }
+                                                  }(),
+                                                  name: _model
+                                                      .nombreTextController
+                                                      .text,
+                                                  surname: _model
+                                                      .apellidoTextController
+                                                      .text,
+                                                  email: _model
+                                                      .correoTextController
+                                                      .text,
+                                                  phone: _model
+                                                      .telTextController.text,
+                                                  comment: _model
+                                                      .comenTextController.text,
+                                                  model: FFAppState()
+                                                      .modelSelected,
                                                 );
+
+                                                _shouldSetState = true;
+                                                if ((_model.apiResultFormHome
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          title: Text(
+                                                              'Mensaje enviado'),
+                                                          content: Text(
+                                                              'Tu solicitud fue enviada exitosamente'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  safeSetState(() {
+                                                    _model.ddTypeValueController
+                                                        ?.reset();
+                                                  });
+                                                } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return WebViewAware(
+                                                        child: AlertDialog(
+                                                          title: Text(
+                                                              'Error al enviar tu información'),
+                                                          content: Text(
+                                                              'Ocurrrió un error al enviar tu solicitud, por favor inténtalo de nuevo'),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text('Ok'),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                  if (_shouldSetState)
+                                                    safeSetState(() {});
+                                                  return;
+                                                }
+
+                                                safeSetState(() {
+                                                  _model.tfTextController
+                                                      ?.clear();
+                                                  _model
+                                                      .tfCedJuridicaTextController
+                                                      ?.clear();
+                                                  _model.tfDIMEXTextController
+                                                      ?.clear();
+                                                  _model
+                                                      .tfPassportTextController
+                                                      ?.clear();
+                                                  _model.tfOtherIdTextController
+                                                      ?.clear();
+                                                  _model.nombreTextController
+                                                      ?.clear();
+                                                  _model.apellidoTextController
+                                                      ?.clear();
+                                                  _model.correoTextController
+                                                      ?.clear();
+                                                  _model.telTextController
+                                                      ?.clear();
+                                                  _model.comenTextController
+                                                      ?.clear();
+                                                });
                                               } else {
                                                 if (_shouldSetState)
                                                   safeSetState(() {});
                                                 return;
                                               }
 
+                                              FFAppState().modelSelected = '';
+                                              FFAppState().isModelSelected =
+                                                  false;
+                                              safeSetState(() {});
                                               if (_shouldSetState)
                                                 safeSetState(() {});
                                             },
@@ -1968,7 +2181,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             fontFamily: 'Inter Tight',
                                             color: FlutterFlowTheme.of(context)
                                                 .primary,
-                                            fontSize: 36.0,
+                                            fontSize: 34.0,
                                             letterSpacing: 0.0,
                                           ),
                                     ),

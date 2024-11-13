@@ -1,4 +1,3 @@
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +27,8 @@ class _RedesWidgetState extends State<RedesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RedesModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -76,37 +77,22 @@ class _RedesWidgetState extends State<RedesWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 20.0,
-                            buttonSize: 39.0,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            icon: FaIcon(
-                              FontAwesomeIcons.facebookF,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 22.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
+                          FaIcon(
+                            FontAwesomeIcons.facebook,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            size: 35.0,
                           ),
-                          FlutterFlowIconButton(
-                            borderColor: Colors.transparent,
-                            borderRadius: 20.0,
-                            buttonSize: 40.0,
-                            fillColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            icon: FaIcon(
-                              FontAwesomeIcons.instagram,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 24.0,
-                            ),
-                            onPressed: () {
-                              print('IconButton pressed ...');
-                            },
+                          FaIcon(
+                            FontAwesomeIcons.instagram,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            size: 35.0,
                           ),
-                        ].divide(SizedBox(width: 10.0)),
+                          FaIcon(
+                            FontAwesomeIcons.linkedinIn,
+                            color: FlutterFlowTheme.of(context).alternate,
+                            size: 35.0,
+                          ),
+                        ].divide(SizedBox(width: 12.0)),
                       ),
                     ),
                   ],
