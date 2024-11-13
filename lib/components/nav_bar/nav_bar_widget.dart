@@ -60,7 +60,16 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('Home');
+                  context.pushNamed(
+                    'Home',
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -118,6 +127,10 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                             rowNavBarRecord.page,
                           );
                         }
+
+                        FFAppState().isModelSelected = false;
+                        FFAppState().modelSelected = '';
+                        safeSetState(() {});
                       },
                       child: Text(
                         rowNavBarRecord.name,

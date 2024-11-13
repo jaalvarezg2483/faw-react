@@ -397,7 +397,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   children: [
                                     Flexible(
                                       child: Text(
-                                        'Solicitá información acá:',
+                                        'Solicitá acá más información:',
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .headlineLarge
@@ -1996,8 +1996,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         (alertDialogContext) {
                                                       return WebViewAware(
                                                         child: AlertDialog(
-                                                          title: Text(
-                                                              'Mensaje enviado'),
+                                                          title:
+                                                              Text('¡Listo!'),
                                                           content: Text(
                                                               'Tu solicitud fue enviada exitosamente'),
                                                           actions: [
@@ -2024,7 +2024,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       return WebViewAware(
                                                         child: AlertDialog(
                                                           title: Text(
-                                                              'Error al enviar tu información'),
+                                                              'Error al enviar la solicitud'),
                                                           content: Text(
                                                               'Ocurrrió un error al enviar tu solicitud, por favor inténtalo de nuevo'),
                                                           actions: [

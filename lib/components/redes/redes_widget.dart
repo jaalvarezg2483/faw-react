@@ -77,20 +77,50 @@ class _RedesWidgetState extends State<RedesWidget> {
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.facebook,
-                            color: FlutterFlowTheme.of(context).alternate,
-                            size: 35.0,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await launchURL(
+                                  'https://www.facebook.com/share/orQ9LgyG8Ejs6nqj/?mibextid=JRoKGi');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.facebook,
+                              color: FlutterFlowTheme.of(context).alternate,
+                              size: 35.0,
+                            ),
                           ),
-                          FaIcon(
-                            FontAwesomeIcons.instagram,
-                            color: FlutterFlowTheme.of(context).alternate,
-                            size: 35.0,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await launchURL(
+                                  'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.instagram,
+                              color: FlutterFlowTheme.of(context).alternate,
+                              size: 35.0,
+                            ),
                           ),
-                          FaIcon(
-                            FontAwesomeIcons.linkedinIn,
-                            color: FlutterFlowTheme.of(context).alternate,
-                            size: 35.0,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await launchURL(
+                                  'https://www.linkedin.com/company/faw-trucks-costa-rica/');
+                            },
+                            child: FaIcon(
+                              FontAwesomeIcons.linkedinIn,
+                              color: FlutterFlowTheme.of(context).alternate,
+                              size: 35.0,
+                            ),
                           ),
                         ].divide(SizedBox(width: 12.0)),
                       ),

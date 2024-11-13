@@ -50,7 +50,6 @@ class _FooterWidgetState extends State<FooterWidget> {
             Expanded(
               child: Container(
                 width: double.infinity,
-                height: 120.0,
                 decoration: BoxDecoration(
                   color: Colors.black,
                 ),
@@ -114,8 +113,8 @@ class _FooterWidgetState extends State<FooterWidget> {
                     Container(
                       decoration: BoxDecoration(),
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 10.0, 0.0, 20.0),
                         child: StreamBuilder<List<FooterRecord>>(
                           stream: queryFooterRecord(
                             queryBuilder: (footerRecord) => footerRecord

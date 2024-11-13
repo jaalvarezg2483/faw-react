@@ -54,43 +54,61 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).primary,
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                onTap: () async {
-                  context.pushNamed('Home');
-                },
-                child: Container(
-                  decoration: BoxDecoration(),
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 0.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8.0),
-                      child: Image.asset(
-                        'assets/images/FAW-VerticalBlanco_(2).png',
-                        fit: BoxFit.cover,
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  splashColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () async {
+                    context.pushNamed('Home');
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'Home',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+
+                        FFAppState().isModelSelected = false;
+                        FFAppState().modelSelected = '';
+                        safeSetState(() {});
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          'assets/images/FAW-VerticalBlanco_(2).png',
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 15.0, 0.0),
-                child: FlutterFlowIconButton(
+                FlutterFlowIconButton(
                   borderColor: Colors.transparent,
                   borderRadius: 8.0,
                   buttonSize: 40.0,
                   icon: Icon(
                     Icons.menu,
                     color: FlutterFlowTheme.of(context).info,
-                    size: 24.0,
+                    size: 28.0,
                   ),
                   onPressed: () async {
                     FFAppState().isMenuMobile =
@@ -100,8 +118,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                     _model.updatePage(() {});
                   },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         if (_model.isMenuActive)
@@ -140,7 +158,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                   ),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 40.0, 20.0, 40.0),
+                        EdgeInsetsDirectional.fromSTEB(40.0, 40.0, 40.0, 40.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -168,6 +186,9 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                       if (containerVarItem.isLink) {
                                         await launchURL(
                                             containerVarItem.urlPage);
+                                        FFAppState().isModelSelected = false;
+                                        FFAppState().modelSelected = '';
+                                        safeSetState(() {});
                                         return;
                                       } else {
                                         await actions.navigateToPage(
@@ -182,6 +203,9 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                       FFAppState().isMenuMobile =
                                           !(FFAppState().isMenuMobile ?? true);
                                       safeSetState(() {});
+                                      FFAppState().isModelSelected = false;
+                                      FFAppState().modelSelected = '';
+                                      safeSetState(() {});
                                     },
                                     child: Text(
                                       containerVarItem.name,
@@ -195,7 +219,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                           ),
                                     ),
                                   );
-                                }).divide(SizedBox(height: 15.0)),
+                                }).divide(SizedBox(height: 25.0)),
                               );
                             },
                           ),
@@ -206,15 +230,53 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
-                              FaIcon(
-                                FontAwesomeIcons.facebookSquare,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchURL(
+                                      'https://www.facebook.com/share/orQ9LgyG8Ejs6nqj/?mibextid=JRoKGi');
+                                },
+                                child: FaIcon(
+                                  FontAwesomeIcons.facebookSquare,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
                               ),
-                              FaIcon(
-                                FontAwesomeIcons.instagram,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchURL(
+                                      'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
+                                },
+                                child: FaIcon(
+                                  FontAwesomeIcons.instagram,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
+                              ),
+                              InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await launchURL(
+                                      'https://www.linkedin.com/company/faw-trucks-costa-rica/');
+                                },
+                                child: FaIcon(
+                                  FontAwesomeIcons.linkedinIn,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
                               ),
                             ].divide(SizedBox(width: 10.0)),
                           ),

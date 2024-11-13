@@ -847,6 +847,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                       MainAxisSize.max,
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
                                                   children: [
                                                     Icon(
                                                       Icons.location_on,
@@ -982,7 +984,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(
-                                                          0.0, 0.0, 0.0, 5.0),
+                                                          0.0, 0.0, 0.0, 30.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
@@ -992,7 +994,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                     children: [
                                                       Flexible(
                                                         child: Text(
-                                                          'Solicitá información acá:',
+                                                          'Solicitá acá más información:',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .headlineLarge
@@ -1000,35 +1002,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                 fontFamily:
                                                                     'Inter Tight',
                                                                 fontSize: 30.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 10.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Flexible(
-                                                        child: Text(
-                                                          'Modelo seleccionado:',
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .headlineLarge
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter Tight',
-                                                                fontSize: 24.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -2920,9 +2893,9 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           child:
                                                                               AlertDialog(
                                                                             title:
-                                                                                Text('Mensaje enviado'),
+                                                                                Text('¡Listo!'),
                                                                             content:
-                                                                                Text('Tu solicitud fue enviada exitosamente'),
+                                                                                Text('Tu solicitud ha sido enviada.'),
                                                                             actions: [
                                                                               TextButton(
                                                                                 onPressed: () => Navigator.pop(alertDialogContext),
@@ -3001,6 +2974,24 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         .apellidoTextController
                                                                         ?.clear();
                                                                   });
+
+                                                                  context
+                                                                      .pushNamed(
+                                                                    'Home',
+                                                                    extra: <String,
+                                                                        dynamic>{
+                                                                      kTransitionInfoKey:
+                                                                          TransitionInfo(
+                                                                        hasTransition:
+                                                                            true,
+                                                                        transitionType:
+                                                                            PageTransitionType.fade,
+                                                                        duration:
+                                                                            Duration(milliseconds: 0),
+                                                                      ),
+                                                                    },
+                                                                  );
+
                                                                   if (_shouldSetState)
                                                                     safeSetState(
                                                                         () {});
