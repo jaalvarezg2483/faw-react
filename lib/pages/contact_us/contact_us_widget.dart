@@ -1104,10 +1104,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         context)
                                                                     .alternate,
                                                                 elevation: 2.0,
-                                                                borderColor:
-                                                                    FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .alternate,
+                                                                borderColor: Colors
+                                                                    .transparent,
                                                                 borderWidth:
                                                                     0.0,
                                                                 borderRadius:
@@ -2708,7 +2706,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                             ),
                                                             Flexible(
                                                               child: Text(
-                                                                'Al seleccionar esta casilla, autorizo y consiento de forma libre y expresa a Grupo Purdy, sus empleados, representantes,\nasesores externos e internos a tratar, recopilar, almacenar para uso de Grupo Purdy, la infomación relativa a mis datos\npersonales, según lo indicado en este documento y/o por la Ley.',
+                                                                'Al seleccionar esta casilla, autorizo y consiento de forma libre y expresa a Grupo Purdy, sus empleados, representantes, asesores externos e internos a tratar, recopilar, almacenar para uso de Grupo Purdy, la información relativa a mis datos personales, según lo indicado en este documento y/o por la Ley.',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelLarge
