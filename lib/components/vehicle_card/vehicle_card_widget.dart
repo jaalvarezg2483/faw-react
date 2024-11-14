@@ -60,19 +60,6 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
       alignment: AlignmentDirectional(0.0, -1.0),
       children: [
         Container(
-          width: () {
-            if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < 1350.0) {
-              return 250.0;
-            } else {
-              return 290.0;
-            }
-          }(),
           height: 400.0,
           decoration: BoxDecoration(),
           child: Column(
@@ -109,34 +96,24 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
           ),
         ),
         Container(
-          width: () {
-            if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < 1350.0) {
-              return 250.0;
-            } else {
-              return 290.0;
-            }
-          }(),
+          width: 280.0,
           decoration: BoxDecoration(),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: 180.0,
-                  decoration: BoxDecoration(),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: Image.network(
-                      widget!.urlImage!,
-                      fit: BoxFit.cover,
+                Flexible(
+                  child: Container(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: 180.0,
+                    decoration: BoxDecoration(),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        widget!.urlImage!,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),

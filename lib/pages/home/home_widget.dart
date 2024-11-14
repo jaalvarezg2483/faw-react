@@ -284,7 +284,42 @@ class _HomeWidgetState extends State<HomeWidget> {
                         ),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              70.0, 40.0, 70.0, 0.0),
+                              valueOrDefault<double>(
+                                () {
+                                  if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall) {
+                                    return 40.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointMedium) {
+                                    return 40.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointLarge) {
+                                    return 70.0;
+                                  } else {
+                                    return 70.0;
+                                  }
+                                }(),
+                                0.0,
+                              ),
+                              40.0,
+                              valueOrDefault<double>(
+                                () {
+                                  if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall) {
+                                    return 40.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointMedium) {
+                                    return 40.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointLarge) {
+                                    return 70.0;
+                                  } else {
+                                    return 70.0;
+                                  }
+                                }(),
+                                0.0,
+                              ),
+                              0.0),
                           child: StreamBuilder<List<ModelsRecord>>(
                             stream: queryModelsRecord(
                               queryBuilder: (modelsRecord) => modelsRecord
