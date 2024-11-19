@@ -16,6 +16,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 
 class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
@@ -166,9 +167,9 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  // Stores action output result for [Validate Form] action in Button widget.
+  // Stores action output result for [Validate Form] action in Container widget.
   bool? formValidation;
-  // Stores action output result for [Backend Call - API (SendContactForm)] action in Button widget.
+  // Stores action output result for [Backend Call - API (SendContactForm)] action in Container widget.
   ApiCallResponse? apiResultFormHome;
   // Model for Redes component.
   late RedesModel redesModel;

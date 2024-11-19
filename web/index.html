@@ -20,8 +20,11 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="WebFaw">
-  <meta name="mobile-web-app-capable" content="yes">
+
   
+
+  
+
   <!-- Favicon -->
   <link rel="icon" href="FAWicon.png" sizes="any"/>
   
@@ -37,8 +40,7 @@
 
   <title> Faw Trucks Costa Rica| Camiones | Grupo Purdy </title>
   <meta name="description" content="Conocé los camiones de FAW Trucks Costa Rica con el respaldo de Grupo Purdy. Mové tu empresa al futuro con poder y eficiencia. Obtené mayor información aquí." />
-  <meta name="keywords" content="Faw Costa Rica, Camiones, flotilla empresarial, Faw, repuestos Faw, Faw ficha técnica, Faw camiones precios, Faw Trucks Costa Rica, Flotilla de camiones, soluciones de tranporte empresarial, venta de camiones, venta de camiones Costa Rica"/>
- 
+    
 
   <!-- Status Bar color in Safari browser (iOS) and PWA -->
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f1f4f8">
@@ -50,7 +52,7 @@
     var serviceWorkerVersion = null;
   </script>
   <!-- This script adds the flutter initialization JS code -->
-  <script src="/flutter.js" defer></script>
+  <script src="flutter.js" defer></script>
   
 </head>
 <body>
@@ -63,9 +65,9 @@
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
-        entrypointUrl: '/main.dart.js',
+        entrypointUrl: 'main.dart.js',
         serviceWorker: {
-          serviceWorkerUrl: '/flutter_service_worker.js?v=',
+          serviceWorkerUrl: 'flutter_service_worker.js?v=',
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: async function(engineInitializer) {
