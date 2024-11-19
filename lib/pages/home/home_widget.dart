@@ -2246,8 +2246,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 60.0),
                                 child: Container(
-                                  width: 800.0,
-                                  height: 270.0,
+                                  width: 660.0,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context)
                                         .primaryBackground,
@@ -2437,139 +2436,125 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               fontWeight: FontWeight.w500,
                                             ),
                                       ),
-                                      Flexible(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  valueOrDefault<double>(
-                                                    () {
-                                                      if (MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width <
-                                                          kBreakpointSmall) {
-                                                        return 40.0;
-                                                      } else if (MediaQuery
-                                                                  .sizeOf(
-                                                                      context)
-                                                              .width <
-                                                          kBreakpointMedium) {
-                                                        return 40.0;
-                                                      } else if (MediaQuery
-                                                                  .sizeOf(
-                                                                      context)
-                                                              .width <
-                                                          kBreakpointLarge) {
-                                                        return 120.0;
-                                                      } else {
-                                                        return 120.0;
-                                                      }
-                                                    }(),
-                                                    0.0,
-                                                  ),
-                                                  0.0,
-                                                  valueOrDefault<double>(
-                                                    () {
-                                                      if (MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width <
-                                                          kBreakpointSmall) {
-                                                        return 40.0;
-                                                      } else if (MediaQuery
-                                                                  .sizeOf(
-                                                                      context)
-                                                              .width <
-                                                          kBreakpointMedium) {
-                                                        return 40.0;
-                                                      } else if (MediaQuery
-                                                                  .sizeOf(
-                                                                      context)
-                                                              .width <
-                                                          kBreakpointLarge) {
-                                                        return 120.0;
-                                                      } else {
-                                                        return 120.0;
-                                                      }
-                                                    }(),
-                                                    0.0,
-                                                  ),
-                                                  0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 3.0, 0.0, 0.0),
-                                                child: Icon(
-                                                  Icons.location_on,
-                                                  color: FlutterFlowTheme.of(
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            valueOrDefault<double>(
+                                              () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 40.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 40.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 120.0;
+                                                } else {
+                                                  return 120.0;
+                                                }
+                                              }(),
+                                              0.0,
+                                            ),
+                                            0.0,
+                                            valueOrDefault<double>(
+                                              () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 40.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 40.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 120.0;
+                                                } else {
+                                                  return 120.0;
+                                                }
+                                              }(),
+                                              0.0,
+                                            ),
+                                            5.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 3.0, 0.0, 0.0),
+                                              child: Icon(
+                                                Icons.location_on,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 24.0,
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await launchURL(
+                                                      'https://maps.app.goo.gl/AxtkMSNZ9gBvAMHD6');
+                                                },
+                                                child: Text(
+                                                  'De Ciudad Toyota en la Uruca, 100 metros al oeste y 150 metros al norte',
+                                                  textAlign: TextAlign.center,
+                                                  style: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
-                                                  size: 24.0,
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        fontSize: () {
+                                                          if (MediaQuery.sizeOf(
+                                                                      context)
+                                                                  .width <
+                                                              kBreakpointSmall) {
+                                                            return 15.0;
+                                                          } else if (MediaQuery
+                                                                      .sizeOf(
+                                                                          context)
+                                                                  .width <
+                                                              kBreakpointMedium) {
+                                                            return 15.0;
+                                                          } else if (MediaQuery
+                                                                      .sizeOf(
+                                                                          context)
+                                                                  .width <
+                                                              kBreakpointLarge) {
+                                                            return 20.0;
+                                                          } else {
+                                                            return 20.0;
+                                                          }
+                                                        }(),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                                 ),
                                               ),
-                                              Flexible(
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    await launchURL(
-                                                        'https://maps.app.goo.gl/AxtkMSNZ9gBvAMHD6');
-                                                  },
-                                                  child: Text(
-                                                    'De Ciudad Toyota en la Uruca, 100 metros al oeste y 150 metros al norte',
-                                                    textAlign: TextAlign.center,
-                                                    style:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Inter',
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primary,
-                                                              fontSize: () {
-                                                                if (MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width <
-                                                                    kBreakpointSmall) {
-                                                                  return 15.0;
-                                                                } else if (MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width <
-                                                                    kBreakpointMedium) {
-                                                                  return 15.0;
-                                                                } else if (MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width <
-                                                                    kBreakpointLarge) {
-                                                                  return 20.0;
-                                                                } else {
-                                                                  return 20.0;
-                                                                }
-                                                              }(),
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                            ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ]
