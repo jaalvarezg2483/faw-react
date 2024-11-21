@@ -41,4 +41,33 @@ class FFAppState extends ChangeNotifier {
   set isModelSelected(bool value) {
     _isModelSelected = value;
   }
+
+  List<String> _models = [];
+  List<String> get models => _models;
+  set models(List<String> value) {
+    _models = value;
+  }
+
+  void addToModels(String value) {
+    models.add(value);
+  }
+
+  void removeFromModels(String value) {
+    models.remove(value);
+  }
+
+  void removeAtIndexFromModels(int index) {
+    models.removeAt(index);
+  }
+
+  void updateModelsAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    models[index] = updateFn(_models[index]);
+  }
+
+  void insertAtIndexInModels(int index, String value) {
+    models.insert(index, value);
+  }
 }

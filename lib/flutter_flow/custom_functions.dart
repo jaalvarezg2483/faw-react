@@ -17,3 +17,9 @@ String? thousandSeparator(double? number) {
   final formatter = NumberFormat('#,###.##');
   return formatter.format(number).replaceAll(',', '.');
 }
+
+List<dynamic> stringListToJson(List<String> codes) {
+  return codes.map((code) {
+    return {"nombre": "modelo", "valor": code};
+  }).toList();
+}

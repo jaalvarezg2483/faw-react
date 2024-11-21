@@ -56,6 +56,8 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Stack(
       alignment: AlignmentDirectional(0.0, -1.0),
       children: [
@@ -239,6 +241,12 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                           FFAppState().modelSelected = widget!.code!;
                           FFAppState().isModelSelected = true;
                           FFAppState().update(() {});
+                          if (FFAppState().models.contains(widget!.code)) {
+                            return;
+                          }
+
+                          FFAppState().addToModels(widget!.code!);
+                          safeSetState(() {});
                         },
                         text: 'Cotizarlo',
                         options: FFButtonOptions(

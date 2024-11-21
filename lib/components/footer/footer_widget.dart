@@ -162,6 +162,8 @@ class _FooterWidgetState extends State<FooterWidget> {
                                         context,
                                         rowFooterRecord.page,
                                       );
+                                      FFAppState().models = [];
+                                      safeSetState(() {});
                                     }
                                   },
                                   child: Text(

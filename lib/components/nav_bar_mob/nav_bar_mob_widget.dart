@@ -88,7 +88,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                         );
 
                         FFAppState().isModelSelected = false;
-                        FFAppState().modelSelected = '';
+                        FFAppState().models = [];
                         safeSetState(() {});
                       },
                       child: ClipRRect(
@@ -187,7 +187,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                         await launchURL(
                                             containerVarItem.urlPage);
                                         FFAppState().isModelSelected = false;
-                                        FFAppState().modelSelected = '';
+                                        FFAppState().models = [];
                                         safeSetState(() {});
                                         return;
                                       } else {
@@ -204,7 +204,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                           !(FFAppState().isMenuMobile ?? true);
                                       safeSetState(() {});
                                       FFAppState().isModelSelected = false;
-                                      FFAppState().modelSelected = '';
+                                      FFAppState().models = [];
                                       safeSetState(() {});
                                     },
                                     child: Text(

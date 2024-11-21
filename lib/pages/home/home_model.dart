@@ -4,13 +4,14 @@ import '/components/footer/footer_widget.dart';
 import '/components/nav_bar/nav_bar_widget.dart';
 import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
 import '/components/redes/redes_widget.dart';
+import '/components/selected_model/selected_model_widget.dart';
 import '/components/vehicle_card/vehicle_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_widget.dart' show HomeWidget;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -166,9 +167,9 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
 
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
-  // Stores action output result for [Validate Form] action in Container widget.
+  // Stores action output result for [Validate Form] action in Button widget.
   bool? formValidation;
-  // Stores action output result for [Backend Call - API (SendContactForm)] action in Container widget.
+  // Stores action output result for [Backend Call - API (SendContactForm)] action in Button widget.
   ApiCallResponse? apiResultFormHome;
   // Model for Redes component.
   late RedesModel redesModel;

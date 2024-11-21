@@ -70,6 +70,9 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                       ),
                     },
                   );
+
+                  FFAppState().models = [];
+                  safeSetState(() {});
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
@@ -130,6 +133,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
 
                         FFAppState().isModelSelected = false;
                         FFAppState().modelSelected = '';
+                        FFAppState().models = [];
                         safeSetState(() {});
                       },
                       child: Text(

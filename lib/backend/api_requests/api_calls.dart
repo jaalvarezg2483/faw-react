@@ -28,10 +28,11 @@ class SendContactFormCall {
     String? email = '',
     String? phone = '',
     String? comment = '',
-    String? model = '',
+    dynamic? modelsJson,
   }) async {
     final baseUrl = BackendAPIGroup.getBaseUrl();
 
+    final models = _serializeJson(modelsJson, true);
     final ffApiRequestBody = '''
 {
   "brand": "faw",
@@ -45,12 +46,7 @@ class SendContactFormCall {
   "wantToGetFollowUp": true,
   "allowToUseInformation": true,
   "groupLogo": "https://purdyconnectiot.blob.core.windows.net/purdy-web-sites/GP_128X37.jpg",
-  "adicionalInfo": [
-    {
-      "nombre": "Modelo",
-      "valor": "${model}"
-    }
-  ]
+  "adicionalInfo": ${models}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'SendContactForm',

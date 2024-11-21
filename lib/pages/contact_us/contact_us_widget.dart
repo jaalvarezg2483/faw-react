@@ -909,7 +909,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                               'https://maps.app.goo.gl/AxtkMSNZ9gBvAMHD6');
                                                         },
                                                         child: Text(
-                                                          'De Ciudad Toyota en la Uruca, 100 metros al oeste y 150 metros al norte',
+                                                          'De la entrada principal de Ciudad Toyota en la Uruca, 100 metros al oeste y 150 metros al norte',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
@@ -3166,54 +3166,91 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                0.7,
-                                            decoration: BoxDecoration(),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final sucursal =
-                                                    contactUsUbicacionesRecordList
-                                                        .where((e) =>
-                                                            e.isBranchOffice ==
-                                                            true)
-                                                        .toList();
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0,
+                                                    0.0,
+                                                    0.0,
+                                                    valueOrDefault<double>(
+                                                      () {
+                                                        if (MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width <
+                                                            kBreakpointSmall) {
+                                                          return 100.0;
+                                                        } else if (MediaQuery
+                                                                    .sizeOf(
+                                                                        context)
+                                                                .width <
+                                                            kBreakpointMedium) {
+                                                          return 100.0;
+                                                        } else if (MediaQuery
+                                                                    .sizeOf(
+                                                                        context)
+                                                                .width <
+                                                            kBreakpointLarge) {
+                                                          return 300.0;
+                                                        } else {
+                                                          return 200.0;
+                                                        }
+                                                      }(),
+                                                      0.0,
+                                                    )),
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  0.7,
+                                              decoration: BoxDecoration(),
+                                              child: Builder(
+                                                builder: (context) {
+                                                  final sucursal =
+                                                      contactUsUbicacionesRecordList
+                                                          .where((e) =>
+                                                              e.isBranchOffice ==
+                                                              true)
+                                                          .toList();
 
-                                                return ListView.builder(
-                                                  padding: EdgeInsets.zero,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  itemCount: sucursal.length,
-                                                  itemBuilder:
-                                                      (context, sucursalIndex) {
-                                                    final sucursalItem =
-                                                        sucursal[sucursalIndex];
-                                                    return Container(
-                                                      width: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .width *
-                                                          0.7,
-                                                      decoration: BoxDecoration(
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .alternate,
-                                                          width: 2.0,
+                                                  return ListView.builder(
+                                                    padding: EdgeInsets.zero,
+                                                    shrinkWrap: true,
+                                                    scrollDirection:
+                                                        Axis.vertical,
+                                                    itemCount: sucursal.length,
+                                                    itemBuilder: (context,
+                                                        sucursalIndex) {
+                                                      final sucursalItem =
+                                                          sucursal[
+                                                              sucursalIndex];
+                                                      return Container(
+                                                        width:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .width *
+                                                                0.7,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .alternate,
+                                                            width: 2.0,
+                                                          ),
                                                         ),
-                                                      ),
-                                                      child: LocationCardWidget(
-                                                        key: Key(
-                                                            'Keydjd_${sucursalIndex}_of_${sucursal.length}'),
-                                                        typeLocation:
-                                                            'Sucursal',
-                                                        location: sucursalItem,
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
+                                                        child:
+                                                            LocationCardWidget(
+                                                          key: Key(
+                                                              'Keydjd_${sucursalIndex}_of_${sucursal.length}'),
+                                                          typeLocation:
+                                                              'Sucursal',
+                                                          location:
+                                                              sucursalItem,
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
                                             ),
                                           ),
                                         ],
