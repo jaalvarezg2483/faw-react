@@ -37,12 +37,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => FinanceWidget(),
+      errorBuilder: (context, state) => HomeWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => FinanceWidget(),
+          builder: (context, _) => HomeWidget(),
         ),
         FFRoute(
           name: 'ContactUs',
@@ -63,6 +63,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Finance',
           path: '/finance',
           builder: (context, params) => FinanceWidget(),
+        ),
+        FFRoute(
+          name: 'FinanceCopy',
+          path: '/financeCopy',
+          builder: (context, params) => FinanceCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

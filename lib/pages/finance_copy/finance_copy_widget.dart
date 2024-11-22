@@ -8,25 +8,25 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'finance_model.dart';
-export 'finance_model.dart';
+import 'finance_copy_model.dart';
+export 'finance_copy_model.dart';
 
-class FinanceWidget extends StatefulWidget {
-  const FinanceWidget({super.key});
+class FinanceCopyWidget extends StatefulWidget {
+  const FinanceCopyWidget({super.key});
 
   @override
-  State<FinanceWidget> createState() => _FinanceWidgetState();
+  State<FinanceCopyWidget> createState() => _FinanceCopyWidgetState();
 }
 
-class _FinanceWidgetState extends State<FinanceWidget> {
-  late FinanceModel _model;
+class _FinanceCopyWidgetState extends State<FinanceCopyWidget> {
+  late FinanceCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => FinanceModel());
+    _model = createModel(context, () => FinanceCopyModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -125,25 +125,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                             : 100.0,
                                         0.0,
                                       ),
-                                      valueOrDefault<double>(
-                                        () {
-                                          if (MediaQuery.sizeOf(context).width <
-                                              kBreakpointMedium) {
-                                            return 60.0;
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              kBreakpointLarge) {
-                                            return 200.0;
-                                          } else if (MediaQuery.sizeOf(context)
-                                                  .width <
-                                              1100.0) {
-                                            return 500.0;
-                                          } else {
-                                            return 100.0;
-                                          }
-                                        }(),
-                                        0.0,
-                                      )),
+                                      60.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -350,6 +332,8 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 Flexible(
                                                   child: Padding(
@@ -386,6 +370,8 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                       ),
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
                                         children: [
                                           Container(
                                             width: MediaQuery.sizeOf(context)
@@ -452,52 +438,31 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                           ),
                                         ],
                                       ),
-                                    ].divide(SizedBox(height: () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall) {
-                                        return 15.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointMedium) {
-                                        return 15.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointLarge) {
-                                        return 25.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width ==
-                                          1100.0) {
-                                        return 50.0;
-                                      } else {
-                                        return 15.0;
-                                      }
-                                    }())),
+                                    ],
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
-                                    child: wrapWithModel(
+                            Expanded(
+                              child: Container(
+                                width: double.infinity,
+                                decoration: BoxDecoration(),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    wrapWithModel(
                                       model: _model.redesModel,
                                       updateCallback: () => safeSetState(() {}),
                                       child: RedesWidget(),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: wrapWithModel(
+                                    wrapWithModel(
                                       model: _model.footerModel,
                                       updateCallback: () => safeSetState(() {}),
                                       child: FooterWidget(),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ],
