@@ -146,7 +146,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                       )),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
@@ -186,41 +186,49 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                                 ],
                                               ),
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Flexible(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      '• Prendario​\n• Leasing​\n• Renting',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize:
-                                                                    MediaQuery.sizeOf(context).width <
-                                                                            500.0
-                                                                        ? 14.0
-                                                                        : 15.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 10.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        '• Prendario​\n• Leasing​\n• Renting',
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      MediaQuery.sizeOf(context).width <
+                                                                              500.0
+                                                                          ? 13.0
+                                                                          : 15.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -261,41 +269,49 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                                 ],
                                               ),
                                             ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Flexible(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(20.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      '• Primas bajas\n• Plazos largos\n• Financiamiento de equipos y carrocerías',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                fontSize:
-                                                                    MediaQuery.sizeOf(context).width <
-                                                                            500.0
-                                                                        ? 14.0
-                                                                        : 15.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 10.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  20.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        '• Primas bajas\n• Plazos largos\n• Financiamiento de equipos y carrocerías',
+                                                        textAlign:
+                                                            TextAlign.start,
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  fontSize:
+                                                                      MediaQuery.sizeOf(context).width <
+                                                                              500.0
+                                                                          ? 13.0
+                                                                          : 15.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -388,16 +404,48 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Container(
-                                            width: MediaQuery.sizeOf(context)
+                                            width: 215.0,
+                                            height: 100.0,
+                                            constraints: BoxConstraints(
+                                              maxWidth: () {
+                                                if (MediaQuery.sizeOf(context)
                                                         .width <
-                                                    kBreakpointSmall
-                                                ? 90.0
-                                                : 215.0,
-                                            height: MediaQuery.sizeOf(context)
+                                                    kBreakpointSmall) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
                                                         .width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 100.0,
+                                                    kBreakpointMedium) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 180.0;
+                                                } else {
+                                                  return 180.0;
+                                                }
+                                              }(),
+                                              maxHeight: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 95.0;
+                                                } else {
+                                                  return 100.0;
+                                                }
+                                              }(),
+                                            ),
                                             decoration: BoxDecoration(),
                                             child: ClipRRect(
                                               borderRadius:
@@ -409,16 +457,48 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                             ),
                                           ),
                                           Container(
-                                            width: MediaQuery.sizeOf(context)
+                                            width: 200.0,
+                                            height: 100.0,
+                                            constraints: BoxConstraints(
+                                              maxWidth: () {
+                                                if (MediaQuery.sizeOf(context)
                                                         .width <
-                                                    kBreakpointSmall
-                                                ? 150.0
-                                                : 210.0,
-                                            height: MediaQuery.sizeOf(context)
+                                                    kBreakpointSmall) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
                                                         .width <
-                                                    kBreakpointSmall
-                                                ? 50.0
-                                                : 70.0,
+                                                    kBreakpointMedium) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 180.0;
+                                                } else {
+                                                  return 180.0;
+                                                }
+                                              }(),
+                                              maxHeight: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 95.0;
+                                                } else {
+                                                  return 100.0;
+                                                }
+                                              }(),
+                                            ),
                                             decoration: BoxDecoration(),
                                             child: ClipRRect(
                                               borderRadius:
@@ -430,16 +510,48 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                             ),
                                           ),
                                           Container(
-                                            width: MediaQuery.sizeOf(context)
+                                            width: 200.0,
+                                            height: 100.0,
+                                            constraints: BoxConstraints(
+                                              maxWidth: () {
+                                                if (MediaQuery.sizeOf(context)
                                                         .width <
-                                                    kBreakpointSmall
-                                                ? 90.0
-                                                : 215.0,
-                                            height: MediaQuery.sizeOf(context)
+                                                    kBreakpointSmall) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
                                                         .width <
-                                                    kBreakpointSmall
-                                                ? 40.0
-                                                : 100.0,
+                                                    kBreakpointMedium) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 180.0;
+                                                } else {
+                                                  return 180.0;
+                                                }
+                                              }(),
+                                              maxHeight: () {
+                                                if (MediaQuery.sizeOf(context)
+                                                        .width <
+                                                    kBreakpointSmall) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointMedium) {
+                                                  return 70.0;
+                                                } else if (MediaQuery.sizeOf(
+                                                            context)
+                                                        .width <
+                                                    kBreakpointLarge) {
+                                                  return 95.0;
+                                                } else {
+                                                  return 100.0;
+                                                }
+                                              }(),
+                                            ),
                                             decoration: BoxDecoration(),
                                             child: ClipRRect(
                                               borderRadius:
@@ -450,7 +562,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                               ),
                                             ),
                                           ),
-                                        ],
+                                        ].divide(SizedBox(width: 10.0)),
                                       ),
                                     ].divide(SizedBox(height: () {
                                       if (MediaQuery.sizeOf(context).width <
@@ -481,14 +593,12 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                               decoration: BoxDecoration(),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Align(
-                                    alignment: AlignmentDirectional(0.0, 1.0),
-                                    child: wrapWithModel(
-                                      model: _model.redesModel,
-                                      updateCallback: () => safeSetState(() {}),
-                                      child: RedesWidget(),
-                                    ),
+                                  wrapWithModel(
+                                    model: _model.redesModel,
+                                    updateCallback: () => safeSetState(() {}),
+                                    child: RedesWidget(),
                                   ),
                                   Expanded(
                                     child: wrapWithModel(

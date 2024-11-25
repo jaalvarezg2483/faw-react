@@ -63,11 +63,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Finance',
           path: '/finance',
           builder: (context, params) => FinanceWidget(),
-        ),
-        FFRoute(
-          name: 'FinanceCopy',
-          path: '/financeCopy',
-          builder: (context, params) => FinanceCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
