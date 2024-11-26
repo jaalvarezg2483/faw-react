@@ -2007,7 +2007,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 25.0),
+                                                  0.0, 5.0, 0.0, 25.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             mainAxisAlignment:
