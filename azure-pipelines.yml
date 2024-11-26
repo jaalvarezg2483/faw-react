@@ -36,6 +36,13 @@ jobs:
       SourceFolder: '$(Build.SourcesDirectory)'
       Contents: '**/routes.json'
       TargetFolder: '$(Build.SourcesDirectory)/build/web'
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: "$(Build.SourcesDirectory)/web/site"
+      Contents: "**/*"
+      TargetFolder: "$(Build.SourcesDirectory)/build/web"
+    displayName: "Move web/site content to root directory"
       
   - script: |
       sudo apt update
