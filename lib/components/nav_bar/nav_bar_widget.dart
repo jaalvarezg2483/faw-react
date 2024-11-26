@@ -1,6 +1,7 @@
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_web_view.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -84,6 +85,15 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                   ),
                 ),
               ),
+            ),
+            FlutterFlowWebView(
+              content:
+                  '<!-- Google Tag Manager (noscript) -->\n\n<noscript><iframe src=https://www.googletagmanager.com/ns.html?id=GTM-WSRVH3LK\n\nheight=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe></noscript>\n\n<!-- End Google Tag Manager (noscript) -->',
+              width: 0.0,
+              height: 0.0,
+              verticalScroll: false,
+              horizontalScroll: false,
+              html: true,
             ),
             StreamBuilder<List<NavBarRecord>>(
               stream: queryNavBarRecord(
