@@ -11,9 +11,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -38,6 +40,15 @@ class _HomeWidgetState extends State<HomeWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.updateMetaTags(
+        'Faw Trucks Costa Rica| Camiones | Grupo Purdy',
+        'Conocé los camiones de FAW Trucks Costa Rica con el respaldo de Grupo Purdy. Mové tu empresa al futuro con poder y eficiencia. Obtené mayor información aquí.',
+        'Faw Costa Rica, Camiones, flotilla empresarial, Faw, repuestos Faw, Faw ficha técnica, Faw camiones precios, Faw Trucks Costa Rica, Flotilla de camiones, soluciones de tranporte empresarial, venta de camiones, venta de camiones Costa Rica, ',
+      );
+    });
 
     _model.tfTextController ??= TextEditingController();
     _model.tfFocusNode ??= FocusNode();
@@ -601,7 +612,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                 hintText:
-                                                    'Tipo de identificación*',
+                                                    '* Tipo de identificación',
                                                 icon: Icon(
                                                   Icons
                                                       .keyboard_arrow_down_rounded,
@@ -683,8 +694,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   null ||
                                                               _model.ddTypeValue ==
                                                                   ''
-                                                          ? '*Identificación'
-                                                          : '*Identificación (Cédula Física)',
+                                                          ? '* Identificación'
+                                                          : '* Identificación (Cédula Física)',
                                                       labelStyle:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -692,20 +703,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 18.0,
+                                                                fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -766,12 +764,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
                                                     validator: _model
                                                         .tfTextControllerValidator
                                                         .asValidator(context),
@@ -805,20 +800,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 18.0,
+                                                                fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -879,12 +861,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
                                                     validator: _model
                                                         .tfCedJuridicaTextControllerValidator
                                                         .asValidator(context),
@@ -913,20 +892,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 18.0,
+                                                                fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -987,12 +953,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
                                                     validator: _model
                                                         .tfDIMEXTextControllerValidator
                                                         .asValidator(context),
@@ -1021,20 +984,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 18.0,
+                                                                fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1095,12 +1045,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
                                                     validator: _model
                                                         .tfPassportTextControllerValidator
                                                         .asValidator(context),
@@ -1129,20 +1076,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
-                                                      hintStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 18.0,
+                                                                fontSize: 15.0,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -1203,12 +1137,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Inter',
+                                                          fontSize: 15.0,
                                                           letterSpacing: 0.0,
                                                         ),
-                                                    cursorColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
                                                     validator: _model
                                                         .tfOtherIdTextControllerValidator
                                                         .asValidator(context),
@@ -1232,7 +1163,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,
-                                                  labelText: 'Nombre*',
+                                                  labelText: '* Nombre',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyMedium
@@ -1365,7 +1296,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,
-                                                  labelText: 'Apellido*',
+                                                  labelText: '* Apellido',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyMedium
@@ -1499,7 +1430,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 decoration: InputDecoration(
                                                   isDense: true,
                                                   labelText:
-                                                      'Correo electronico*',
+                                                      '* Correo electrónico',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyMedium
@@ -1628,7 +1559,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,
-                                                  labelText: 'Teléfono*',
+                                                  labelText: '* Teléfono',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyMedium
@@ -1765,7 +1696,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,
-                                                  labelText: 'Comentarios*',
+                                                  labelText: '* Comentarios',
                                                   labelStyle: FlutterFlowTheme
                                                           .of(context)
                                                       .bodyMedium
@@ -2294,7 +2225,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             ],
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 7.0)),
+                                      ].divide(SizedBox(height: 15.0)),
                                     ),
                                   ),
                                 ],

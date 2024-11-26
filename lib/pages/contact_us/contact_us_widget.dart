@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -41,6 +42,11 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.buttomActive = 'Contacto';
       safeSetState(() {});
+      await actions.updateMetaTags(
+        'Contactanos |Faw Trucks Costa Rica | Grupo Purdy',
+        'Contactanos en Faw Trucks Costa Rica con el respaldo de Grupo Purdy. ¡Escribinos hoy y llevá tu negocio al siguiente nivel!',
+        'contactanos, Faw Trucks Costa Rica, Grupo Purdy',
+      );
     });
 
     _model.tfTextController ??= TextEditingController();
@@ -149,7 +155,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                         child: NavBarMobWidget(),
                       ),
                     ),
-                  Flexible(
+                  Expanded(
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
@@ -1143,7 +1149,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           0.0,
                                                                     ),
                                                                 hintText:
-                                                                    'Tipo de identificación*',
+                                                                    '* Tipo de identificación',
                                                                 icon: Icon(
                                                                   Icons
                                                                       .keyboard_arrow_down_rounded,
@@ -1255,14 +1261,16 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           true,
                                                                       labelText: _model.ddTypeValue == null ||
                                                                               _model.ddTypeValue == ''
-                                                                          ? '*Identificación'
-                                                                          : '*Identificación (Cédula Física)',
+                                                                          ? '* Identificación'
+                                                                          : '* Identificación (Cédula Física)',
                                                                       labelStyle: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
+                                                                            fontSize:
+                                                                                15.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1272,10 +1280,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontSize:
-                                                                                18.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1339,12 +1343,11 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         .override(
                                                                           fontFamily:
                                                                               'Inter',
+                                                                          fontSize:
+                                                                              15.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    cursorColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
                                                                     validator: _model
                                                                         .tfTextControllerValidator
                                                                         .asValidator(
@@ -1388,6 +1391,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
+                                                                            fontSize:
+                                                                                15.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1397,10 +1402,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).primaryText,
-                                                                            fontSize:
-                                                                                18.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1464,12 +1465,11 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         .override(
                                                                           fontFamily:
                                                                               'Inter',
+                                                                          fontSize:
+                                                                              15.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    cursorColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
                                                                     validator: _model
                                                                         .tfCedJuridicaTextControllerValidator
                                                                         .asValidator(
@@ -1508,6 +1508,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
+                                                                            fontSize:
+                                                                                15.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1520,7 +1522,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1584,12 +1586,11 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         .override(
                                                                           fontFamily:
                                                                               'Inter',
+                                                                          fontSize:
+                                                                              15.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    cursorColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
                                                                     validator: _model
                                                                         .tfDIMEXTextControllerValidator
                                                                         .asValidator(
@@ -1628,6 +1629,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
+                                                                            fontSize:
+                                                                                15.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1640,7 +1643,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1704,12 +1707,11 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         .override(
                                                                           fontFamily:
                                                                               'Inter',
+                                                                          fontSize:
+                                                                              15.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    cursorColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
                                                                     validator: _model
                                                                         .tfPassportTextControllerValidator
                                                                         .asValidator(
@@ -1748,6 +1750,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                           .override(
                                                                             fontFamily:
                                                                                 'Inter',
+                                                                            fontSize:
+                                                                                15.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1760,7 +1764,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).primaryText,
                                                                             fontSize:
-                                                                                18.0,
+                                                                                14.0,
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -1824,12 +1828,11 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         .override(
                                                                           fontFamily:
                                                                               'Inter',
+                                                                          fontSize:
+                                                                              15.0,
                                                                           letterSpacing:
                                                                               0.0,
                                                                         ),
-                                                                    cursorColor:
-                                                                        FlutterFlowTheme.of(context)
-                                                                            .primaryText,
                                                                     validator: _model
                                                                         .tfOtherIdTextControllerValidator
                                                                         .asValidator(
@@ -1861,7 +1864,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                     InputDecoration(
                                                                   isDense: true,
                                                                   labelText:
-                                                                      'Nombre*',
+                                                                      '* Nombre',
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -2032,7 +2035,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                     InputDecoration(
                                                                   isDense: true,
                                                                   labelText:
-                                                                      'Apellido*',
+                                                                      '* Apellido',
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -2203,7 +2206,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                     InputDecoration(
                                                                   isDense: true,
                                                                   labelText:
-                                                                      'Correo electronico*',
+                                                                      '* Correo electrónico',
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -2372,7 +2375,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                     InputDecoration(
                                                                   isDense: true,
                                                                   labelText:
-                                                                      'Teléfono*',
+                                                                      '* Teléfono',
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -2549,7 +2552,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                     InputDecoration(
                                                                   isDense: true,
                                                                   labelText:
-                                                                      'Comentarios*',
+                                                                      '* Comentarios',
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
