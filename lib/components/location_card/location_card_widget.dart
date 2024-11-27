@@ -97,7 +97,22 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Inter',
-                                  fontSize: 18.0,
+                                  fontSize: () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 14.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 14.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 18.0;
+                                    } else {
+                                      return 18.0;
+                                    }
+                                  }(),
                                   letterSpacing: 0.0,
                                 ),
                           ),

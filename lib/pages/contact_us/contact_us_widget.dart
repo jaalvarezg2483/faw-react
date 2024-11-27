@@ -14,9 +14,9 @@ import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'contact_us_model.dart';
 export 'contact_us_model.dart';
@@ -665,8 +665,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                   mainAxisAlignment:
                                                       MainAxisAlignment.center,
                                                   children: [
-                                                    Icon(
-                                                      Icons.phone,
+                                                    FaIcon(
+                                                      FontAwesomeIcons.whatsapp,
                                                       color:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -684,11 +684,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
-                                                          await launchUrl(Uri(
-                                                            scheme: 'tel',
-                                                            path:
-                                                                '+50625197777',
-                                                          ));
+                                                          await launchURL(
+                                                              'https://api.whatsapp.com/send?phone=50625197777');
                                                         },
                                                         child: Text(
                                                           '(+506) 2519-7777',
