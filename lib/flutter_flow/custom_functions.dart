@@ -10,6 +10,7 @@ import 'place.dart';
 import 'uploaded_file.dart';
 import '/backend/backend.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '/backend/schema/structs/index.dart';
 
 String? thousandSeparator(double? number) {
   // a function that separates thousands with dots
@@ -18,8 +19,8 @@ String? thousandSeparator(double? number) {
   return formatter.format(number).replaceAll(',', '.');
 }
 
-List<dynamic> stringListToJson(List<String> codes) {
-  return codes.map((code) {
-    return {"nombre": "modelo", "valor": code};
+List<dynamic> stringListToJson(List<ModelsStruct> models) {
+  return models.map((model) {
+    return {"name": model.name, "filename": "", "price": model.price};
   }).toList();
 }

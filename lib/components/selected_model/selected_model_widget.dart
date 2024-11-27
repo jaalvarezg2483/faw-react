@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,10 +11,10 @@ export 'selected_model_model.dart';
 class SelectedModelWidget extends StatefulWidget {
   const SelectedModelWidget({
     super.key,
-    required this.code,
+    required this.model,
   });
 
-  final String? code;
+  final ModelsStruct? model;
 
   @override
   State<SelectedModelWidget> createState() => _SelectedModelWidgetState();
@@ -66,7 +67,10 @@ class _SelectedModelWidgetState extends State<SelectedModelWidget> {
                 children: [
                   Flexible(
                     child: Text(
-                      widget!.code!,
+                      valueOrDefault<String>(
+                        widget!.model?.code,
+                        'code',
+                      ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
@@ -95,7 +99,7 @@ class _SelectedModelWidgetState extends State<SelectedModelWidget> {
                     size: 24.0,
                   ),
                   onPressed: () async {
-                    FFAppState().removeFromModels(widget!.code!);
+                    FFAppState().removeFromModels(widget!.model!);
                     safeSetState(() {});
                     _model.isSelect = false;
                     safeSetState(() {});

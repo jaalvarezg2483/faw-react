@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../schema/structs/index.dart';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -18,6 +20,8 @@ class BackendAPIGroup {
     'Authorization': '5a90e16787a5b2c496f28f08c17321d3',
   };
   static SendContactFormCall sendContactFormCall = SendContactFormCall();
+  static SendEmailQuotationCall sendEmailQuotationCall =
+      SendEmailQuotationCall();
 }
 
 class SendContactFormCall {
@@ -51,6 +55,52 @@ class SendContactFormCall {
     return ApiManager.instance.makeApiCall(
       callName: 'SendContactForm',
       apiUrl: '${baseUrl}/api/Notifications/SendContactForm',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': '5a90e16787a5b2c496f28f08c17321d3',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class SendEmailQuotationCall {
+  Future<ApiCallResponse> call({
+    String? identification = '',
+    String? name = '',
+    String? surname = '',
+    String? email = '',
+    String? phone = '',
+    String? comment = '',
+    dynamic? modelsJson,
+  }) async {
+    final baseUrl = BackendAPIGroup.getBaseUrl();
+
+    final models = _serializeJson(modelsJson, true);
+    final ffApiRequestBody = '''
+{
+  "docType": 1,
+  "identification": "${identification}",
+  "name": "${name}",
+  "surname": "${surname}",
+  "email": "${email}",
+  "phonenumber": "${phone}",
+  "comment": "${comment}",
+  "wantToGetFollowUp": true,
+  "allowToUseInformation": true,
+  "models": ${models}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'SendEmailQuotation',
+      apiUrl: '${baseUrl}/api/faw/Notifications/SendEmailQuotation',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': '5a90e16787a5b2c496f28f08c17321d3',

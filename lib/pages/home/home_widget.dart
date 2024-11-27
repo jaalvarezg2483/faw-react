@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar/nav_bar_widget.dart';
 import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
@@ -555,7 +556,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               return SelectedModelWidget(
                                                 key: Key(
                                                     'Keyzwo_${modelsIndex}_of_${models.length}'),
-                                                code: modelsItem,
+                                                model: modelsItem,
                                               );
                                             }),
                                           );
@@ -2019,7 +2020,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                 true)) {
                                                           _model.apiResultFormHome =
                                                               await BackendAPIGroup
-                                                                  .sendContactFormCall
+                                                                  .sendEmailQuotationCall
                                                                   .call(
                                                             identification: () {
                                                               if (_model

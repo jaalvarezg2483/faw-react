@@ -530,7 +530,46 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                             decoration: BoxDecoration(),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  70.0, 0.0, 70.0, 0.0),
+                                  valueOrDefault<double>(
+                                    () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall) {
+                                        return 40.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointMedium) {
+                                        return 40.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointLarge) {
+                                        return 70.0;
+                                      } else {
+                                        return 70.0;
+                                      }
+                                    }(),
+                                    0.0,
+                                  ),
+                                  0.0,
+                                  valueOrDefault<double>(
+                                    () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall) {
+                                        return 40.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointMedium) {
+                                        return 40.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointLarge) {
+                                        return 70.0;
+                                      } else {
+                                        return 70.0;
+                                      }
+                                    }(),
+                                    0.0,
+                                  ),
+                                  0.0),
                               child: Wrap(
                                 spacing: 0.0,
                                 runSpacing: 0.0,
@@ -545,7 +584,27 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 10.0),
                                     child: Container(
-                                      width: 350.0,
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall) {
+                                          return MediaQuery.sizeOf(context)
+                                              .width;
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            kBreakpointMedium) {
+                                          return MediaQuery.sizeOf(context)
+                                              .width;
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            kBreakpointLarge) {
+                                          return MediaQuery.sizeOf(context)
+                                              .width;
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        }
+                                      }(),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -687,7 +746,27 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 10.0),
                                     child: Container(
-                                      width: 350.0,
+                                      width: () {
+                                        if (MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall) {
+                                          return MediaQuery.sizeOf(context)
+                                              .width;
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            kBreakpointMedium) {
+                                          return MediaQuery.sizeOf(context)
+                                              .width;
+                                        } else if (MediaQuery.sizeOf(context)
+                                                .width <
+                                            kBreakpointLarge) {
+                                          return MediaQuery.sizeOf(context)
+                                              .width;
+                                        } else {
+                                          return (MediaQuery.sizeOf(context)
+                                                  .width *
+                                              0.3);
+                                        }
+                                      }(),
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
@@ -823,7 +902,24 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                     ),
                                   ),
                                   Container(
-                                    width: 350.0,
+                                    width: () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall) {
+                                        return MediaQuery.sizeOf(context).width;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointMedium) {
+                                        return MediaQuery.sizeOf(context).width;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointLarge) {
+                                        return MediaQuery.sizeOf(context).width;
+                                      } else {
+                                        return (MediaQuery.sizeOf(context)
+                                                .width *
+                                            0.3);
+                                      }
+                                    }(),
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,

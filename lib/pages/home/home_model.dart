@@ -1,5 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar/nav_bar_widget.dart';
 import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
@@ -171,7 +172,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   bool? checkboxValue;
   // Stores action output result for [Validate Form] action in Button widget.
   bool? formValidation;
-  // Stores action output result for [Backend Call - API (SendContactForm)] action in Button widget.
+  // Stores action output result for [Backend Call - API (SendEmailQuotation)] action in Button widget.
   ApiCallResponse? apiResultFormHome;
   // Model for Redes component.
   late RedesModel redesModel;

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -241,11 +242,19 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                           FFAppState().modelSelected = widget!.code!;
                           FFAppState().isModelSelected = true;
                           FFAppState().update(() {});
-                          if (FFAppState().models.contains(widget!.code)) {
+                          if (FFAppState().models.contains(ModelsStruct(
+                                name: widget!.name,
+                                price: widget!.price,
+                                code: widget!.code,
+                              ))) {
                             return;
                           }
 
-                          FFAppState().addToModels(widget!.code!);
+                          FFAppState().addToModels(ModelsStruct(
+                            name: widget!.name,
+                            price: widget!.price,
+                            code: widget!.code,
+                          ));
                           safeSetState(() {});
                         },
                         text: 'Cotizarlo',

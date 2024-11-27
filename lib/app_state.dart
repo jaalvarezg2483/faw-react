@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
@@ -42,17 +43,17 @@ class FFAppState extends ChangeNotifier {
     _isModelSelected = value;
   }
 
-  List<String> _models = [];
-  List<String> get models => _models;
-  set models(List<String> value) {
+  List<ModelsStruct> _models = [];
+  List<ModelsStruct> get models => _models;
+  set models(List<ModelsStruct> value) {
     _models = value;
   }
 
-  void addToModels(String value) {
+  void addToModels(ModelsStruct value) {
     models.add(value);
   }
 
-  void removeFromModels(String value) {
+  void removeFromModels(ModelsStruct value) {
     models.remove(value);
   }
 
@@ -62,12 +63,12 @@ class FFAppState extends ChangeNotifier {
 
   void updateModelsAtIndex(
     int index,
-    String Function(String) updateFn,
+    ModelsStruct Function(ModelsStruct) updateFn,
   ) {
     models[index] = updateFn(_models[index]);
   }
 
-  void insertAtIndexInModels(int index, String value) {
+  void insertAtIndexInModels(int index, ModelsStruct value) {
     models.insert(index, value);
   }
 }
