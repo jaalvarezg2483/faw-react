@@ -621,7 +621,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                   MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  'Central telefónica',
+                                                  'WhatsApp',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

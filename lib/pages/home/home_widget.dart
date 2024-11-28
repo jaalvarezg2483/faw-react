@@ -2328,7 +2328,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       Text(
-                                        'Central telefónica',
+                                        'WhatsApp',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
@@ -2513,9 +2513,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             context)
                                                         .width <
                                                     kBreakpointLarge) {
-                                                  return 120.0;
+                                                  return 100.0;
                                                 } else {
-                                                  return 120.0;
+                                                  return 100.0;
                                                 }
                                               }(),
                                               0.0,
@@ -2536,9 +2536,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                             context)
                                                         .width <
                                                     kBreakpointLarge) {
-                                                  return 120.0;
+                                                  return 100.0;
                                                 } else {
-                                                  return 120.0;
+                                                  return 100.0;
                                                 }
                                               }(),
                                               0.0,
