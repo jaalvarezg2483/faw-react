@@ -454,7 +454,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                                       ),
                                             ),
                                             TextSpan(
-                                              text: '2519-7777',
+                                              text: '8589-1000',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -491,7 +491,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                               recognizer: TapGestureRecognizer()
                                                 ..onTap = () async {
                                                   await launchURL(
-                                                      'https://api.whatsapp.com/send?phone=50625197777');
+                                                      'https://api.whatsapp.com/send?phone=50685891000');
                                                 },
                                             )
                                           ],

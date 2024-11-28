@@ -685,10 +685,10 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                             Colors.transparent,
                                                         onTap: () async {
                                                           await launchURL(
-                                                              'https://api.whatsapp.com/send?phone=50625197777');
+                                                              'https://api.whatsapp.com/send?phone=50685891000');
                                                         },
                                                         child: Text(
-                                                          '(+506) 2519-7777',
+                                                          '(+506) 8589-1000',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
