@@ -1,0 +1,49 @@
+{
+    "routes": [
+        {
+            "route": "/",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/robots.txt",
+            "serve": "/robots.txt",
+            "statusCode": 200
+        },
+        {
+            "route": "/sitemap.xml",
+            "serve": "/sitemap.xml",
+            "statusCode": 200
+        },
+        {
+            "route": "/manifest.json",
+            "serve": "/manifest.json",
+            "statusCode": 200
+        },
+        {
+            "route": "/home",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/contactUs",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/finance",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/terms",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/*",
+            "serve": "/404.html",
+            "statusCode": 404
+        }
+    ]
+}
