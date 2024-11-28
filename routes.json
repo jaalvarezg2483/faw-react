@@ -21,16 +21,6 @@
             "statusCode": 200
         },
         {
-            "route": "/home",
-            "serve": "/index.html",
-            "statusCode": 200
-        },
-        {
-            "route": "/contactUs",
-            "serve": "/index.html",
-            "statusCode": 200
-        },
-        {
             "route": "/finance",
             "serve": "/index.html",
             "statusCode": 200
