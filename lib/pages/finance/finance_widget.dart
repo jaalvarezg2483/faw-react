@@ -179,21 +179,23 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Text(
-                                        'Tenemos opciones de financiamiento que se ajustan a cada necesidad.',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width <
-                                                          500.0
-                                                      ? 15.0
-                                                      : 20.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                      Flexible(
+                                        child: Text(
+                                          'Tenemos opciones de financiamiento que se ajustan a cada necesidad.',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                fontSize:
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            500.0
+                                                        ? 15.0
+                                                        : 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -297,21 +299,23 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Text(
-                                        'Condiciones pensando en su negocio',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width <
-                                                          500.0
-                                                      ? 15.0
-                                                      : 20.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                      Flexible(
+                                        child: Text(
+                                          'Condiciones pensando en su negocio',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                fontSize:
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            500.0
+                                                        ? 15.0
+                                                        : 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -384,21 +388,23 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Text(
-                                        'Condiciones pensando en su negocio',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Inter',
-                                              fontSize:
-                                                  MediaQuery.sizeOf(context)
-                                                              .width <
-                                                          500.0
-                                                      ? 15.0
-                                                      : 20.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                      Flexible(
+                                        child: Text(
+                                          'Condiciones pensando en su negocio',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Inter',
+                                                fontSize:
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            500.0
+                                                        ? 15.0
+                                                        : 20.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                        ),
                                       ),
                                     ],
                                   ),

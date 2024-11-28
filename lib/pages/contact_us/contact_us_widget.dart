@@ -3367,34 +3367,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    0.0,
-                                                    0.0,
-                                                    0.0,
-                                                    valueOrDefault<double>(
-                                                      () {
-                                                        if (MediaQuery.sizeOf(
-                                                                    context)
-                                                                .width <
-                                                            kBreakpointSmall) {
-                                                          return 100.0;
-                                                        } else if (MediaQuery
-                                                                    .sizeOf(
-                                                                        context)
-                                                                .width <
-                                                            kBreakpointMedium) {
-                                                          return 100.0;
-                                                        } else if (MediaQuery
-                                                                    .sizeOf(
-                                                                        context)
-                                                                .width <
-                                                            kBreakpointLarge) {
-                                                          return 300.0;
-                                                        } else {
-                                                          return 200.0;
-                                                        }
-                                                      }(),
-                                                      0.0,
-                                                    )),
+                                                    0.0, 0.0, 0.0, 100.0),
                                             child: Container(
                                               width: MediaQuery.sizeOf(context)
                                                       .width *
