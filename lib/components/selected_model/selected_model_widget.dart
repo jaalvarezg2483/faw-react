@@ -100,7 +100,7 @@ class _SelectedModelWidgetState extends State<SelectedModelWidget> {
                   ),
                   onPressed: () async {
                     FFAppState().removeFromModels(widget!.model!);
-                    safeSetState(() {});
+                    FFAppState().update(() {});
                     _model.isSelect = false;
                     safeSetState(() {});
                   },
