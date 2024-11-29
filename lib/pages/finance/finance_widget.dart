@@ -601,8 +601,8 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.asset(
-                                          'assets/images/LogotipoBAC-Horizontal-rojo.png',
-                                          fit: BoxFit.contain,
+                                          'assets/images/logo_bacredomatic.png',
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
