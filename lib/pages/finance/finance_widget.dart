@@ -601,7 +601,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.asset(
-                                          'assets/images/BAC_Credomatic_logo.svg.png',
+                                          'assets/images/LogotipoBAC-Horizontal-rojo.png',
                                           fit: BoxFit.contain,
                                         ),
                                       ),
