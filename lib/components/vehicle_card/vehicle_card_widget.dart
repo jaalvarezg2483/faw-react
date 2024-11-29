@@ -256,6 +256,22 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                             code: widget!.code,
                           ));
                           safeSetState(() {});
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'EL VEHÍCULO HA SIDO AGREGADO AL COTIZADOR',
+                                style: GoogleFonts.getFont(
+                                  'Montserrat',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 22.0,
+                                ),
+                              ),
+                              duration: Duration(milliseconds: 2000),
+                              backgroundColor: Color(0xFF22D238),
+                            ),
+                          );
                         },
                         text: 'Cotizarlo',
                         options: FFButtonOptions(

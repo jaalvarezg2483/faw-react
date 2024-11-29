@@ -301,7 +301,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          'Condiciones pensando en su negocio',
+                                          'Condiciones pensadas para tu negocio',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -390,7 +390,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                     children: [
                                       Flexible(
                                         child: Text(
-                                          'Condiciones pensando en su negocio',
+                                          'Consultá con nuestros Asesores de Ventas sobre el crédito más conveniente para tu negocio.',
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
