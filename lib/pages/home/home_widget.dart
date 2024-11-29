@@ -21,6 +21,7 @@ import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'home_model.dart';
 export 'home_model.dart';
@@ -2476,8 +2477,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await launchURL(
-                                                    'https://api.whatsapp.com/send?phone=50685891000');
+                                                await launchUrl(Uri(
+                                                  scheme: 'tel',
+                                                  path: '+50625197777',
+                                                ));
                                               },
                                               child: Text(
                                                 '(+506) 2519-7777',
