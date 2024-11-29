@@ -266,7 +266,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 16.0,
+                                  fontSize: 10.0,
                                 ),
                               ),
                               duration: Duration(milliseconds: 2000),
