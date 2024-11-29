@@ -656,7 +656,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                         ),
                                       ),
                                     ),
-                                  ],
+                                  ].divide(SizedBox(width: 25.0)),
                                 ),
                               ].divide(SizedBox(height: () {
                                 if (MediaQuery.sizeOf(context).width <
