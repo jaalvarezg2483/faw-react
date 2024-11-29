@@ -261,13 +261,14 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                             SnackBar(
                               content: Text(
                                 'EL VEHÍCULO HA SIDO AGREGADO AL COTIZADOR',
-                                style: GoogleFonts.getFont(
-                                  'Montserrat',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 10.0,
-                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                               duration: Duration(milliseconds: 2000),
                               backgroundColor: Color(0xFF22D238),
