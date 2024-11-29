@@ -325,7 +325,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 }(),
                                 0.0,
                               ),
-                              40.0,
+                              0.0,
                               valueOrDefault<double>(
                                 () {
                                   if (MediaQuery.sizeOf(context).width <
@@ -344,65 +344,128 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 0.0,
                               ),
                               0.0),
-                          child: StreamBuilder<List<ModelsRecord>>(
-                            stream: queryModelsRecord(
-                              queryBuilder: (modelsRecord) => modelsRecord
-                                  .where(
-                                    'enable',
-                                    isEqualTo: true,
-                                  )
-                                  .orderBy('order'),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 25.0, 0.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      '* Imágenes con fines ilustrativos',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondary,
+                                            fontSize: () {
+                                              if (MediaQuery.sizeOf(context)
+                                                      .width <
+                                                  kBreakpointSmall) {
+                                                return 10.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointMedium) {
+                                                return 10.0;
+                                              } else if (MediaQuery.sizeOf(
+                                                          context)
+                                                      .width <
+                                                  kBreakpointLarge) {
+                                                return 14.0;
+                                              } else {
+                                                return 16.0;
+                                              }
+                                            }(),
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w500,
+                                          ),
                                     ),
-                                  ),
-                                );
-                              }
-                              List<ModelsRecord> wrapModelsRecordList =
-                                  snapshot.data!;
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 0.0),
+                                  child: StreamBuilder<List<ModelsRecord>>(
+                                    stream: queryModelsRecord(
+                                      queryBuilder: (modelsRecord) =>
+                                          modelsRecord
+                                              .where(
+                                                'enable',
+                                                isEqualTo: true,
+                                              )
+                                              .orderBy('order'),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<ModelsRecord> wrapModelsRecordList =
+                                          snapshot.data!;
 
-                              return Wrap(
-                                spacing: 0.0,
-                                runSpacing: 0.0,
-                                alignment: WrapAlignment.spaceAround,
-                                crossAxisAlignment: WrapCrossAlignment.start,
-                                direction: Axis.horizontal,
-                                runAlignment: WrapAlignment.start,
-                                verticalDirection: VerticalDirection.down,
-                                clipBehavior: Clip.none,
-                                children: List.generate(
-                                    wrapModelsRecordList.length, (wrapIndex) {
-                                  final wrapModelsRecord =
-                                      wrapModelsRecordList[wrapIndex];
-                                  return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 30.0),
-                                    child: VehicleCardWidget(
-                                      key: Key(
-                                          'Keyj6s_${wrapIndex}_of_${wrapModelsRecordList.length}'),
-                                      name: wrapModelsRecord.name,
-                                      passengers: wrapModelsRecord.passengers,
-                                      transmission:
-                                          wrapModelsRecord.transmission,
-                                      code: wrapModelsRecord.code,
-                                      price:
-                                          wrapModelsRecord.priceBase.toDouble(),
-                                      urlImage: wrapModelsRecord.urlImage,
-                                    ),
-                                  );
-                                }),
-                              );
-                            },
+                                      return Wrap(
+                                        spacing: 0.0,
+                                        runSpacing: 0.0,
+                                        alignment: WrapAlignment.spaceAround,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.start,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            wrapModelsRecordList.length,
+                                            (wrapIndex) {
+                                          final wrapModelsRecord =
+                                              wrapModelsRecordList[wrapIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 30.0),
+                                            child: VehicleCardWidget(
+                                              key: Key(
+                                                  'Keyj6s_${wrapIndex}_of_${wrapModelsRecordList.length}'),
+                                              name: wrapModelsRecord.name,
+                                              passengers:
+                                                  wrapModelsRecord.passengers,
+                                              transmission:
+                                                  wrapModelsRecord.transmission,
+                                              code: wrapModelsRecord.code,
+                                              price: wrapModelsRecord.priceBase
+                                                  .toDouble(),
+                                              urlImage:
+                                                  wrapModelsRecord.urlImage,
+                                            ),
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -427,47 +490,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 25.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '* Imágenes con fines ilustrativos',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          fontSize: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return 10.0;
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointMedium) {
-                                              return 10.0;
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return 14.0;
-                                            } else {
-                                              return 16.0;
-                                            }
-                                          }(),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ),
                             Container(
                               width: () {
                                 if (MediaQuery.sizeOf(context).width <
