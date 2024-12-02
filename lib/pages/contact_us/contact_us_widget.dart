@@ -1168,7 +1168,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                             Colors.transparent,
                                                         onTap: () async {
                                                           await launchURL(
-                                                              'https://maps.app.goo.gl/AxtkMSNZ9gBvAMHD6');
+                                                              'https://maps.app.goo.gl/YwF9cAWcii26m1nQ9');
                                                         },
                                                         child: Text(
                                                           'De la entrada principal de Ciudad Toyota en la Uruca, 100 metros al oeste y 150 metros al norte',
