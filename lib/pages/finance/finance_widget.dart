@@ -420,7 +420,7 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                                           children: [
                                             TextSpan(
                                               text:
-                                                  'Sucursal Faw y Higer. Teléfono ',
+                                                  'Sucursal Faw y Higer. WhatsApp ',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
