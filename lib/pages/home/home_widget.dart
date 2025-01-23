@@ -492,6 +492,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   .toDouble(),
                                               urlImage:
                                                   wrapModelsRecord.urlImage,
+                                              urlTechSpec:
+                                                  wrapModelsRecord.urlTechSpec,
                                             ),
                                           );
                                         }),

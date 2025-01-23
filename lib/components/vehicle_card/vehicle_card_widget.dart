@@ -19,6 +19,7 @@ class VehicleCardWidget extends StatefulWidget {
     required this.code,
     required this.price,
     required this.urlImage,
+    required this.urlTechSpec,
   });
 
   final String? name;
@@ -27,6 +28,7 @@ class VehicleCardWidget extends StatefulWidget {
   final String? code;
   final double? price;
   final String? urlImage;
+  final String? urlTechSpec;
 
   @override
   State<VehicleCardWidget> createState() => _VehicleCardWidgetState();
@@ -255,6 +257,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                             name: widget!.name,
                             price: widget!.price,
                             code: widget!.code,
+                            url: widget!.urlTechSpec,
                           ));
                           safeSetState(() {});
                           ScaffoldMessenger.of(context).clearSnackBars();
