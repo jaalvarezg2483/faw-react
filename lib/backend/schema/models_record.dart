@@ -61,6 +61,11 @@ class ModelsRecord extends FirestoreRecord {
   int get order => _order ?? 0;
   bool hasOrder() => _order != null;
 
+  // "urlTechSpec" field.
+  String? _urlTechSpec;
+  String get urlTechSpec => _urlTechSpec ?? '';
+  bool hasUrlTechSpec() => _urlTechSpec != null;
+
   void _initializeFields() {
     _urlImage = snapshotData['urlImage'] as String?;
     _name = snapshotData['name'] as String?;
@@ -71,6 +76,7 @@ class ModelsRecord extends FirestoreRecord {
     _priceBase = castToType<int>(snapshotData['priceBase']);
     _enable = snapshotData['enable'] as bool?;
     _order = castToType<int>(snapshotData['order']);
+    _urlTechSpec = snapshotData['urlTechSpec'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -116,6 +122,7 @@ Map<String, dynamic> createModelsRecordData({
   int? priceBase,
   bool? enable,
   int? order,
+  String? urlTechSpec,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +135,7 @@ Map<String, dynamic> createModelsRecordData({
       'priceBase': priceBase,
       'enable': enable,
       'order': order,
+      'urlTechSpec': urlTechSpec,
     }.withoutNulls,
   );
 
@@ -147,7 +155,8 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e1?.year == e2?.year &&
         e1?.priceBase == e2?.priceBase &&
         e1?.enable == e2?.enable &&
-        e1?.order == e2?.order;
+        e1?.order == e2?.order &&
+        e1?.urlTechSpec == e2?.urlTechSpec;
   }
 
   @override
@@ -160,7 +169,8 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e?.year,
         e?.priceBase,
         e?.enable,
-        e?.order
+        e?.order,
+        e?.urlTechSpec
       ]);
 
   @override

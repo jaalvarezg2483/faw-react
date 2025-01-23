@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'footer_widget.dart' show FooterWidget;
 import 'package:flutter/material.dart';
