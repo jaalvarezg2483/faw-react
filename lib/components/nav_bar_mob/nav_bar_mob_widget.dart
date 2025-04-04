@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -68,7 +69,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
-                    context.pushNamed('Home');
+                    context.pushNamed(HomeWidget.routeName);
                   },
                   child: Container(
                     decoration: BoxDecoration(),
@@ -79,7 +80,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                       highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed(
-                          'Home',
+                          HomeWidget.routeName,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,

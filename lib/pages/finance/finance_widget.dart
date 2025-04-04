@@ -6,8 +6,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'finance_model.dart';
@@ -15,6 +17,9 @@ export 'finance_model.dart';
 
 class FinanceWidget extends StatefulWidget {
   const FinanceWidget({super.key});
+
+  static String routeName = 'Finance';
+  static String routePath = '/finance';
 
   @override
   State<FinanceWidget> createState() => _FinanceWidgetState();
@@ -29,6 +34,15 @@ class _FinanceWidgetState extends State<FinanceWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FinanceModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await actions.updateMetaTags(
+        'Financiamiento |Faw Trucks Costa Rica | Grupo Purdy',
+        'Conocé las opciones de financiamiento de Faw Trucks Costa Rica con el respaldo de Grupo Purdy. ¡Solicitalo hoy mismo y mové tu negocio!',
+        'Financiamiento camiones, financiamiento Faw Trrucksrrucks',
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }

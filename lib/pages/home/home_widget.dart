@@ -30,6 +30,9 @@ export 'home_model.dart';
 class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
 
+  static String routeName = 'Home';
+  static String routePath = '/home';
+
   @override
   State<HomeWidget> createState() => _HomeWidgetState();
 }
@@ -47,7 +50,7 @@ class _HomeWidgetState extends State<HomeWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.updateMetaTags(
-        'Faw Trucks Costa Rica| Camiones | Grupo Purdy',
+        'Faw Trucks Costa Rica | Camiones | Grupo Purdy',
         'Conocé los camiones de FAW Trucks Costa Rica con el respaldo de Grupo Purdy. Mové tu empresa al futuro con poder y eficiencia. Obtené mayor información aquí.',
         'Faw Costa Rica, Camiones, flotilla empresarial, Faw, repuestos Faw, Faw ficha técnica, Faw camiones precios, Faw Trucks Costa Rica, Flotilla de camiones, soluciones de tranporte empresarial, venta de camiones, venta de camiones Costa Rica, ',
       );

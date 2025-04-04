@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -64,7 +65,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                 highlightColor: Colors.transparent,
                 onTap: () async {
                   context.pushNamed(
-                    'Home',
+                    HomeWidget.routeName,
                     extra: <String, dynamic>{
                       kTransitionInfoKey: TransitionInfo(
                         hasTransition: true,

@@ -15,6 +15,9 @@ export 'terms_model.dart';
 class TermsWidget extends StatefulWidget {
   const TermsWidget({super.key});
 
+  static String routeName = 'Terms';
+  static String routePath = '/terms';
+
   @override
   State<TermsWidget> createState() => _TermsWidgetState();
 }

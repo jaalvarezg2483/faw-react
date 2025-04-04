@@ -12,6 +12,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -25,6 +26,9 @@ export 'contact_us_model.dart';
 
 class ContactUsWidget extends StatefulWidget {
   const ContactUsWidget({super.key});
+
+  static String routeName = 'ContactUs';
+  static String routePath = '/contactUs';
 
   @override
   State<ContactUsWidget> createState() => _ContactUsWidgetState();
@@ -45,7 +49,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
       _model.buttomActive = 'Contacto';
       safeSetState(() {});
       await actions.updateMetaTags(
-        'Contactanos |Faw Trucks Costa Rica | Grupo Purdy',
+        'Contactanos | Faw Trucks Costa Rica | Grupo Purdy',
         'Contactanos en Faw Trucks Costa Rica con el respaldo de Grupo Purdy. ¡Escribinos hoy y llevá tu negocio al siguiente nivel!',
         'contactanos, Faw Trucks Costa Rica, Grupo Purdy',
       );
@@ -3315,7 +3319,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
                                                                     context
                                                                         .pushNamed(
-                                                                      'Home',
+                                                                      HomeWidget
+                                                                          .routeName,
                                                                       extra: <String,
                                                                           dynamic>{
                                                                         kTransitionInfoKey:

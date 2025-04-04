@@ -7,13 +7,14 @@ import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
-import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/lat_lng.dart';
 import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -49,23 +50,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => HomeWidget(),
         ),
         FFRoute(
-          name: 'ContactUs',
-          path: '/contactUs',
+          name: ContactUsWidget.routeName,
+          path: ContactUsWidget.routePath,
           builder: (context, params) => ContactUsWidget(),
         ),
         FFRoute(
-          name: 'Home',
-          path: '/home',
+          name: HomeWidget.routeName,
+          path: HomeWidget.routePath,
           builder: (context, params) => HomeWidget(),
         ),
         FFRoute(
-          name: 'Terms',
-          path: '/terms',
+          name: TermsWidget.routeName,
+          path: TermsWidget.routePath,
           builder: (context, params) => TermsWidget(),
         ),
         FFRoute(
-          name: 'Finance',
-          path: '/finance',
+          name: FinanceWidget.routeName,
+          path: FinanceWidget.routePath,
           builder: (context, params) => FinanceWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
