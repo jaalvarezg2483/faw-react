@@ -38,9 +38,9 @@ class _FinanceWidgetState extends State<FinanceWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await actions.updateMetaTags(
-        'Financiamiento |Faw Trucks Costa Rica | Grupo Purdy',
+        'Financiamiento | Faw Trucks Costa Rica | Grupo Purdy',
         'Conocé las opciones de financiamiento de Faw Trucks Costa Rica con el respaldo de Grupo Purdy. ¡Solicitalo hoy mismo y mové tu negocio!',
-        'Financiamiento camiones, financiamiento Faw Trrucksrrucks',
+        'Financiamiento camiones, financiamiento Faw Trucks',
       );
     });
 
