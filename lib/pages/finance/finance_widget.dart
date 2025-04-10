@@ -19,7 +19,7 @@ class FinanceWidget extends StatefulWidget {
   const FinanceWidget({super.key});
 
   static String routeName = 'Finance';
-  static String routePath = '/finance';
+  static String routePath = '/financiamiento';
 
   @override
   State<FinanceWidget> createState() => _FinanceWidgetState();

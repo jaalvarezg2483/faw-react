@@ -28,7 +28,7 @@ class ContactUsWidget extends StatefulWidget {
   const ContactUsWidget({super.key});
 
   static String routeName = 'ContactUs';
-  static String routePath = '/contactUs';
+  static String routePath = '/contactenos';
 
   @override
   State<ContactUsWidget> createState() => _ContactUsWidgetState();
