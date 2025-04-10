@@ -43,6 +43,18 @@ jobs:
       Contents: "**/*"
       TargetFolder: "$(Build.SourcesDirectory)/build/web"
     displayName: "Move web/site content to root directory"
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)'
+      Contents: '**/staticwebapp.config.json'
+      TargetFolder: '$(Build.SourcesDirectory)/build/web'
+ 
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)/static_web'
+      Contents: '**'
+      TargetFolder: '$(Build.SourcesDirectory)/build/web'
     
   - script: |
       sudo apt update
