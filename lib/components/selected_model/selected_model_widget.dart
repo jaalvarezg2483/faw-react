@@ -74,12 +74,20 @@ class _SelectedModelWidgetState extends State<SelectedModelWidget> {
                       ),
                       textAlign: TextAlign.center,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Inter',
+                            font: GoogleFonts.inter(
+                              fontWeight: FontWeight.w600,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                             fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
                           ),
                     ),
                   ),
@@ -100,6 +108,7 @@ class _SelectedModelWidgetState extends State<SelectedModelWidget> {
                     size: 24.0,
                   ),
                   onPressed: () async {
+                    logFirebaseEvent('SELECTED_MODEL_COMP_close_ICN_ON_TAP');
                     FFAppState().removeFromModels(widget!.model!);
                     FFAppState().update(() {});
                     _model.isSelect = false;

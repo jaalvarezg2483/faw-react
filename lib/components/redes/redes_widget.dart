@@ -63,11 +63,24 @@ class _RedesWidgetState extends State<RedesWidget> {
                       child: Text(
                         'Seguinos en redes sociales',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               fontSize: 10.0,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     ),
@@ -84,6 +97,8 @@ class _RedesWidgetState extends State<RedesWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'REDES_COMP_Icon_yavvra8a_ON_TAP');
                               await launchURL(
                                   'https://www.facebook.com/share/orQ9LgyG8Ejs6nqj/?mibextid=JRoKGi');
                             },
@@ -99,6 +114,8 @@ class _RedesWidgetState extends State<RedesWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'REDES_COMP_Icon_ylo5d54d_ON_TAP');
                               await launchURL(
                                   'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
                             },
@@ -114,6 +131,8 @@ class _RedesWidgetState extends State<RedesWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'REDES_COMP_Icon_4ughpfcj_ON_TAP');
                               await launchURL(
                                   'https://www.linkedin.com/company/faw-trucks-costa-rica/');
                             },

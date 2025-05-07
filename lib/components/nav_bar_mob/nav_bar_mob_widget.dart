@@ -69,6 +69,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('NAV_BAR_MOB_Container_h6qjqd2c_ON_TAP');
+
                     context.pushNamed(HomeWidget.routeName);
                   },
                   child: Container(
@@ -79,6 +81,9 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'NAV_BAR_MOB_COMP_Image_80ilghlj_ON_TAP');
+
                         context.pushNamed(
                           HomeWidget.routeName,
                           extra: <String, dynamic>{
@@ -114,6 +119,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                     size: 28.0,
                   ),
                   onPressed: () async {
+                    logFirebaseEvent('NAV_BAR_MOB_COMP_menu_ICN_ON_TAP');
                     FFAppState().isMenuMobile =
                         !(FFAppState().isMenuMobile ?? true);
                     FFAppState().update(() {});
@@ -186,6 +192,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'NAV_BAR_MOB_COMP_Text_wqkgkny0_ON_TAP');
                                       if (containerVarItem.isLink) {
                                         await launchURL(
                                             containerVarItem.urlPage);
@@ -215,10 +223,20 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
-                                            fontFamily: 'Inter',
+                                            font: GoogleFonts.inter(
+                                              fontWeight: FontWeight.w600,
+                                              fontStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .fontStyle,
+                                            ),
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
                                           ),
                                     ),
                                   );
@@ -239,6 +257,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'NAV_BAR_MOB_COMP_Icon_hx26vkm4_ON_TAP');
                                   await launchURL(
                                       'https://www.facebook.com/share/orQ9LgyG8Ejs6nqj/?mibextid=JRoKGi');
                                 },
@@ -255,6 +275,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'NAV_BAR_MOB_COMP_Icon_7e2cl39j_ON_TAP');
                                   await launchURL(
                                       'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
                                 },
@@ -271,6 +293,8 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'NAV_BAR_MOB_COMP_Icon_mm7xewtq_ON_TAP');
                                   await launchURL(
                                       'https://www.linkedin.com/company/faw-trucks-costa-rica/');
                                 },

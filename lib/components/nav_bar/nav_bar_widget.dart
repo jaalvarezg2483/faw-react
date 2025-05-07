@@ -64,6 +64,8 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
+                  logFirebaseEvent('NAV_BAR_COMP_Image_fhisj0ot_ON_TAP');
+
                   context.pushNamed(
                     HomeWidget.routeName,
                     extra: <String, dynamic>{
@@ -135,6 +137,7 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent('NAV_BAR_COMP_Text_3zy6j52t_ON_TAP');
                         if (rowNavBarRecord.isLink) {
                           await launchURL(rowNavBarRecord.urlPage);
                         } else {
@@ -152,11 +155,24 @@ class _NavBarWidgetState extends State<NavBarWidget> {
                       child: Text(
                         rowNavBarRecord.name,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Inter',
+                              font: GoogleFonts.inter(
+                                fontWeight: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontWeight,
+                                fontStyle: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .fontStyle,
+                              ),
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                               fontSize: 20.0,
                               letterSpacing: 0.0,
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
                             ),
                       ),
                     );

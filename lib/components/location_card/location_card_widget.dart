@@ -67,6 +67,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('LOCATION_CARD_Container_yvp8rm08_ON_TAP');
                     _model.isSelected = !_model.isSelected;
                     safeSetState(() {});
                   },
@@ -98,7 +99,14 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
-                                  fontFamily: 'Inter',
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
                                   fontSize: () {
                                     if (MediaQuery.sizeOf(context).width <
                                         kBreakpointSmall) {
@@ -116,6 +124,12 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     }
                                   }(),
                                   letterSpacing: 0.0,
+                                  fontWeight: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontWeight,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
                                 ),
                           ),
                         ],
@@ -125,11 +139,13 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                 ),
                 onEnter: ((event) async {
                   safeSetState(() => _model.mouseRegionHovered = true);
+                  logFirebaseEvent('LOCATION_CARD_MouseRegion_28enh5lf_ON_TO');
                   _model.contactColor = FlutterFlowTheme.of(context).alternate;
                   safeSetState(() {});
                 }),
                 onExit: ((event) async {
                   safeSetState(() => _model.mouseRegionHovered = false);
+                  logFirebaseEvent('LOCATION_CARD_MouseRegion_28enh5lf_ON_TO');
                   _model.contactColor =
                       FlutterFlowTheme.of(context).secondaryBackground;
                   safeSetState(() {});
@@ -172,6 +188,8 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'LOCATION_CARD_Container_bzi0yxfh_ON_TAP');
                                       await launchURL(
                                           widget!.location!.googleLink);
                                     },
@@ -216,6 +234,8 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'LOCATION_CARD_Container_cszz94wo_ON_TAP');
                                       await launchURL(
                                           widget!.location!.wazeLink);
                                     },
@@ -303,6 +323,8 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
+                                                logFirebaseEvent(
+                                                    'LOCATION_CARD_COMP_Text_7b14urr0_ON_TAP');
                                                 await launchUrl(Uri(
                                                   scheme: 'tel',
                                                   path: widget!.location!.phone,
@@ -314,8 +336,30 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Inter',
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
                                                         ),
                                               ),
                                             ),
@@ -374,8 +418,29 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Inter',
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                                         letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
                                                       ),
                                             ),
                                           ),
@@ -420,8 +485,25 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
-                                          fontFamily: 'Inter',
+                                          font: GoogleFonts.inter(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .fontStyle,
+                                          ),
                                           letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
                                         ),
                                   ),
                                 ),
