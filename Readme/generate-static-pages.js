@@ -10,7 +10,7 @@ const pages = [
       route: "home",
       title: "Faw Trucks Costa Rica| Camiones | Grupo Purdy",
       description: "Conocé los camiones de FAW Trucks Costa Rica con el respaldo de Grupo Purdy. Mové tu empresa al futuro con poder y eficiencia. Obtené mayor información aquí.",
-      image: "/assets/assets/images/splash_higer.png",
+      image: "/assets/assets/images/splash_faw.png",
       keywords: "Faw Costa Rica, Camiones, flotilla empresarial, Faw, repuestos Faw, Faw ficha técnica, Faw camiones precios, Faw Trucks Costa Rica, Flotilla de camiones, soluciones de tranporte empresarial, venta de camiones, venta de camiones Costa Rica"
     },
     {
@@ -45,7 +45,7 @@ const generateHtmlContent = (page) => `
 
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="WebHiger">
+    <meta name="apple-mobile-web-app-title" content="Faw">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
