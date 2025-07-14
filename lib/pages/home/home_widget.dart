@@ -512,7 +512,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       ? 68.0
                                       : 50.0,
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      30.0, 0.0, 30.0, 0.0),
+                                      40.0, 0.0, 40.0, 0.0),
                                   iconPadding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
