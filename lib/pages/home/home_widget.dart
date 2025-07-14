@@ -498,12 +498,57 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   ],
                                 ),
                               ),
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'HOME_IR_A_P_U_R_D_Y_G_O_Y_RESERVAR_EN_LN');
+                                  await launchURL(
+                                      'https://purdygo.com/buscar-vehiculos?isFromReservation=true&isfromCtalogo=false&stateProcess=reservation&brand=FAW');
+                                },
+                                text: 'Ir a PURDYGO y reservar en Línea',
+                                options: FFButtonOptions(
+                                  height: MediaQuery.sizeOf(context).width >
+                                          kBreakpointSmall
+                                      ? 68.0
+                                      : 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      30.0, 0.0, 30.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.interTight(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                        color: Colors.white,
+                                        fontSize: 25.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .fontStyle,
+                                      ),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(70.0),
+                                ),
+                              ),
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 decoration: BoxDecoration(),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 0.0, 0.0),
+                                      0.0, 10.0, 0.0, 0.0),
                                   child: StreamBuilder<List<ModelsRecord>>(
                                     stream: queryModelsRecord(
                                       queryBuilder: (modelsRecord) =>
@@ -577,7 +622,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   ),
                                 ),
                               ),
-                            ],
+                            ].divide(SizedBox(height: 32.0)),
                           ),
                         ),
                       ),
@@ -2497,12 +2542,18 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     safeSetState(() {});
                                                   }
                                                 },
-                                                side: BorderSide(
-                                                  width: 2,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryText,
-                                                ),
+                                                side: (FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryText !=
+                                                        null)
+                                                    ? BorderSide(
+                                                        width: 2,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText!,
+                                                      )
+                                                    : null,
                                                 activeColor:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
@@ -2766,6 +2817,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                   .apiResultFormHome
                                                                   ?.succeeded ??
                                                               true)) {
+                                                            logFirebaseEvent(
+                                                                'FORM_COTIZACION');
                                                             await showDialog(
                                                               context: context,
                                                               builder:
