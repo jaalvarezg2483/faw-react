@@ -530,7 +530,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   .fontStyle,
                                         ),
                                         color: Colors.white,
-                                        fontSize: 25.0,
+                                        fontSize: 23.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
