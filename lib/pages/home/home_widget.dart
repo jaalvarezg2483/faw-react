@@ -505,7 +505,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                   await launchURL(
                                       'https://purdygo.com/buscar-vehiculos?isFromReservation=true&isfromCtalogo=false&stateProcess=reservation&brand=FAW');
                                 },
-                                text: 'Ir a PURDYGO y reservar en Línea',
+                                text: 'Ir a PURDY GO y Reservar en Línea',
                                 options: FFButtonOptions(
                                   height: MediaQuery.sizeOf(context).width >
                                           kBreakpointSmall
