@@ -56,11 +56,7 @@ jobs:
       export PATH="$PATH:`pwd`/flutter/bin"
       flutter --version
       flutter pub get
-      if [ "$(Build.SourceBranch)" == "refs/heads/master" ]; then
-        flutter build web --web-renderer html
-      elif [ "$(Build.SourceBranch)" == "refs/heads/master.deploy" ]; then
-        flutter build web --release --web-renderer canvaskit
-      fi
+      flutter build web --release
     displayName: "Install Flutter and Build web"
     
   - task: AzureStaticWebApp@0
