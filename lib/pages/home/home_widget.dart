@@ -3521,7 +3521,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                       'https://maps.app.goo.gl/YwF9cAWcii26m1nQ9');
                                                 },
                                                 child: Text(
-                                                  'De la entrada principal de Ciudad Toyota en la Uruca, 100 metros al oeste y 150 metros al norte',
+                                                  '400 metros al este de la rotonda Juan Pablo Segundo',
                                                   textAlign: TextAlign.center,
                                                   style: FlutterFlowTheme.of(
                                                           context)
