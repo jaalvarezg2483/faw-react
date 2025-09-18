@@ -66,6 +66,11 @@ class ModelsRecord extends FirestoreRecord {
   String get urlTechSpec => _urlTechSpec ?? '';
   bool hasUrlTechSpec() => _urlTechSpec != null;
 
+  // "promoPrice" field.
+  double? _promoPrice;
+  double get promoPrice => _promoPrice ?? 0.0;
+  bool hasPromoPrice() => _promoPrice != null;
+
   void _initializeFields() {
     _urlImage = snapshotData['urlImage'] as String?;
     _name = snapshotData['name'] as String?;
@@ -77,6 +82,7 @@ class ModelsRecord extends FirestoreRecord {
     _enable = snapshotData['enable'] as bool?;
     _order = castToType<int>(snapshotData['order']);
     _urlTechSpec = snapshotData['urlTechSpec'] as String?;
+    _promoPrice = castToType<double>(snapshotData['promoPrice']);
   }
 
   static CollectionReference get collection =>
@@ -123,6 +129,7 @@ Map<String, dynamic> createModelsRecordData({
   bool? enable,
   int? order,
   String? urlTechSpec,
+  double? promoPrice,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -136,6 +143,7 @@ Map<String, dynamic> createModelsRecordData({
       'enable': enable,
       'order': order,
       'urlTechSpec': urlTechSpec,
+      'promoPrice': promoPrice,
     }.withoutNulls,
   );
 
@@ -156,7 +164,8 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e1?.priceBase == e2?.priceBase &&
         e1?.enable == e2?.enable &&
         e1?.order == e2?.order &&
-        e1?.urlTechSpec == e2?.urlTechSpec;
+        e1?.urlTechSpec == e2?.urlTechSpec &&
+        e1?.promoPrice == e2?.promoPrice;
   }
 
   @override
@@ -170,7 +179,8 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e?.priceBase,
         e?.enable,
         e?.order,
-        e?.urlTechSpec
+        e?.urlTechSpec,
+        e?.promoPrice
       ]);
 
   @override

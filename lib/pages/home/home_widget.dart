@@ -546,79 +546,87 @@ class _HomeWidgetState extends State<HomeWidget> {
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 decoration: BoxDecoration(),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
-                                  child: StreamBuilder<List<ModelsRecord>>(
-                                    stream: queryModelsRecord(
-                                      queryBuilder: (modelsRecord) =>
-                                          modelsRecord
-                                              .where(
-                                                'enable',
-                                                isEqualTo: true,
-                                              )
-                                              .orderBy('order'),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
+                                child: Align(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 10.0),
+                                    child: StreamBuilder<List<ModelsRecord>>(
+                                      stream: queryModelsRecord(
+                                        queryBuilder: (modelsRecord) =>
+                                            modelsRecord
+                                                .where(
+                                                  'enable',
+                                                  isEqualTo: true,
+                                                )
+                                                .orderBy('order'),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      }
-                                      List<ModelsRecord> wrapModelsRecordList =
-                                          snapshot.data!;
-
-                                      return Wrap(
-                                        spacing: 0.0,
-                                        runSpacing: 0.0,
-                                        alignment: WrapAlignment.spaceAround,
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.start,
-                                        direction: Axis.horizontal,
-                                        runAlignment: WrapAlignment.start,
-                                        verticalDirection:
-                                            VerticalDirection.down,
-                                        clipBehavior: Clip.none,
-                                        children: List.generate(
-                                            wrapModelsRecordList.length,
-                                            (wrapIndex) {
-                                          final wrapModelsRecord =
-                                              wrapModelsRecordList[wrapIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 30.0),
-                                            child: VehicleCardWidget(
-                                              key: Key(
-                                                  'Keyj6s_${wrapIndex}_of_${wrapModelsRecordList.length}'),
-                                              name: wrapModelsRecord.name,
-                                              passengers:
-                                                  wrapModelsRecord.passengers,
-                                              transmission:
-                                                  wrapModelsRecord.transmission,
-                                              code: wrapModelsRecord.code,
-                                              price: wrapModelsRecord.priceBase
-                                                  .toDouble(),
-                                              urlImage:
-                                                  wrapModelsRecord.urlImage,
-                                              urlTechSpec:
-                                                  wrapModelsRecord.urlTechSpec,
-                                            ),
                                           );
-                                        }),
-                                      );
-                                    },
+                                        }
+                                        List<ModelsRecord>
+                                            wrapModelsRecordList =
+                                            snapshot.data!;
+
+                                        return Wrap(
+                                          spacing: 30.0,
+                                          runSpacing: 35.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.center,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: List.generate(
+                                              wrapModelsRecordList.length,
+                                              (wrapIndex) {
+                                            final wrapModelsRecord =
+                                                wrapModelsRecordList[wrapIndex];
+                                            return Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 30.0),
+                                              child: VehicleCardWidget(
+                                                key: Key(
+                                                    'Keyj6s_${wrapIndex}_of_${wrapModelsRecordList.length}'),
+                                                name: wrapModelsRecord.name,
+                                                passengers:
+                                                    wrapModelsRecord.passengers,
+                                                transmission: wrapModelsRecord
+                                                    .transmission,
+                                                code: wrapModelsRecord.code,
+                                                price: wrapModelsRecord
+                                                    .priceBase
+                                                    .toDouble(),
+                                                urlImage:
+                                                    wrapModelsRecord.urlImage,
+                                                urlTechSpec: wrapModelsRecord
+                                                    .urlTechSpec,
+                                                promoPrice:
+                                                    wrapModelsRecord.promoPrice,
+                                              ),
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),
