@@ -311,19 +311,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
           ),
         ),
         Container(
-          width: () {
-            if (MediaQuery.sizeOf(context).width < kBreakpointSmall) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointMedium) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < kBreakpointLarge) {
-              return 350.0;
-            } else if (MediaQuery.sizeOf(context).width < 1350.0) {
-              return 250.0;
-            } else {
-              return 290.0;
-            }
-          }(),
+          width: 290.0,
           decoration: BoxDecoration(),
           child: FFButtonWidget(
             onPressed: () async {

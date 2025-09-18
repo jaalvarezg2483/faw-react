@@ -584,7 +584,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             snapshot.data!;
 
                                         return Wrap(
-                                          spacing: 30.0,
+                                          spacing: 40.0,
                                           runSpacing: 35.0,
                                           alignment: WrapAlignment.start,
                                           crossAxisAlignment:
