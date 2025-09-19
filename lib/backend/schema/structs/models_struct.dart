@@ -14,11 +14,13 @@ class ModelsStruct extends FFFirebaseStruct {
     String? url,
     double? price,
     String? code,
+    double? promoPrice,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _name = name,
         _url = url,
         _price = price,
         _code = code,
+        _promoPrice = promoPrice,
         super(firestoreUtilData);
 
   // "name" field.
@@ -51,11 +53,21 @@ class ModelsStruct extends FFFirebaseStruct {
 
   bool hasCode() => _code != null;
 
+  // "promoPrice" field.
+  double? _promoPrice;
+  double get promoPrice => _promoPrice ?? 0.0;
+  set promoPrice(double? val) => _promoPrice = val;
+
+  void incrementPromoPrice(double amount) => promoPrice = promoPrice + amount;
+
+  bool hasPromoPrice() => _promoPrice != null;
+
   static ModelsStruct fromMap(Map<String, dynamic> data) => ModelsStruct(
         name: data['name'] as String?,
         url: data['url'] as String?,
         price: castToType<double>(data['price']),
         code: data['code'] as String?,
+        promoPrice: castToType<double>(data['promoPrice']),
       );
 
   static ModelsStruct? maybeFromMap(dynamic data) =>
@@ -66,6 +78,7 @@ class ModelsStruct extends FFFirebaseStruct {
         'url': _url,
         'price': _price,
         'code': _code,
+        'promoPrice': _promoPrice,
       }.withoutNulls;
 
   @override
@@ -85,6 +98,10 @@ class ModelsStruct extends FFFirebaseStruct {
         'code': serializeParam(
           _code,
           ParamType.String,
+        ),
+        'promoPrice': serializeParam(
+          _promoPrice,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -110,6 +127,11 @@ class ModelsStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        promoPrice: deserializeParam(
+          data['promoPrice'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -121,11 +143,13 @@ class ModelsStruct extends FFFirebaseStruct {
         name == other.name &&
         url == other.url &&
         price == other.price &&
-        code == other.code;
+        code == other.code &&
+        promoPrice == other.promoPrice;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([name, url, price, code]);
+  int get hashCode =>
+      const ListEquality().hash([name, url, price, code, promoPrice]);
 }
 
 ModelsStruct createModelsStruct({
@@ -133,6 +157,7 @@ ModelsStruct createModelsStruct({
   String? url,
   double? price,
   String? code,
+  double? promoPrice,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -143,6 +168,7 @@ ModelsStruct createModelsStruct({
       url: url,
       price: price,
       code: code,
+      promoPrice: promoPrice,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

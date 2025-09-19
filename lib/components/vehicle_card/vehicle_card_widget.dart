@@ -332,6 +332,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                 price: widget!.price,
                 code: widget!.code,
                 url: widget!.urlTechSpec,
+                promoPrice: widget!.promoPrice,
               ));
               safeSetState(() {});
               ScaffoldMessenger.of(context).clearSnackBars();
