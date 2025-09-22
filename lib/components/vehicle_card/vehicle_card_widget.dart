@@ -323,6 +323,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                     name: widget!.name,
                     price: widget!.price,
                     code: widget!.code,
+                    promoPrice: widget!.promoPrice,
                   ))) {
                 return;
               }

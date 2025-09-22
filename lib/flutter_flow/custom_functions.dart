@@ -21,6 +21,11 @@ String? thousandSeparator(double? number) {
 
 List<dynamic> stringListToJson(List<ModelsStruct> models) {
   return models.map((model) {
-    return {"name": model.name, "filename": model.url, "price": model.price};
+    return {
+      "name": model.name,
+      "filename": model.url,
+      "price": model.price,
+      "promoPrice": model.promoPrice
+    };
   }).toList();
 }
