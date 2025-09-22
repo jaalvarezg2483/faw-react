@@ -15,7 +15,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class BackendAPIGroup {
   static String getBaseUrl() =>
-      'https://grupopurdy-websites-backend-staging.azurewebsites.net';
+      'https://grupopurdy-websites-backend.azurewebsites.net';
   static Map<String, String> headers = {
     'Authorization': '5a90e16787a5b2c496f28f08c17321d3',
   };
