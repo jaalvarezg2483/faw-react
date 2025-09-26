@@ -180,7 +180,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                         logFirebaseEvent(
                             'VEHICLE_CARD_FICHA_TCNICA_BTN_ON_TAP');
                         await downloadFile(
-                          filename: 'Ficha Técnica - ${widget!.name}',
+                          filename: 'Ficha Técnica - ${widget!.name}.pdf',
                           url: valueOrDefault<String>(
                             widget!.urlTechSpec,
                             '2',
