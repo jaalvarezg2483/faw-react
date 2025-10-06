@@ -1334,7 +1334,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                               'https://maps.app.goo.gl/YwF9cAWcii26m1nQ9');
                                                         },
                                                         child: Text(
-                                                          '400 metros al este de la rotonda Juan Pablo Segundo',
+                                                          '200 mts al sur de la rotonda Juan Pablo II en La Uruca, contiguo al edificio de Intcomex',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
