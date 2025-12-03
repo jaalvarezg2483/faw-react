@@ -112,19 +112,24 @@ Future downloadFile({
       MimeType.values.firstWhereOrNull((e) => e.type == mimeType) ??
           MimeType.other;
 
+  // Extract base filename without extension for consistent handling
+  final baseFilename = filename.contains('.')
+      ? filename.substring(0, filename.lastIndexOf('.'))
+      : filename;
+  final fileExtension = extension ?? mime.extensionFromMime(mimeType ?? '');
+
   if (kIsWeb) {
     await FileSaver.instance.saveFile(
       bytes: bytes,
-      name: filename.substring(0,
-          filename.contains('.') ? filename.lastIndexOf('.') : filename.length),
-      ext: extension ?? mime.extensionFromMime(mimeType ?? ''),
+      name: baseFilename,
+      ext: fileExtension,
       mimeType: mimeTypeObj,
     );
   } else {
     await FileSaver.instance.saveAs(
       bytes: bytes,
-      name: filename,
-      ext: extension ?? mime.extensionFromMime(mimeType ?? ''),
+      name: baseFilename,
+      ext: fileExtension,
       mimeType: mimeTypeObj,
     );
   }

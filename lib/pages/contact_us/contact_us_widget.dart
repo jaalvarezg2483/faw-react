@@ -1245,7 +1245,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                             children: [
                                               Flexible(
                                                 child: Text(
-                                                  'Ubicación de la sucursal',
+                                                  'Dirección de Taller',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -1334,7 +1334,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                               'https://maps.app.goo.gl/YwF9cAWcii26m1nQ9');
                                                         },
                                                         child: Text(
-                                                          '200 mts al sur de la rotonda Juan Pablo II en La Uruca, contiguo al edificio de Intcomex',
+                                                          'De la entrada principal de Ciudad Toyota, 100 metros al oeste, 250 metros al norte, San José, Las Ánimas, 10107',
                                                           textAlign:
                                                               TextAlign.center,
                                                           style: FlutterFlowTheme
