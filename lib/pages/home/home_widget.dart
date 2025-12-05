@@ -2855,6 +2855,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                               _model
                                                                   .ddTypeValueController
                                                                   ?.reset();
+                                                              _model.ddTypeValue =
+                                                                  null;
                                                             });
                                                           } else {
                                                             await showDialog(

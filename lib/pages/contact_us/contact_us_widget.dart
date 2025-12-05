@@ -3757,6 +3757,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                                                                         _model
                                                                             .ddTypeValueController
                                                                             ?.reset();
+                                                                        _model.ddTypeValue =
+                                                                            null;
                                                                       });
                                                                     } else {
                                                                       await showDialog(
