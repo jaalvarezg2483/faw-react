@@ -80,7 +80,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            '©2024 Grupo Purdy',
+                            '©2026 Grupo Purdy',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
