@@ -159,8 +159,8 @@ class _FooterWidgetState extends State<FooterWidget> {
                                     size: 15.0,
                                   ),
                                   options: FFButtonOptions(
-                                    width: 271.0,
-                                    height: 44.0,
+                                    width: 262.0,
+                                    height: 37.0,
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         50.0, 0.0, 50.0, 0.0),
                                     iconPadding: EdgeInsetsDirectional.fromSTEB(
@@ -218,7 +218,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                               size: 15.0,
                             ),
                             options: FFButtonOptions(
-                              height: 43.0,
+                              height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   50.0, 0.0, 50.0, 0.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
