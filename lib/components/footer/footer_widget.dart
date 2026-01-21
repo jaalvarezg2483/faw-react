@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'footer_model.dart';
@@ -32,6 +33,12 @@ class _FooterWidgetState extends State<FooterWidget> {
     super.initState();
     _model = createModel(context, () => FooterModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('FOOTER_COMP_Footer_ON_INIT_STATE');
+      await launchURL('https://www.grupopurdy.com/linea-etica');
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -47,6 +54,208 @@ class _FooterWidgetState extends State<FooterWidget> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
+        Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Expanded(
+              child: Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).primaryBackground,
+                ),
+                child: Padding(
+                  padding: EdgeInsets.all(9.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if (responsiveVisibility(
+                        context: context,
+                        phone: false,
+                      ))
+                        Text(
+                          'La Línea Ética es un espacio seguro y confidencial para reportar, de forma anónima, actos deshonestos o violaciones a las políticas internas y normas de conducta. ',
+                          textAlign: TextAlign.center,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    fontSize: 11.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                        ),
+                      Flexible(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            if (responsiveVisibility(
+                              context: context,
+                              tablet: false,
+                              tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    50.0, 0.0, 50.0, 0.0),
+                                child: Text(
+                                  'La Línea Ética es un espacio seguro y confidencial para reportar, de forma anónima, actos deshonestos o violaciones a las políticas internas y normas de conducta. ',
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        font: GoogleFonts.inter(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium
+                                                  .fontStyle,
+                                        ),
+                                        fontSize: 11.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontWeight,
+                                        fontStyle: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .fontStyle,
+                                      ),
+                                ),
+                              ),
+                            if (responsiveVisibility(
+                              context: context,
+                              tablet: false,
+                              tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 0.0),
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'FOOTER_COMP_INFO_AQU_BTN_ON_TAP');
+                                    await launchURL(
+                                        'https://www.grupopurdy.com/linea-etica');
+                                  },
+                                  text: 'Info aquí',
+                                  icon: Icon(
+                                    Icons.add,
+                                    size: 15.0,
+                                  ),
+                                  options: FFButtonOptions(
+                                    width: 271.0,
+                                    height: 44.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        50.0, 0.0, 50.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          font: GoogleFonts.interTight(
+                                            fontWeight:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontWeight,
+                                            fontStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .titleSmall
+                                                    .fontStyle,
+                                          ),
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
+                                          fontStyle:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontStyle,
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ),
+                      if (responsiveVisibility(
+                        context: context,
+                        phone: false,
+                      ))
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              24.0, 0.0, 0.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'FOOTER_COMP_INFO_AQU_BTN_ON_TAP');
+                              await launchURL(
+                                  'https://www.grupopurdy.com/linea-etica');
+                            },
+                            text: 'Info aquí',
+                            icon: Icon(
+                              Icons.add,
+                              size: 15.0,
+                            ),
+                            options: FFButtonOptions(
+                              height: 43.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  50.0, 0.0, 50.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    font: GoogleFonts.interTight(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .fontStyle,
+                                    ),
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                              elevation: 0.0,
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
         Row(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -185,7 +394,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     logFirebaseEvent(
-                                        'FOOTER_COMP_Text_jtdmwy2c_ON_TAP');
+                                        'FOOTER_COMP_Text_5o9ev459_ON_TAP');
                                     if (rowFooterRecord.isLink) {
                                       await launchURL(rowFooterRecord.urlLink);
                                     } else {
