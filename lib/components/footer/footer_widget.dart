@@ -236,6 +236,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                           .fontStyle,
                                     ),
                                     color: Colors.white,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FlutterFlowTheme.of(context)
                                         .titleSmall
