@@ -2,9 +2,10 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/footer/footer_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
+import '/components/section_title_with_button/section_title_with_button_widget.dart';
 import '/components/selected_model/selected_model_widget.dart';
 import '/components/vehicle_card/vehicle_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -16,7 +17,6 @@ import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_widget.dart' show HomeWidget;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -38,10 +38,10 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
-  // Model for NavBarMob component.
-  late NavBarMobModel navBarMobModel;
+  // Model for NavBarv2 component.
+  late NavBarv2Model navBarv2Model;
+  // Model for NavBarMobv2 component.
+  late NavBarMobv2Model navBarMobv2Model;
   // State field(s) for ddType widget.
   String? ddTypeValue;
   FormFieldController<String>? ddTypeValueController;
@@ -178,13 +178,17 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   ApiCallResponse? apiResultFormHome;
   // Model for Redes component.
   late RedesModel redesModel;
+  // Model for SectionTitleWithButton component.
+  late SectionTitleWithButtonModel sectionTitleWithButtonModel1;
+  // Model for SectionTitleWithButton component.
+  late SectionTitleWithButtonModel sectionTitleWithButtonModel2;
   // Model for Footer component.
   late FooterModel footerModel;
 
   @override
   void initState(BuildContext context) {
-    navBarModel = createModel(context, () => NavBarModel());
-    navBarMobModel = createModel(context, () => NavBarMobModel());
+    navBarv2Model = createModel(context, () => NavBarv2Model());
+    navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
     tfTextControllerValidator = _tfTextControllerValidator;
     tfCedJuridicaTextControllerValidator =
         _tfCedJuridicaTextControllerValidator;
@@ -197,13 +201,17 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     telTextControllerValidator = _telTextControllerValidator;
     comenTextControllerValidator = _comenTextControllerValidator;
     redesModel = createModel(context, () => RedesModel());
+    sectionTitleWithButtonModel1 =
+        createModel(context, () => SectionTitleWithButtonModel());
+    sectionTitleWithButtonModel2 =
+        createModel(context, () => SectionTitleWithButtonModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
   @override
   void dispose() {
-    navBarModel.dispose();
-    navBarMobModel.dispose();
+    navBarv2Model.dispose();
+    navBarMobv2Model.dispose();
     tfFocusNode?.dispose();
     tfTextController?.dispose();
 
@@ -235,6 +243,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     comenTextController?.dispose();
 
     redesModel.dispose();
+    sectionTitleWithButtonModel1.dispose();
+    sectionTitleWithButtonModel2.dispose();
     footerModel.dispose();
   }
 }

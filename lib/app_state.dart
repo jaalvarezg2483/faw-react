@@ -71,4 +71,10 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInModels(int index, ModelsStruct value) {
     models.insert(index, value);
   }
+
+  String _menuOptionActive = '';
+  String get menuOptionActive => _menuOptionActive;
+  set menuOptionActive(String value) {
+    _menuOptionActive = value;
+  }
 }

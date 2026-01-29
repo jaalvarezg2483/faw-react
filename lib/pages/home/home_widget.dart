@@ -2,9 +2,10 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/components/footer/footer_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
+import '/components/section_title_with_button/section_title_with_button_widget.dart';
 import '/components/selected_model/selected_model_widget.dart';
 import '/components/vehicle_card/vehicle_card_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -15,7 +16,6 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -56,6 +56,8 @@ class _HomeWidgetState extends State<HomeWidget> {
         'Conocé los camiones de FAW Trucks Costa Rica con el respaldo de Grupo Purdy. Mové tu empresa al futuro con poder y eficiencia. Obtené mayor información aquí.',
         'Faw Costa Rica, Camiones, flotilla empresarial, Faw, repuestos Faw, Faw ficha técnica, Faw camiones precios, Faw Trucks Costa Rica, Flotilla de camiones, soluciones de tranporte empresarial, venta de camiones, venta de camiones Costa Rica, ',
       );
+      FFAppState().menuOptionActive = 'Home';
+      safeSetState(() {});
     });
 
     _model.tfTextController ??= TextEditingController();
@@ -120,24 +122,31 @@ class _HomeWidgetState extends State<HomeWidget> {
                 phone: false,
               ))
                 wrapWithModel(
-                  model: _model.navBarModel,
+                  model: _model.navBarv2Model,
                   updateCallback: () => safeSetState(() {}),
-                  child: NavBarWidget(),
-                ),
-              if (responsiveVisibility(
-                context: context,
-                tablet: false,
-                tabletLandscape: false,
-                desktop: false,
-              ))
-                Container(
-                  decoration: BoxDecoration(),
-                  child: wrapWithModel(
-                    model: _model.navBarMobModel,
-                    updateCallback: () => safeSetState(() {}),
-                    child: NavBarMobWidget(),
+                  child: NavBarv2Widget(
+                    optionActive: FFAppState().menuOptionActive,
                   ),
                 ),
+              Container(
+                width: MediaQuery.sizeOf(context).width * 1.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+                child: Visibility(
+                  visible: responsiveVisibility(
+                    context: context,
+                    tablet: false,
+                    tabletLandscape: false,
+                    desktop: false,
+                  ),
+                  child: wrapWithModel(
+                    model: _model.navBarMobv2Model,
+                    updateCallback: () => safeSetState(() {}),
+                    child: NavBarMobv2Widget(),
+                  ),
+                ),
+              ),
               Expanded(
                 child: SingleChildScrollView(
                   child: Column(
@@ -190,178 +199,30 @@ class _HomeWidgetState extends State<HomeWidget> {
                           );
                         },
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).primary,
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  valueOrDefault<double>(
-                                    () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall) {
-                                        return 40.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointMedium) {
-                                        return 40.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointLarge) {
-                                        return 70.0;
-                                      } else {
-                                        return 70.0;
-                                      }
-                                    }(),
-                                    0.0,
-                                  ),
-                                  30.0,
-                                  valueOrDefault<double>(
-                                    () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall) {
-                                        return 40.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointMedium) {
-                                        return 40.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointLarge) {
-                                        return 70.0;
-                                      } else {
-                                        return 70.0;
-                                      }
-                                    }(),
-                                    0.0,
-                                  ),
-                                  30.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Flexible(
-                                    child: RichText(
-                                      textScaler:
-                                          MediaQuery.of(context).textScaler,
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: 'Seleccioná el modelo ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontSize: 30.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: 'Faw 2026 ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontSize: 30.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: 'de tu interés:',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontSize: 30.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          )
-                                        ],
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              font: GoogleFonts.interTight(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleLarge
-                                                      .fontStyle,
-                                            ),
-                                      ),
-                                      textAlign: TextAlign.center,
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            0.0, 34.0, 0.0, 25.0),
+                        child: Text(
+                          'Camiones Disponibles:',
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.bold,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
                                     ),
+                                    color: FlutterFlowTheme.of(context).primary,
+                                    fontSize:
+                                        MediaQuery.sizeOf(context).width < 500.0
+                                            ? 30.0
+                                            : 40.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
                                   ),
-                                ],
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                       Container(
@@ -3567,6 +3428,69 @@ class _HomeWidgetState extends State<HomeWidget> {
                           model: _model.redesModel,
                           updateCallback: () => safeSetState(() {}),
                           child: RedesWidget(),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          width: MediaQuery.sizeOf(context).width * 0.9,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 40.0, 0.0, 20.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        child: wrapWithModel(
+                                          model: _model
+                                              .sectionTitleWithButtonModel1,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: SectionTitleWithButtonWidget(
+                                            icon:
+                                                'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/pue42k8o230y/bank.png',
+                                            title: 'Financiamiento',
+                                            subtitle: 'Calculo aquí',
+                                            content:
+                                                'Ingresá a esta sección para obtener la cotización completa de tu próximo FAW TRUCK',
+                                            buttonText: 'Calcular',
+                                            buttonAction: () async {},
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        child: wrapWithModel(
+                                          model: _model
+                                              .sectionTitleWithButtonModel2,
+                                          updateCallback: () =>
+                                              safeSetState(() {}),
+                                          child: SectionTitleWithButtonWidget(
+                                            icon:
+                                                'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/h64xvjmf9kgf/message-square.png',
+                                            title: 'Contactanos',
+                                            subtitle: ' ',
+                                            content:
+                                                'Si tenés consultas respecto a vehículos nuevos, usados, talleres de servicio o repuestos originales, ingresá aquí para ponerte en contacto con nosotros.',
+                                            buttonText: 'Contactanos',
+                                            buttonAction: () async {},
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
                         ),
                       ),
                       Container(
