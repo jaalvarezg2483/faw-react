@@ -56,7 +56,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         'Conocé los camiones de FAW Trucks Costa Rica con el respaldo de Grupo Purdy. Mové tu empresa al futuro con poder y eficiencia. Obtené mayor información aquí.',
         'Faw Costa Rica, Camiones, flotilla empresarial, Faw, repuestos Faw, Faw ficha técnica, Faw camiones precios, Faw Trucks Costa Rica, Flotilla de camiones, soluciones de tranporte empresarial, venta de camiones, venta de camiones Costa Rica, ',
       );
-      FFAppState().menuOptionActive = 'Home';
+      FFAppState().menuOptionActive = 'Inicio';
       safeSetState(() {});
     });
 
