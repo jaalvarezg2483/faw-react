@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'footer_model.dart';
@@ -32,12 +31,6 @@ class _FooterWidgetState extends State<FooterWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FooterModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('FOOTER_COMP_Footer_ON_INIT_STATE');
-      await launchURL('https://www.grupopurdy.com/linea-etica');
-    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
