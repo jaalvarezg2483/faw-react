@@ -2,8 +2,8 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/location_card/location_card_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -37,10 +37,10 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
-  // Model for NavBarMob component.
-  late NavBarMobModel navBarMobModel;
+  // Model for NavBarv2 component.
+  late NavBarv2Model navBarv2Model;
+  // Model for NavBarMobv2 component.
+  late NavBarMobv2Model navBarMobv2Model;
   // State field(s) for ddType widget.
   String? ddTypeValue;
   FormFieldController<String>? ddTypeValueController;
@@ -182,8 +182,8 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
 
   @override
   void initState(BuildContext context) {
-    navBarModel = createModel(context, () => NavBarModel());
-    navBarMobModel = createModel(context, () => NavBarMobModel());
+    navBarv2Model = createModel(context, () => NavBarv2Model());
+    navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
     tfTextControllerValidator = _tfTextControllerValidator;
     tfCedJuridicaTextControllerValidator =
         _tfCedJuridicaTextControllerValidator;
@@ -201,8 +201,8 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
 
   @override
   void dispose() {
-    navBarModel.dispose();
-    navBarMobModel.dispose();
+    navBarv2Model.dispose();
+    navBarMobv2Model.dispose();
     tfFocusNode?.dispose();
     tfTextController?.dispose();
 

@@ -1,6 +1,6 @@
 import '/components/footer/footer_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -62,26 +62,25 @@ class _TermsWidgetState extends State<TermsWidget> {
             children: [
               if (responsiveVisibility(
                 context: context,
+                phone: false,
+              ))
+                wrapWithModel(
+                  model: _model.navBarv2Model,
+                  updateCallback: () => safeSetState(() {}),
+                  child: NavBarv2Widget(),
+                ),
+              if (responsiveVisibility(
+                context: context,
                 tablet: false,
                 tabletLandscape: false,
                 desktop: false,
               ))
                 Container(
-                  decoration: BoxDecoration(),
                   child: wrapWithModel(
-                    model: _model.navBarMobModel,
+                    model: _model.navBarMobv2Model,
                     updateCallback: () => safeSetState(() {}),
-                    child: NavBarMobWidget(),
+                    child: NavBarMobv2Widget(),
                   ),
-                ),
-              if (responsiveVisibility(
-                context: context,
-                phone: false,
-              ))
-                wrapWithModel(
-                  model: _model.navBarModel,
-                  updateCallback: () => safeSetState(() {}),
-                  child: NavBarWidget(),
                 ),
               if (FFAppState().isMenuMobile == false)
                 Flexible(

@@ -1,6 +1,6 @@
 import '/components/footer/footer_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -14,10 +14,10 @@ import 'package:provider/provider.dart';
 class TermsModel extends FlutterFlowModel<TermsWidget> {
   ///  State fields for stateful widgets in this page.
 
-  // Model for NavBarMob component.
-  late NavBarMobModel navBarMobModel;
-  // Model for NavBar component.
-  late NavBarModel navBarModel;
+  // Model for NavBarv2 component.
+  late NavBarv2Model navBarv2Model;
+  // Model for NavBarMobv2 component.
+  late NavBarMobv2Model navBarMobv2Model;
   // Model for Redes component.
   late RedesModel redesModel;
   // Model for Footer component.
@@ -25,16 +25,16 @@ class TermsModel extends FlutterFlowModel<TermsWidget> {
 
   @override
   void initState(BuildContext context) {
-    navBarMobModel = createModel(context, () => NavBarMobModel());
-    navBarModel = createModel(context, () => NavBarModel());
+    navBarv2Model = createModel(context, () => NavBarv2Model());
+    navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
     redesModel = createModel(context, () => RedesModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
   @override
   void dispose() {
-    navBarMobModel.dispose();
-    navBarModel.dispose();
+    navBarv2Model.dispose();
+    navBarMobv2Model.dispose();
     redesModel.dispose();
     footerModel.dispose();
   }

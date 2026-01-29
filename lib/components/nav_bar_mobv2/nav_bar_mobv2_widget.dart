@@ -47,6 +47,8 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
@@ -232,8 +234,13 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
+                                            color: containerVarItem.name ==
+                                                    FFAppState()
+                                                        .menuOptionActive
+                                                ? FlutterFlowTheme.of(context)
+                                                    .secondary
+                                                : FlutterFlowTheme.of(context)
+                                                    .primary,
                                             fontSize: 18.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,

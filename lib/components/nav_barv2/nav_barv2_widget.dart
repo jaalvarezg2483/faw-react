@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_web_view.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -12,12 +13,7 @@ import 'nav_barv2_model.dart';
 export 'nav_barv2_model.dart';
 
 class NavBarv2Widget extends StatefulWidget {
-  const NavBarv2Widget({
-    super.key,
-    required this.optionActive,
-  });
-
-  final String? optionActive;
+  const NavBarv2Widget({super.key});
 
   @override
   State<NavBarv2Widget> createState() => _NavBarv2WidgetState();
@@ -49,6 +45,8 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Container(
       height: 60.0,
       decoration: BoxDecoration(
@@ -62,12 +60,23 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
           children: [
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8.0),
-                child: Image.asset(
-                  'assets/images/Vector.png',
-                  height: 34.0,
-                  fit: BoxFit.contain,
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('NAV_BARV2_COMP_Image_1pq5jeli_ON_TAP');
+
+                  context.pushNamed(HomeWidget.routeName);
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/images/Vector.png',
+                    height: 34.0,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             ),
@@ -136,10 +145,10 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
                                     .bodyMedium
                                     .fontStyle,
                               ),
-                              color:
-                                  rowNavBarRecord.name == widget!.optionActive
-                                      ? FlutterFlowTheme.of(context).secondary
-                                      : FlutterFlowTheme.of(context).primary,
+                              color: rowNavBarRecord.name ==
+                                      FFAppState().menuOptionActive
+                                  ? FlutterFlowTheme.of(context).secondary
+                                  : FlutterFlowTheme.of(context).primary,
                               fontSize: 18.0,
                               letterSpacing: 0.0,
                               fontWeight: FontWeight.w600,

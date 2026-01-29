@@ -2,8 +2,8 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/location_card/location_card_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -148,9 +148,9 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                     phone: false,
                   ))
                     wrapWithModel(
-                      model: _model.navBarModel,
+                      model: _model.navBarv2Model,
                       updateCallback: () => safeSetState(() {}),
-                      child: NavBarWidget(),
+                      child: NavBarv2Widget(),
                     ),
                   if (responsiveVisibility(
                     context: context,
@@ -161,9 +161,9 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                     Container(
                       decoration: BoxDecoration(),
                       child: wrapWithModel(
-                        model: _model.navBarMobModel,
+                        model: _model.navBarMobv2Model,
                         updateCallback: () => safeSetState(() {}),
-                        child: NavBarMobWidget(),
+                        child: NavBarMobv2Widget(),
                       ),
                     ),
                   Expanded(

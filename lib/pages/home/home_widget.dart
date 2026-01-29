@@ -120,13 +120,13 @@ class _HomeWidgetState extends State<HomeWidget> {
               if (responsiveVisibility(
                 context: context,
                 phone: false,
+                tablet: false,
+                tabletLandscape: false,
               ))
                 wrapWithModel(
                   model: _model.navBarv2Model,
                   updateCallback: () => safeSetState(() {}),
-                  child: NavBarv2Widget(
-                    optionActive: FFAppState().menuOptionActive,
-                  ),
+                  child: NavBarv2Widget(),
                 ),
               Container(
                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -136,8 +136,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                 child: Visibility(
                   visible: responsiveVisibility(
                     context: context,
-                    tablet: false,
-                    tabletLandscape: false,
                     desktop: false,
                   ),
                   child: wrapWithModel(

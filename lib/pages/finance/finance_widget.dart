@@ -1,6 +1,6 @@
 import '/components/footer/footer_widget.dart';
-import '/components/nav_bar/nav_bar_widget.dart';
-import '/components/nav_bar_mob/nav_bar_mob_widget.dart';
+import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
+import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -44,6 +44,8 @@ class _FinanceWidgetState extends State<FinanceWidget> {
         'Conocé las opciones de financiamiento de Faw Trucks Costa Rica con el respaldo de Grupo Purdy. ¡Solicitalo hoy mismo y mové tu negocio!',
         'Financiamiento camiones, financiamiento Faw Trucks',
       );
+      FFAppState().menuOptionActive = 'Financiamiento';
+      safeSetState(() {});
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -58,6 +60,8 @@ class _FinanceWidgetState extends State<FinanceWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -76,9 +80,9 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                   phone: false,
                 ))
                   wrapWithModel(
-                    model: _model.navBarModel,
+                    model: _model.navBarv2Model,
                     updateCallback: () => safeSetState(() {}),
-                    child: NavBarWidget(),
+                    child: NavBarv2Widget(),
                   ),
                 if (responsiveVisibility(
                   context: context,
@@ -87,13 +91,10 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                   desktop: false,
                 ))
                   Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
                     child: wrapWithModel(
-                      model: _model.navBarMobModel,
+                      model: _model.navBarMobv2Model,
                       updateCallback: () => safeSetState(() {}),
-                      child: NavBarMobWidget(),
+                      child: NavBarMobv2Widget(),
                     ),
                   ),
                 Expanded(
