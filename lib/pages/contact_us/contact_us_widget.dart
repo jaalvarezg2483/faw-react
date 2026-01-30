@@ -48,7 +48,9 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CONTACT_US_PAGE_ContactUs_ON_INIT_STATE');
-      _model.buttomActive = 'Contactanos';
+      _model.buttomActive = 'Contacto';
+      safeSetState(() {});
+      FFAppState().menuOptionActive = 'Contactanos';
       safeSetState(() {});
       await actions.updateMetaTags(
         'Contactanos | Faw Trucks Costa Rica | Grupo Purdy',
@@ -99,6 +101,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return StreamBuilder<List<UbicacionesRecord>>(
       stream: queryUbicacionesRecord(
         queryBuilder: (ubicacionesRecord) => ubicacionesRecord
