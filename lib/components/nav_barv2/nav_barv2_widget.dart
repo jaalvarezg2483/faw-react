@@ -161,7 +161,7 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
                                 ),
                         elevation: 0.0,
                         borderRadius: BorderRadius.circular(8.0),
-                        hoverTextColor: FlutterFlowTheme.of(context).primary,
+                        hoverTextColor: FlutterFlowTheme.of(context).secondary,
                       ),
                     );
                   })
