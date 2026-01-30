@@ -63,6 +63,8 @@ class _TermsWidgetState extends State<TermsWidget> {
               if (responsiveVisibility(
                 context: context,
                 phone: false,
+                tablet: false,
+                tabletLandscape: false,
               ))
                 wrapWithModel(
                   model: _model.navBarv2Model,
@@ -71,8 +73,6 @@ class _TermsWidgetState extends State<TermsWidget> {
                 ),
               if (responsiveVisibility(
                 context: context,
-                tablet: false,
-                tabletLandscape: false,
                 desktop: false,
               ))
                 Container(

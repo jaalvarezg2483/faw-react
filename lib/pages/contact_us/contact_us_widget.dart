@@ -48,7 +48,7 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CONTACT_US_PAGE_ContactUs_ON_INIT_STATE');
-      _model.buttomActive = 'Contacto';
+      _model.buttomActive = 'Contactanos';
       safeSetState(() {});
       await actions.updateMetaTags(
         'Contactanos | Faw Trucks Costa Rica | Grupo Purdy',
@@ -146,6 +146,8 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                   if (responsiveVisibility(
                     context: context,
                     phone: false,
+                    tablet: false,
+                    tabletLandscape: false,
                   ))
                     wrapWithModel(
                       model: _model.navBarv2Model,
@@ -154,8 +156,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                     ),
                   if (responsiveVisibility(
                     context: context,
-                    tablet: false,
-                    tabletLandscape: false,
                     desktop: false,
                   ))
                     Container(
