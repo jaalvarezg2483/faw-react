@@ -120,13 +120,9 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
                   children:
                       List.generate(rowNavBarRecordList.length, (rowIndex) {
                     final rowNavBarRecord = rowNavBarRecordList[rowIndex];
-                    return InkWell(
-                      splashColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      onTap: () async {
-                        logFirebaseEvent('NAV_BARV2_COMP_Text_tsggiuou_ON_TAP');
+                    return FFButtonWidget(
+                      onPressed: () async {
+                        logFirebaseEvent('NAV_BARV2_COMP_INICIO_BTN_ON_TAP');
                         if (rowNavBarRecord.isLink) {
                           await launchURL(rowNavBarRecord.urlPage);
                         } else {
@@ -136,26 +132,36 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
                           );
                         }
                       },
-                      child: Text(
-                        rowNavBarRecord.name,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              font: GoogleFonts.inter(
-                                fontWeight: FontWeight.w600,
-                                fontStyle: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .fontStyle,
-                              ),
-                              color: rowNavBarRecord.name ==
-                                      FFAppState().menuOptionActive
-                                  ? FlutterFlowTheme.of(context).secondary
-                                  : FlutterFlowTheme.of(context).primary,
-                              fontSize: 18.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w600,
-                              fontStyle: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .fontStyle,
-                            ),
+                      text: rowNavBarRecord.name,
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                        textStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.override(
+                                  font: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                  ),
+                                  color: rowNavBarRecord.name ==
+                                          FFAppState().menuOptionActive
+                                      ? FlutterFlowTheme.of(context).secondary
+                                      : FlutterFlowTheme.of(context).primary,
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                  fontStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .fontStyle,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(8.0),
+                        hoverTextColor: FlutterFlowTheme.of(context).primary,
                       ),
                     );
                   })
