@@ -16,6 +16,7 @@ import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'home_widget.dart' show HomeWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -34,6 +35,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   bool isTermsNotSelect = false;
 
   bool selected = false;
+
+  bool showFullListOfVehicles = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -182,6 +185,10 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   late SectionTitleWithButtonModel sectionTitleWithButtonModel1;
   // Model for SectionTitleWithButton component.
   late SectionTitleWithButtonModel sectionTitleWithButtonModel2;
+  // Model for SectionTitleWithButton component.
+  late SectionTitleWithButtonModel sectionTitleWithButtonModel3;
+  // Model for SectionTitleWithButton component.
+  late SectionTitleWithButtonModel sectionTitleWithButtonModel4;
   // Model for Footer component.
   late FooterModel footerModel;
 
@@ -204,6 +211,10 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     sectionTitleWithButtonModel1 =
         createModel(context, () => SectionTitleWithButtonModel());
     sectionTitleWithButtonModel2 =
+        createModel(context, () => SectionTitleWithButtonModel());
+    sectionTitleWithButtonModel3 =
+        createModel(context, () => SectionTitleWithButtonModel());
+    sectionTitleWithButtonModel4 =
         createModel(context, () => SectionTitleWithButtonModel());
     footerModel = createModel(context, () => FooterModel());
   }
@@ -245,6 +256,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     redesModel.dispose();
     sectionTitleWithButtonModel1.dispose();
     sectionTitleWithButtonModel2.dispose();
+    sectionTitleWithButtonModel3.dispose();
+    sectionTitleWithButtonModel4.dispose();
     footerModel.dispose();
   }
 }
