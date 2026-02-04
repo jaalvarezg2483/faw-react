@@ -379,16 +379,36 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                         ),
                                               ),
                                             ),
-                                            Text(
-                                              valueOrDefault<String>(
-                                                modelModelsRecord?.description,
-                                                'descripcion',
+                                            Container(
+                                              constraints: BoxConstraints(
+                                                maxWidth: 600.0,
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                                              decoration: BoxDecoration(),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  modelModelsRecord
+                                                      ?.description,
+                                                  'descripcion',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -400,95 +420,99 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
+                                              ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
                                         ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 325.0,
-                                              ),
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(50.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  width: 2.0,
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'MODEL_PAGE_Container_nreq78fg_ON_TAP');
+                                                await launchURL(
+                                                    'https://wa.me://50685891000?text=%C2%A1Quiero%20RESERVAR%20el%20FAW%20${modelModelsRecord?.name}');
+                                              },
+                                              child: Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 325.0,
                                                 ),
-                                              ),
-                                              child: Padding(
-                                                padding: EdgeInsets.all(7.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  20.0,
-                                                                  0.0),
-                                                      child: FaIcon(
-                                                        FontAwesomeIcons
-                                                            .whatsapp,
-                                                        color:
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 2.0,
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsets.all(7.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    0.0,
+                                                                    20.0,
+                                                                    0.0),
+                                                        child: FaIcon(
+                                                          FontAwesomeIcons
+                                                              .whatsapp,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          size: 24.0,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        'Negociá tu vehículo aquí',
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .primary,
-                                                        size: 24.0,
-                                                      ),
-                                                    ),
-                                                    Text(
-                                                      'Negociá tu vehículo aquí',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            font: GoogleFonts
-                                                                .inter(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                              fontStyle:
-                                                                  FlutterFlowTheme.of(
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  fontSize:
+                                                                      16.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontStyle: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .fontStyle,
-                                                            ),
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primary,
-                                                            fontSize: 16.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                    ),
-                                                  ],
+                                                                ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -530,7 +554,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      'Solicitar Test Driev',
+                                                      'Solicitar Test Drive',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -713,7 +737,12 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primary,
-                                                      fontSize: 67.0,
+                                                      fontSize: MediaQuery.sizeOf(
+                                                                      context)
+                                                                  .width <
+                                                              kBreakpointMedium
+                                                          ? 45.0
+                                                          : 67.0,
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w800,
@@ -726,8 +755,11 @@ class _ModelWidgetState extends State<ModelWidget> {
                                               ),
                                             ),
                                             FFButtonWidget(
-                                              onPressed: () {
-                                                print('Button pressed ...');
+                                              onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'MODEL_IR_A_RESERVAR_EN_LNEA_BTN_ON_TAP');
+                                                await launchURL(
+                                                    'https://purdygo.com/buscar-vehiculos?isFromReservation=true&isfromCtalogo=false&stateProcess=reservation&brand=FAW');
                                               },
                                               text: 'Ir a Reservar en Línea',
                                               options: FFButtonOptions(
