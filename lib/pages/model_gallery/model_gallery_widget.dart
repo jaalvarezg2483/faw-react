@@ -912,9 +912,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
+                                                                      await _model
+                                                                          .carouselController1
+                                                                          ?.previousPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                   FlutterFlowIconButton(
@@ -932,9 +940,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
+                                                                      await _model
+                                                                          .carouselController1
+                                                                          ?.nextPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                 ],
@@ -1120,9 +1136,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
+                                                                      await _model
+                                                                          .carouselController2
+                                                                          ?.previousPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                   FlutterFlowIconButton(
@@ -1140,9 +1164,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
+                                                                      await _model
+                                                                          .carouselController2
+                                                                          ?.nextPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                 ],
@@ -1318,7 +1350,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           );
                                                                         },
                                                                         carouselController:
-                                                                            _model.carouselController3 ??=
+                                                                            _model.carouselIn1Controller ??=
                                                                                 CarouselSliderController(),
                                                                         options:
                                                                             CarouselOptions(
@@ -1340,7 +1372,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           autoPlay:
                                                                               false,
                                                                           onPageChanged: (index, _) =>
-                                                                              _model.carouselCurrentIndex3 = index,
+                                                                              _model.carouselIn1CurrentIndex = index,
                                                                         ),
                                                                       ),
                                                                     );
@@ -1370,9 +1402,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
+                                                                      await _model
+                                                                          .carouselIn1Controller
+                                                                          ?.previousPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                   FlutterFlowIconButton(
@@ -1390,9 +1430,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
+                                                                      await _model
+                                                                          .carouselIn1Controller
+                                                                          ?.nextPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                 ],
@@ -1463,7 +1511,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                     final insideMobileImg = containerGaleriaRecordList
                                                                         .where((e) =>
                                                                             e.type ==
-                                                                            'Exterior')
+                                                                            'Interior')
                                                                         .toList();
 
                                                                     return Container(
@@ -1526,7 +1574,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           );
                                                                         },
                                                                         carouselController:
-                                                                            _model.carouselController4 ??=
+                                                                            _model.carouselIn2Controller ??=
                                                                                 CarouselSliderController(),
                                                                         options:
                                                                             CarouselOptions(
@@ -1548,7 +1596,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           autoPlay:
                                                                               false,
                                                                           onPageChanged: (index, _) =>
-                                                                              _model.carouselCurrentIndex4 = index,
+                                                                              _model.carouselIn2CurrentIndex = index,
                                                                         ),
                                                                       ),
                                                                     );
@@ -1578,9 +1626,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
+                                                                      await _model
+                                                                          .carouselIn2Controller
+                                                                          ?.previousPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                   FlutterFlowIconButton(
@@ -1598,9 +1654,17 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           24.0,
                                                                     ),
                                                                     onPressed:
-                                                                        () {
-                                                                      print(
-                                                                          'IconButton pressed ...');
+                                                                        () async {
+                                                                      logFirebaseEvent(
+                                                                          'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
+                                                                      await _model
+                                                                          .carouselIn2Controller
+                                                                          ?.nextPage(
+                                                                        duration:
+                                                                            Duration(milliseconds: 300),
+                                                                        curve: Curves
+                                                                            .ease,
+                                                                      );
                                                                     },
                                                                   ),
                                                                 ],

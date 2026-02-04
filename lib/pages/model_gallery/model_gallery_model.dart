@@ -34,13 +34,13 @@ class ModelGalleryModel extends FlutterFlowModel<ModelGalleryWidget> {
   CarouselSliderController? carouselController2;
   int carouselCurrentIndex2 = 0;
 
-  // State field(s) for Carousel widget.
-  CarouselSliderController? carouselController3;
-  int carouselCurrentIndex3 = 0;
+  // State field(s) for CarouselIn1 widget.
+  CarouselSliderController? carouselIn1Controller;
+  int carouselIn1CurrentIndex = 0;
 
-  // State field(s) for Carousel widget.
-  CarouselSliderController? carouselController4;
-  int carouselCurrentIndex4 = 0;
+  // State field(s) for CarouselIn2 widget.
+  CarouselSliderController? carouselIn2Controller;
+  int carouselIn2CurrentIndex = 0;
 
   // Model for Redes component.
   late RedesModel redesModel;
