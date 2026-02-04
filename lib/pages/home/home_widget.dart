@@ -146,7 +146,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   ),
                 ),
               ),
-              Expanded(
+              Flexible(
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -265,79 +265,47 @@ class _HomeWidgetState extends State<HomeWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 25.0, 0.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    '* Imágenes con fines ilustrativos',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight: FontWeight.w500,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondary,
-                                          fontSize: () {
-                                            if (MediaQuery.sizeOf(context)
-                                                    .width <
-                                                kBreakpointSmall) {
-                                              return 10.0;
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointMedium) {
-                                              return 10.0;
-                                            } else if (MediaQuery.sizeOf(
-                                                        context)
-                                                    .width <
-                                                kBreakpointLarge) {
-                                              return 14.0;
-                                            } else {
-                                              return 16.0;
-                                            }
-                                          }(),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
+                            if (responsiveVisibility(
+                              context: context,
+                              phone: false,
+                              tablet: false,
+                              tabletLandscape: false,
+                              desktop: false,
+                            ))
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  logFirebaseEvent(
+                                      'HOME_IR_A_P_U_R_D_Y_G_O_Y_RESERVAR_EN_LN');
+                                  await launchURL(
+                                      'https://purdygo.com/buscar-vehiculos?isFromReservation=true&isfromCtalogo=false&stateProcess=reservation&brand=FAW');
+                                },
+                                text: 'Ir a PURDY GO y Reservar en Línea',
+                                options: FFButtonOptions(
+                                  height: MediaQuery.sizeOf(context).width >
+                                          kBreakpointSmall
+                                      ? 68.0
+                                      : 50.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      20.0, 0.0, 20.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).primary,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        font: GoogleFonts.interTight(
+                                          fontWeight:
+                                              FlutterFlowTheme.of(context)
+                                                  .titleSmall
+                                                  .fontWeight,
                                           fontStyle:
                                               FlutterFlowTheme.of(context)
-                                                  .bodyMedium
+                                                  .titleSmall
                                                   .fontStyle,
                                         ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'HOME_IR_A_P_U_R_D_Y_G_O_Y_RESERVAR_EN_LN');
-                                await launchURL(
-                                    'https://purdygo.com/buscar-vehiculos?isFromReservation=true&isfromCtalogo=false&stateProcess=reservation&brand=FAW');
-                              },
-                              text: 'Ir a PURDY GO y Reservar en Línea',
-                              options: FFButtonOptions(
-                                height: MediaQuery.sizeOf(context).width >
-                                        kBreakpointSmall
-                                    ? 68.0
-                                    : 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      font: GoogleFonts.interTight(
+                                        color: Colors.white,
+                                        fontSize: 23.0,
+                                        letterSpacing: 0.0,
                                         fontWeight: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .fontWeight,
@@ -345,239 +313,124 @@ class _HomeWidgetState extends State<HomeWidget> {
                                             .titleSmall
                                             .fontStyle,
                                       ),
-                                      color: Colors.white,
-                                      fontSize: 23.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(70.0),
+                                  elevation: 0.0,
+                                  borderRadius: BorderRadius.circular(70.0),
+                                ),
                               ),
-                            ),
-                            if (!_model.showFullListOfVehicles)
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                decoration: BoxDecoration(),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 10.0),
-                                    child: StreamBuilder<List<ModelsRecord>>(
-                                      stream: queryModelsRecord(
-                                        queryBuilder: (modelsRecord) =>
-                                            modelsRecord
-                                                .where(
-                                                  'enable',
-                                                  isEqualTo: true,
-                                                )
-                                                .orderBy('order'),
-                                        limit: 4,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(),
+                              child: Align(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: StreamBuilder<List<ModelsRecord>>(
+                                    stream: queryModelsRecord(
+                                      queryBuilder: (modelsRecord) =>
+                                          modelsRecord
+                                              .where(
+                                                'enable',
+                                                isEqualTo: true,
+                                              )
+                                              .orderBy('order'),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<ModelsRecord> wrapModelsRecordList =
+                                          snapshot.data!;
+
+                                      return Wrap(
+                                        spacing: 40.0,
+                                        runSpacing: 35.0,
+                                        alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.center,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            wrapModelsRecordList.length,
+                                            (wrapIndex) {
+                                          final wrapModelsRecord =
+                                              wrapModelsRecordList[wrapIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 30.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'HOME_PAGE_Container_xh702gcq_ON_TAP');
+
+                                                context.pushNamed(
+                                                  ModelWidget.routeName,
+                                                  pathParameters: {
+                                                    'slug': serializeParam(
+                                                      wrapModelsRecord.slug,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: wrapWithModel(
+                                                model: _model.vehicleCardModels
+                                                    .getModel(
+                                                  wrapIndex.toString(),
+                                                  wrapIndex,
+                                                ),
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child: VehicleCardWidget(
+                                                  key: Key(
+                                                    'Keyxh7_${wrapIndex.toString()}',
+                                                  ),
+                                                  name: wrapModelsRecord.name,
+                                                  passengers: wrapModelsRecord
+                                                      .passengers,
+                                                  transmission: wrapModelsRecord
+                                                      .transmission,
+                                                  code: wrapModelsRecord.code,
+                                                  price: wrapModelsRecord
+                                                      .priceBase
+                                                      .toDouble(),
+                                                  urlImage:
+                                                      wrapModelsRecord.urlImage,
+                                                  urlTechSpec: wrapModelsRecord
+                                                      .urlTechSpec,
+                                                  promoPrice: wrapModelsRecord
+                                                      .promoPrice,
                                                 ),
                                               ),
                                             ),
                                           );
-                                        }
-                                        List<ModelsRecord>
-                                            wrapModelsRecordList =
-                                            snapshot.data!;
-
-                                        return Wrap(
-                                          spacing: 40.0,
-                                          runSpacing: 35.0,
-                                          alignment: WrapAlignment.start,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.start,
-                                          direction: Axis.horizontal,
-                                          runAlignment: WrapAlignment.center,
-                                          verticalDirection:
-                                              VerticalDirection.down,
-                                          clipBehavior: Clip.none,
-                                          children: List.generate(
-                                              wrapModelsRecordList.length,
-                                              (wrapIndex) {
-                                            final wrapModelsRecord =
-                                                wrapModelsRecordList[wrapIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 30.0),
-                                              child: VehicleCardWidget(
-                                                key: Key(
-                                                    'Keyj6s_${wrapIndex}_of_${wrapModelsRecordList.length}'),
-                                                name: wrapModelsRecord.name,
-                                                passengers:
-                                                    wrapModelsRecord.passengers,
-                                                transmission: wrapModelsRecord
-                                                    .transmission,
-                                                code: wrapModelsRecord.code,
-                                                price: wrapModelsRecord
-                                                    .priceBase
-                                                    .toDouble(),
-                                                urlImage:
-                                                    wrapModelsRecord.urlImage,
-                                                urlTechSpec: wrapModelsRecord
-                                                    .urlTechSpec,
-                                                promoPrice:
-                                                    wrapModelsRecord.promoPrice,
-                                              ),
-                                            );
-                                          }),
-                                        );
-                                      },
-                                    ),
+                                        }),
+                                      );
+                                    },
                                   ),
                                 ),
-                              ),
-                            if (_model.showFullListOfVehicles)
-                              Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                decoration: BoxDecoration(),
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 10.0),
-                                    child: StreamBuilder<List<ModelsRecord>>(
-                                      stream: queryModelsRecord(
-                                        queryBuilder: (modelsRecord) =>
-                                            modelsRecord
-                                                .where(
-                                                  'enable',
-                                                  isEqualTo: true,
-                                                )
-                                                .orderBy('order'),
-                                        limit: 4,
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
-                                                ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ModelsRecord>
-                                            wrapModelsRecordList =
-                                            snapshot.data!;
-
-                                        return Wrap(
-                                          spacing: 40.0,
-                                          runSpacing: 35.0,
-                                          alignment: WrapAlignment.start,
-                                          crossAxisAlignment:
-                                              WrapCrossAlignment.start,
-                                          direction: Axis.horizontal,
-                                          runAlignment: WrapAlignment.center,
-                                          verticalDirection:
-                                              VerticalDirection.down,
-                                          clipBehavior: Clip.none,
-                                          children: List.generate(
-                                              wrapModelsRecordList.length,
-                                              (wrapIndex) {
-                                            final wrapModelsRecord =
-                                                wrapModelsRecordList[wrapIndex];
-                                            return Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 0.0, 0.0, 30.0),
-                                              child: VehicleCardWidget(
-                                                key: Key(
-                                                    'Keyxh7_${wrapIndex}_of_${wrapModelsRecordList.length}'),
-                                                name: wrapModelsRecord.name,
-                                                passengers:
-                                                    wrapModelsRecord.passengers,
-                                                transmission: wrapModelsRecord
-                                                    .transmission,
-                                                code: wrapModelsRecord.code,
-                                                price: wrapModelsRecord
-                                                    .priceBase
-                                                    .toDouble(),
-                                                urlImage:
-                                                    wrapModelsRecord.urlImage,
-                                                urlTechSpec: wrapModelsRecord
-                                                    .urlTechSpec,
-                                                promoPrice:
-                                                    wrapModelsRecord.promoPrice,
-                                              ),
-                                            );
-                                          }),
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent('HOME_PAGE_VER_MS_BTN_ON_TAP');
-                                _model.showFullListOfVehicles =
-                                    !_model.showFullListOfVehicles;
-                                safeSetState(() {});
-                              },
-                              text: _model.showFullListOfVehicles
-                                  ? 'Ver menos'
-                                  : 'Ver más',
-                              options: FFButtonOptions(
-                                width: 325.0,
-                                height: 50.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 0.0, 16.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                      color: Colors.white,
-                                      fontSize: 20.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .fontStyle,
-                                    ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(50.0),
                               ),
                             ),
                           ].divide(SizedBox(height: 32.0)),

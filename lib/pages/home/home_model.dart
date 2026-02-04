@@ -36,8 +36,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
 
   bool selected = false;
 
-  bool showFullListOfVehicles = false;
-
   ///  State fields for stateful widgets in this page.
 
   final formKey = GlobalKey<FormState>();
@@ -45,6 +43,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
   late NavBarMobv2Model navBarMobv2Model;
+  // Models for VehicleCard dynamic component.
+  late FlutterFlowDynamicModels<VehicleCardModel> vehicleCardModels;
   // State field(s) for ddType widget.
   String? ddTypeValue;
   FormFieldController<String>? ddTypeValueController;
@@ -196,6 +196,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void initState(BuildContext context) {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
+    vehicleCardModels = FlutterFlowDynamicModels(() => VehicleCardModel());
     tfTextControllerValidator = _tfTextControllerValidator;
     tfCedJuridicaTextControllerValidator =
         _tfCedJuridicaTextControllerValidator;
@@ -223,6 +224,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void dispose() {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
+    vehicleCardModels.dispose();
     tfFocusNode?.dispose();
     tfTextController?.dispose();
 

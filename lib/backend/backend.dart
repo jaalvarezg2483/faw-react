@@ -9,6 +9,9 @@ import 'schema/models_record.dart';
 import 'schema/footer_record.dart';
 import 'schema/documentos_record.dart';
 import 'schema/ubicaciones_record.dart';
+import 'schema/images_record.dart';
+import 'schema/caracteristicas_record.dart';
+import 'schema/galeria_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -23,6 +26,9 @@ export 'schema/models_record.dart';
 export 'schema/footer_record.dart';
 export 'schema/documentos_record.dart';
 export 'schema/ubicaciones_record.dart';
+export 'schema/images_record.dart';
+export 'schema/caracteristicas_record.dart';
+export 'schema/galeria_record.dart';
 
 /// Functions to query NavBarRecords (as a Stream and as a Future).
 Future<int> queryNavBarRecordCount({
@@ -241,6 +247,126 @@ Future<List<UbicacionesRecord>> queryUbicacionesRecordOnce({
     queryCollectionOnce(
       UbicacionesRecord.collection,
       UbicacionesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ImagesRecords (as a Stream and as a Future).
+Future<int> queryImagesRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ImagesRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ImagesRecord>> queryImagesRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ImagesRecord.collection(parent),
+      ImagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ImagesRecord>> queryImagesRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ImagesRecord.collection(parent),
+      ImagesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query CaracteristicasRecords (as a Stream and as a Future).
+Future<int> queryCaracteristicasRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      CaracteristicasRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<CaracteristicasRecord>> queryCaracteristicasRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      CaracteristicasRecord.collection(parent),
+      CaracteristicasRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<CaracteristicasRecord>> queryCaracteristicasRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      CaracteristicasRecord.collection(parent),
+      CaracteristicasRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query GaleriaRecords (as a Stream and as a Future).
+Future<int> queryGaleriaRecordCount({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      GaleriaRecord.collection(parent),
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<GaleriaRecord>> queryGaleriaRecord({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      GaleriaRecord.collection(parent),
+      GaleriaRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<GaleriaRecord>> queryGaleriaRecordOnce({
+  DocumentReference? parent,
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      GaleriaRecord.collection(parent),
+      GaleriaRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

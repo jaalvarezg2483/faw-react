@@ -71,6 +71,16 @@ class ModelsRecord extends FirestoreRecord {
   double get promoPrice => _promoPrice ?? 0.0;
   bool hasPromoPrice() => _promoPrice != null;
 
+  // "slug" field.
+  String? _slug;
+  String get slug => _slug ?? '';
+  bool hasSlug() => _slug != null;
+
+  // "description" field.
+  String? _description;
+  String get description => _description ?? '';
+  bool hasDescription() => _description != null;
+
   void _initializeFields() {
     _urlImage = snapshotData['urlImage'] as String?;
     _name = snapshotData['name'] as String?;
@@ -83,6 +93,8 @@ class ModelsRecord extends FirestoreRecord {
     _order = castToType<int>(snapshotData['order']);
     _urlTechSpec = snapshotData['urlTechSpec'] as String?;
     _promoPrice = castToType<double>(snapshotData['promoPrice']);
+    _slug = snapshotData['slug'] as String?;
+    _description = snapshotData['description'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -130,6 +142,8 @@ Map<String, dynamic> createModelsRecordData({
   int? order,
   String? urlTechSpec,
   double? promoPrice,
+  String? slug,
+  String? description,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -144,6 +158,8 @@ Map<String, dynamic> createModelsRecordData({
       'order': order,
       'urlTechSpec': urlTechSpec,
       'promoPrice': promoPrice,
+      'slug': slug,
+      'description': description,
     }.withoutNulls,
   );
 
@@ -165,7 +181,9 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e1?.enable == e2?.enable &&
         e1?.order == e2?.order &&
         e1?.urlTechSpec == e2?.urlTechSpec &&
-        e1?.promoPrice == e2?.promoPrice;
+        e1?.promoPrice == e2?.promoPrice &&
+        e1?.slug == e2?.slug &&
+        e1?.description == e2?.description;
   }
 
   @override
@@ -180,7 +198,9 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e?.enable,
         e?.order,
         e?.urlTechSpec,
-        e?.promoPrice
+        e?.promoPrice,
+        e?.slug,
+        e?.description
       ]);
 
   @override

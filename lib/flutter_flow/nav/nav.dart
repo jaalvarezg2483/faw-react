@@ -68,6 +68,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: FinanceWidget.routeName,
           path: FinanceWidget.routePath,
           builder: (context, params) => FinanceWidget(),
+        ),
+        FFRoute(
+          name: ModelWidget.routeName,
+          path: ModelWidget.routePath,
+          builder: (context, params) => ModelWidget(
+            slug: params.getParam(
+              'slug',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: ModelGalleryWidget.routeName,
+          path: ModelGalleryWidget.routePath,
+          builder: (context, params) => ModelGalleryWidget(
+            slug: params.getParam(
+              'slug',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

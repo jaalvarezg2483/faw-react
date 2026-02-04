@@ -29,3 +29,15 @@ List<dynamic> stringListToJson(List<ModelsStruct> models) {
     };
   }).toList();
 }
+
+String? getImageURL(
+  List<ImagesRecord> list,
+  String type,
+) {
+  for (final document in list ?? []) {
+    if (document.type == type) {
+      return document.url;
+    }
+  }
+  return type;
+}

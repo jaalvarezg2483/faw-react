@@ -137,8 +137,8 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                 ),
                 Text(
                   widget!.promoPrice! > 0.0
-                      ? '\$${functions.thousandSeparator(widget!.promoPrice)}'
-                      : '\$${functions.thousandSeparator(widget!.price)}',
+                      ? '\$${functions.thousandSeparator(widget!.promoPrice)}*'
+                      : '\$${functions.thousandSeparator(widget!.price)}*',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FontWeight.w800,
@@ -163,7 +163,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          color: FlutterFlowTheme.of(context).secondary,
+                          color: FlutterFlowTheme.of(context).primary,
                           fontSize: 14.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.normal,

@@ -42,5 +42,41 @@ service cloud.firestore {
       allow write: if false;
       allow delete: if false;
     }
+
+    match /Models/{parent}/images/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/images/{document} {
+      allow read: if true;
+    }
+
+
+    match /Models/{parent}/caracteristicas/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/caracteristicas/{document} {
+      allow read: if true;
+    }
+
+
+    match /Models/{parent}/galeria/{document} {
+      allow create: if true;
+      allow read: if true;
+      allow write: if false;
+      allow delete: if false;
+    }
+
+    match /{path=**}/galeria/{document} {
+      allow read: if true;
+    }
+
   }
 }
