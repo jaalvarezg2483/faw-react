@@ -3,15 +3,20 @@ import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'model_gallery_widget.dart' show ModelGalleryWidget;
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 class ModelGalleryModel extends FlutterFlowModel<ModelGalleryWidget> {
@@ -21,6 +26,22 @@ class ModelGalleryModel extends FlutterFlowModel<ModelGalleryWidget> {
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
   late NavBarMobv2Model navBarMobv2Model;
+  // State field(s) for Carousel widget.
+  CarouselSliderController? carouselController1;
+  int carouselCurrentIndex1 = 0;
+
+  // State field(s) for Carousel widget.
+  CarouselSliderController? carouselController2;
+  int carouselCurrentIndex2 = 0;
+
+  // State field(s) for Carousel widget.
+  CarouselSliderController? carouselController3;
+  int carouselCurrentIndex3 = 0;
+
+  // State field(s) for Carousel widget.
+  CarouselSliderController? carouselController4;
+  int carouselCurrentIndex4 = 0;
+
   // Model for Redes component.
   late RedesModel redesModel;
   // Model for Footer component.

@@ -3,14 +3,19 @@ import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/redes/redes_widget.dart';
+import '/flutter_flow/flutter_flow_expanded_image_view.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import 'model_gallery_model.dart';
 export 'model_gallery_model.dart';
@@ -19,9 +24,11 @@ class ModelGalleryWidget extends StatefulWidget {
   const ModelGalleryWidget({
     super.key,
     required this.slug,
+    required this.truckInfo,
   });
 
   final String? slug;
+  final DocumentReference? truckInfo;
 
   static String routeName = 'ModelGallery';
   static String routePath = '/galeria/:slug';
@@ -56,14 +63,8 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<ModelsRecord>>(
-      stream: queryModelsRecord(
-        queryBuilder: (modelsRecord) => modelsRecord.where(
-          'slug',
-          isEqualTo: widget!.slug,
-        ),
-        singleRecord: true,
-      ),
+    return StreamBuilder<ModelsRecord>(
+      stream: ModelsRecord.getDocument(widget!.truckInfo!),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
@@ -82,14 +83,8 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
             ),
           );
         }
-        List<ModelsRecord> modelGalleryModelsRecordList = snapshot.data!;
-        // Return an empty Container when the item does not exist.
-        if (snapshot.data!.isEmpty) {
-          return Container();
-        }
-        final modelGalleryModelsRecord = modelGalleryModelsRecordList.isNotEmpty
-            ? modelGalleryModelsRecordList.first
-            : null;
+
+        final modelGalleryModelsRecord = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -135,7 +130,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                   Flexible(
                     child: StreamBuilder<List<ImagesRecord>>(
                       stream: queryImagesRecord(
-                        parent: modelGalleryModelsRecord?.reference,
+                        parent: widget!.truckInfo,
                         queryBuilder: (imagesRecord) => imagesRecord.where(
                           'isActive',
                           isEqualTo: true,
@@ -268,7 +263,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                     child: Text(
                                                       valueOrDefault<String>(
                                                         modelGalleryModelsRecord
-                                                            ?.name,
+                                                            .name,
                                                         'modelo',
                                                       ),
                                                       style:
@@ -347,7 +342,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                   .fromSTEB(
                                                       0.0, 5.0, 0.0, 20.0),
                                               child: Text(
-                                                '\$${functions.thousandSeparator(modelGalleryModelsRecord?.priceBase?.toDouble())}',
+                                                '\$${functions.thousandSeparator(modelGalleryModelsRecord.priceBase.toDouble())}',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -383,7 +378,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                             Text(
                                               valueOrDefault<String>(
                                                 modelGalleryModelsRecord
-                                                    ?.description,
+                                                    .description,
                                                 'descripcion',
                                               ),
                                               style:
@@ -532,7 +527,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                       ),
                                                     ),
                                                     Text(
-                                                      'Solicitar Test Driev',
+                                                      'Solicitar Test Drive',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -644,187 +639,94 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                StreamBuilder<List<GaleriaRecord>>(
+                                  stream: queryGaleriaRecord(
+                                    parent: widget!.truckInfo,
+                                    queryBuilder: (galeriaRecord) =>
+                                        galeriaRecord.where(
+                                      'isActive',
+                                      isEqualTo: true,
+                                    ),
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        valueOrDefault<double>(
-                                          MediaQuery.sizeOf(context).width <
-                                                  kBreakpointSmall
-                                              ? 40.0
-                                              : 100.0,
-                                          0.0,
-                                        ),
-                                        40.0,
-                                        valueOrDefault<double>(
-                                          MediaQuery.sizeOf(context).width <
-                                                  kBreakpointSmall
-                                              ? 40.0
-                                              : 100.0,
-                                          0.0,
-                                        ),
-                                        40.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Flexible(
-                                              child: Text(
-                                                'Ficha Técnica',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      font: GoogleFonts.inter(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      fontSize: MediaQuery.sizeOf(
-                                                                      context)
-                                                                  .width <
-                                                              500.0
-                                                          ? 25.0
-                                                          : 40.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .fontStyle,
-                                                    ),
-                                              ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                        Row(
+                                      );
+                                    }
+                                    List<GaleriaRecord>
+                                        containerGaleriaRecordList =
+                                        snapshot.data!;
+
+                                    return Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 40.0
+                                                  : 100.0,
+                                              0.0,
+                                            ),
+                                            40.0,
+                                            valueOrDefault<double>(
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointSmall
+                                                  ? 40.0
+                                                  : 100.0,
+                                              0.0,
+                                            ),
+                                            40.0),
+                                        child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Flexible(
-                                              child: Container(
-                                                width:
-                                                    MediaQuery.sizeOf(context)
-                                                            .width *
-                                                        1.0,
-                                                height: 44.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Flexible(
+                                                  child: Text(
+                                                    'Exterior',
+                                                    style: FlutterFlowTheme.of(
                                                             context)
-                                                        .secondaryText,
-                                                    width: 1.0,
-                                                  ),
-                                                ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 0.0, 16.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Flexible(
-                                                        child: Text(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            modelGalleryModelsRecord
-                                                                ?.name,
-                                                            'Tiger FAW Test Value 2.6 a',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .fontStyle,
-                                                                ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primaryText,
-                                                                fontSize: 17.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontStyle: FlutterFlowTheme.of(
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Icon(
-                                                          Icons.download,
+                                                          ),
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryText,
-                                                          size: 24.0,
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 40.0, 0.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Flexible(
-                                                child: Text(
-                                                  'Galería',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                                                              .primary,
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  500.0
+                                                              ? 25.0
+                                                              : 40.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontStyle:
@@ -833,138 +735,893 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        fontSize: MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width <
-                                                                500.0
-                                                            ? 25.0
-                                                            : 40.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            if (responsiveVisibility(
+                                              context: context,
+                                              phone: false,
+                                            ))
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                       ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          child: Stack(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            children: [
+                                                              Container(
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.8,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final outsideDesktopImg = containerGaleriaRecordList
+                                                                        .where((e) =>
+                                                                            e.type ==
+                                                                            'Exterior')
+                                                                        .toList();
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: MediaQuery.sizeOf(context).width < 1100.0
+                                                                          ? (MediaQuery.sizeOf(context).height *
+                                                                              0.2)
+                                                                          : (MediaQuery.sizeOf(context).height *
+                                                                              0.35),
+                                                                      child: CarouselSlider
+                                                                          .builder(
+                                                                        itemCount:
+                                                                            outsideDesktopImg.length,
+                                                                        itemBuilder: (context,
+                                                                            outsideDesktopImgIndex,
+                                                                            _) {
+                                                                          final outsideDesktopImgItem =
+                                                                              outsideDesktopImg[outsideDesktopImgIndex];
+                                                                          return InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              logFirebaseEvent('MODEL_GALLERY_PAGE_Image_zpokh92q_ON_TAP');
+                                                                              await Navigator.push(
+                                                                                context,
+                                                                                PageTransition(
+                                                                                  type: PageTransitionType.fade,
+                                                                                  child: FlutterFlowExpandedImageView(
+                                                                                    image: Image.network(
+                                                                                      outsideDesktopImgItem.url,
+                                                                                      fit: BoxFit.contain,
+                                                                                    ),
+                                                                                    allowRotation: false,
+                                                                                    tag: outsideDesktopImgItem.url,
+                                                                                    useHeroAnimation: true,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Hero(
+                                                                              tag: outsideDesktopImgItem.url,
+                                                                              transitionOnUserGestures: true,
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                child: Image.network(
+                                                                                  outsideDesktopImgItem.url,
+                                                                                  width: 200.0,
+                                                                                  height: 200.0,
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                        carouselController:
+                                                                            _model.carouselController1 ??=
+                                                                                CarouselSliderController(),
+                                                                        options:
+                                                                            CarouselOptions(
+                                                                          initialPage: max(
+                                                                              0,
+                                                                              min(0, outsideDesktopImg.length - 1)),
+                                                                          viewportFraction:
+                                                                              0.34,
+                                                                          disableCenter:
+                                                                              true,
+                                                                          enlargeCenterPage:
+                                                                              true,
+                                                                          enlargeFactor:
+                                                                              0.25,
+                                                                          enableInfiniteScroll:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          autoPlay:
+                                                                              false,
+                                                                          onPageChanged: (index, _) =>
+                                                                              _model.carouselCurrentIndex1 = index,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_back_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_forward_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ),
-                                        Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  1.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          child: StreamBuilder<
-                                              List<GaleriaRecord>>(
-                                            stream: queryGaleriaRecord(
-                                              parent: modelGalleryModelsRecord
-                                                  ?.reference,
-                                              queryBuilder: (galeriaRecord) =>
-                                                  galeriaRecord
-                                                      .where(
-                                                        'isActive',
-                                                        isEqualTo: true,
-                                                      )
-                                                      .where(
-                                                        'isMain',
-                                                        isEqualTo: true,
-                                                      ),
-                                            ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child:
-                                                        CircularProgressIndicator(
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                              Color>(
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              List<GaleriaRecord>
-                                                  gridViewGaleriaRecordList =
-                                                  snapshot.data!;
-
-                                              return GridView.builder(
-                                                padding: EdgeInsets.zero,
-                                                gridDelegate:
-                                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                                  crossAxisCount:
-                                                      MediaQuery.sizeOf(context)
-                                                                  .width <
-                                                              kBreakpointSmall
-                                                          ? 1
-                                                          : 3,
-                                                  crossAxisSpacing: 10.0,
-                                                  mainAxisSpacing: 10.0,
-                                                  childAspectRatio: 1.6,
+                                            if (responsiveVisibility(
+                                              context: context,
+                                              tablet: false,
+                                              tabletLandscape: false,
+                                              desktop: false,
+                                            ))
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
                                                 ),
-                                                primary: false,
-                                                shrinkWrap: true,
-                                                scrollDirection: Axis.vertical,
-                                                itemCount:
-                                                    gridViewGaleriaRecordList
-                                                        .length,
-                                                itemBuilder:
-                                                    (context, gridViewIndex) {
-                                                  final gridViewGaleriaRecord =
-                                                      gridViewGaleriaRecordList[
-                                                          gridViewIndex];
-                                                  return Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                    ),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.network(
-                                                        gridViewGaleriaRecord
-                                                            .url,
-                                                        width: 200.0,
-                                                        height: 200.0,
-                                                        fit: BoxFit.cover,
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          child: Stack(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            children: [
+                                                              Container(
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    1.0,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final outsideMobileImg = containerGaleriaRecordList
+                                                                        .where((e) =>
+                                                                            e.type ==
+                                                                            'Exterior')
+                                                                        .toList();
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          MediaQuery.sizeOf(context).height *
+                                                                              0.3,
+                                                                      child: CarouselSlider
+                                                                          .builder(
+                                                                        itemCount:
+                                                                            outsideMobileImg.length,
+                                                                        itemBuilder: (context,
+                                                                            outsideMobileImgIndex,
+                                                                            _) {
+                                                                          final outsideMobileImgItem =
+                                                                              outsideMobileImg[outsideMobileImgIndex];
+                                                                          return InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              logFirebaseEvent('MODEL_GALLERY_PAGE_Image_y4wb381z_ON_TAP');
+                                                                              await Navigator.push(
+                                                                                context,
+                                                                                PageTransition(
+                                                                                  type: PageTransitionType.fade,
+                                                                                  child: FlutterFlowExpandedImageView(
+                                                                                    image: Image.network(
+                                                                                      outsideMobileImgItem.url,
+                                                                                      fit: BoxFit.contain,
+                                                                                    ),
+                                                                                    allowRotation: false,
+                                                                                    tag: outsideMobileImgItem.url,
+                                                                                    useHeroAnimation: true,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Hero(
+                                                                              tag: outsideMobileImgItem.url,
+                                                                              transitionOnUserGestures: true,
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                child: Image.network(
+                                                                                  outsideMobileImgItem.url,
+                                                                                  width: 200.0,
+                                                                                  height: 200.0,
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                        carouselController:
+                                                                            _model.carouselController2 ??=
+                                                                                CarouselSliderController(),
+                                                                        options:
+                                                                            CarouselOptions(
+                                                                          initialPage: max(
+                                                                              0,
+                                                                              min(0, outsideMobileImg.length - 1)),
+                                                                          viewportFraction:
+                                                                              0.9,
+                                                                          disableCenter:
+                                                                              true,
+                                                                          enlargeCenterPage:
+                                                                              true,
+                                                                          enlargeFactor:
+                                                                              1.0,
+                                                                          enableInfiniteScroll:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          autoPlay:
+                                                                              false,
+                                                                          onPageChanged: (index, _) =>
+                                                                              _model.carouselCurrentIndex2 = index,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_back_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_forward_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
-                                                  );
-                                                },
-                                              );
-                                            },
-                                          ),
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              '*Imágenes con fines ilustrativos.',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                                                  ],
+                                                ),
+                                              ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Flexible(
+                                                  child: Text(
+                                                    'Interior',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primary,
+                                                          fontSize: MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width <
+                                                                  500.0
+                                                              ? 25.0
+                                                              : 40.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            if (responsiveVisibility(
+                                              context: context,
+                                              phone: false,
+                                            ))
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          child: Stack(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            children: [
+                                                              Container(
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.8,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final insideDesktopImg = containerGaleriaRecordList
+                                                                        .where((e) =>
+                                                                            e.type ==
+                                                                            'Interior')
+                                                                        .toList();
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: MediaQuery.sizeOf(context).width < 1100.0
+                                                                          ? (MediaQuery.sizeOf(context).height *
+                                                                              0.2)
+                                                                          : (MediaQuery.sizeOf(context).height *
+                                                                              0.35),
+                                                                      child: CarouselSlider
+                                                                          .builder(
+                                                                        itemCount:
+                                                                            insideDesktopImg.length,
+                                                                        itemBuilder: (context,
+                                                                            insideDesktopImgIndex,
+                                                                            _) {
+                                                                          final insideDesktopImgItem =
+                                                                              insideDesktopImg[insideDesktopImgIndex];
+                                                                          return InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              logFirebaseEvent('MODEL_GALLERY_PAGE_Image_dymq7srp_ON_TAP');
+                                                                              await Navigator.push(
+                                                                                context,
+                                                                                PageTransition(
+                                                                                  type: PageTransitionType.fade,
+                                                                                  child: FlutterFlowExpandedImageView(
+                                                                                    image: Image.network(
+                                                                                      insideDesktopImgItem.url,
+                                                                                      fit: BoxFit.contain,
+                                                                                    ),
+                                                                                    allowRotation: false,
+                                                                                    tag: insideDesktopImgItem.url,
+                                                                                    useHeroAnimation: true,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Hero(
+                                                                              tag: insideDesktopImgItem.url,
+                                                                              transitionOnUserGestures: true,
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                child: Image.network(
+                                                                                  insideDesktopImgItem.url,
+                                                                                  width: 200.0,
+                                                                                  height: 200.0,
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                        carouselController:
+                                                                            _model.carouselController3 ??=
+                                                                                CarouselSliderController(),
+                                                                        options:
+                                                                            CarouselOptions(
+                                                                          initialPage: max(
+                                                                              0,
+                                                                              min(0, insideDesktopImg.length - 1)),
+                                                                          viewportFraction:
+                                                                              0.34,
+                                                                          disableCenter:
+                                                                              true,
+                                                                          enlargeCenterPage:
+                                                                              true,
+                                                                          enlargeFactor:
+                                                                              0.25,
+                                                                          enableInfiniteScroll:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          autoPlay:
+                                                                              false,
+                                                                          onPageChanged: (index, _) =>
+                                                                              _model.carouselCurrentIndex3 = index,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_back_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_forward_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            if (responsiveVisibility(
+                                              context: context,
+                                              tablet: false,
+                                              tabletLandscape: false,
+                                              desktop: false,
+                                            ))
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                ),
+                                                child: Column(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Container(
+                                                      width: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width *
+                                                          1.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                      ),
+                                                      child: Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                0.0, 0.0),
+                                                        child: Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .width *
+                                                                  1.0,
+                                                          child: Stack(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            children: [
+                                                              Container(
+                                                                width: MediaQuery.sizeOf(
+                                                                            context)
+                                                                        .width *
+                                                                    0.8,
+                                                                decoration:
+                                                                    BoxDecoration(),
+                                                                child: Builder(
+                                                                  builder:
+                                                                      (context) {
+                                                                    final insideMobileImg = containerGaleriaRecordList
+                                                                        .where((e) =>
+                                                                            e.type ==
+                                                                            'Exterior')
+                                                                        .toList();
+
+                                                                    return Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height:
+                                                                          MediaQuery.sizeOf(context).height *
+                                                                              0.3,
+                                                                      child: CarouselSlider
+                                                                          .builder(
+                                                                        itemCount:
+                                                                            insideMobileImg.length,
+                                                                        itemBuilder: (context,
+                                                                            insideMobileImgIndex,
+                                                                            _) {
+                                                                          final insideMobileImgItem =
+                                                                              insideMobileImg[insideMobileImgIndex];
+                                                                          return InkWell(
+                                                                            splashColor:
+                                                                                Colors.transparent,
+                                                                            focusColor:
+                                                                                Colors.transparent,
+                                                                            hoverColor:
+                                                                                Colors.transparent,
+                                                                            highlightColor:
+                                                                                Colors.transparent,
+                                                                            onTap:
+                                                                                () async {
+                                                                              logFirebaseEvent('MODEL_GALLERY_PAGE_Image_x6327788_ON_TAP');
+                                                                              await Navigator.push(
+                                                                                context,
+                                                                                PageTransition(
+                                                                                  type: PageTransitionType.fade,
+                                                                                  child: FlutterFlowExpandedImageView(
+                                                                                    image: Image.network(
+                                                                                      insideMobileImgItem.url,
+                                                                                      fit: BoxFit.contain,
+                                                                                    ),
+                                                                                    allowRotation: false,
+                                                                                    tag: insideMobileImgItem.url,
+                                                                                    useHeroAnimation: true,
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                            child:
+                                                                                Hero(
+                                                                              tag: insideMobileImgItem.url,
+                                                                              transitionOnUserGestures: true,
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(8.0),
+                                                                                child: Image.network(
+                                                                                  insideMobileImgItem.url,
+                                                                                  width: 200.0,
+                                                                                  height: 200.0,
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                        carouselController:
+                                                                            _model.carouselController4 ??=
+                                                                                CarouselSliderController(),
+                                                                        options:
+                                                                            CarouselOptions(
+                                                                          initialPage: max(
+                                                                              0,
+                                                                              min(0, insideMobileImg.length - 1)),
+                                                                          viewportFraction:
+                                                                              0.9,
+                                                                          disableCenter:
+                                                                              true,
+                                                                          enlargeCenterPage:
+                                                                              true,
+                                                                          enlargeFactor:
+                                                                              1.0,
+                                                                          enableInfiniteScroll:
+                                                                              true,
+                                                                          scrollDirection:
+                                                                              Axis.horizontal,
+                                                                          autoPlay:
+                                                                              false,
+                                                                          onPageChanged: (index, _) =>
+                                                                              _model.carouselCurrentIndex4 = index,
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .spaceBetween,
+                                                                children: [
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_back_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                  FlutterFlowIconButton(
+                                                                    borderRadius:
+                                                                        8.0,
+                                                                    buttonSize:
+                                                                        40.0,
+                                                                    icon: Icon(
+                                                                      Icons
+                                                                          .arrow_forward_ios,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .secondaryText,
+                                                                      size:
+                                                                          24.0,
+                                                                    ),
+                                                                    onPressed:
+                                                                        () {
+                                                                      print(
+                                                                          'IconButton pressed ...');
+                                                                    },
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  '*Imágenes con fines ilustrativos.',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
                                                         font: GoogleFonts.inter(
@@ -991,48 +1648,52 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                 .bodyMedium
                                                                 .fontStyle,
                                                       ),
-                                            ),
-                                          ],
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Flexible(
-                                              child: Container(
-                                                width: 500.0,
-                                                height: 45.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          50.0),
-                                                  border: Border.all(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    width: 2.0,
-                                                  ),
                                                 ),
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          16.0, 0.0, 10.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Text(
-                                                        'Ver todas las fotos',
-                                                        style:
+                                              ],
+                                            ),
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Flexible(
+                                                  child: Container(
+                                                    width: 500.0,
+                                                    height: 45.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              50.0),
+                                                      border: Border.all(
+                                                        color:
                                                             FlutterFlowTheme.of(
                                                                     context)
+                                                                .primary,
+                                                        width: 2.0,
+                                                      ),
+                                                    ),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .center,
+                                                        children: [
+                                                          Text(
+                                                            'Ver todas las fotos',
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   font:
@@ -1061,26 +1722,27 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                      Icon(
-                                                        Icons.arrow_forward,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
+                                                          ),
+                                                          Icon(
+                                                            Icons.arrow_forward,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .primary,
-                                                        size: 24.0,
+                                                            size: 24.0,
+                                                          ),
+                                                        ].divide(SizedBox(
+                                                            width: 60.0)),
                                                       ),
-                                                    ].divide(
-                                                        SizedBox(width: 60.0)),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
-                                          ],
+                                          ].divide(SizedBox(height: 26.0)),
                                         ),
-                                      ].divide(SizedBox(height: 26.0)),
-                                    ),
-                                  ),
+                                      ),
+                                    );
+                                  },
                                 ),
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,

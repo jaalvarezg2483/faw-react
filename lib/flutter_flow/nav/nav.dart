@@ -87,6 +87,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'slug',
               ParamType.String,
             ),
+            truckInfo: params.getParam(
+              'truckInfo',
+              ParamType.DocumentReference,
+              isList: false,
+              collectionNamePath: ['Models'],
+            ),
           ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
