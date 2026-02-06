@@ -109,6 +109,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ServicesWidget.routeName,
           path: ServicesWidget.routePath,
           builder: (context, params) => ServicesWidget(),
+        ),
+        FFRoute(
+          name: HomeCopyWidget.routeName,
+          path: HomeCopyWidget.routePath,
+          builder: (context, params) => HomeCopyWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
