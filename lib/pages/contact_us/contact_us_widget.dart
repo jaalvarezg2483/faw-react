@@ -25,7 +25,12 @@ import 'contact_us_model.dart';
 export 'contact_us_model.dart';
 
 class ContactUsWidget extends StatefulWidget {
-  const ContactUsWidget({super.key});
+  const ContactUsWidget({
+    super.key,
+    this.buttonActivePreLoaded,
+  });
+
+  final String? buttonActivePreLoaded;
 
   static String routeName = 'ContactUs';
   static String routePath = '/contactenos';
@@ -48,8 +53,15 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('CONTACT_US_PAGE_ContactUs_ON_INIT_STATE');
-      _model.buttomActive = 'Contacto';
-      safeSetState(() {});
+      if (widget!.buttonActivePreLoaded != null &&
+          widget!.buttonActivePreLoaded != '') {
+        _model.buttomActive = widget!.buttonActivePreLoaded!;
+        safeSetState(() {});
+      } else {
+        _model.buttomActive = 'Contacto';
+        safeSetState(() {});
+      }
+
       FFAppState().menuOptionActive = 'Contactanos';
       safeSetState(() {});
       await actions.updateMetaTags(

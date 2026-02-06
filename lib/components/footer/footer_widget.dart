@@ -343,7 +343,6 @@ class _FooterWidgetState extends State<FooterWidget> {
                 phone: false,
               ))
                 Container(
-                  width: 100.0,
                   constraints: BoxConstraints(
                     minHeight: 50.0,
                   ),
@@ -477,93 +476,81 @@ class _FooterWidgetState extends State<FooterWidget> {
                 tabletLandscape: false,
                 desktop: false,
               ))
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
-                  child: Container(
-                    width: MediaQuery.sizeOf(context).width * 1.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.all(22.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          if (responsiveVisibility(
-                            context: context,
-                            tablet: false,
-                            tabletLandscape: false,
-                            desktop: false,
-                          ))
-                            Padding(
+                Container(
+                  width: MediaQuery.sizeOf(context).width * 1.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.all(22.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        if (responsiveVisibility(
+                          context: context,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 10.0),
+                            child: Text(
+                              'La línea ética es un espacio seguro y confidencial para reportar, de forma anónima, actos deshonestos o violaciones a las políticas internas y normas de conducta.',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontWeight,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    fontSize: 11.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .fontStyle,
+                                    lineHeight: 1.4,
+                                  ),
+                            ),
+                          ),
+                        if (responsiveVisibility(
+                          context: context,
+                          tablet: false,
+                          tabletLandscape: false,
+                          desktop: false,
+                        ))
+                          FFButtonWidget(
+                            onPressed: () async {
+                              logFirebaseEvent(
+                                  'FOOTER_COMP_INFO_AQU_BTN_ON_TAP');
+                              await launchURL(
+                                  'https://www.grupopurdy.com/linea-etica');
+                            },
+                            text: 'Info aquí',
+                            icon: Icon(
+                              Icons.add,
+                              size: 15.0,
+                            ),
+                            options: FFButtonOptions(
+                              width: 187.0,
+                              height: 36.0,
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 10.0),
-                              child: Text(
-                                'La línea ética es un espacio seguro y confidencial para reportar, de forma anónima, actos deshonestos o violaciones a las políticas internas y normas de conducta.',
-                                textAlign: TextAlign.center,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      font: GoogleFonts.inter(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                      fontSize: 11.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontWeight,
-                                      fontStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .fontStyle,
-                                      lineHeight: 1.4,
-                                    ),
-                              ),
-                            ),
-                          if (responsiveVisibility(
-                            context: context,
-                            tablet: false,
-                            tabletLandscape: false,
-                            desktop: false,
-                          ))
-                            FFButtonWidget(
-                              onPressed: () async {
-                                logFirebaseEvent(
-                                    'FOOTER_COMP_INFO_AQU_BTN_ON_TAP');
-                                await launchURL(
-                                    'https://www.grupopurdy.com/linea-etica');
-                              },
-                              text: 'Info aquí',
-                              icon: Icon(
-                                Icons.add,
-                                size: 15.0,
-                              ),
-                              options: FFButtonOptions(
-                                width: 187.0,
-                                height: 36.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    50.0, 0.0, 50.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).primary,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      font: GoogleFonts.interTight(
-                                        fontWeight: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontWeight,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .fontStyle,
-                                      ),
-                                      color: Colors.white,
-                                      fontSize: 12.0,
-                                      letterSpacing: 0.0,
+                                  50.0, 0.0, 50.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context).primary,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    font: GoogleFonts.interTight(
                                       fontWeight: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .fontWeight,
@@ -571,12 +558,21 @@ class _FooterWidgetState extends State<FooterWidget> {
                                           .titleSmall
                                           .fontStyle,
                                     ),
-                                elevation: 0.0,
-                                borderRadius: BorderRadius.circular(0.0),
-                              ),
+                                    color: Colors.white,
+                                    fontSize: 12.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontWeight,
+                                    fontStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .fontStyle,
+                                  ),
+                              elevation: 0.0,
+                              borderRadius: BorderRadius.circular(0.0),
                             ),
-                        ].divide(SizedBox(height: 15.0)),
-                      ),
+                          ),
+                      ].divide(SizedBox(height: 15.0)),
                     ),
                   ),
                 ),
@@ -806,7 +802,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   })
                                       .divide(SizedBox(height: 15.0))
                                       .addToStart(SizedBox(height: 10.0))
-                                      .addToEnd(SizedBox(height: 1.0)),
+                                      .addToEnd(SizedBox(height: 10.0)),
                                 );
                               },
                             ),

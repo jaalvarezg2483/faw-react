@@ -12,6 +12,7 @@ import 'schema/ubicaciones_record.dart';
 import 'schema/images_record.dart';
 import 'schema/caracteristicas_record.dart';
 import 'schema/galeria_record.dart';
+import 'schema/services_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart' hide Order;
@@ -29,6 +30,7 @@ export 'schema/ubicaciones_record.dart';
 export 'schema/images_record.dart';
 export 'schema/caracteristicas_record.dart';
 export 'schema/galeria_record.dart';
+export 'schema/services_record.dart';
 
 /// Functions to query NavBarRecords (as a Stream and as a Future).
 Future<int> queryNavBarRecordCount({
@@ -367,6 +369,43 @@ Future<List<GaleriaRecord>> queryGaleriaRecordOnce({
     queryCollectionOnce(
       GaleriaRecord.collection(parent),
       GaleriaRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+/// Functions to query ServicesRecords (as a Stream and as a Future).
+Future<int> queryServicesRecordCount({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+}) =>
+    queryCollectionCount(
+      ServicesRecord.collection,
+      queryBuilder: queryBuilder,
+      limit: limit,
+    );
+
+Stream<List<ServicesRecord>> queryServicesRecord({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollection(
+      ServicesRecord.collection,
+      ServicesRecord.fromSnapshot,
+      queryBuilder: queryBuilder,
+      limit: limit,
+      singleRecord: singleRecord,
+    );
+
+Future<List<ServicesRecord>> queryServicesRecordOnce({
+  Query Function(Query)? queryBuilder,
+  int limit = -1,
+  bool singleRecord = false,
+}) =>
+    queryCollectionOnce(
+      ServicesRecord.collection,
+      ServicesRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,

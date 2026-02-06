@@ -102,7 +102,7 @@ class _SectionTitleWithButtonWidgetState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
+              borderRadius: BorderRadius.circular(0.0),
               child: Image.network(
                 valueOrDefault<String>(
                   widget!.icon,

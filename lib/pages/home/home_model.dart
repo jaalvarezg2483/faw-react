@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/components/section_title_with_button/section_title_with_button_widget.dart';
 import '/components/selected_model/selected_model_widget.dart';
 import '/components/vehicle_card/vehicle_card_widget.dart';
@@ -179,8 +178,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   bool? formValidation;
   // Stores action output result for [Backend Call - API (SendEmailQuotation)] action in Button widget.
   ApiCallResponse? apiResultFormHome;
-  // Model for Redes component.
-  late RedesModel redesModel;
   // Model for SectionTitleWithButton component.
   late SectionTitleWithButtonModel sectionTitleWithButtonModel1;
   // Model for SectionTitleWithButton component.
@@ -208,7 +205,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     correoTextControllerValidator = _correoTextControllerValidator;
     telTextControllerValidator = _telTextControllerValidator;
     comenTextControllerValidator = _comenTextControllerValidator;
-    redesModel = createModel(context, () => RedesModel());
     sectionTitleWithButtonModel1 =
         createModel(context, () => SectionTitleWithButtonModel());
     sectionTitleWithButtonModel2 =
@@ -255,7 +251,6 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
     comenFocusNode?.dispose();
     comenTextController?.dispose();
 
-    redesModel.dispose();
     sectionTitleWithButtonModel1.dispose();
     sectionTitleWithButtonModel2.dispose();
     sectionTitleWithButtonModel3.dispose();

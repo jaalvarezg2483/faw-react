@@ -52,7 +52,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: ContactUsWidget.routeName,
           path: ContactUsWidget.routePath,
-          builder: (context, params) => ContactUsWidget(),
+          builder: (context, params) => ContactUsWidget(
+            buttonActivePreLoaded: params.getParam(
+              'buttonActivePreLoaded',
+              ParamType.String,
+            ),
+          ),
         ),
         FFRoute(
           name: HomeWidget.routeName,
@@ -94,6 +99,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               collectionNamePath: ['Models'],
             ),
           ),
+        ),
+        FFRoute(
+          name: ManteinanceWidget.routeName,
+          path: ManteinanceWidget.routePath,
+          builder: (context, params) => ManteinanceWidget(),
+        ),
+        FFRoute(
+          name: ServicesWidget.routeName,
+          path: ServicesWidget.routePath,
+          builder: (context, params) => ServicesWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
