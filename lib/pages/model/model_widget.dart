@@ -25,7 +25,7 @@ class ModelWidget extends StatefulWidget {
   final String? slug;
 
   static String routeName = 'Model';
-  static String routePath = '/:slug';
+  static String routePath = '/modelos/:slug';
 
   @override
   State<ModelWidget> createState() => _ModelWidgetState();

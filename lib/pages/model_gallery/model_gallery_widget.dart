@@ -31,7 +31,7 @@ class ModelGalleryWidget extends StatefulWidget {
   final DocumentReference? truckInfo;
 
   static String routeName = 'ModelGallery';
-  static String routePath = '/galeria/:slug';
+  static String routePath = '/modelos/:slug/galeria';
 
   @override
   State<ModelGalleryWidget> createState() => _ModelGalleryWidgetState();
