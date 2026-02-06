@@ -46,6 +46,11 @@ class ServicesRecord extends FirestoreRecord {
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
 
+  // "order" field.
+  int? _order;
+  int get order => _order ?? 0;
+  bool hasOrder() => _order != null;
+
   void _initializeFields() {
     _title = snapshotData['title'] as String?;
     _url = snapshotData['url'] as String?;
@@ -53,6 +58,7 @@ class ServicesRecord extends FirestoreRecord {
     _isLink = snapshotData['isLink'] as bool?;
     _link = snapshotData['link'] as String?;
     _isActive = snapshotData['isActive'] as bool?;
+    _order = castToType<int>(snapshotData['order']);
   }
 
   static CollectionReference get collection =>
@@ -96,6 +102,7 @@ Map<String, dynamic> createServicesRecordData({
   bool? isLink,
   String? link,
   bool? isActive,
+  int? order,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -105,6 +112,7 @@ Map<String, dynamic> createServicesRecordData({
       'isLink': isLink,
       'link': link,
       'isActive': isActive,
+      'order': order,
     }.withoutNulls,
   );
 
@@ -121,12 +129,13 @@ class ServicesRecordDocumentEquality implements Equality<ServicesRecord> {
         e1?.page == e2?.page &&
         e1?.isLink == e2?.isLink &&
         e1?.link == e2?.link &&
-        e1?.isActive == e2?.isActive;
+        e1?.isActive == e2?.isActive &&
+        e1?.order == e2?.order;
   }
 
   @override
-  int hash(ServicesRecord? e) => const ListEquality()
-      .hash([e?.title, e?.url, e?.page, e?.isLink, e?.link, e?.isActive]);
+  int hash(ServicesRecord? e) => const ListEquality().hash(
+      [e?.title, e?.url, e?.page, e?.isLink, e?.link, e?.isActive, e?.order]);
 
   @override
   bool isValidKey(Object? o) => o is ServicesRecord;

@@ -114,6 +114,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: HomeCopyWidget.routeName,
           path: HomeCopyWidget.routePath,
           builder: (context, params) => HomeCopyWidget(),
+        ),
+        FFRoute(
+          name: PurdyDriveWidget.routeName,
+          path: PurdyDriveWidget.routePath,
+          builder: (context, params) => PurdyDriveWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

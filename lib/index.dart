@@ -8,3 +8,4 @@ export '/pages/model_gallery/model_gallery_widget.dart' show ModelGalleryWidget;
 export '/pages/manteinance/manteinance_widget.dart' show ManteinanceWidget;
 export '/pages/services/services_widget.dart' show ServicesWidget;
 export '/pages/home_copy/home_copy_widget.dart' show HomeCopyWidget;
+export '/pages/purdy_drive/purdy_drive_widget.dart' show PurdyDriveWidget;
