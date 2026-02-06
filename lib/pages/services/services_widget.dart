@@ -191,154 +191,124 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 40.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Expanded(
-                                      child:
-                                          StreamBuilder<List<ServicesRecord>>(
-                                        stream: queryServicesRecord(
-                                          queryBuilder: (servicesRecord) =>
-                                              servicesRecord.where(
-                                            'isActive',
-                                            isEqualTo: true,
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                decoration: BoxDecoration(),
+                                child: StreamBuilder<List<ServicesRecord>>(
+                                  stream: queryServicesRecord(
+                                    queryBuilder: (servicesRecord) =>
+                                        servicesRecord.where(
+                                      'isActive',
+                                      isEqualTo: true,
+                                    ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context)
+                                                  .primary,
+                                            ),
                                           ),
                                         ),
-                                        builder: (context, snapshot) {
-                                          // Customize what your widget looks like when it's loading.
-                                          if (!snapshot.hasData) {
-                                            return Center(
-                                              child: SizedBox(
-                                                width: 50.0,
-                                                height: 50.0,
-                                                child:
-                                                    CircularProgressIndicator(
-                                                  valueColor:
-                                                      AlwaysStoppedAnimation<
-                                                          Color>(
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
+                                      );
+                                    }
+                                    List<ServicesRecord>
+                                        gridViewServicesRecordList =
+                                        snapshot.data!;
+
+                                    return GridView.builder(
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                          SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 1;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 2;
+                                          } else {
+                                            return 3;
+                                          }
+                                        }(),
+                                        crossAxisSpacing: 10.0,
+                                        mainAxisSpacing: 10.0,
+                                        childAspectRatio: () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 0.75;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 0.85;
+                                          } else {
+                                            return 1.1;
+                                          }
+                                        }(),
+                                      ),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount:
+                                          gridViewServicesRecordList.length,
+                                      itemBuilder: (context, gridViewIndex) {
+                                        final gridViewServicesRecord =
+                                            gridViewServicesRecordList[
+                                                gridViewIndex];
+                                        return Container(
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Container(
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                            .width *
+                                                        1.0,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        1.0,
+                                                constraints: BoxConstraints(
+                                                  maxHeight: 300.0,
+                                                ),
+                                                decoration: BoxDecoration(),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    gridViewServicesRecord.url,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
-                                            );
-                                          }
-                                          List<ServicesRecord>
-                                              gridViewServicesRecordList =
-                                              snapshot.data!;
-
-                                          return GridView.builder(
-                                            padding: EdgeInsets.zero,
-                                            gridDelegate:
-                                                SliverGridDelegateWithFixedCrossAxisCount(
-                                              crossAxisCount: () {
-                                                if (MediaQuery.sizeOf(context)
-                                                        .width <
-                                                    kBreakpointSmall) {
-                                                  return 1;
-                                                } else if (MediaQuery.sizeOf(
-                                                            context)
-                                                        .width <
-                                                    kBreakpointMedium) {
-                                                  return 2;
-                                                } else {
-                                                  return 3;
-                                                }
-                                              }(),
-                                              crossAxisSpacing: 10.0,
-                                              mainAxisSpacing: 10.0,
-                                              childAspectRatio: () {
-                                                if (MediaQuery.sizeOf(context)
-                                                        .width <
-                                                    kBreakpointSmall) {
-                                                  return 0.75;
-                                                } else if (MediaQuery.sizeOf(
-                                                            context)
-                                                        .width <
-                                                    kBreakpointMedium) {
-                                                  return 0.85;
-                                                } else {
-                                                  return 1.1;
-                                                }
-                                              }(),
-                                            ),
-                                            shrinkWrap: true,
-                                            scrollDirection: Axis.vertical,
-                                            itemCount:
-                                                gridViewServicesRecordList
-                                                    .length,
-                                            itemBuilder:
-                                                (context, gridViewIndex) {
-                                              final gridViewServicesRecord =
-                                                  gridViewServicesRecordList[
-                                                      gridViewIndex];
-                                              return Container(
-                                                decoration: BoxDecoration(),
-                                                child: Column(
+                                              Padding(
+                                                padding: EdgeInsets.all(20.0),
+                                                child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
                                                   children: [
-                                                    Container(
-                                                      width: MediaQuery.sizeOf(
+                                                    Text(
+                                                      gridViewServicesRecord
+                                                          .title,
+                                                      style:
+                                                          FlutterFlowTheme.of(
                                                                   context)
-                                                              .width *
-                                                          1.0,
-                                                      height: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .height *
-                                                          1.0,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                        maxHeight: 300.0,
-                                                      ),
-                                                      decoration:
-                                                          BoxDecoration(),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                        child: Image.network(
-                                                          gridViewServicesRecord
-                                                              .url,
-                                                          fit: BoxFit.cover,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.all(20.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            gridViewServicesRecord
-                                                                .title,
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  fontSize:
-                                                                      18.0,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -348,118 +318,120 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    FFButtonWidget(
-                                                      onPressed: () async {
-                                                        logFirebaseEvent(
-                                                            'SERVICES_PAGE_VER_MS_BTN_ON_TAP');
-                                                        if (gridViewServicesRecord
-                                                                .isLink ==
-                                                            true) {
-                                                          await launchURL(
-                                                              gridViewServicesRecord
-                                                                  .link);
-                                                        } else {
-                                                          if (gridViewServicesRecord
-                                                                  .page ==
-                                                              'ContactUs-Talleres') {
-                                                            context.pushNamed(
-                                                              ContactUsWidget
-                                                                  .routeName,
-                                                              queryParameters: {
-                                                                'buttonActivePreLoaded':
-                                                                    serializeParam(
-                                                                  'Talleres',
-                                                                  ParamType
-                                                                      .String,
-                                                                ),
-                                                              }.withoutNulls,
-                                                            );
-                                                          } else {
-                                                            await actions
-                                                                .navigateToPage(
-                                                              context,
-                                                              gridViewServicesRecord
-                                                                  .page,
-                                                            );
-                                                          }
-                                                        }
-                                                      },
-                                                      text: 'Ver más',
-                                                      icon: Icon(
-                                                        Icons.arrow_forward,
-                                                        size: 15.0,
-                                                      ),
-                                                      options: FFButtonOptions(
-                                                        width: 180.0,
-                                                        height: 40.0,
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
+                                                                fontSize: 18.0,
+                                                                letterSpacing:
                                                                     0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        iconAlignment:
-                                                            IconAlignment.end,
-                                                        iconPadding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  font: GoogleFonts
-                                                                      .interTight(
-                                                                    fontWeight: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontWeight,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .titleSmall
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: Colors
-                                                                      .white,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontWeight,
-                                                                  fontStyle: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .titleSmall
-                                                                      .fontStyle,
-                                                                ),
-                                                        elevation: 0.0,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(50.0),
-                                                      ),
+                                                                fontWeight: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
                                                     ),
                                                   ],
                                                 ),
-                                              );
-                                            },
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                              ),
+                                              FFButtonWidget(
+                                                onPressed: () async {
+                                                  logFirebaseEvent(
+                                                      'SERVICES_PAGE_VER_MS_BTN_ON_TAP');
+                                                  if (gridViewServicesRecord
+                                                          .isLink ==
+                                                      true) {
+                                                    await launchURL(
+                                                        gridViewServicesRecord
+                                                            .link);
+                                                  } else {
+                                                    if (gridViewServicesRecord
+                                                            .page ==
+                                                        'ContactUs-Talleres') {
+                                                      context.pushNamed(
+                                                        ContactUsWidget
+                                                            .routeName,
+                                                        queryParameters: {
+                                                          'buttonActivePreLoaded':
+                                                              serializeParam(
+                                                            'Talleres',
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    } else {
+                                                      await actions
+                                                          .navigateToPage(
+                                                        context,
+                                                        gridViewServicesRecord
+                                                            .page,
+                                                      );
+                                                    }
+                                                  }
+                                                },
+                                                text: 'Ver más',
+                                                icon: Icon(
+                                                  Icons.arrow_forward,
+                                                  size: 15.0,
+                                                ),
+                                                options: FFButtonOptions(
+                                                  width: 180.0,
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          16.0, 0.0, 16.0, 0.0),
+                                                  iconAlignment:
+                                                      IconAlignment.end,
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  textStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .override(
+                                                            font: GoogleFonts
+                                                                .interTight(
+                                                              fontWeight:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontWeight,
+                                                              fontStyle:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .fontStyle,
+                                                            ),
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .fontStyle,
+                                                          ),
+                                                  elevation: 0.0,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          50.0),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ].divide(SizedBox(height: 6.0)),
