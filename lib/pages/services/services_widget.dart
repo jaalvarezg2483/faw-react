@@ -19,7 +19,7 @@ class ServicesWidget extends StatefulWidget {
   const ServicesWidget({super.key});
 
   static String routeName = 'Services';
-  static String routePath = '/services';
+  static String routePath = '/servicios';
 
   @override
   State<ServicesWidget> createState() => _ServicesWidgetState();
