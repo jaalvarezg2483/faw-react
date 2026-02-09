@@ -945,7 +945,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 'HOME_PAGE_VER_MS_BTN_ON_TAP');
 
                                             context.pushNamed(
-                                                ManteinanceWidget.routeName);
+                                                MaintenanceWidget.routeName);
                                           },
                                           text: 'Ver más',
                                           options: FFButtonOptions(

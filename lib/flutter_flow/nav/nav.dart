@@ -101,9 +101,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: ManteinanceWidget.routeName,
-          path: ManteinanceWidget.routePath,
-          builder: (context, params) => ManteinanceWidget(),
+          name: MaintenanceWidget.routeName,
+          path: MaintenanceWidget.routePath,
+          builder: (context, params) => MaintenanceWidget(),
         ),
         FFRoute(
           name: ServicesWidget.routeName,
@@ -119,6 +119,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: PurdyDriveWidget.routeName,
           path: PurdyDriveWidget.routePath,
           builder: (context, params) => PurdyDriveWidget(),
+        ),
+        FFRoute(
+          name: WorkshopsWidget.routeName,
+          path: WorkshopsWidget.routePath,
+          builder: (context, params) => WorkshopsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

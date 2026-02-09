@@ -3516,7 +3516,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                 'HOME_COPY_PAGE_VER_MS_BTN_ON_TAP');
 
                                             context.pushNamed(
-                                                ManteinanceWidget.routeName);
+                                                MaintenanceWidget.routeName);
                                           },
                                           text: 'Ver más',
                                           options: FFButtonOptions(

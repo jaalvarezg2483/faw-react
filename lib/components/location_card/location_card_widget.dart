@@ -87,9 +87,9 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 15.0, 0.0),
                             child: Icon(
-                              Icons.add,
-                              color: FlutterFlowTheme.of(context).primary,
-                              size: 24.0,
+                              Icons.add_circle_outline,
+                              color: FlutterFlowTheme.of(context).secondary,
+                              size: 27.0,
                             ),
                           ),
                           Text(
@@ -101,13 +101,12 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                 .bodyMedium
                                 .override(
                                   font: GoogleFonts.inter(
-                                    fontWeight: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .fontWeight,
+                                    fontWeight: FontWeight.bold,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
+                                  color: FlutterFlowTheme.of(context).primary,
                                   fontSize: () {
                                     if (MediaQuery.sizeOf(context).width <
                                         kBreakpointSmall) {
@@ -125,9 +124,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     }
                                   }(),
                                   letterSpacing: 0.0,
-                                  fontWeight: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontWeight,
+                                  fontWeight: FontWeight.bold,
                                   fontStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .fontStyle,
