@@ -847,12 +847,26 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Text(
-                                        '• Por medio de transferencia bancaria o en nuestras sucursales.\n• Por medio de envío de link de pago para su tarjeta de crédito o débito.',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              font: GoogleFonts.inter(
+                                      Flexible(
+                                        child: Text(
+                                          '• Por medio de transferencia bancaria o en nuestras sucursales.\n• Por medio de envío de link de pago para su tarjeta de crédito o débito.',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                font: GoogleFonts.inter(
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .fontStyle,
+                                                ),
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
                                                 fontWeight:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -862,17 +876,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                         .bodyMedium
                                                         .fontStyle,
                                               ),
-                                              fontSize: 16.0,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
-                                            ),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -910,12 +914,24 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Text(
-                                      '• 3 ó 6 meses sin intereses.\n• Purdy Cuotas hasta 36 meses\n• Hasta 12 meses sin intereses con tarjeta PURDY CAFSA',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
+                                    Flexible(
+                                      child: Text(
+                                        '• 3 ó 6 meses sin intereses.\n• Purdy Cuotas hasta 36 meses\n• Hasta 12 meses sin intereses con tarjeta PURDY CAFSA',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              font: GoogleFonts.inter(
+                                                fontWeight:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontWeight,
+                                                fontStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .fontStyle,
+                                              ),
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
                                               fontWeight:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -925,17 +941,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                       .bodyMedium
                                                       .fontStyle,
                                             ),
-                                            fontSize: 16.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -984,18 +990,13 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.center,
                                         children: [
-                                          Container(
-                                            width: 5.0,
-                                            height: 5.0,
-                                            decoration: BoxDecoration(),
-                                          ),
                                           Align(
                                             alignment:
                                                 AlignmentDirectional(0.0, 0.0),
                                             child: Text(
-                                              'Contactar asesor',
+                                              'Contactar con un asesor',
                                               style: FlutterFlowTheme.of(
                                                       context)
                                                   .bodyMedium
@@ -1022,12 +1023,6 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                             .fontStyle,
                                                   ),
                                             ),
-                                          ),
-                                          Icon(
-                                            Icons.arrow_forward,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primary,
-                                            size: 24.0,
                                           ),
                                         ],
                                       ),

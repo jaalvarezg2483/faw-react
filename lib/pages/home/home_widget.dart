@@ -700,10 +700,6 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 ),
                                           ),
                                         ),
-                                        Image.asset(
-                                          'assets/images/Group_1321316790.png',
-                                          fit: BoxFit.cover,
-                                        ),
                                         Text(
                                           'Total Support de FAW Trucks Costa Rica se fundamenta en la excelencia del servicio y un acompañamiento integral durante todo el ciclo de vida de tu camión.\n\nNuestro enfoque está en tu satisfacción, optimizando la operación del vehículo, mejorando su desempeño\ny ayudándote a reducir los costos operativos de tu negocio.\n\nConfiá en FAW Trucks Costa Rica para recibir un servicio de alta calidad, asesoramiento técnico especializado y programas diseñados para garantizar un rendimiento confiable, eficiente y duradero de tu flota.',
                                           style: FlutterFlowTheme.of(context)
@@ -736,10 +732,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 25.0, 0.0, 0.0),
+                                                  0.0, 25.0, 0.0, 25.0),
                                           child: FFButtonWidget(
-                                            onPressed: () {
-                                              print('Button pressed ...');
+                                            onPressed: () async {
+                                              logFirebaseEvent(
+                                                  'HOME_PAGE_VER_MS_BTN_ON_TAP');
+
+                                              context.pushNamed(
+                                                  ServicesWidget.routeName);
                                             },
                                             text: 'Ver más',
                                             options: FFButtonOptions(
@@ -796,6 +796,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   BorderRadius.circular(50.0),
                                             ),
                                           ),
+                                        ),
+                                        Image.asset(
+                                          'assets/images/Group_1321316790.png',
+                                          fit: BoxFit.cover,
                                         ),
                                       ].divide(SizedBox(height: 10.0)),
                                     ),
@@ -1046,15 +1050,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 'HOME_PAGE_VER_MS_BTN_ON_TAP');
 
                                             context.pushNamed(
-                                              ContactUsWidget.routeName,
-                                              queryParameters: {
-                                                'buttonActivePreLoaded':
-                                                    serializeParam(
-                                                  'Talleres',
-                                                  ParamType.String,
-                                                ),
-                                              }.withoutNulls,
-                                            );
+                                                WorkshopsWidget.routeName);
                                           },
                                           text: 'Ver más',
                                           options: FFButtonOptions(

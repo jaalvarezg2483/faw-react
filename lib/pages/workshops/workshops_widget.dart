@@ -3364,9 +3364,9 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                       ].divide(
                                                           SizedBox(width: 5.0)),
                                                     ),
-                                                    if (_model
-                                                            .termsCheckboxValue ==
-                                                        false)
+                                                    if ((_model.termsCheckboxValue ==
+                                                            false) ||
+                                                        !_model.checkboxValue!)
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
