@@ -269,12 +269,12 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                     return (MediaQuery.sizeOf(
                                                                 context)
                                                             .width *
-                                                        0.5);
+                                                        0.35);
                                                   } else {
                                                     return (MediaQuery.sizeOf(
                                                                 context)
                                                             .width *
-                                                        0.3);
+                                                        0.25);
                                                   }
                                                 }(),
                                                 decoration: BoxDecoration(),
