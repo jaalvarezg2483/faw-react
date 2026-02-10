@@ -408,8 +408,8 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Wrap(
                                       spacing: 10.0,
-                                      runSpacing: 15.0,
-                                      alignment: WrapAlignment.spaceAround,
+                                      runSpacing: 23.0,
+                                      alignment: WrapAlignment.spaceBetween,
                                       crossAxisAlignment:
                                           WrapCrossAlignment.start,
                                       direction: Axis.horizontal,
@@ -434,7 +434,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                             } else {
                                               return (MediaQuery.sizeOf(context)
                                                       .width *
-                                                  0.25);
+                                                  0.4);
                                             }
                                           }(),
                                           decoration: BoxDecoration(),
@@ -512,7 +512,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                             } else {
                                               return (MediaQuery.sizeOf(context)
                                                       .width *
-                                                  0.25);
+                                                  0.4);
                                             }
                                           }(),
                                           decoration: BoxDecoration(),
@@ -536,7 +536,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Aseguran que tu vehículo tendrá un funcionamiento óptimo y seguro.',
+                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -590,7 +590,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                             } else {
                                               return (MediaQuery.sizeOf(context)
                                                       .width *
-                                                  0.25);
+                                                  0.4);
                                             }
                                           }(),
                                           decoration: BoxDecoration(),
@@ -614,7 +614,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Alarga la vida útil de las piezas de desgaste cuidando tu bolsillo.',
+                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -668,7 +668,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                             } else {
                                               return (MediaQuery.sizeOf(context)
                                                       .width *
-                                                  0.25);
+                                                  0.4);
                                             }
                                           }(),
                                           decoration: BoxDecoration(),
@@ -692,7 +692,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Se realizan con materiales y repuestos originales con el mejor rendimiento y durabilidad.',
+                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -746,7 +746,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                             } else {
                                               return (MediaQuery.sizeOf(context)
                                                       .width *
-                                                  0.25);
+                                                  0.4);
                                             }
                                           }(),
                                           decoration: BoxDecoration(),
@@ -770,7 +770,7 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Son realizados por técnicos expertos, capacitados y certificados por el fabricante.',
+                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium

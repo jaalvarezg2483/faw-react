@@ -652,8 +652,11 @@ class _PurdyDriveWidgetState extends State<PurdyDriveWidget> {
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 40.0),
                                 child: FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
+                                  onPressed: () async {
+                                    logFirebaseEvent(
+                                        'PURDY_DRIVE__CONSULT_CON_POST_VENTA_BTN_');
+                                    await launchURL(
+                                        'https://api.whatsapp.com/send?phone=50685891000');
                                   },
                                   text: '¡Consultá con Post Venta!',
                                   options: FFButtonOptions(
