@@ -230,59 +230,53 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                           );
                                         }
                                         List<ServicesRecord>
-                                            gridViewServicesRecordList =
+                                            wrapServicesRecordList =
                                             snapshot.data!;
 
-                                        return GridView.builder(
-                                          padding: EdgeInsets.zero,
-                                          gridDelegate:
-                                              SliverGridDelegateWithFixedCrossAxisCount(
-                                            crossAxisCount: () {
-                                              if (MediaQuery.sizeOf(context)
-                                                      .width <
-                                                  kBreakpointSmall) {
-                                                return 1;
-                                              } else if (MediaQuery.sizeOf(
-                                                          context)
-                                                      .width <
-                                                  kBreakpointMedium) {
-                                                return 2;
-                                              } else {
-                                                return 3;
-                                              }
-                                            }(),
-                                            crossAxisSpacing: 10.0,
-                                            mainAxisSpacing: 10.0,
-                                            childAspectRatio: () {
-                                              if (MediaQuery.sizeOf(context)
-                                                      .width <
-                                                  kBreakpointSmall) {
-                                                return 0.75;
-                                              } else if (MediaQuery.sizeOf(
-                                                          context)
-                                                      .width <
-                                                  kBreakpointMedium) {
-                                                return 0.75;
-                                              } else {
-                                                return 0.9;
-                                              }
-                                            }(),
-                                          ),
-                                          primary: false,
-                                          shrinkWrap: true,
-                                          scrollDirection: Axis.vertical,
-                                          itemCount:
-                                              gridViewServicesRecordList.length,
-                                          itemBuilder:
-                                              (context, gridViewIndex) {
-                                            final gridViewServicesRecord =
-                                                gridViewServicesRecordList[
-                                                    gridViewIndex];
+                                        return Wrap(
+                                          spacing: 12.0,
+                                          runSpacing: 20.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: List.generate(
+                                              wrapServicesRecordList.length,
+                                              (wrapIndex) {
+                                            final wrapServicesRecord =
+                                                wrapServicesRecordList[
+                                                    wrapIndex];
                                             return Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 0.0, 0.0, 15.0),
                                               child: Container(
+                                                width: () {
+                                                  if (MediaQuery.sizeOf(context)
+                                                          .width <
+                                                      kBreakpointSmall) {
+                                                    return MediaQuery.sizeOf(
+                                                            context)
+                                                        .width;
+                                                  } else if (MediaQuery.sizeOf(
+                                                              context)
+                                                          .width <
+                                                      kBreakpointLarge) {
+                                                    return (MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.5);
+                                                  } else {
+                                                    return (MediaQuery.sizeOf(
+                                                                context)
+                                                            .width *
+                                                        0.3);
+                                                  }
+                                                }(),
                                                 decoration: BoxDecoration(),
                                                 child: Column(
                                                   mainAxisSize:
@@ -307,7 +301,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                             BorderRadius
                                                                 .circular(8.0),
                                                         child: Image.network(
-                                                          gridViewServicesRecord
+                                                          wrapServicesRecord
                                                               .url,
                                                           fit: BoxFit.cover,
                                                         ),
@@ -323,7 +317,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                           children: [
                                                             Flexible(
                                                               child: Text(
-                                                                gridViewServicesRecord
+                                                                wrapServicesRecord
                                                                     .title,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -365,14 +359,14 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                         onPressed: () async {
                                                           logFirebaseEvent(
                                                               'SERVICES_PAGE_VER_MS_BTN_ON_TAP');
-                                                          if (gridViewServicesRecord
+                                                          if (wrapServicesRecord
                                                                   .isLink ==
                                                               true) {
                                                             await launchURL(
-                                                                gridViewServicesRecord
+                                                                wrapServicesRecord
                                                                     .link);
                                                           } else {
-                                                            if (gridViewServicesRecord
+                                                            if (wrapServicesRecord
                                                                     .page ==
                                                                 'ContactUs-Talleres') {
                                                               context.pushNamed(
@@ -392,7 +386,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                               await actions
                                                                   .navigateToPage(
                                                                 context,
-                                                                gridViewServicesRecord
+                                                                wrapServicesRecord
                                                                     .page,
                                                               );
                                                             }
@@ -489,14 +483,14 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                                   () async {
                                                                 logFirebaseEvent(
                                                                     'SERVICES_PAGE_VER_MS_BTN_ON_TAP');
-                                                                if (gridViewServicesRecord
+                                                                if (wrapServicesRecord
                                                                         .isLink ==
                                                                     true) {
                                                                   await launchURL(
-                                                                      gridViewServicesRecord
+                                                                      wrapServicesRecord
                                                                           .link);
                                                                 } else {
-                                                                  if (gridViewServicesRecord
+                                                                  if (wrapServicesRecord
                                                                           .page ==
                                                                       'ContactUs-Talleres') {
                                                                     context
@@ -517,7 +511,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                                     await actions
                                                                         .navigateToPage(
                                                                       context,
-                                                                      gridViewServicesRecord
+                                                                      wrapServicesRecord
                                                                           .page,
                                                                     );
                                                                   }
@@ -595,7 +589,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                 ),
                                               ),
                                             );
-                                          },
+                                          }),
                                         );
                                       },
                                     ),
