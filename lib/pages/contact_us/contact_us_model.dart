@@ -41,6 +41,8 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
   late NavBarMobv2Model navBarMobv2Model;
+  // Model for Footer component.
+  late FooterModel footerModel;
   // State field(s) for ddType widget.
   String? ddTypeValue;
   FormFieldController<String>? ddTypeValueController;
@@ -177,13 +179,12 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
   ApiCallResponse? apiResultFormHome;
   // Model for Redes component.
   late RedesModel redesModel;
-  // Model for Footer component.
-  late FooterModel footerModel;
 
   @override
   void initState(BuildContext context) {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
+    footerModel = createModel(context, () => FooterModel());
     tfTextControllerValidator = _tfTextControllerValidator;
     tfCedJuridicaTextControllerValidator =
         _tfCedJuridicaTextControllerValidator;
@@ -196,13 +197,13 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
     telTextControllerValidator = _telTextControllerValidator;
     comenTextControllerValidator = _comenTextControllerValidator;
     redesModel = createModel(context, () => RedesModel());
-    footerModel = createModel(context, () => FooterModel());
   }
 
   @override
   void dispose() {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
+    footerModel.dispose();
     tfFocusNode?.dispose();
     tfTextController?.dispose();
 
@@ -234,6 +235,5 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
     comenTextController?.dispose();
 
     redesModel.dispose();
-    footerModel.dispose();
   }
 }

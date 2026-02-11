@@ -182,6 +182,18 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                         child: NavBarMobv2Widget(),
                       ),
                     ),
+                  Container(
+                    width: double.infinity,
+                    height: 115.0,
+                    decoration: BoxDecoration(
+                      color: FlutterFlowTheme.of(context).secondaryBackground,
+                    ),
+                    child: wrapWithModel(
+                      model: _model.footerModel,
+                      updateCallback: () => safeSetState(() {}),
+                      child: FooterWidget(),
+                    ),
+                  ),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Column(
@@ -4139,19 +4151,6 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                               model: _model.redesModel,
                               updateCallback: () => safeSetState(() {}),
                               child: RedesWidget(),
-                            ),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 115.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: wrapWithModel(
-                              model: _model.footerModel,
-                              updateCallback: () => safeSetState(() {}),
-                              child: FooterWidget(),
                             ),
                           ),
                         ],

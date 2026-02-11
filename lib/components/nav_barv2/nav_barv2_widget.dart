@@ -68,7 +68,16 @@ class _NavBarv2WidgetState extends State<NavBarv2Widget> {
                 onTap: () async {
                   logFirebaseEvent('NAV_BARV2_COMP_Image_1pq5jeli_ON_TAP');
 
-                  context.pushNamed(HomeWidget.routeName);
+                  context.pushNamed(
+                    HomeWidget.routeName,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.fade,
+                        duration: Duration(milliseconds: 0),
+                      ),
+                    },
+                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
