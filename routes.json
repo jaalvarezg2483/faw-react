@@ -16,6 +16,11 @@
             "statusCode": 200
         },
         {
+            "route": "/terms",
+            "serve": "/index.html",
+            "statusCode": 200
+        },
+        {
             "route": "/manifest.json",
             "serve": "/manifest.json",
             "statusCode": 200
@@ -26,7 +31,7 @@
             "statusCode": 200
         },
         {
-            "route": "/terms",
+            "route": "/sitemap",
             "serve": "/index.html",
             "statusCode": 200
         },
