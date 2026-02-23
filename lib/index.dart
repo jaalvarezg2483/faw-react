@@ -10,3 +10,4 @@ export '/pages/services/services_widget.dart' show ServicesWidget;
 export '/pages/home_copy/home_copy_widget.dart' show HomeCopyWidget;
 export '/pages/purdy_drive/purdy_drive_widget.dart' show PurdyDriveWidget;
 export '/pages/workshops/workshops_widget.dart' show WorkshopsWidget;
+export '/pages/site_map/site_map_widget.dart' show SiteMapWidget;

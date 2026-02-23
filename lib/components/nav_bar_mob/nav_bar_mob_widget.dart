@@ -88,7 +88,7 @@ class _NavBarMobWidgetState extends State<NavBarMobWidget> {
                         context.pushNamed(
                           HomeWidget.routeName,
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            '__transition_info__': TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
                               duration: Duration(milliseconds: 0),

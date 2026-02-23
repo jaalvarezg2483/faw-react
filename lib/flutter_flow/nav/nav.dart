@@ -124,6 +124,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: WorkshopsWidget.routeName,
           path: WorkshopsWidget.routePath,
           builder: (context, params) => WorkshopsWidget(),
+        ),
+        FFRoute(
+          name: SiteMapWidget.routeName,
+          path: SiteMapWidget.routePath,
+          builder: (context, params) => SiteMapWidget(
+            buttonActivePreLoaded: params.getParam(
+              'buttonActivePreLoaded',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
