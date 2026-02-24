@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -307,35 +306,23 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                         ),
                                                       ),
                                                     ),
-                                                    Flexible(
-                                                      child: Padding(
-                                                        padding: EdgeInsets.all(
-                                                            20.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Text(
-                                                                wrapServicesRecord
-                                                                    .title,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .inter(
-                                                                        fontWeight: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontWeight,
-                                                                        fontStyle: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .fontStyle,
-                                                                      ),
-                                                                      fontSize:
-                                                                          18.0,
-                                                                      letterSpacing:
-                                                                          0.0,
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsets.all(20.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Flexible(
+                                                            child: Text(
+                                                              wrapServicesRecord
+                                                                  .title,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    font: GoogleFonts
+                                                                        .inter(
                                                                       fontWeight: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -345,10 +332,22 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                                                           .bodyMedium
                                                                           .fontStyle,
                                                                     ),
-                                                              ),
+                                                                    fontSize:
+                                                                        18.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontWeight,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
                                                             ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                     if (responsiveVisibility(
@@ -597,15 +596,6 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                 ),
                               ].divide(SizedBox(height: 16.0)),
                             ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(),
-                          child: wrapWithModel(
-                            model: _model.redesModel,
-                            updateCallback: () => safeSetState(() {}),
-                            child: RedesWidget(),
                           ),
                         ),
                         Container(

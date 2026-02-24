@@ -234,7 +234,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                 ),
                                           ),
                                           Text(
-                                            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim ',
+                                            'Contamos con opciones de talleres a tu disposición para que podas realizar mantenimientos preventivos, mecánica rápida o reparaciones mayores, así como carrocería.\n\n· Aplica para flotas y particulares\n\n· Aplica restricciones: disponibilidad de talleres queda sujeta al modelo y reparación que desea realizar.',
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
@@ -284,8 +284,8 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                         ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/483/600',
+                                          child: Image.asset(
+                                            'assets/images/mechanic-garage_1.png',
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
                                                     1070.0
@@ -3448,265 +3448,285 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                             MainAxisSize.max,
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                                .center,
+                                                                .start,
                                                         children: [
                                                           Flexible(
-                                                            child:
-                                                                FFButtonWidget(
-                                                              onPressed:
-                                                                  () async {
-                                                                logFirebaseEvent(
-                                                                    'WORKSHOPS_PAGE_ENVIAR_BTN_ON_TAP');
-                                                                var _shouldSetState =
-                                                                    false;
-                                                                await Future
-                                                                    .wait([
-                                                                  Future(
-                                                                      () async {
-                                                                    if (!(_model.ddTypeValue !=
-                                                                            null &&
-                                                                        _model.ddTypeValue !=
-                                                                            '')) {
-                                                                      _model.isIdNotSelected =
-                                                                          true;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                      if (_shouldSetState)
+                                                            child: Container(
+                                                              width: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .width *
+                                                                  1.0,
+                                                              constraints:
+                                                                  BoxConstraints(
+                                                                maxWidth: 400.0,
+                                                              ),
+                                                              decoration:
+                                                                  BoxDecoration(),
+                                                              child:
+                                                                  FFButtonWidget(
+                                                                onPressed:
+                                                                    () async {
+                                                                  logFirebaseEvent(
+                                                                      'WORKSHOPS_PAGE_ENVIAR_BTN_ON_TAP');
+                                                                  var _shouldSetState =
+                                                                      false;
+                                                                  await Future
+                                                                      .wait([
+                                                                    Future(
+                                                                        () async {
+                                                                      if (!(_model.ddTypeValue !=
+                                                                              null &&
+                                                                          _model.ddTypeValue !=
+                                                                              '')) {
+                                                                        _model.isIdNotSelected =
+                                                                            true;
                                                                         safeSetState(
                                                                             () {});
-                                                                      return;
-                                                                    }
-                                                                  }),
-                                                                  Future(
-                                                                      () async {
-                                                                    if (_model
-                                                                            .termsCheckboxValue !=
-                                                                        true) {
-                                                                      if (_shouldSetState)
-                                                                        safeSetState(
-                                                                            () {});
-                                                                      return;
-                                                                    }
-                                                                  }),
-                                                                  Future(
-                                                                      () async {
-                                                                    _model.formValidation =
-                                                                        true;
-                                                                    if (_model.formKey.currentState ==
-                                                                            null ||
-                                                                        !_model
-                                                                            .formKey
-                                                                            .currentState!
-                                                                            .validate()) {
-                                                                      safeSetState(() =>
-                                                                          _model.formValidation =
-                                                                              false);
-                                                                      return;
-                                                                    }
-                                                                    if (_model
-                                                                            .ddTypeValue ==
-                                                                        null) {
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        return;
+                                                                      }
+                                                                    }),
+                                                                    Future(
+                                                                        () async {
+                                                                      if (_model
+                                                                              .termsCheckboxValue !=
+                                                                          true) {
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        return;
+                                                                      }
+                                                                    }),
+                                                                    Future(
+                                                                        () async {
                                                                       _model.formValidation =
-                                                                          false;
-                                                                      safeSetState(
-                                                                          () {});
-                                                                      return;
-                                                                    }
+                                                                          true;
+                                                                      if (_model.formKey.currentState ==
+                                                                              null ||
+                                                                          !_model
+                                                                              .formKey
+                                                                              .currentState!
+                                                                              .validate()) {
+                                                                        safeSetState(() =>
+                                                                            _model.formValidation =
+                                                                                false);
+                                                                        return;
+                                                                      }
+                                                                      if (_model
+                                                                              .ddTypeValue ==
+                                                                          null) {
+                                                                        _model.formValidation =
+                                                                            false;
+                                                                        safeSetState(
+                                                                            () {});
+                                                                        return;
+                                                                      }
+                                                                      _shouldSetState =
+                                                                          true;
+                                                                    }),
+                                                                  ]);
+                                                                  if ((_model.ddTypeValue !=
+                                                                              null &&
+                                                                          _model.ddTypeValue !=
+                                                                              '') &&
+                                                                      (_model.termsCheckboxValue ==
+                                                                          true) &&
+                                                                      (_model.formValidation ==
+                                                                          true)) {
+                                                                    _model.apiResultFormHome =
+                                                                        await BackendAPIGroup
+                                                                            .sendContactFormCall
+                                                                            .call(
+                                                                      name: _model
+                                                                          .nombreTextController
+                                                                          .text,
+                                                                      surname: _model
+                                                                          .apellidoTextController
+                                                                          .text,
+                                                                      email: _model
+                                                                          .correoTextController
+                                                                          .text,
+                                                                      phone: _model
+                                                                          .telTextController
+                                                                          .text,
+                                                                      comment: _model
+                                                                          .comenTextController
+                                                                          .text,
+                                                                    );
+
                                                                     _shouldSetState =
                                                                         true;
-                                                                  }),
-                                                                ]);
-                                                                if ((_model.ddTypeValue !=
-                                                                            null &&
-                                                                        _model.ddTypeValue !=
-                                                                            '') &&
-                                                                    (_model.termsCheckboxValue ==
-                                                                        true) &&
-                                                                    (_model.formValidation ==
+                                                                    if ((_model
+                                                                            .apiResultFormHome
+                                                                            ?.succeeded ??
                                                                         true)) {
-                                                                  _model.apiResultFormHome =
-                                                                      await BackendAPIGroup
-                                                                          .sendContactFormCall
-                                                                          .call(
-                                                                    name: _model
-                                                                        .nombreTextController
-                                                                        .text,
-                                                                    surname: _model
-                                                                        .apellidoTextController
-                                                                        .text,
-                                                                    email: _model
-                                                                        .correoTextController
-                                                                        .text,
-                                                                    phone: _model
-                                                                        .telTextController
-                                                                        .text,
-                                                                    comment: _model
-                                                                        .comenTextController
-                                                                        .text,
-                                                                  );
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (alertDialogContext) {
+                                                                          return WebViewAware(
+                                                                            child:
+                                                                                AlertDialog(
+                                                                              title: Text('¡Listo!'),
+                                                                              content: Text('Tu solicitud ha sido enviada.'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                  child: Text('Ok'),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                      safeSetState(
+                                                                          () {
+                                                                        _model
+                                                                            .ddTypeValueController
+                                                                            ?.reset();
+                                                                        _model.ddTypeValue =
+                                                                            null;
+                                                                      });
+                                                                    } else {
+                                                                      await showDialog(
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (alertDialogContext) {
+                                                                          return WebViewAware(
+                                                                            child:
+                                                                                AlertDialog(
+                                                                              title: Text('Error al enviar tu información '),
+                                                                              content: Text('Ocurrrió un error al enviar tu solicitud, por favor inténtalo de nuevo'),
+                                                                              actions: [
+                                                                                TextButton(
+                                                                                  onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                  child: Text('Ok'),
+                                                                                ),
+                                                                              ],
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      );
+                                                                      if (_shouldSetState)
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      return;
+                                                                    }
 
-                                                                  _shouldSetState =
-                                                                      true;
-                                                                  if ((_model
-                                                                          .apiResultFormHome
-                                                                          ?.succeeded ??
-                                                                      true)) {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return WebViewAware(
-                                                                          child:
-                                                                              AlertDialog(
-                                                                            title:
-                                                                                Text('¡Listo!'),
-                                                                            content:
-                                                                                Text('Tu solicitud ha sido enviada.'),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: Text('Ok'),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    );
                                                                     safeSetState(
                                                                         () {
                                                                       _model
-                                                                          .ddTypeValueController
-                                                                          ?.reset();
-                                                                      _model.ddTypeValue =
-                                                                          null;
+                                                                          .tfTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .tfDIMEXTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .tfPassportTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .nombreTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .correoTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .comenTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .tfOtherIdTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .tfCedJuridicaTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .telTextController
+                                                                          ?.clear();
+                                                                      _model
+                                                                          .apellidoTextController
+                                                                          ?.clear();
                                                                     });
-                                                                  } else {
-                                                                    await showDialog(
-                                                                      context:
-                                                                          context,
-                                                                      builder:
-                                                                          (alertDialogContext) {
-                                                                        return WebViewAware(
-                                                                          child:
-                                                                              AlertDialog(
-                                                                            title:
-                                                                                Text('Error al enviar tu información '),
-                                                                            content:
-                                                                                Text('Ocurrrió un error al enviar tu solicitud, por favor inténtalo de nuevo'),
-                                                                            actions: [
-                                                                              TextButton(
-                                                                                onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                child: Text('Ok'),
-                                                                              ),
-                                                                            ],
-                                                                          ),
-                                                                        );
+
+                                                                    context
+                                                                        .pushNamed(
+                                                                      HomeWidget
+                                                                          .routeName,
+                                                                      extra: <String,
+                                                                          dynamic>{
+                                                                        '__transition_info__':
+                                                                            TransitionInfo(
+                                                                          hasTransition:
+                                                                              true,
+                                                                          transitionType:
+                                                                              PageTransitionType.fade,
+                                                                          duration:
+                                                                              Duration(milliseconds: 0),
+                                                                        ),
                                                                       },
                                                                     );
+
+                                                                    if (_shouldSetState)
+                                                                      safeSetState(
+                                                                          () {});
+                                                                    return;
+                                                                  } else {
                                                                     if (_shouldSetState)
                                                                       safeSetState(
                                                                           () {});
                                                                     return;
                                                                   }
 
-                                                                  safeSetState(
-                                                                      () {
-                                                                    _model
-                                                                        .tfTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .tfDIMEXTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .tfPassportTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .nombreTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .correoTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .comenTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .tfOtherIdTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .tfCedJuridicaTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .telTextController
-                                                                        ?.clear();
-                                                                    _model
-                                                                        .apellidoTextController
-                                                                        ?.clear();
-                                                                  });
-
-                                                                  context
-                                                                      .pushNamed(
-                                                                    HomeWidget
-                                                                        .routeName,
-                                                                    extra: <String,
-                                                                        dynamic>{
-                                                                      '__transition_info__':
-                                                                          TransitionInfo(
-                                                                        hasTransition:
-                                                                            true,
-                                                                        transitionType:
-                                                                            PageTransitionType.fade,
-                                                                        duration:
-                                                                            Duration(milliseconds: 0),
-                                                                      ),
-                                                                    },
-                                                                  );
-
                                                                   if (_shouldSetState)
                                                                     safeSetState(
                                                                         () {});
-                                                                  return;
-                                                                } else {
-                                                                  if (_shouldSetState)
-                                                                    safeSetState(
-                                                                        () {});
-                                                                  return;
-                                                                }
-
-                                                                if (_shouldSetState)
-                                                                  safeSetState(
-                                                                      () {});
-                                                              },
-                                                              text: 'Enviar',
-                                                              options:
-                                                                  FFButtonOptions(
-                                                                width: MediaQuery.sizeOf(
-                                                                            context)
-                                                                        .width *
-                                                                    1.0,
-                                                                height: 50.0,
-                                                                padding: EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        16.0,
-                                                                        0.0,
-                                                                        16.0,
-                                                                        0.0),
-                                                                iconPadding:
-                                                                    EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                },
+                                                                text: 'Enviar',
+                                                                options:
+                                                                    FFButtonOptions(
+                                                                  width: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .width *
+                                                                      1.0,
+                                                                  height: 50.0,
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          16.0,
+                                                                          0.0,
+                                                                          16.0,
+                                                                          0.0),
+                                                                  iconPadding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  textStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .titleSmall
+                                                                      .override(
+                                                                        font: GoogleFonts
+                                                                            .interTight(
+                                                                          fontWeight: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontWeight,
+                                                                          fontStyle: FlutterFlowTheme.of(context)
+                                                                              .titleSmall
+                                                                              .fontStyle,
+                                                                        ),
+                                                                        color: Colors
+                                                                            .white,
+                                                                        fontSize:
+                                                                            20.0,
+                                                                        letterSpacing:
                                                                             0.0,
-                                                                            0.0,
-                                                                            0.0,
-                                                                            0.0),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                textStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .titleSmall
-                                                                    .override(
-                                                                      font: GoogleFonts
-                                                                          .interTight(
                                                                         fontWeight: FlutterFlowTheme.of(context)
                                                                             .titleSmall
                                                                             .fontWeight,
@@ -3714,26 +3734,13 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                             .titleSmall
                                                                             .fontStyle,
                                                                       ),
-                                                                      color: Colors
-                                                                          .white,
-                                                                      fontSize:
-                                                                          20.0,
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .fontWeight,
-                                                                      fontStyle: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .titleSmall
-                                                                          .fontStyle,
-                                                                    ),
-                                                                elevation: 0.0,
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            50.0),
+                                                                  elevation:
+                                                                      0.0,
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              50.0),
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
