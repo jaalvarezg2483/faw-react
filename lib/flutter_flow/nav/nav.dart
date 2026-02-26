@@ -134,6 +134,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: ModelsWidget.routeName,
+          path: ModelsWidget.routePath,
+          builder: (context, params) => ModelsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

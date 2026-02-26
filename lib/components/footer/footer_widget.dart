@@ -215,7 +215,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   logFirebaseEvent(
                                       'FOOTER_COMP_TextCamiones_ON_TAP');
 
-                                  context.pushNamed(HomeWidget.routeName);
+                                  context.pushNamed(ModelsWidget.routeName);
                                 },
                                 child: Text(
                                   'Camiones',
@@ -489,8 +489,8 @@ class _FooterWidgetState extends State<FooterWidget> {
                                           logFirebaseEvent(
                                               'FOOTER_COMP_TextCamiones_ON_TAP');
 
-                                          context
-                                              .pushNamed(HomeWidget.routeName);
+                                          context.pushNamed(
+                                              ModelsWidget.routeName);
                                         },
                                         child: Text(
                                           'Camiones',
