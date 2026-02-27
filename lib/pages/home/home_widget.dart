@@ -317,7 +317,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                       return Wrap(
                                         spacing: 40.0,
                                         runSpacing: 35.0,
-                                        alignment: WrapAlignment.start,
+                                        alignment: WrapAlignment.spaceBetween,
                                         crossAxisAlignment:
                                             WrapCrossAlignment.start,
                                         direction: Axis.horizontal,

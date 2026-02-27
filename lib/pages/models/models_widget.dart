@@ -229,7 +229,7 @@ class _ModelsWidgetState extends State<ModelsWidget> {
                                     return Wrap(
                                       spacing: 35.0,
                                       runSpacing: 35.0,
-                                      alignment: WrapAlignment.start,
+                                      alignment: WrapAlignment.spaceBetween,
                                       crossAxisAlignment:
                                           WrapCrossAlignment.start,
                                       direction: Axis.horizontal,
