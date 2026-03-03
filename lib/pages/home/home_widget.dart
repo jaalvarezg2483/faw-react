@@ -915,11 +915,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     clipBehavior: Clip.none,
                                     children: [
                                       Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.3,
                                         constraints: BoxConstraints(
-                                          maxWidth: 400.0,
+                                          maxWidth:
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointLarge
+                                                  ? 200.0
+                                                  : 400.0,
                                         ),
                                         decoration: BoxDecoration(),
                                         child: Column(
@@ -1032,11 +1033,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         ),
                                       ),
                                       Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.3,
                                         constraints: BoxConstraints(
-                                          maxWidth: 400.0,
+                                          maxWidth:
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointLarge
+                                                  ? 200.0
+                                                  : 400.0,
                                         ),
                                         decoration: BoxDecoration(),
                                         child: Column(
@@ -1149,11 +1151,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                                         ),
                                       ),
                                       Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.3,
                                         constraints: BoxConstraints(
-                                          maxWidth: 400.0,
+                                          maxWidth:
+                                              MediaQuery.sizeOf(context).width <
+                                                      kBreakpointLarge
+                                                  ? 200.0
+                                                  : 400.0,
                                         ),
                                         decoration: BoxDecoration(),
                                         child: Column(
