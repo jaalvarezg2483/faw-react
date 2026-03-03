@@ -233,7 +233,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                             snapshot.data!;
 
                                         return Wrap(
-                                          spacing: 10.0,
+                                          spacing: 15.0,
                                           runSpacing: 20.0,
                                           alignment: WrapAlignment.start,
                                           crossAxisAlignment:
