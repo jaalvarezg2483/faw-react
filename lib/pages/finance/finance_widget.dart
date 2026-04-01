@@ -80,23 +80,20 @@ class _FinanceWidgetState extends State<FinanceWidget> {
                   phone: false,
                   tablet: false,
                   tabletLandscape: false,
+                  desktop: false,
                 ))
                   wrapWithModel(
                     model: _model.navBarv2Model,
                     updateCallback: () => safeSetState(() {}),
                     child: NavBarv2Widget(),
                   ),
-                if (responsiveVisibility(
-                  context: context,
-                  desktop: false,
-                ))
-                  Container(
-                    child: wrapWithModel(
-                      model: _model.navBarMobv2Model,
-                      updateCallback: () => safeSetState(() {}),
-                      child: NavBarMobv2Widget(),
-                    ),
+                Container(
+                  child: wrapWithModel(
+                    model: _model.navBarMobv2Model,
+                    updateCallback: () => safeSetState(() {}),
+                    child: NavBarMobv2Widget(),
                   ),
+                ),
                 Expanded(
                   child: SingleChildScrollView(
                     primary: false,

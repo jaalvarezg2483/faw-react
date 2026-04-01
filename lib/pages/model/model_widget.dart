@@ -109,6 +109,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                     phone: false,
                     tablet: false,
                     tabletLandscape: false,
+                    desktop: false,
                   ))
                     wrapWithModel(
                       model: _model.navBarv2Model,
@@ -120,16 +121,10 @@ class _ModelWidgetState extends State<ModelWidget> {
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
-                    child: Visibility(
-                      visible: responsiveVisibility(
-                        context: context,
-                        desktop: false,
-                      ),
-                      child: wrapWithModel(
-                        model: _model.navBarMobv2Model,
-                        updateCallback: () => safeSetState(() {}),
-                        child: NavBarMobv2Widget(),
-                      ),
+                    child: wrapWithModel(
+                      model: _model.navBarMobv2Model,
+                      updateCallback: () => safeSetState(() {}),
+                      child: NavBarMobv2Widget(),
                     ),
                   ),
                   Flexible(
