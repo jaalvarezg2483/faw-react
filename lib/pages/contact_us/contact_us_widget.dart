@@ -164,24 +164,21 @@ class _ContactUsWidgetState extends State<ContactUsWidget> {
                     phone: false,
                     tablet: false,
                     tabletLandscape: false,
+                    desktop: false,
                   ))
                     wrapWithModel(
                       model: _model.navBarv2Model,
                       updateCallback: () => safeSetState(() {}),
                       child: NavBarv2Widget(),
                     ),
-                  if (responsiveVisibility(
-                    context: context,
-                    desktop: false,
-                  ))
-                    Container(
-                      decoration: BoxDecoration(),
-                      child: wrapWithModel(
-                        model: _model.navBarMobv2Model,
-                        updateCallback: () => safeSetState(() {}),
-                        child: NavBarMobv2Widget(),
-                      ),
+                  Container(
+                    decoration: BoxDecoration(),
+                    child: wrapWithModel(
+                      model: _model.navBarMobv2Model,
+                      updateCallback: () => safeSetState(() {}),
+                      child: NavBarMobv2Widget(),
                     ),
+                  ),
                   Expanded(
                     child: SingleChildScrollView(
                       child: Column(
