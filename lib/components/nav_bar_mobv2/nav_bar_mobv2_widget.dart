@@ -61,7 +61,16 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
             color: FlutterFlowTheme.of(context).secondaryBackground,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(30.0, 12.0, 24.0, 12.0),
+            padding: EdgeInsetsDirectional.fromSTEB(
+                30.0,
+                12.0,
+                valueOrDefault<double>(
+                  MediaQuery.sizeOf(context).width < kBreakpointSmall
+                      ? 24.0
+                      : 50.0,
+                  0.0,
+                ),
+                12.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
