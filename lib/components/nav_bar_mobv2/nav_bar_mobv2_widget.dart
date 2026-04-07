@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
@@ -123,48 +122,44 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                     ),
                   ),
                 ),
-                FlutterFlowIconButton(
-                  borderColor: Colors.transparent,
-                  borderRadius: 8.0,
-                  buttonSize: 44.0,
-                  icon: Icon(
-                    Icons.menu,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 28.0,
+                if (_model.isMenuActive)
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 8.0,
+                    buttonSize: 44.0,
+                    icon: Icon(
+                      Icons.close,
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 28.0,
+                    ),
+                    onPressed: () async {
+                      logFirebaseEvent('NAV_BAR_MOBV2_COMP_close_ICN_ON_TAP');
+                      FFAppState().isMenuMobile =
+                          !(FFAppState().isMenuMobile ?? true);
+                      FFAppState().update(() {});
+                      _model.isMenuActive = !_model.isMenuActive;
+                      _model.updatePage(() {});
+                    },
                   ),
-                  onPressed: () async {
-                    logFirebaseEvent('NAV_BAR_MOBV2_COMP_menu_ICN_ON_TAP');
-                    FFAppState().isMenuMobile =
-                        !(FFAppState().isMenuMobile ?? true);
-                    FFAppState().update(() {});
-                    _model.isMenuActive = !_model.isMenuActive;
-                    _model.updatePage(() {});
-                  },
-                ),
-                ToggleIcon(
-                  onPressed: () async {
-                    safeSetState(
-                        () => _model.isMenuActive = !_model.isMenuActive);
-                    logFirebaseEvent(
-                        'NAV_BAR_MOBV2_ToggleIcon_fwrjrsmq_ON_TOG');
-                    FFAppState().isMenuMobile =
-                        !(FFAppState().isMenuMobile ?? true);
-                    FFAppState().update(() {});
-                    _model.isMenuActive = !_model.isMenuActive;
-                    _model.updatePage(() {});
-                  },
-                  value: _model.isMenuActive,
-                  onIcon: Icon(
-                    Icons.close,
-                    color: FlutterFlowTheme.of(context).primary,
-                    size: 24.0,
+                if (!FFAppState().isMenuMobile)
+                  FlutterFlowIconButton(
+                    borderColor: Colors.transparent,
+                    borderRadius: 8.0,
+                    buttonSize: 44.0,
+                    icon: Icon(
+                      Icons.menu,
+                      color: FlutterFlowTheme.of(context).primary,
+                      size: 28.0,
+                    ),
+                    onPressed: () async {
+                      logFirebaseEvent('NAV_BAR_MOBV2_COMP_menu_ICN_ON_TAP');
+                      FFAppState().isMenuMobile =
+                          !(FFAppState().isMenuMobile ?? true);
+                      FFAppState().update(() {});
+                      _model.isMenuActive = !_model.isMenuActive;
+                      _model.updatePage(() {});
+                    },
                   ),
-                  offIcon: Icon(
-                    Icons.menu,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
-                  ),
-                ),
               ],
             ),
           ),
