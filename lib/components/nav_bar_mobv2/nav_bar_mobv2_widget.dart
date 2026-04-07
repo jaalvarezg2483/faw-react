@@ -2,6 +2,7 @@ import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_toggle_icon.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
@@ -139,6 +140,30 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                     _model.isMenuActive = !_model.isMenuActive;
                     _model.updatePage(() {});
                   },
+                ),
+                ToggleIcon(
+                  onPressed: () async {
+                    safeSetState(
+                        () => _model.isMenuActive = !_model.isMenuActive);
+                    logFirebaseEvent(
+                        'NAV_BAR_MOBV2_ToggleIcon_fwrjrsmq_ON_TOG');
+                    FFAppState().isMenuMobile =
+                        !(FFAppState().isMenuMobile ?? true);
+                    FFAppState().update(() {});
+                    _model.isMenuActive = !_model.isMenuActive;
+                    _model.updatePage(() {});
+                  },
+                  value: _model.isMenuActive,
+                  onIcon: Icon(
+                    Icons.close,
+                    color: FlutterFlowTheme.of(context).primary,
+                    size: 24.0,
+                  ),
+                  offIcon: Icon(
+                    Icons.menu,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
                 ),
               ],
             ),
