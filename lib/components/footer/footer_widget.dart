@@ -961,7 +961,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   logFirebaseEvent(
                                       'FOOTER_COMP_TextReglamento_ON_TAP');
                                   await launchURL(
-                                      'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzx%2Farchive%2FjjKuOci8yJmQXTf2yLuP-20250125%20GARANTIA%20DE%20LEY%20V.2025-AUTO.pdf?alt=media&token=a1a9bea0-3a5b-4d87-83c2-4bf896be0ce4');
+                                      'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzw%2Farchive%2FPFioR4O4kg8lEiVhKjx6-20260303%20GARANTIA%20V.2026.03%20-%20AUTO%20NUEVOS%20-%20FAW%20(1).pdf?alt=media&token=5a07fc6c-e61c-4f6b-8028-f2d6ef753917');
                                 },
                                 child: Text(
                                   'Documento Garantía',

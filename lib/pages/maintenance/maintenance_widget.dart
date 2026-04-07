@@ -97,11 +97,20 @@ class _MaintenanceWidgetState extends State<MaintenanceWidget> {
                           Container(
                             width: MediaQuery.sizeOf(context).width * 1.0,
                             decoration: BoxDecoration(),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: Image.asset(
-                                'assets/images/UOgyBWl4sHo581mb4pnv-19.jpg',
-                                fit: BoxFit.cover,
+                            child: Visibility(
+                              visible: responsiveVisibility(
+                                context: context,
+                                phone: false,
+                                tablet: false,
+                                tabletLandscape: false,
+                                desktop: false,
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: Image.asset(
+                                  'assets/images/UOgyBWl4sHo581mb4pnv-19.jpg',
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
