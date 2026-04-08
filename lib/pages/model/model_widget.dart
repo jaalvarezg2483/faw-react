@@ -383,7 +383,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                 valueOrDefault<String>(
                                                   modelModelsRecord
                                                       ?.description,
-                                                  'descripcion',
+                                                  'Descripción',
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)

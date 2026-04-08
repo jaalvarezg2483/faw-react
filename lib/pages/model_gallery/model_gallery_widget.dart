@@ -749,48 +749,56 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Flexible(
-                                                  child: Text(
-                                                    'Exterior',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                            if (containerGaleriaRecordList
+                                                    .where((e) =>
+                                                        e.type == 'Exterior')
+                                                    .toList()
+                                                    .length >
+                                                0)
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      'Exterior',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize:
+                                                                    MediaQuery.sizeOf(context).width <
+                                                                            500.0
+                                                                        ? 25.0
+                                                                        : 40.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  500.0
-                                                              ? 25.0
-                                                              : 40.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
+                                                              ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
+                                                ],
+                                              ),
                                             if (responsiveVisibility(
                                               context: context,
                                               phone: false,
@@ -819,195 +827,197 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                       ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  1.0,
-                                                          child: Stack(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            children: [
-                                                              Container(
-                                                                width: MediaQuery.sizeOf(
+                                                      child: Visibility(
+                                                        visible: containerGaleriaRecordList
+                                                                .where((e) =>
+                                                                    e.type ==
+                                                                    'Exterior')
+                                                                .toList()
+                                                                .length >
+                                                            0,
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
                                                                             context)
-                                                                        .width *
-                                                                    0.8,
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child: Builder(
-                                                                  builder:
-                                                                      (context) {
-                                                                    final outsideDesktopImg = containerGaleriaRecordList
-                                                                        .where((e) =>
-                                                                            e.type ==
-                                                                            'Exterior')
-                                                                        .toList();
+                                                                    .width *
+                                                                1.0,
+                                                            child: Stack(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              children: [
+                                                                Container(
+                                                                  width: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .width *
+                                                                      0.8,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final outsideDesktopImg = containerGaleriaRecordList
+                                                                          .where((e) =>
+                                                                              e.type ==
+                                                                              'Exterior')
+                                                                          .toList();
 
-                                                                    return Container(
-                                                                      width: double
-                                                                          .infinity,
-                                                                      height: MediaQuery.sizeOf(context).width < 1100.0
-                                                                          ? (MediaQuery.sizeOf(context).height *
-                                                                              0.2)
-                                                                          : (MediaQuery.sizeOf(context).height *
-                                                                              0.35),
-                                                                      child: CarouselSlider
-                                                                          .builder(
-                                                                        itemCount:
-                                                                            outsideDesktopImg.length,
-                                                                        itemBuilder: (context,
-                                                                            outsideDesktopImgIndex,
-                                                                            _) {
-                                                                          final outsideDesktopImgItem =
-                                                                              outsideDesktopImg[outsideDesktopImgIndex];
-                                                                          return InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              logFirebaseEvent('MODEL_GALLERY_PAGE_Image_zpokh92q_ON_TAP');
-                                                                              await Navigator.push(
-                                                                                context,
-                                                                                PageTransition(
-                                                                                  type: PageTransitionType.fade,
-                                                                                  child: FlutterFlowExpandedImageView(
-                                                                                    image: Image.network(
-                                                                                      outsideDesktopImgItem.url,
-                                                                                      fit: BoxFit.contain,
+                                                                      return Container(
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height: MediaQuery.sizeOf(context).width < 1100.0
+                                                                            ? (MediaQuery.sizeOf(context).height *
+                                                                                0.2)
+                                                                            : (MediaQuery.sizeOf(context).height *
+                                                                                0.35),
+                                                                        child: CarouselSlider
+                                                                            .builder(
+                                                                          itemCount:
+                                                                              outsideDesktopImg.length,
+                                                                          itemBuilder: (context,
+                                                                              outsideDesktopImgIndex,
+                                                                              _) {
+                                                                            final outsideDesktopImgItem =
+                                                                                outsideDesktopImg[outsideDesktopImgIndex];
+                                                                            return InkWell(
+                                                                              splashColor: Colors.transparent,
+                                                                              focusColor: Colors.transparent,
+                                                                              hoverColor: Colors.transparent,
+                                                                              highlightColor: Colors.transparent,
+                                                                              onTap: () async {
+                                                                                logFirebaseEvent('MODEL_GALLERY_PAGE_Image_zpokh92q_ON_TAP');
+                                                                                await Navigator.push(
+                                                                                  context,
+                                                                                  PageTransition(
+                                                                                    type: PageTransitionType.fade,
+                                                                                    child: FlutterFlowExpandedImageView(
+                                                                                      image: Image.network(
+                                                                                        outsideDesktopImgItem.url,
+                                                                                        fit: BoxFit.contain,
+                                                                                      ),
+                                                                                      allowRotation: false,
+                                                                                      tag: outsideDesktopImgItem.url,
+                                                                                      useHeroAnimation: true,
                                                                                     ),
-                                                                                    allowRotation: false,
-                                                                                    tag: outsideDesktopImgItem.url,
-                                                                                    useHeroAnimation: true,
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                              child: Hero(
+                                                                                tag: outsideDesktopImgItem.url,
+                                                                                transitionOnUserGestures: true,
+                                                                                child: ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.network(
+                                                                                    outsideDesktopImgItem.url,
+                                                                                    width: 200.0,
+                                                                                    height: 200.0,
+                                                                                    fit: BoxFit.cover,
                                                                                   ),
                                                                                 ),
-                                                                              );
-                                                                            },
-                                                                            child:
-                                                                                Hero(
-                                                                              tag: outsideDesktopImgItem.url,
-                                                                              transitionOnUserGestures: true,
-                                                                              child: ClipRRect(
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                                child: Image.network(
-                                                                                  outsideDesktopImgItem.url,
-                                                                                  width: 200.0,
-                                                                                  height: 200.0,
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                        carouselController:
-                                                                            _model.carouselController1 ??=
-                                                                                CarouselSliderController(),
-                                                                        options:
-                                                                            CarouselOptions(
-                                                                          initialPage: max(
-                                                                              0,
-                                                                              min(0, outsideDesktopImg.length - 1)),
-                                                                          viewportFraction:
-                                                                              0.34,
-                                                                          disableCenter:
-                                                                              true,
-                                                                          enlargeCenterPage:
-                                                                              true,
-                                                                          enlargeFactor:
-                                                                              0.25,
-                                                                          enableInfiniteScroll:
-                                                                              true,
-                                                                          scrollDirection:
-                                                                              Axis.horizontal,
-                                                                          autoPlay:
-                                                                              false,
-                                                                          onPageChanged: (index, _) =>
-                                                                              _model.carouselCurrentIndex1 = index,
+                                                                            );
+                                                                          },
+                                                                          carouselController: _model.carouselController1 ??=
+                                                                              CarouselSliderController(),
+                                                                          options:
+                                                                              CarouselOptions(
+                                                                            initialPage:
+                                                                                max(0, min(0, outsideDesktopImg.length - 1)),
+                                                                            viewportFraction:
+                                                                                0.34,
+                                                                            disableCenter:
+                                                                                true,
+                                                                            enlargeCenterPage:
+                                                                                true,
+                                                                            enlargeFactor:
+                                                                                0.25,
+                                                                            enableInfiniteScroll:
+                                                                                true,
+                                                                            scrollDirection:
+                                                                                Axis.horizontal,
+                                                                            autoPlay:
+                                                                                false,
+                                                                            onPageChanged: (index, _) =>
+                                                                                _model.carouselCurrentIndex1 = index,
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
+                                                                      );
+                                                                    },
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  FlutterFlowIconButton(
-                                                                    borderRadius:
-                                                                        8.0,
-                                                                    buttonSize:
-                                                                        40.0,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .arrow_back_ios,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          24.0,
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    FlutterFlowIconButton(
+                                                                      borderRadius:
+                                                                          8.0,
+                                                                      buttonSize:
+                                                                          40.0,
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .arrow_back_ios,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            24.0,
+                                                                      ),
+                                                                      onPressed:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
+                                                                        await _model
+                                                                            .carouselController1
+                                                                            ?.previousPage(
+                                                                          duration:
+                                                                              Duration(milliseconds: 300),
+                                                                          curve:
+                                                                              Curves.ease,
+                                                                        );
+                                                                      },
                                                                     ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
-                                                                      await _model
-                                                                          .carouselController1
-                                                                          ?.previousPage(
-                                                                        duration:
-                                                                            Duration(milliseconds: 300),
-                                                                        curve: Curves
-                                                                            .ease,
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                  FlutterFlowIconButton(
-                                                                    borderRadius:
-                                                                        8.0,
-                                                                    buttonSize:
-                                                                        40.0,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .arrow_forward_ios,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          24.0,
+                                                                    FlutterFlowIconButton(
+                                                                      borderRadius:
+                                                                          8.0,
+                                                                      buttonSize:
+                                                                          40.0,
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .arrow_forward_ios,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            24.0,
+                                                                      ),
+                                                                      onPressed:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
+                                                                        await _model
+                                                                            .carouselController1
+                                                                            ?.nextPage(
+                                                                          duration:
+                                                                              Duration(milliseconds: 300),
+                                                                          curve:
+                                                                              Curves.ease,
+                                                                        );
+                                                                      },
                                                                     ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
-                                                                      await _model
-                                                                          .carouselController1
-                                                                          ?.nextPage(
-                                                                        duration:
-                                                                            Duration(milliseconds: 300),
-                                                                        curve: Curves
-                                                                            .ease,
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
@@ -1239,48 +1249,56 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                   ],
                                                 ),
                                               ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Flexible(
-                                                  child: Text(
-                                                    'Interior',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                            if (containerGaleriaRecordList
+                                                    .where((e) =>
+                                                        e.type == 'Interior')
+                                                    .toList()
+                                                    .length >
+                                                0)
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      'Interior',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize:
+                                                                    MediaQuery.sizeOf(context).width <
+                                                                            500.0
+                                                                        ? 25.0
+                                                                        : 40.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  500.0
-                                                              ? 25.0
-                                                              : 40.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
+                                                              ),
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
-                                            ),
+                                                ],
+                                              ),
                                             if (responsiveVisibility(
                                               context: context,
                                               phone: false,
@@ -1309,195 +1327,197 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                 .of(context)
                                                             .secondaryBackground,
                                                       ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Container(
-                                                          width:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  1.0,
-                                                          child: Stack(
-                                                            alignment:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            children: [
-                                                              Container(
-                                                                width: MediaQuery.sizeOf(
+                                                      child: Visibility(
+                                                        visible: containerGaleriaRecordList
+                                                                .where((e) =>
+                                                                    e.type ==
+                                                                    'Interior')
+                                                                .toList()
+                                                                .length >
+                                                            0,
+                                                        child: Align(
+                                                          alignment:
+                                                              AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Container(
+                                                            width: MediaQuery
+                                                                        .sizeOf(
                                                                             context)
-                                                                        .width *
-                                                                    0.8,
-                                                                decoration:
-                                                                    BoxDecoration(),
-                                                                child: Builder(
-                                                                  builder:
-                                                                      (context) {
-                                                                    final insideDesktopImg = containerGaleriaRecordList
-                                                                        .where((e) =>
-                                                                            e.type ==
-                                                                            'Interior')
-                                                                        .toList();
+                                                                    .width *
+                                                                1.0,
+                                                            child: Stack(
+                                                              alignment:
+                                                                  AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              children: [
+                                                                Container(
+                                                                  width: MediaQuery.sizeOf(
+                                                                              context)
+                                                                          .width *
+                                                                      0.8,
+                                                                  decoration:
+                                                                      BoxDecoration(),
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      final insideDesktopImg = containerGaleriaRecordList
+                                                                          .where((e) =>
+                                                                              e.type ==
+                                                                              'Interior')
+                                                                          .toList();
 
-                                                                    return Container(
-                                                                      width: double
-                                                                          .infinity,
-                                                                      height: MediaQuery.sizeOf(context).width < 1100.0
-                                                                          ? (MediaQuery.sizeOf(context).height *
-                                                                              0.2)
-                                                                          : (MediaQuery.sizeOf(context).height *
-                                                                              0.35),
-                                                                      child: CarouselSlider
-                                                                          .builder(
-                                                                        itemCount:
-                                                                            insideDesktopImg.length,
-                                                                        itemBuilder: (context,
-                                                                            insideDesktopImgIndex,
-                                                                            _) {
-                                                                          final insideDesktopImgItem =
-                                                                              insideDesktopImg[insideDesktopImgIndex];
-                                                                          return InkWell(
-                                                                            splashColor:
-                                                                                Colors.transparent,
-                                                                            focusColor:
-                                                                                Colors.transparent,
-                                                                            hoverColor:
-                                                                                Colors.transparent,
-                                                                            highlightColor:
-                                                                                Colors.transparent,
-                                                                            onTap:
-                                                                                () async {
-                                                                              logFirebaseEvent('MODEL_GALLERY_PAGE_Image_dymq7srp_ON_TAP');
-                                                                              await Navigator.push(
-                                                                                context,
-                                                                                PageTransition(
-                                                                                  type: PageTransitionType.fade,
-                                                                                  child: FlutterFlowExpandedImageView(
-                                                                                    image: Image.network(
-                                                                                      insideDesktopImgItem.url,
-                                                                                      fit: BoxFit.contain,
+                                                                      return Container(
+                                                                        width: double
+                                                                            .infinity,
+                                                                        height: MediaQuery.sizeOf(context).width < 1100.0
+                                                                            ? (MediaQuery.sizeOf(context).height *
+                                                                                0.2)
+                                                                            : (MediaQuery.sizeOf(context).height *
+                                                                                0.35),
+                                                                        child: CarouselSlider
+                                                                            .builder(
+                                                                          itemCount:
+                                                                              insideDesktopImg.length,
+                                                                          itemBuilder: (context,
+                                                                              insideDesktopImgIndex,
+                                                                              _) {
+                                                                            final insideDesktopImgItem =
+                                                                                insideDesktopImg[insideDesktopImgIndex];
+                                                                            return InkWell(
+                                                                              splashColor: Colors.transparent,
+                                                                              focusColor: Colors.transparent,
+                                                                              hoverColor: Colors.transparent,
+                                                                              highlightColor: Colors.transparent,
+                                                                              onTap: () async {
+                                                                                logFirebaseEvent('MODEL_GALLERY_PAGE_Image_dymq7srp_ON_TAP');
+                                                                                await Navigator.push(
+                                                                                  context,
+                                                                                  PageTransition(
+                                                                                    type: PageTransitionType.fade,
+                                                                                    child: FlutterFlowExpandedImageView(
+                                                                                      image: Image.network(
+                                                                                        insideDesktopImgItem.url,
+                                                                                        fit: BoxFit.contain,
+                                                                                      ),
+                                                                                      allowRotation: false,
+                                                                                      tag: insideDesktopImgItem.url,
+                                                                                      useHeroAnimation: true,
                                                                                     ),
-                                                                                    allowRotation: false,
-                                                                                    tag: insideDesktopImgItem.url,
-                                                                                    useHeroAnimation: true,
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                              child: Hero(
+                                                                                tag: insideDesktopImgItem.url,
+                                                                                transitionOnUserGestures: true,
+                                                                                child: ClipRRect(
+                                                                                  borderRadius: BorderRadius.circular(8.0),
+                                                                                  child: Image.network(
+                                                                                    insideDesktopImgItem.url,
+                                                                                    width: 200.0,
+                                                                                    height: 200.0,
+                                                                                    fit: BoxFit.cover,
                                                                                   ),
                                                                                 ),
-                                                                              );
-                                                                            },
-                                                                            child:
-                                                                                Hero(
-                                                                              tag: insideDesktopImgItem.url,
-                                                                              transitionOnUserGestures: true,
-                                                                              child: ClipRRect(
-                                                                                borderRadius: BorderRadius.circular(8.0),
-                                                                                child: Image.network(
-                                                                                  insideDesktopImgItem.url,
-                                                                                  width: 200.0,
-                                                                                  height: 200.0,
-                                                                                  fit: BoxFit.cover,
-                                                                                ),
                                                                               ),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                        carouselController:
-                                                                            _model.carouselIn1Controller ??=
-                                                                                CarouselSliderController(),
-                                                                        options:
-                                                                            CarouselOptions(
-                                                                          initialPage: max(
-                                                                              0,
-                                                                              min(0, insideDesktopImg.length - 1)),
-                                                                          viewportFraction:
-                                                                              0.34,
-                                                                          disableCenter:
-                                                                              true,
-                                                                          enlargeCenterPage:
-                                                                              true,
-                                                                          enlargeFactor:
-                                                                              0.25,
-                                                                          enableInfiniteScroll:
-                                                                              true,
-                                                                          scrollDirection:
-                                                                              Axis.horizontal,
-                                                                          autoPlay:
-                                                                              false,
-                                                                          onPageChanged: (index, _) =>
-                                                                              _model.carouselIn1CurrentIndex = index,
+                                                                            );
+                                                                          },
+                                                                          carouselController: _model.carouselIn1Controller ??=
+                                                                              CarouselSliderController(),
+                                                                          options:
+                                                                              CarouselOptions(
+                                                                            initialPage:
+                                                                                max(0, min(0, insideDesktopImg.length - 1)),
+                                                                            viewportFraction:
+                                                                                0.34,
+                                                                            disableCenter:
+                                                                                true,
+                                                                            enlargeCenterPage:
+                                                                                true,
+                                                                            enlargeFactor:
+                                                                                0.25,
+                                                                            enableInfiniteScroll:
+                                                                                true,
+                                                                            scrollDirection:
+                                                                                Axis.horizontal,
+                                                                            autoPlay:
+                                                                                false,
+                                                                            onPageChanged: (index, _) =>
+                                                                                _model.carouselIn1CurrentIndex = index,
+                                                                          ),
                                                                         ),
-                                                                      ),
-                                                                    );
-                                                                  },
+                                                                      );
+                                                                    },
+                                                                  ),
                                                                 ),
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .spaceBetween,
-                                                                children: [
-                                                                  FlutterFlowIconButton(
-                                                                    borderRadius:
-                                                                        8.0,
-                                                                    buttonSize:
-                                                                        40.0,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .arrow_back_ios,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          24.0,
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
+                                                                  children: [
+                                                                    FlutterFlowIconButton(
+                                                                      borderRadius:
+                                                                          8.0,
+                                                                      buttonSize:
+                                                                          40.0,
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .arrow_back_ios,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            24.0,
+                                                                      ),
+                                                                      onPressed:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
+                                                                        await _model
+                                                                            .carouselIn1Controller
+                                                                            ?.previousPage(
+                                                                          duration:
+                                                                              Duration(milliseconds: 300),
+                                                                          curve:
+                                                                              Curves.ease,
+                                                                        );
+                                                                      },
                                                                     ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'MODEL_GALLERY_arrow_back_ios_ICN_ON_TAP');
-                                                                      await _model
-                                                                          .carouselIn1Controller
-                                                                          ?.previousPage(
-                                                                        duration:
-                                                                            Duration(milliseconds: 300),
-                                                                        curve: Curves
-                                                                            .ease,
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                  FlutterFlowIconButton(
-                                                                    borderRadius:
-                                                                        8.0,
-                                                                    buttonSize:
-                                                                        40.0,
-                                                                    icon: Icon(
-                                                                      Icons
-                                                                          .arrow_forward_ios,
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      size:
-                                                                          24.0,
+                                                                    FlutterFlowIconButton(
+                                                                      borderRadius:
+                                                                          8.0,
+                                                                      buttonSize:
+                                                                          40.0,
+                                                                      icon:
+                                                                          Icon(
+                                                                        Icons
+                                                                            .arrow_forward_ios,
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .secondaryText,
+                                                                        size:
+                                                                            24.0,
+                                                                      ),
+                                                                      onPressed:
+                                                                          () async {
+                                                                        logFirebaseEvent(
+                                                                            'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
+                                                                        await _model
+                                                                            .carouselIn1Controller
+                                                                            ?.nextPage(
+                                                                          duration:
+                                                                              Duration(milliseconds: 300),
+                                                                          curve:
+                                                                              Curves.ease,
+                                                                        );
+                                                                      },
                                                                     ),
-                                                                    onPressed:
-                                                                        () async {
-                                                                      logFirebaseEvent(
-                                                                          'MODEL_GALLERY_arrow_forward_ios_ICN_ON_T');
-                                                                      await _model
-                                                                          .carouselIn1Controller
-                                                                          ?.nextPage(
-                                                                        duration:
-                                                                            Duration(milliseconds: 300),
-                                                                        curve: Curves
-                                                                            .ease,
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
+                                                                  ],
+                                                                ),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
