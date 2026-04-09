@@ -282,7 +282,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                           child: Image.asset(
-                                            'assets/images/mechanic-garage_1.png',
+                                            'assets/images/Taller_VW_y_Higer_1.png',
                                             width: MediaQuery.sizeOf(context)
                                                         .width <
                                                     1070.0
@@ -430,7 +430,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                         BorderRadius.circular(
                                                             8.0),
                                                     child: Image.asset(
-                                                      'assets/images/image_2026-02-06_105233391.png',
+                                                      'assets/images/Taller_VW_y_Higer_1.png',
                                                       width: () {
                                                         if (MediaQuery.sizeOf(
                                                                     context)
