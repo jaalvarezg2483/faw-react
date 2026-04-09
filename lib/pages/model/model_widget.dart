@@ -379,31 +379,24 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                 maxWidth: 600.0,
                                               ),
                                               decoration: BoxDecoration(),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  modelModelsRecord
-                                                      ?.description,
-                                                  'Descripción',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontWeight,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          fontSize: 16.0,
-                                                          letterSpacing: 0.0,
+                                              child: Visibility(
+                                                visible: modelModelsRecord
+                                                            ?.description !=
+                                                        null &&
+                                                    modelModelsRecord
+                                                            ?.description !=
+                                                        '',
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    modelModelsRecord
+                                                        ?.description,
+                                                    'Descripción',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -415,6 +408,20 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                ),
                                               ),
                                             ),
                                           ].divide(SizedBox(height: 5.0)),
