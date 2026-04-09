@@ -902,223 +902,228 @@ class _ModelWidgetState extends State<ModelWidget> {
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBackground,
                                       ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            valueOrDefault<double>(
-                                              MediaQuery.sizeOf(context).width <
-                                                      kBreakpointSmall
-                                                  ? 40.0
-                                                  : 100.0,
-                                              0.0,
-                                            ),
-                                            40.0,
-                                            valueOrDefault<double>(
-                                              MediaQuery.sizeOf(context).width <
-                                                      kBreakpointSmall
-                                                  ? 40.0
-                                                  : 100.0,
-                                              0.0,
-                                            ),
-                                            0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Flexible(
-                                                  child: Text(
-                                                    'Características destacadas',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font:
-                                                              GoogleFonts.inter(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
+                                      child: Visibility(
+                                        visible:
+                                            featuresDestacadasCaracteristicasRecordList
+                                                .isNotEmpty,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  valueOrDefault<double>(
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            kBreakpointSmall
+                                                        ? 40.0
+                                                        : 100.0,
+                                                    0.0,
+                                                  ),
+                                                  40.0,
+                                                  valueOrDefault<double>(
+                                                    MediaQuery.sizeOf(context)
+                                                                .width <
+                                                            kBreakpointSmall
+                                                        ? 40.0
+                                                        : 100.0,
+                                                    0.0,
+                                                  ),
+                                                  0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Text(
+                                                      'Características destacadas',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize:
+                                                                    MediaQuery.sizeOf(context).width <
+                                                                            500.0
+                                                                        ? 25.0
+                                                                        : 40.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
                                                                     .fontStyle,
-                                                          ),
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primary,
-                                                          fontSize: MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  500.0
-                                                              ? 25.0
-                                                              : 40.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 25.0, 0.0, 40.0),
+                                                child: StreamBuilder<
+                                                    List<
+                                                        CaracteristicasRecord>>(
+                                                  stream:
+                                                      queryCaracteristicasRecord(
+                                                    parent: modelModelsRecord
+                                                        ?.reference,
+                                                    queryBuilder:
+                                                        (caracteristicasRecord) =>
+                                                            caracteristicasRecord
+                                                                .where(
+                                                      'isActive',
+                                                      isEqualTo: true,
+                                                    ),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 25.0, 0.0, 40.0),
-                                              child: StreamBuilder<
-                                                  List<CaracteristicasRecord>>(
-                                                stream:
-                                                    queryCaracteristicasRecord(
-                                                  parent: modelModelsRecord
-                                                      ?.reference,
-                                                  queryBuilder:
-                                                      (caracteristicasRecord) =>
-                                                          caracteristicasRecord
-                                                              .where(
-                                                    'isActive',
-                                                    isEqualTo: true,
-                                                  ),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 50.0,
-                                                        height: 50.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primary,
+                                                                  .primary,
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    );
-                                                  }
-                                                  List<CaracteristicasRecord>
-                                                      columnCaracteristicasRecordList =
-                                                      snapshot.data!;
+                                                      );
+                                                    }
+                                                    List<CaracteristicasRecord>
+                                                        columnCaracteristicasRecordList =
+                                                        snapshot.data!;
 
-                                                  return Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: List.generate(
-                                                        columnCaracteristicasRecordList
-                                                            .length,
-                                                        (columnIndex) {
-                                                      final columnCaracteristicasRecord =
-                                                          columnCaracteristicasRecordList[
-                                                              columnIndex];
-                                                      return Container(
-                                                        width:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .width *
-                                                                1.0,
-                                                        decoration:
-                                                            BoxDecoration(),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Image.network(
-                                                              columnCaracteristicasRecord
-                                                                  .url,
-                                                              width: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
+                                                    return Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: List.generate(
+                                                          columnCaracteristicasRecordList
+                                                              .length,
+                                                          (columnIndex) {
+                                                        final columnCaracteristicasRecord =
+                                                            columnCaracteristicasRecordList[
+                                                                columnIndex];
+                                                        return Container(
+                                                          width:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
                                                                       .width *
-                                                                  0.9,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Flexible(
-                                                                  child: Text(
-                                                                    columnCaracteristicasRecord
-                                                                        .title,
-                                                                    style: FlutterFlowTheme.of(
+                                                                  1.0,
+                                                          decoration:
+                                                              BoxDecoration(),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Image.network(
+                                                                columnCaracteristicasRecord
+                                                                    .url,
+                                                                width: MediaQuery.sizeOf(
                                                                             context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
+                                                                        .width *
+                                                                    0.9,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Text(
+                                                                      columnCaracteristicasRecord
+                                                                          .title,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FontWeight.bold,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            fontSize:
+                                                                                22.0,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                             fontStyle:
                                                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
-                                                                          fontSize:
-                                                                              22.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Flexible(
-                                                                  child: Text(
-                                                                    columnCaracteristicasRecord
-                                                                        .description,
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          font:
-                                                                              GoogleFonts.inter(
+                                                                ],
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Text(
+                                                                      columnCaracteristicasRecord
+                                                                          .description,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            font:
+                                                                                GoogleFonts.inter(
+                                                                              fontWeight: FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                                                                              fontStyle: FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                                                                            ),
+                                                                            fontSize:
+                                                                                18.0,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                             fontWeight:
                                                                                 FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                                                                             fontStyle:
                                                                                 FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                                                                           ),
-                                                                          fontSize:
-                                                                              18.0,
-                                                                          letterSpacing:
-                                                                              0.0,
-                                                                          fontWeight: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontWeight,
-                                                                          fontStyle: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .fontStyle,
-                                                                        ),
+                                                                    ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ].divide(SizedBox(
-                                                              height: 10.0)),
-                                                        ),
-                                                      );
-                                                    }).divide(
-                                                        SizedBox(height: 45.0)),
-                                                  );
-                                                },
+                                                                ],
+                                                              ),
+                                                            ].divide(SizedBox(
+                                                                height: 10.0)),
+                                                          ),
+                                                        );
+                                                      }).divide(SizedBox(
+                                                          height: 45.0)),
+                                                    );
+                                                  },
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );
