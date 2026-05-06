@@ -1922,10 +1922,19 @@ class _ModelWidgetState extends State<ModelWidget> {
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,
                                   decoration: BoxDecoration(),
-                                  child: wrapWithModel(
-                                    model: _model.redesModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: RedesWidget(),
+                                  child: Visibility(
+                                    visible: responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                      tablet: false,
+                                      tabletLandscape: false,
+                                      desktop: false,
+                                    ),
+                                    child: wrapWithModel(
+                                      model: _model.redesModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: RedesWidget(),
+                                    ),
                                   ),
                                 ),
                                 Container(

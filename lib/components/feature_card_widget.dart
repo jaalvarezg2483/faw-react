@@ -61,37 +61,85 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15.0),
-                      topRight: Radius.circular(15.0),
-                      bottomRight: Radius.circular(15.0),
-                    ),
-                    child: Container(
-                      height: () {
-                        if (MediaQuery.sizeOf(context).width < 800.0) {
-                          return (MediaQuery.sizeOf(context).height * 0.25);
-                        } else if (MediaQuery.sizeOf(context).width <= 1150.0) {
-                          return (MediaQuery.sizeOf(context).height * 0.45);
-                        } else {
-                          return (MediaQuery.sizeOf(context).height * 0.30);
-                        }
-                      }(),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15.0),
-                          topRight: Radius.circular(15.0),
-                          bottomRight: Radius.circular(15.0),
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(0.0),
-                        child: Image.network(
-                          widget!.features!.url,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                  child: Builder(
+                    builder: (context) {
+                      if (widget!.features?.url != null &&
+                          widget!.features?.url != '') {
+                        return ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15.0),
+                            topRight: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: () {
+                              if (MediaQuery.sizeOf(context).width < 800.0) {
+                                return (MediaQuery.sizeOf(context).height *
+                                    0.25);
+                              } else if (MediaQuery.sizeOf(context).width <=
+                                  1150.0) {
+                                return (MediaQuery.sizeOf(context).height *
+                                    0.45);
+                              } else {
+                                return (MediaQuery.sizeOf(context).height *
+                                    0.30);
+                              }
+                            }(),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15.0),
+                                topRight: Radius.circular(15.0),
+                                bottomRight: Radius.circular(15.0),
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: Image.network(
+                                widget!.features!.url,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        );
+                      } else {
+                        return ClipRRect(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15.0),
+                            topRight: Radius.circular(15.0),
+                            bottomRight: Radius.circular(15.0),
+                          ),
+                          child: Container(
+                            height: () {
+                              if (MediaQuery.sizeOf(context).width < 800.0) {
+                                return (MediaQuery.sizeOf(context).height *
+                                    0.25);
+                              } else if (MediaQuery.sizeOf(context).width <=
+                                  1150.0) {
+                                return (MediaQuery.sizeOf(context).height *
+                                    0.45);
+                              } else {
+                                return (MediaQuery.sizeOf(context).height *
+                                    0.30);
+                              }
+                            }(),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(15.0),
+                                topRight: Radius.circular(15.0),
+                                bottomRight: Radius.circular(15.0),
+                              ),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: Image.asset(
+                                'assets/images/splash_faw.png',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ),
               ],

@@ -1491,7 +1491,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                           logFirebaseEvent(
                                               'FOOTER_COMP_imgInstagram_ON_TAP');
                                           await launchURL(
-                                              'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
+                                              'https://www.instagram.com/fawtruckscostarica');
                                         },
                                         child: ClipRRect(
                                           borderRadius:
@@ -1645,7 +1645,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                               logFirebaseEvent(
                                                   'FOOTER_COMP_imgInstagram_ON_TAP');
                                               await launchURL(
-                                                  'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
+                                                  'https://www.instagram.com/fawtruckscostarica');
                                             },
                                             child: ClipRRect(
                                               borderRadius:
