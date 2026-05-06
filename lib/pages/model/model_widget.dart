@@ -617,7 +617,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                     'MODEL_PAGE_Container_85jzedjp_ON_TAP');
 
                                                 context.pushNamed(
-                                                    FinanceWidget.routeName);
+                                                    Financev1Widget.routeName);
                                               },
                                               child: Container(
                                                 constraints: BoxConstraints(

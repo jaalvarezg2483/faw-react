@@ -70,9 +70,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => TermsWidget(),
         ),
         FFRoute(
-          name: FinanceWidget.routeName,
-          path: FinanceWidget.routePath,
-          builder: (context, params) => FinanceWidget(),
+          name: Financev1Widget.routeName,
+          path: Financev1Widget.routePath,
+          builder: (context, params) => Financev1Widget(),
         ),
         FFRoute(
           name: ModelWidget.routeName,
@@ -101,9 +101,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: MaintenanceWidget.routeName,
-          path: MaintenanceWidget.routePath,
-          builder: (context, params) => MaintenanceWidget(),
+          name: MaintenancePlansWidget.routeName,
+          path: MaintenancePlansWidget.routePath,
+          builder: (context, params) => MaintenancePlansWidget(),
         ),
         FFRoute(
           name: ServicesWidget.routeName,
@@ -139,6 +139,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ModelsWidget.routeName,
           path: ModelsWidget.routePath,
           builder: (context, params) => ModelsWidget(),
+        ),
+        FFRoute(
+          name: FinanceStepOneWidget.routeName,
+          path: FinanceStepOneWidget.routePath,
+          builder: (context, params) => FinanceStepOneWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

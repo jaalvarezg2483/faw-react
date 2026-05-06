@@ -963,7 +963,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     'HOME_PAGE_VER_MS_BTN_ON_TAP');
 
                                                 context.pushNamed(
-                                                    MaintenanceWidget
+                                                    MaintenancePlansWidget
                                                         .routeName);
                                               },
                                               text: 'Ver más',
@@ -1326,7 +1326,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     'HOME_PAGE_VER_MS_BTN_ON_TAP');
 
                                                 context.pushNamed(
-                                                    MaintenanceWidget
+                                                    MaintenancePlansWidget
                                                         .routeName);
                                               },
                                               text: 'Ver más',
@@ -1686,7 +1686,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     'HOME_PAGE_VER_MS_BTN_ON_TAP');
 
                                                 context.pushNamed(
-                                                    MaintenanceWidget
+                                                    MaintenancePlansWidget
                                                         .routeName);
                                               },
                                               text: 'Ver más',
@@ -2032,7 +2032,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     'HOME_PAGE_Container_1j4b7whb_CALLBACK');
 
                                                 context.pushNamed(
-                                                    FinanceWidget.routeName);
+                                                    Financev1Widget.routeName);
                                               },
                                             ),
                                           ),
@@ -2115,7 +2115,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 'HOME_PAGE_Container_gn46mdsl_CALLBACK');
 
                                             context.pushNamed(
-                                                FinanceWidget.routeName);
+                                                Financev1Widget.routeName);
                                           },
                                         ),
                                       ),

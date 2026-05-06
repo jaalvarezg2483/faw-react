@@ -620,7 +620,7 @@ class _SiteMapWidgetState extends State<SiteMapWidget> {
                                               'SITE_MAP_TextCalcularfinanciamiento_ON_T');
 
                                           context.pushNamed(
-                                              FinanceWidget.routeName);
+                                              Financev1Widget.routeName);
                                         },
                                         child: Text(
                                           'Calcular financiamiento',

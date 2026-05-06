@@ -1558,16 +1558,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1581,16 +1581,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1606,16 +1606,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1631,16 +1631,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1751,16 +1751,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1774,16 +1774,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1799,16 +1799,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1824,16 +1824,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1945,16 +1945,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1968,16 +1968,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -1993,16 +1993,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2018,16 +2018,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2135,16 +2135,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2158,16 +2158,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2183,16 +2183,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2208,16 +2208,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2333,16 +2333,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2356,16 +2356,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2381,16 +2381,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -2406,16 +2406,16 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       ),
                                                       borderRadius:
                                                           BorderRadius.only(
-                                                        bottomLeft:
-                                                            Radius.circular(
-                                                                10.0),
-                                                        bottomRight:
-                                                            Radius.circular(
-                                                                10.0),
                                                         topLeft:
                                                             Radius.circular(
                                                                 10.0),
                                                         topRight:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                10.0),
+                                                        bottomRight:
                                                             Radius.circular(
                                                                 10.0),
                                                       ),
@@ -3516,7 +3516,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                 'HOME_COPY_PAGE_VER_MS_BTN_ON_TAP');
 
                                             context.pushNamed(
-                                                MaintenanceWidget.routeName);
+                                                MaintenancePlansWidget
+                                                    .routeName);
                                           },
                                           text: 'Ver más',
                                           options: FFButtonOptions(
@@ -3897,10 +3898,10 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,
                                       borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(20.0),
-                                        bottomRight: Radius.circular(20.0),
                                         topLeft: Radius.circular(20.0),
                                         topRight: Radius.circular(20.0),
+                                        bottomLeft: Radius.circular(20.0),
+                                        bottomRight: Radius.circular(20.0),
                                       ),
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)
@@ -4462,7 +4463,8 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                       'HOME_COPY_Container_dzfm30eb_CALLBACK');
 
                                                   context.pushNamed(
-                                                      FinanceWidget.routeName);
+                                                      Financev1Widget
+                                                          .routeName);
                                                 },
                                               ),
                                             ),
@@ -4550,7 +4552,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                   'HOME_COPY_Container_y8kqox2w_CALLBACK');
 
                                               context.pushNamed(
-                                                  FinanceWidget.routeName);
+                                                  Financev1Widget.routeName);
                                             },
                                           ),
                                         ),

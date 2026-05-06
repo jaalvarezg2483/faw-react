@@ -57,6 +57,38 @@
       ]
     },
     {
+      "collectionGroup": "Banners",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "section",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "enable",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "MaintenancePlans",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "enabled",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "Services",
       "queryScope": "COLLECTION",
       "fields": [

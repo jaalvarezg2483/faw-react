@@ -494,7 +494,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                           'WORKSHOPS_PAGE_VER_MS_BTN_ON_TAP');
 
                                                       context.pushNamed(
-                                                          MaintenanceWidget
+                                                          MaintenancePlansWidget
                                                               .routeName);
                                                     },
                                                     text: 'Ver más',
@@ -2217,16 +2217,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2242,16 +2242,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2268,16 +2268,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2294,16 +2294,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2414,16 +2414,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2439,16 +2439,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2465,16 +2465,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2491,16 +2491,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2611,16 +2611,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2636,16 +2636,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2662,16 +2662,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2688,16 +2688,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2806,16 +2806,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2831,16 +2831,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2857,16 +2857,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -2883,16 +2883,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -3009,16 +3009,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -3034,16 +3034,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -3060,16 +3060,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),
@@ -3086,16 +3086,16 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          10.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          10.0),
                                                                   topLeft: Radius
                                                                       .circular(
                                                                           10.0),
                                                                   topRight: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          10.0),
+                                                                  bottomRight: Radius
                                                                       .circular(
                                                                           10.0),
                                                                 ),

@@ -77,4 +77,33 @@ class FFAppState extends ChangeNotifier {
   set menuOptionActive(String value) {
     _menuOptionActive = value;
   }
+
+  List<MaintenancePlanStruct> _maintenancePlans = [];
+  List<MaintenancePlanStruct> get maintenancePlans => _maintenancePlans;
+  set maintenancePlans(List<MaintenancePlanStruct> value) {
+    _maintenancePlans = value;
+  }
+
+  void addToMaintenancePlans(MaintenancePlanStruct value) {
+    maintenancePlans.add(value);
+  }
+
+  void removeFromMaintenancePlans(MaintenancePlanStruct value) {
+    maintenancePlans.remove(value);
+  }
+
+  void removeAtIndexFromMaintenancePlans(int index) {
+    maintenancePlans.removeAt(index);
+  }
+
+  void updateMaintenancePlansAtIndex(
+    int index,
+    MaintenancePlanStruct Function(MaintenancePlanStruct) updateFn,
+  ) {
+    maintenancePlans[index] = updateFn(_maintenancePlans[index]);
+  }
+
+  void insertAtIndexInMaintenancePlans(int index, MaintenancePlanStruct value) {
+    maintenancePlans.insert(index, value);
+  }
 }

@@ -615,7 +615,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                     'MODEL_GALLERY_Container_jugzv359_ON_TAP');
 
                                                 context.pushNamed(
-                                                    FinanceWidget.routeName);
+                                                    Financev1Widget.routeName);
                                               },
                                               child: Container(
                                                 constraints: BoxConstraints(
