@@ -1118,7 +1118,7 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                                         children: [
                                           Flexible(
                                             child: Text(
-                                              'Planes de mantenimiento disponible para que escojás',
+                                              'Planes de mantenimiento disponible para que escojás: ',
                                               textAlign: TextAlign.start,
                                               style: FlutterFlowTheme.of(
                                                       context)
