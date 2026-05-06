@@ -872,12 +872,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                   stream: queryCaracteristicasRecord(
                                     parent: modelModelsRecord?.reference,
                                     queryBuilder: (caracteristicasRecord) =>
-                                        caracteristicasRecord
-                                            .where(
-                                              'isActive',
-                                              isEqualTo: true,
-                                            )
-                                            .orderBy('order'),
+                                        caracteristicasRecord.orderBy('order'),
                                     limit: 30,
                                   ),
                                   builder: (context, snapshot) {
