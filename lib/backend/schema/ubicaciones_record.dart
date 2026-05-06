@@ -81,6 +81,11 @@ class UbicacionesRecord extends FirestoreRecord {
   bool get isActive => _isActive ?? false;
   bool hasIsActive() => _isActive != null;
 
+  // "specialities" field.
+  List<String>? _specialities;
+  List<String> get specialities => _specialities ?? const [];
+  bool hasSpecialities() => _specialities != null;
+
   void _initializeFields() {
     _order = castToType<int>(snapshotData['order']);
     _name = snapshotData['name'] as String?;
@@ -95,6 +100,7 @@ class UbicacionesRecord extends FirestoreRecord {
     _isBranchOffice = snapshotData['isBranchOffice'] as bool?;
     _isRepairShop = snapshotData['isRepairShop'] as bool?;
     _isActive = snapshotData['isActive'] as bool?;
+    _specialities = getDataList(snapshotData['specialities']);
   }
 
   static CollectionReference get collection =>
@@ -172,6 +178,7 @@ class UbicacionesRecordDocumentEquality implements Equality<UbicacionesRecord> {
 
   @override
   bool equals(UbicacionesRecord? e1, UbicacionesRecord? e2) {
+    const listEquality = ListEquality();
     return e1?.order == e2?.order &&
         e1?.name == e2?.name &&
         e1?.address == e2?.address &&
@@ -184,7 +191,8 @@ class UbicacionesRecordDocumentEquality implements Equality<UbicacionesRecord> {
         e1?.googleLink == e2?.googleLink &&
         e1?.isBranchOffice == e2?.isBranchOffice &&
         e1?.isRepairShop == e2?.isRepairShop &&
-        e1?.isActive == e2?.isActive;
+        e1?.isActive == e2?.isActive &&
+        listEquality.equals(e1?.specialities, e2?.specialities);
   }
 
   @override
@@ -201,7 +209,8 @@ class UbicacionesRecordDocumentEquality implements Equality<UbicacionesRecord> {
         e?.googleLink,
         e?.isBranchOffice,
         e?.isRepairShop,
-        e?.isActive
+        e?.isActive,
+        e?.specialities
       ]);
 
   @override

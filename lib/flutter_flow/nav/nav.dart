@@ -141,9 +141,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => ModelsWidget(),
         ),
         FFRoute(
-          name: FinanceStepOneWidget.routeName,
-          path: FinanceStepOneWidget.routePath,
-          builder: (context, params) => FinanceStepOneWidget(),
+          name: Financev2Widget.routeName,
+          path: Financev2Widget.routePath,
+          builder: (context, params) => Financev2Widget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

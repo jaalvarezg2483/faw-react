@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -9,7 +10,14 @@ import 'finance_card_vehicle_model.dart';
 export 'finance_card_vehicle_model.dart';
 
 class FinanceCardVehicleWidget extends StatefulWidget {
-  const FinanceCardVehicleWidget({super.key});
+  const FinanceCardVehicleWidget({
+    super.key,
+    required this.vehicle,
+    required this.callback,
+  });
+
+  final ModelsRecord? vehicle;
+  final Future Function()? callback;
 
   @override
   State<FinanceCardVehicleWidget> createState() =>
@@ -66,7 +74,10 @@ class _FinanceCardVehicleWidgetState extends State<FinanceCardVehicleWidget> {
                     ),
                   ),
                   Text(
-                    'Name',
+                    valueOrDefault<String>(
+                      widget!.vehicle?.name,
+                      'Model name',
+                    ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           font: GoogleFonts.inter(
                             fontWeight: FontWeight.bold,
@@ -128,7 +139,10 @@ class _FinanceCardVehicleWidgetState extends State<FinanceCardVehicleWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
               child: Text(
-                '2 pasajeros',
+                valueOrDefault<String>(
+                  widget!.vehicle?.passengers,
+                  '2 passengers',
+                ),
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight:
@@ -149,7 +163,10 @@ class _FinanceCardVehicleWidgetState extends State<FinanceCardVehicleWidget> {
               children: [
                 Flexible(
                   child: Image.network(
-                    'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/0rs6iyaoqrue/0c1ad7619202188477bddc1089eb99ee.png',
+                    valueOrDefault<String>(
+                      widget!.vehicle?.urlImage,
+                      'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/0rs6iyaoqrue/0c1ad7619202188477bddc1089eb99ee.png',
+                    ),
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 230.0,
                     fit: BoxFit.fitWidth,

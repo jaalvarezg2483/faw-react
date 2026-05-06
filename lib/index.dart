@@ -13,5 +13,4 @@ export '/pages/purdy_drive/purdy_drive_widget.dart' show PurdyDriveWidget;
 export '/pages/workshops/workshops_widget.dart' show WorkshopsWidget;
 export '/pages/site_map/site_map_widget.dart' show SiteMapWidget;
 export '/pages/models/models_widget.dart' show ModelsWidget;
-export '/pages/finance_step_one/finance_step_one_widget.dart'
-    show FinanceStepOneWidget;
+export '/pages/financev2/financev2_widget.dart' show Financev2Widget;
