@@ -493,6 +493,100 @@ class _FinanceStepOneWidgetState extends State<FinanceStepOneWidget> {
                             ),
                           ),
                         ),
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                valueOrDefault<double>(
+                                  MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 40.0
+                                      : 100.0,
+                                  0.0,
+                                ),
+                                0.0,
+                                valueOrDefault<double>(
+                                  MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 40.0
+                                      : 100.0,
+                                  0.0,
+                                ),
+                                valueOrDefault<double>(
+                                  () {
+                                    if (MediaQuery.sizeOf(context).width <
+                                        kBreakpointSmall) {
+                                      return 60.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointMedium) {
+                                      return 60.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        kBreakpointLarge) {
+                                      return 200.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1280.0) {
+                                      return 400.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        1500.0) {
+                                      return 60.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        2000.0) {
+                                      return 250.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        2250.0) {
+                                      return 350.0;
+                                    } else if (MediaQuery.sizeOf(context)
+                                            .width <
+                                        2500.0) {
+                                      return 600.0;
+                                    } else {
+                                      return 60.0;
+                                    }
+                                  }(),
+                                  0.0,
+                                )),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 20.0, 0.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [],
+                                  ),
+                                ),
+                              ].divide(SizedBox(height: () {
+                                if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointSmall) {
+                                  return 15.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointMedium) {
+                                  return 15.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    kBreakpointLarge) {
+                                  return 25.0;
+                                } else if (MediaQuery.sizeOf(context).width <
+                                    1100.0) {
+                                  return 50.0;
+                                } else {
+                                  return 15.0;
+                                }
+                              }())),
+                            ),
+                          ),
+                        ),
                         Expanded(
                           child: wrapWithModel(
                             model: _model.footerModel,

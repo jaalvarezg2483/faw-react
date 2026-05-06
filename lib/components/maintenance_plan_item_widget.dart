@@ -46,7 +46,20 @@ class _MaintenancePlanItemWidgetState extends State<MaintenancePlanItemWidget>
     _model = createModel(context, () => MaintenancePlanItemModel());
 
     animationsMap.addAll({
-      'iconOnActionTriggerAnimation': AnimationInfo(
+      'iconOnActionTriggerAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          FlipEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 1.0,
+            end: 2.0,
+          ),
+        ],
+      ),
+      'iconOnActionTriggerAnimation2': AnimationInfo(
         trigger: AnimationTrigger.onActionTrigger,
         applyInitialState: true,
         effectsBuilder: () => [
@@ -107,17 +120,30 @@ class _MaintenancePlanItemWidgetState extends State<MaintenancePlanItemWidget>
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 0.0),
-                        child: Icon(
-                          Icons.add,
-                          color: FlutterFlowTheme.of(context).primary,
-                          size: 24.0,
-                        ).animateOnActionTrigger(
-                          animationsMap['iconOnActionTriggerAnimation']!,
+                      if (!_model.showContent)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 20.0, 0.0),
+                          child: Icon(
+                            Icons.add,
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 24.0,
+                          ).animateOnActionTrigger(
+                            animationsMap['iconOnActionTriggerAnimation1']!,
+                          ),
                         ),
-                      ),
+                      if (_model.showContent)
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 20.0, 0.0),
+                          child: Icon(
+                            Icons.remove_sharp,
+                            color: FlutterFlowTheme.of(context).primary,
+                            size: 24.0,
+                          ).animateOnActionTrigger(
+                            animationsMap['iconOnActionTriggerAnimation2']!,
+                          ),
+                        ),
                       Align(
                         alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(

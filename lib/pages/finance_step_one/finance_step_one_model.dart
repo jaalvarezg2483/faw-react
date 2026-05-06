@@ -19,6 +19,8 @@ class FinanceStepOneModel extends FlutterFlowModel<FinanceStepOneWidget> {
 
   int? paso = 1;
 
+  ModelsRecord? vehicleSelected;
+
   ///  State fields for stateful widgets in this page.
 
   // Model for NavBarv2 component.
