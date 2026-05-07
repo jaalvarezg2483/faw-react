@@ -451,159 +451,244 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                             ],
                           ),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
-                          child: Container(
-                            constraints: BoxConstraints(
-                              maxWidth: MediaQuery.sizeOf(context).width <
-                                      kBreakpointLarge
-                                  ? MediaQuery.sizeOf(context).width
-                                  : (MediaQuery.sizeOf(context).width * 0.4),
-                            ),
-                            decoration: BoxDecoration(),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 20.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
+                        Container(
+                          width: MediaQuery.sizeOf(context).width * 1.0,
+                          decoration: BoxDecoration(),
+                          child: Wrap(
+                            spacing: 0.0,
+                            runSpacing: 0.0,
+                            alignment: WrapAlignment.spaceBetween,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            direction: Axis.horizontal,
+                            runAlignment: WrapAlignment.start,
+                            verticalDirection: VerticalDirection.down,
+                            clipBehavior: Clip.none,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 25.0),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 400.0
+                                      : 300.0,
+                                  decoration: BoxDecoration(),
+                                  child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Icon(
-                                        Icons.engineering_sharp,
-                                        color: FlutterFlowTheme.of(context)
-                                            .primary,
-                                        size: 32.0,
-                                      ),
-                                    ],
-                                  ),
-                                  Text(
-                                    'Servicios que encontrarás en esta sucursal:',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.montserrat(
-                                            fontWeight: FontWeight.bold,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
-                                          ),
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Icon(
+                                          Icons.engineering_sharp,
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
+                                          size: 32.0,
                                         ),
-                                  ),
-                                  Builder(
-                                    builder: (context) {
-                                      final specialties = widget!
-                                              .location?.specialities
-                                              ?.toList() ??
-                                          [];
-
-                                      return Column(
+                                      ),
+                                      Row(
                                         mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children:
-                                            List.generate(specialties.length,
-                                                (specialtiesIndex) {
-                                          final specialtiesItem =
-                                              specialties[specialtiesIndex];
-                                          return Text(
-                                            '- ${specialtiesItem}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.montserrat(
-                                                    fontWeight:
-                                                        FontWeight.normal,
+                                        children: [
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                          ))
+                                            Text(
+                                              'Servicios que encontrarás en esta sucursal:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font:
+                                                        GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          );
-                                        }),
-                                      );
-                                    },
-                                  ),
-                                ].divide(SizedBox(height: 4.0)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 0.0, 3.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Flexible(
-                                    child: FaIcon(
-                                      FontAwesomeIcons.mapPin,
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
-                                      size: 32.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      widget!.location?.address,
-                                      'Address',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          font: GoogleFonts.inter(
-                                            fontWeight:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontWeight,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
+                                            ),
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            tablet: false,
+                                            tabletLandscape: false,
+                                            desktop: false,
+                                          ))
+                                            Text(
+                                              'Servicios que encontrarás \nen esta sucursal:',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font:
+                                                        GoogleFonts.montserrat(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                        ],
+                                      ),
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 0.0),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final specialties = widget!
+                                                      .location?.specialities
+                                                      ?.toList() ??
+                                                  [];
+
+                                              return Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: List.generate(
+                                                    specialties.length,
+                                                    (specialtiesIndex) {
+                                                  final specialtiesItem =
+                                                      specialties[
+                                                          specialtiesIndex];
+                                                  return Text(
+                                                    '- ${specialtiesItem}',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font: GoogleFonts
+                                                              .montserrat(
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .normal,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  );
+                                                }),
+                                              );
+                                            },
                                           ),
-                                          letterSpacing: 0.0,
-                                          fontWeight:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontWeight,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
                                         ),
+                                      ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ],
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 25.0),
+                                child: Container(
+                                  width: MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall
+                                      ? 400.0
+                                      : 350.0,
+                                  decoration: BoxDecoration(),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 0.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Flexible(
+                                              child: FaIcon(
+                                                FontAwesomeIcons.mapPin,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                size: 32.0,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              valueOrDefault<String>(
+                                                widget!.location?.address,
+                                                'Address',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontWeight,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),

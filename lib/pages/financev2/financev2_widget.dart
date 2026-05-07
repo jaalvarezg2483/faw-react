@@ -9,13 +9,16 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'financev2_model.dart';
 export 'financev2_model.dart';
 
@@ -59,7 +62,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
         _model.queryVehicleOnLoad = await queryModelsRecordOnce(
           queryBuilder: (modelsRecord) => modelsRecord
               .where(
-                'code',
+                'slug',
                 isEqualTo: widget!.vehicle,
               )
               .where(
@@ -732,8 +735,11 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                           ],
                                         ),
                                         FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
+                                          onPressed: () async {
+                                            logFirebaseEvent(
+                                                'FINANCEV2_IR_A_P_U_R_D_Y_G_O_Y_RESERVAR_');
+                                            await launchURL(
+                                                'https://purdygo.com/reserva-en-linea');
                                           },
                                           text:
                                               'Ir a PURDY GO y reservar en línea',
@@ -791,36 +797,55 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.network(
                                               _model.vehicleSelected!.urlImage,
-                                              height: 500.0,
-                                              fit: BoxFit.fitHeight,
+                                              height: MediaQuery.sizeOf(context)
+                                                          .width <
+                                                      kBreakpointMedium
+                                                  ? 300.0
+                                                  : 500.0,
+                                              fit: BoxFit.contain,
                                             ),
                                           ),
                                         ),
                                       ].divide(SizedBox(height: 7.0)),
                                     ),
                                   ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryBackground,
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          32.0, 20.0, 32.0, 30.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Entidades disponibles',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                                  if (responsiveVisibility(
+                                    context: context,
+                                    phone: false,
+                                  ))
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            32.0, 20.0, 32.0, 30.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Entidades disponibles',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontStyle:
@@ -829,63 +854,557 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 20.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        fontStyle:
+                                              ),
+                                            ),
+                                            Container(
+                                              width: double.infinity,
+                                              height: 650.0,
+                                              child: CarouselSlider(
+                                                items: [
+                                                  wrapWithModel(
+                                                    model:
+                                                        _model.bankCardModel1,
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    child: BankCardWidget(),
+                                                  ),
+                                                  wrapWithModel(
+                                                    model:
+                                                        _model.bankCardModel2,
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    child: BankCardWidget(),
+                                                  ),
+                                                  wrapWithModel(
+                                                    model:
+                                                        _model.bankCardModel3,
+                                                    updateCallback: () =>
+                                                        safeSetState(() {}),
+                                                    child: BankCardWidget(),
+                                                  ),
+                                                ],
+                                                carouselController: _model
+                                                        .carouselController ??=
+                                                    CarouselSliderController(),
+                                                options: CarouselOptions(
+                                                  initialPage: 2,
+                                                  viewportFraction: 0.33,
+                                                  disableCenter: true,
+                                                  enlargeCenterPage: true,
+                                                  enlargeFactor: 0.25,
+                                                  enableInfiniteScroll: true,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  autoPlay: false,
+                                                  onPageChanged: (index, _) =>
+                                                      _model.carouselCurrentIndex =
+                                                          index,
+                                                ),
+                                              ),
+                                            ),
+                                          ].divide(SizedBox(height: 18.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 25.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Wrap(
+                                          spacing: 25.0,
+                                          runSpacing: 18.0,
+                                          alignment: WrapAlignment.center,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: [
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'FINANCEV2_PAGE_Container_1wol13ox_ON_TAP');
+                                                await launchURL(
+                                                    'https://api.whatsapp.com/send/?phone=50685891000&text=Hola+quiero+informaci%C3%B3n+de+FAW&type=phone_number&app_absent=0');
+                                              },
+                                              child: Container(
+                                                width: 450.0,
+                                                height: 65.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 3.0,
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          30.0, 0.0, 30.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      FaIcon(
+                                                        FontAwesomeIcons
+                                                            .whatsapp,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 35.0,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Contactar Asesor por Whatsapp',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 20.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        SizedBox(width: 14.0)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'FINANCEV2_PAGE_Container_yk0oqcgu_ON_TAP');
+                                                await launchURL(
+                                                    'https://api.whatsapp.com/send/?phone=50685891000&text=Hola+quiero+informaci%C3%B3n+de+FAW&type=phone_number&app_absent=0');
+                                              },
+                                              child: Container(
+                                                width: 450.0,
+                                                height: 65.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 3.0,
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          30.0, 0.0, 30.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.directions_car,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 35.0,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Solicitar prueba de manejo',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 20.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        SizedBox(width: 14.0)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'FINANCEV2_PAGE_Container_yibtib5h_ON_TAP');
+                                                await launchUrl(Uri(
+                                                  scheme: 'tel',
+                                                  path: '+50625197777',
+                                                ));
+                                              },
+                                              child: Container(
+                                                width: 450.0,
+                                                height: 65.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 3.0,
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          30.0, 0.0, 30.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.call,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 35.0,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Contactar Asesor',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 20.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        SizedBox(width: 14.0)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'FINANCEV2_PAGE_Container_zblwj48n_ON_TAP');
+                                                _model.paso = 1;
+                                                _model.vehicleSelected = null;
+                                                safeSetState(() {});
+                                              },
+                                              child: Container(
+                                                width: 450.0,
+                                                height: 65.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          30.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 3.0,
+                                                  ),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          30.0, 0.0, 30.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Icon(
+                                                        Icons.loop,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primary,
+                                                        size: 35.0,
+                                                      ),
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Iniciar nueva cotización',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primary,
+                                                                fontSize: 20.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        SizedBox(width: 14.0)),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            Container(
+                                              width: 450.0,
+                                              height: 65.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(30.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 3.0,
+                                                ),
+                                              ),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        30.0, 0.0, 30.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Icon(
+                                                      Icons.mail_outline,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      size: 35.0,
+                                                    ),
+                                                    Flexible(
+                                                      child: Text(
+                                                        'Enviar cotización al correo',
+                                                        style:
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .bodyMedium
-                                                                .fontStyle,
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  fontSize:
+                                                                      20.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .fontStyle,
+                                                                ),
                                                       ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width: double.infinity,
-                                            height: 650.0,
-                                            child: CarouselSlider(
-                                              items: [
-                                                wrapWithModel(
-                                                  model: _model.bankCardModel1,
-                                                  updateCallback: () =>
-                                                      safeSetState(() {}),
-                                                  child: BankCardWidget(),
+                                                    ),
+                                                  ].divide(
+                                                      SizedBox(width: 14.0)),
                                                 ),
-                                                wrapWithModel(
-                                                  model: _model.bankCardModel2,
-                                                  updateCallback: () =>
-                                                      safeSetState(() {}),
-                                                  child: BankCardWidget(),
-                                                ),
-                                                wrapWithModel(
-                                                  model: _model.bankCardModel3,
-                                                  updateCallback: () =>
-                                                      safeSetState(() {}),
-                                                  child: BankCardWidget(),
-                                                ),
-                                              ],
-                                              carouselController: _model
-                                                      .carouselController ??=
-                                                  CarouselSliderController(),
-                                              options: CarouselOptions(
-                                                initialPage: 2,
-                                                viewportFraction: 0.33,
-                                                disableCenter: true,
-                                                enlargeCenterPage: true,
-                                                enlargeFactor: 0.25,
-                                                enableInfiniteScroll: true,
-                                                scrollDirection:
-                                                    Axis.horizontal,
-                                                autoPlay: false,
-                                                onPageChanged: (index, _) =>
-                                                    _model.carouselCurrentIndex =
-                                                        index,
                                               ),
                                             ),
+                                          ],
+                                        ),
+                                        FFButtonWidget(
+                                          onPressed: () async {
+                                            logFirebaseEvent(
+                                                'FINANCEV2_VOLVER_AL_PERFIL_BTN_ON_TAP');
+
+                                            context.pushNamed(
+                                              ModelWidget.routeName,
+                                              pathParameters: {
+                                                'slug': serializeParam(
+                                                  _model.vehicleSelected?.slug,
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          text: 'Volver al perfil',
+                                          options: FFButtonOptions(
+                                            height: 50.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    25.0, 0.0, 25.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Colors.white,
+                                                  fontSize: 25.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
+                                                  fontStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontStyle,
+                                                ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(24.0),
                                           ),
-                                        ].divide(SizedBox(height: 18.0)),
-                                      ),
+                                        ),
+                                      ].divide(SizedBox(height: 20.0)),
                                     ),
                                   ),
                                 ].divide(SizedBox(height: () {
