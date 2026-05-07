@@ -10,6 +10,8 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +25,7 @@ class Financev2Widget extends StatefulWidget {
     this.vehicle,
   });
 
-  final ModelsRecord? vehicle;
+  final String? vehicle;
 
   static String routeName = 'Financev2';
   static String routePath = '/financiamiento';
@@ -53,8 +55,21 @@ class _Financev2WidgetState extends State<Financev2Widget> {
       );
       FFAppState().menuOptionActive = 'Financiamiento';
       safeSetState(() {});
-      if (widget!.vehicle != null) {
+      if (widget!.vehicle != null && widget!.vehicle != '') {
+        _model.queryVehicleOnLoad = await queryModelsRecordOnce(
+          queryBuilder: (modelsRecord) => modelsRecord
+              .where(
+                'code',
+                isEqualTo: widget!.vehicle,
+              )
+              .where(
+                'enable',
+                isEqualTo: true,
+              ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
         _model.paso = 2;
+        _model.vehicleSelected = _model.queryVehicleOnLoad;
         safeSetState(() {});
       }
     });

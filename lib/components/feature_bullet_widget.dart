@@ -76,7 +76,10 @@ class _FeatureBulletWidgetState extends State<FeatureBulletWidget> {
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          fontSize: 20.0,
+                          fontSize: MediaQuery.sizeOf(context).width <
+                                  kBreakpointSmall
+                              ? 15.0
+                              : 16.0,
                           letterSpacing: 0.0,
                           fontWeight: FontWeight.bold,
                           fontStyle:

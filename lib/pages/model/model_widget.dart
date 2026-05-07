@@ -236,46 +236,69 @@ class _ModelWidgetState extends State<ModelWidget> {
                                       verticalDirection: VerticalDirection.down,
                                       clipBehavior: Clip.none,
                                       children: [
-                                        Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 7.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  SizedBox(
-                                                    height: MediaQuery.sizeOf(
+                                        Container(
+                                          decoration: BoxDecoration(),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 7.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  children: [
+                                                    SizedBox(
+                                                      height: MediaQuery.sizeOf(
+                                                                      context)
+                                                                  .width <
+                                                              500.0
+                                                          ? 32.0
+                                                          : 43.0,
+                                                      child: VerticalDivider(
+                                                        thickness: 5.0,
+                                                        color:
+                                                            FlutterFlowTheme.of(
                                                                     context)
-                                                                .width <
-                                                            500.0
-                                                        ? 32.0
-                                                        : 43.0,
-                                                    child: VerticalDivider(
-                                                      thickness: 5.0,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                    ),
-                                                  ),
-                                                  Flexible(
-                                                    child: Text(
-                                                      valueOrDefault<String>(
-                                                        modelModelsRecord?.name,
-                                                        'modelo',
+                                                                .primary,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                font:
-                                                                    GoogleFonts
-                                                                        .inter(
+                                                    ),
+                                                    Flexible(
+                                                      child: Text(
+                                                        valueOrDefault<String>(
+                                                          modelModelsRecord
+                                                              ?.name,
+                                                          'modelo',
+                                                        ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  font:
+                                                                      GoogleFonts
+                                                                          .inter(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontStyle: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .bodyMedium
+                                                                        .fontStyle,
+                                                                  ),
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                  fontSize:
+                                                                      MediaQuery.sizeOf(context).width <
+                                                                              500.0
+                                                                          ? 30.0
+                                                                          : 40.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -284,67 +307,13 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .primary,
-                                                                fontSize:
-                                                                    MediaQuery.sizeOf(context).width <
-                                                                            500.0
-                                                                        ? 30.0
-                                                                        : 40.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .bold,
-                                                                fontStyle: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                            Text(
-                                              'desde',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
-                                                          fontWeight:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontWeight,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontWeight,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
                                                       ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 5.0, 0.0, 20.0),
-                                              child: Text(
-                                                '\$${functions.thousandSeparator(modelModelsRecord?.priceBase?.toDouble())}',
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              Text(
+                                                'desde',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -362,7 +331,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                     .bodyMedium
                                                                     .fontStyle,
                                                           ),
-                                                          fontSize: 20.0,
+                                                          fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
@@ -376,31 +345,17 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                   .fontStyle,
                                                         ),
                                               ),
-                                            ),
-                                            Container(
-                                              constraints: BoxConstraints(
-                                                maxWidth: 600.0,
-                                              ),
-                                              decoration: BoxDecoration(),
-                                              child: Visibility(
-                                                visible: modelModelsRecord
-                                                            ?.description !=
-                                                        null &&
-                                                    modelModelsRecord
-                                                            ?.description !=
-                                                        '',
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 5.0, 0.0, 20.0),
                                                 child: Text(
-                                                  valueOrDefault<String>(
-                                                    modelModelsRecord
-                                                        ?.description,
-                                                    'Descripción',
-                                                  ),
+                                                  '\$${functions.thousandSeparator(modelModelsRecord?.priceBase?.toDouble())}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
                                                       .override(
-                                                        font: GoogleFonts
-                                                            .interTight(
+                                                        font: GoogleFonts.inter(
                                                           fontWeight:
                                                               FlutterFlowTheme.of(
                                                                       context)
@@ -412,7 +367,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 16.0,
+                                                        fontSize: 20.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
                                                             FlutterFlowTheme.of(
@@ -427,8 +382,59 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                       ),
                                                 ),
                                               ),
-                                            ),
-                                          ].divide(SizedBox(height: 5.0)),
+                                              Container(
+                                                constraints: BoxConstraints(
+                                                  maxWidth: 600.0,
+                                                ),
+                                                decoration: BoxDecoration(),
+                                                child: Visibility(
+                                                  visible: modelModelsRecord
+                                                              ?.description !=
+                                                          null &&
+                                                      modelModelsRecord
+                                                              ?.description !=
+                                                          '',
+                                                  child: Text(
+                                                    valueOrDefault<String>(
+                                                      modelModelsRecord
+                                                          ?.description,
+                                                      'Descripción',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontWeight,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontWeight,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ].divide(SizedBox(height: 5.0)),
+                                          ),
                                         ),
                                         Column(
                                           mainAxisSize: MainAxisSize.max,
@@ -624,14 +630,10 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                   Financev2Widget.routeName,
                                                   queryParameters: {
                                                     'vehicle': serializeParam(
-                                                      modelModelsRecord,
-                                                      ParamType.Document,
+                                                      modelModelsRecord?.code,
+                                                      ParamType.String,
                                                     ),
                                                   }.withoutNulls,
-                                                  extra: <String, dynamic>{
-                                                    'vehicle':
-                                                        modelModelsRecord,
-                                                  },
                                                 );
                                               },
                                               child: Container(

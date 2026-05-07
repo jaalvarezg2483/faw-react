@@ -143,13 +143,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: Financev2Widget.routeName,
           path: Financev2Widget.routePath,
-          asyncParams: {
-            'vehicle': getDoc(['Models'], ModelsRecord.fromSnapshot),
-          },
           builder: (context, params) => Financev2Widget(
             vehicle: params.getParam(
               'vehicle',
-              ParamType.Document,
+              ParamType.String,
             ),
           ),
         )
