@@ -324,85 +324,98 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                             ),
                           ),
                         ),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 40.0
-                                      : 100.0,
+                        if (_model.paso == 1)
+                          Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  valueOrDefault<double>(
+                                    MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall
+                                        ? 40.0
+                                        : 100.0,
+                                    0.0,
+                                  ),
                                   0.0,
-                                ),
-                                0.0,
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 40.0
-                                      : 100.0,
-                                  0.0,
-                                ),
-                                valueOrDefault<double>(
-                                  () {
-                                    if (MediaQuery.sizeOf(context).width <
-                                        kBreakpointSmall) {
-                                      return 60.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        kBreakpointMedium) {
-                                      return 60.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        kBreakpointLarge) {
-                                      return 200.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1280.0) {
-                                      return 400.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1500.0) {
-                                      return 60.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        2000.0) {
-                                      return 250.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        2250.0) {
-                                      return 350.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        2500.0) {
-                                      return 600.0;
-                                    } else {
-                                      return 60.0;
-                                    }
-                                  }(),
-                                  0.0,
-                                )),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 20.0, 0.0, 0.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Flexible(
-                                        child: Text(
-                                          'Seleccioná el modelo de tu interés para que podás agregar Planes de Mantenimiento y ver diferentes opciones bancarias.',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                font: GoogleFonts.inter(
+                                  valueOrDefault<double>(
+                                    MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall
+                                        ? 40.0
+                                        : 100.0,
+                                    0.0,
+                                  ),
+                                  valueOrDefault<double>(
+                                    () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall) {
+                                        return 60.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointMedium) {
+                                        return 60.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointLarge) {
+                                        return 200.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1280.0) {
+                                        return 400.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1500.0) {
+                                        return 60.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          2000.0) {
+                                        return 250.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          2250.0) {
+                                        return 350.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          2500.0) {
+                                        return 600.0;
+                                      } else {
+                                        return 60.0;
+                                      }
+                                    }(),
+                                    0.0,
+                                  )),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 20.0, 0.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Flexible(
+                                          child: Text(
+                                            'Seleccioná el modelo de tu interés para que podás agregar Planes de Mantenimiento y ver diferentes opciones bancarias.',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  font: GoogleFonts.inter(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                                  letterSpacing: 0.0,
                                                   fontWeight:
                                                       FlutterFlowTheme.of(
                                                               context)
@@ -414,370 +427,215 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                           .bodyMedium
                                                           .fontStyle,
                                                 ),
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .fontStyle,
-                                              ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                StreamBuilder<List<ModelsRecord>>(
-                                  stream: queryModelsRecord(),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
                                           ),
                                         ),
-                                      );
-                                    }
-                                    List<ModelsRecord> wrapModelsRecordList =
-                                        snapshot.data!;
-
-                                    return Wrap(
-                                      spacing: 0.0,
-                                      runSpacing: 0.0,
-                                      alignment: WrapAlignment.start,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.start,
-                                      direction: Axis.horizontal,
-                                      runAlignment: WrapAlignment.start,
-                                      verticalDirection: VerticalDirection.down,
-                                      clipBehavior: Clip.none,
-                                      children: List.generate(
-                                          wrapModelsRecordList.length,
-                                          (wrapIndex) {
-                                        final wrapModelsRecord =
-                                            wrapModelsRecordList[wrapIndex];
-                                        return FinanceCardVehicleWidget(
-                                          key: Key(
-                                              'Keyusk_${wrapIndex}_of_${wrapModelsRecordList.length}'),
-                                          vehicle: wrapModelsRecord,
-                                          callback: () async {
-                                            logFirebaseEvent(
-                                                'FINANCEV2_Container_uskettet_CALLBACK');
-                                            _model.vehicleSelected =
-                                                wrapModelsRecord;
-                                            safeSetState(() {});
-                                          },
+                                      ],
+                                    ),
+                                  ),
+                                  StreamBuilder<List<ModelsRecord>>(
+                                    stream: queryModelsRecord(),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
                                         );
-                                      }),
-                                    );
-                                  },
-                                ),
-                              ].divide(SizedBox(height: () {
-                                if (MediaQuery.sizeOf(context).width <
-                                    kBreakpointSmall) {
-                                  return 15.0;
-                                } else if (MediaQuery.sizeOf(context).width <
-                                    kBreakpointMedium) {
-                                  return 15.0;
-                                } else if (MediaQuery.sizeOf(context).width <
-                                    kBreakpointLarge) {
-                                  return 25.0;
-                                } else if (MediaQuery.sizeOf(context).width <
-                                    1100.0) {
-                                  return 50.0;
-                                } else {
-                                  return 15.0;
-                                }
-                              }())),
+                                      }
+                                      List<ModelsRecord> wrapModelsRecordList =
+                                          snapshot.data!;
+
+                                      return Wrap(
+                                        spacing: 0.0,
+                                        runSpacing: 0.0,
+                                        alignment: WrapAlignment.start,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.start,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            wrapModelsRecordList.length,
+                                            (wrapIndex) {
+                                          final wrapModelsRecord =
+                                              wrapModelsRecordList[wrapIndex];
+                                          return FinanceCardVehicleWidget(
+                                            key: Key(
+                                                'Keyusk_${wrapIndex}_of_${wrapModelsRecordList.length}'),
+                                            vehicle: wrapModelsRecord,
+                                            callback: () async {
+                                              logFirebaseEvent(
+                                                  'FINANCEV2_Container_uskettet_CALLBACK');
+                                              _model.vehicleSelected =
+                                                  wrapModelsRecord;
+                                              safeSetState(() {});
+                                            },
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
+                                ].divide(SizedBox(height: () {
+                                  if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall) {
+                                    return 15.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointMedium) {
+                                    return 15.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointLarge) {
+                                    return 25.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      1100.0) {
+                                    return 50.0;
+                                  } else {
+                                    return 15.0;
+                                  }
+                                }())),
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          width: MediaQuery.sizeOf(context).width * 1.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 30.0
-                                      : 80.0,
-                                  0.0,
-                                ),
-                                0.0,
-                                valueOrDefault<double>(
-                                  MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall
-                                      ? 30.0
-                                      : 80.0,
-                                  0.0,
-                                ),
-                                valueOrDefault<double>(
-                                  () {
-                                    if (MediaQuery.sizeOf(context).width <
-                                        kBreakpointSmall) {
-                                      return 60.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        kBreakpointMedium) {
-                                      return 60.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        kBreakpointLarge) {
-                                      return 200.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1280.0) {
-                                      return 400.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        1500.0) {
-                                      return 60.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        2000.0) {
-                                      return 250.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        2250.0) {
-                                      return 350.0;
-                                    } else if (MediaQuery.sizeOf(context)
-                                            .width <
-                                        2500.0) {
-                                      return 600.0;
-                                    } else {
-                                      return 60.0;
-                                    }
-                                  }(),
-                                  0.0,
-                                )),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointMedium
-                                            ? 0.0
-                                            : 120.0,
-                                        0.0,
-                                      ),
-                                      0.0,
-                                      valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointMedium
-                                            ? 0.0
-                                            : 120.0,
-                                        0.0,
-                                      ),
-                                      0.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            valueOrDefault<String>(
-                                              _model.vehicleSelected?.name,
-                                              'Modelo',
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .primary,
-                                                  fontSize: () {
-                                                    if (MediaQuery.sizeOf(
-                                                                context)
-                                                            .width <
-                                                        kBreakpointSmall) {
-                                                      return 25.0;
-                                                    } else if (MediaQuery
-                                                                .sizeOf(context)
-                                                            .width <
-                                                        kBreakpointMedium) {
-                                                      return 30.0;
-                                                    } else {
-                                                      return 40.0;
-                                                    }
-                                                  }(),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Detalle de al orden',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w500,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            'Total \$${(_model.vehicleSelected?.promoPrice != null) && (_model.vehicleSelected!.promoPrice < _model.vehicleSelected!.priceBase.toDouble()) ? _model.vehicleSelected?.promoPrice?.toString() : _model.vehicleSelected?.priceBase?.toString()}',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                      FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
-                                        },
-                                        text:
-                                            'Ir a PURDY GO y reservar en línea',
-                                        options: FFButtonOptions(
-                                          width: 300.0,
-                                          height: 54.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: FlutterFlowTheme.of(context)
-                                              .primary,
-                                          textStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .titleSmall
-                                              .override(
-                                                font: GoogleFonts.interTight(
-                                                  fontWeight:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontWeight,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .fontStyle,
-                                                ),
-                                                color: Colors.white,
-                                                letterSpacing: 0.0,
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleSmall
-                                                        .fontStyle,
-                                              ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 21.0, 0.0, 0.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            _model.vehicleSelected!.urlImage,
-                                            width: 600.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                      ),
-                                    ].divide(SizedBox(height: 7.0)),
+                        if ((_model.paso == 2) &&
+                            (_model.vehicleSelected != null))
+                          Container(
+                            width: MediaQuery.sizeOf(context).width * 1.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                            ),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  valueOrDefault<double>(
+                                    MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall
+                                        ? 30.0
+                                        : 80.0,
+                                    0.0,
                                   ),
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .primaryBackground,
+                                  0.0,
+                                  valueOrDefault<double>(
+                                    MediaQuery.sizeOf(context).width <
+                                            kBreakpointSmall
+                                        ? 30.0
+                                        : 80.0,
+                                    0.0,
                                   ),
-                                  child: Padding(
+                                  valueOrDefault<double>(
+                                    () {
+                                      if (MediaQuery.sizeOf(context).width <
+                                          kBreakpointSmall) {
+                                        return 60.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointMedium) {
+                                        return 60.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          kBreakpointLarge) {
+                                        return 200.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1280.0) {
+                                        return 400.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          1500.0) {
+                                        return 60.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          2000.0) {
+                                        return 250.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          2250.0) {
+                                        return 350.0;
+                                      } else if (MediaQuery.sizeOf(context)
+                                              .width <
+                                          2500.0) {
+                                        return 600.0;
+                                      } else {
+                                        return 60.0;
+                                      }
+                                    }(),
+                                    0.0,
+                                  )),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        32.0, 20.0, 32.0, 30.0),
+                                        valueOrDefault<double>(
+                                          MediaQuery.sizeOf(context).width <
+                                                  kBreakpointMedium
+                                              ? 0.0
+                                              : 120.0,
+                                          0.0,
+                                        ),
+                                        20.0,
+                                        valueOrDefault<double>(
+                                          MediaQuery.sizeOf(context).width <
+                                                  kBreakpointMedium
+                                              ? 0.0
+                                              : 120.0,
+                                          0.0,
+                                        ),
+                                        0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 20.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Entidades disponibles',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              valueOrDefault<String>(
+                                                _model.vehicleSelected?.name,
+                                                'Modelo',
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    fontSize: () {
+                                                      if (MediaQuery.sizeOf(
+                                                                  context)
+                                                              .width <
+                                                          kBreakpointSmall) {
+                                                        return 25.0;
+                                                      } else if (MediaQuery
+                                                                  .sizeOf(
+                                                                      context)
+                                                              .width <
+                                                          kBreakpointMedium) {
+                                                        return 30.0;
+                                                      } else {
+                                                        return 40.0;
+                                                      }
+                                                    }(),
+                                                    letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
                                                     fontStyle:
                                                         FlutterFlowTheme.of(
@@ -785,83 +643,247 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                             .bodyMedium
                                                             .fontStyle,
                                                   ),
-                                                  fontSize: 20.0,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'Detalle de al orden',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              'Total \$${(_model.vehicleSelected?.promoPrice != null) && (_model.vehicleSelected!.promoPrice < _model.vehicleSelected!.priceBase.toDouble()) ? _model.vehicleSelected?.promoPrice?.toString() : _model.vehicleSelected?.priceBase?.toString()}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ],
+                                        ),
+                                        FFButtonWidget(
+                                          onPressed: () {
+                                            print('Button pressed ...');
+                                          },
+                                          text:
+                                              'Ir a PURDY GO y reservar en línea',
+                                          options: FFButtonOptions(
+                                            width: 300.0,
+                                            height: 54.0,
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            iconPadding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            color: FlutterFlowTheme.of(context)
+                                                .primary,
+                                            textStyle: FlutterFlowTheme.of(
+                                                    context)
+                                                .titleSmall
+                                                .override(
+                                                  font: GoogleFonts.interTight(
+                                                    fontWeight:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontWeight,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .titleSmall
+                                                            .fontStyle,
+                                                  ),
+                                                  color: Colors.white,
                                                   letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
+                                                  fontWeight:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .titleSmall
+                                                          .fontWeight,
                                                   fontStyle:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMedium
+                                                          .titleSmall
                                                           .fontStyle,
                                                 ),
+                                            elevation: 0.0,
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
                                           ),
                                         ),
-                                        Container(
-                                          width: double.infinity,
-                                          height: 650.0,
-                                          child: CarouselSlider(
-                                            items: [
-                                              wrapWithModel(
-                                                model: _model.bankCardModel1,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: BankCardWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.bankCardModel2,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: BankCardWidget(),
-                                              ),
-                                              wrapWithModel(
-                                                model: _model.bankCardModel3,
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child: BankCardWidget(),
-                                              ),
-                                            ],
-                                            carouselController:
-                                                _model.carouselController ??=
-                                                    CarouselSliderController(),
-                                            options: CarouselOptions(
-                                              initialPage: 2,
-                                              viewportFraction: 0.33,
-                                              disableCenter: true,
-                                              enlargeCenterPage: true,
-                                              enlargeFactor: 0.25,
-                                              enableInfiniteScroll: true,
-                                              scrollDirection: Axis.horizontal,
-                                              autoPlay: false,
-                                              onPageChanged: (index, _) =>
-                                                  _model.carouselCurrentIndex =
-                                                      index,
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 21.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              _model.vehicleSelected!.urlImage,
+                                              width: 600.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
                                         ),
-                                      ].divide(SizedBox(height: 18.0)),
+                                      ].divide(SizedBox(height: 7.0)),
                                     ),
                                   ),
-                                ),
-                              ].divide(SizedBox(height: () {
-                                if (MediaQuery.sizeOf(context).width <
-                                    kBreakpointSmall) {
-                                  return 15.0;
-                                } else if (MediaQuery.sizeOf(context).width <
-                                    kBreakpointMedium) {
-                                  return 15.0;
-                                } else if (MediaQuery.sizeOf(context).width <
-                                    kBreakpointLarge) {
-                                  return 25.0;
-                                } else if (MediaQuery.sizeOf(context).width <
-                                    1100.0) {
-                                  return 50.0;
-                                } else {
-                                  return 15.0;
-                                }
-                              }())),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          32.0, 20.0, 32.0, 30.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Entidades disponibles',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 20.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ),
+                                          Container(
+                                            width: double.infinity,
+                                            height: 650.0,
+                                            child: CarouselSlider(
+                                              items: [
+                                                wrapWithModel(
+                                                  model: _model.bankCardModel1,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: BankCardWidget(),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model.bankCardModel2,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: BankCardWidget(),
+                                                ),
+                                                wrapWithModel(
+                                                  model: _model.bankCardModel3,
+                                                  updateCallback: () =>
+                                                      safeSetState(() {}),
+                                                  child: BankCardWidget(),
+                                                ),
+                                              ],
+                                              carouselController: _model
+                                                      .carouselController ??=
+                                                  CarouselSliderController(),
+                                              options: CarouselOptions(
+                                                initialPage: 2,
+                                                viewportFraction: 0.33,
+                                                disableCenter: true,
+                                                enlargeCenterPage: true,
+                                                enlargeFactor: 0.25,
+                                                enableInfiniteScroll: true,
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                autoPlay: false,
+                                                onPageChanged: (index, _) =>
+                                                    _model.carouselCurrentIndex =
+                                                        index,
+                                              ),
+                                            ),
+                                          ),
+                                        ].divide(SizedBox(height: 18.0)),
+                                      ),
+                                    ),
+                                  ),
+                                ].divide(SizedBox(height: () {
+                                  if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointSmall) {
+                                    return 15.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointMedium) {
+                                    return 15.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      kBreakpointLarge) {
+                                    return 25.0;
+                                  } else if (MediaQuery.sizeOf(context).width <
+                                      1100.0) {
+                                    return 50.0;
+                                  } else {
+                                    return 15.0;
+                                  }
+                                }())),
+                              ),
                             ),
                           ),
-                        ),
                         Expanded(
                           child: wrapWithModel(
                             model: _model.footerModel,

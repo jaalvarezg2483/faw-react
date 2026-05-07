@@ -1,4 +1,5 @@
 import '/backend/backend.dart';
+import '/components/feature_bullet_widget.dart';
 import '/components/feature_card_widget.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/maintenance_plan_item_widget.dart';
@@ -26,6 +27,8 @@ class ModelModel extends FlutterFlowModel<ModelWidget> {
   late NavBarMobv2Model navBarMobv2Model;
   // Models for FeatureCard dynamic component.
   late FlutterFlowDynamicModels<FeatureCardModel> featureCardModels;
+  // Models for FeatureBullet dynamic component.
+  late FlutterFlowDynamicModels<FeatureBulletModel> featureBulletModels;
   // Models for MaintenancePlanItem dynamic component.
   late FlutterFlowDynamicModels<MaintenancePlanItemModel>
       maintenancePlanItemModels;
@@ -39,6 +42,7 @@ class ModelModel extends FlutterFlowModel<ModelWidget> {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
     featureCardModels = FlutterFlowDynamicModels(() => FeatureCardModel());
+    featureBulletModels = FlutterFlowDynamicModels(() => FeatureBulletModel());
     maintenancePlanItemModels =
         FlutterFlowDynamicModels(() => MaintenancePlanItemModel());
     redesModel = createModel(context, () => RedesModel());
@@ -50,6 +54,7 @@ class ModelModel extends FlutterFlowModel<ModelWidget> {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
     featureCardModels.dispose();
+    featureBulletModels.dispose();
     maintenancePlanItemModels.dispose();
     redesModel.dispose();
     footerModel.dispose();

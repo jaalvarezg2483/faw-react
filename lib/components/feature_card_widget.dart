@@ -151,7 +151,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget> {
                   child: Text(
                     widget!.features!.title,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.roboto(
+                          font: GoogleFonts.interTight(
                             fontWeight: FontWeight.bold,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -174,7 +174,7 @@ class _FeatureCardWidgetState extends State<FeatureCardWidget> {
                   child: Text(
                     widget!.features!.description,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.roboto(
+                          font: GoogleFonts.inter(
                             fontWeight: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontWeight,
