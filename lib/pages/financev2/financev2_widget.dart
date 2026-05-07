@@ -791,8 +791,8 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                 BorderRadius.circular(8.0),
                                             child: Image.network(
                                               _model.vehicleSelected!.urlImage,
-                                              width: 600.0,
-                                              fit: BoxFit.cover,
+                                              height: 500.0,
+                                              fit: BoxFit.fitHeight,
                                             ),
                                           ),
                                         ),
