@@ -58,33 +58,39 @@ class _FeatureBulletWidgetState extends State<FeatureBulletWidget> {
             Row(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 20.0, 0.0),
-                  child: Icon(
-                    Icons.circle_sharp,
-                    color: FlutterFlowTheme.of(context).primaryText,
-                    size: 12.0,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    'assets/images/shield-check_1.png',
+                    width: 46.0,
+                    fit: BoxFit.cover,
                   ),
                 ),
                 Flexible(
-                  child: Text(
-                    widget!.feature!.description,
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          font: GoogleFonts.inter(
-                            fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(11.0, 0.0, 0.0, 0.0),
+                    child: Text(
+                      widget!.feature!.description,
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            font: GoogleFonts.inter(
+                              fontWeight: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontWeight,
+                              fontStyle: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .fontStyle,
+                            ),
+                            fontSize: 18.0,
+                            letterSpacing: 0.0,
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
                             fontStyle: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .fontStyle,
                           ),
-                          fontSize: MediaQuery.sizeOf(context).width <
-                                  kBreakpointSmall
-                              ? 15.0
-                              : 16.0,
-                          letterSpacing: 0.0,
-                          fontWeight: FontWeight.bold,
-                          fontStyle:
-                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                        ),
+                    ),
                   ),
                 ),
               ],

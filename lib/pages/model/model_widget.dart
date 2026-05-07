@@ -1116,9 +1116,9 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                         );
                                                       })
                                                           .divide(SizedBox(
-                                                              height: 45.0))
+                                                              height: 10.0))
                                                           .addToEnd(SizedBox(
-                                                              height: 30.0)),
+                                                              height: 23.0)),
                                                     );
                                                   },
                                                 ),
