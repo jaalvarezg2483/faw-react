@@ -169,7 +169,7 @@ class _FinanceCardVehicleWidgetState extends State<FinanceCardVehicleWidget> {
                     ),
                     width: MediaQuery.sizeOf(context).width * 1.0,
                     height: 230.0,
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.fitHeight,
                     alignment: Alignment(0.0, 0.0),
                   ),
                 ),

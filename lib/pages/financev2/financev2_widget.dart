@@ -18,7 +18,12 @@ import 'financev2_model.dart';
 export 'financev2_model.dart';
 
 class Financev2Widget extends StatefulWidget {
-  const Financev2Widget({super.key});
+  const Financev2Widget({
+    super.key,
+    this.vehicle,
+  });
+
+  final ModelsRecord? vehicle;
 
   static String routeName = 'Financev2';
   static String routePath = '/financiamiento';
@@ -48,6 +53,10 @@ class _Financev2WidgetState extends State<Financev2Widget> {
       );
       FFAppState().menuOptionActive = 'Financiamiento';
       safeSetState(() {});
+      if (widget!.vehicle != null) {
+        _model.paso = 2;
+        safeSetState(() {});
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));

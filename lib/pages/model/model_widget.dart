@@ -621,7 +621,18 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                     'MODEL_PAGE_Container_85jzedjp_ON_TAP');
 
                                                 context.pushNamed(
-                                                    Financev1Widget.routeName);
+                                                  Financev2Widget.routeName,
+                                                  queryParameters: {
+                                                    'vehicle': serializeParam(
+                                                      modelModelsRecord,
+                                                      ParamType.Document,
+                                                    ),
+                                                  }.withoutNulls,
+                                                  extra: <String, dynamic>{
+                                                    'vehicle':
+                                                        modelModelsRecord,
+                                                  },
+                                                );
                                               },
                                               child: Container(
                                                 constraints: BoxConstraints(
@@ -756,7 +767,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                               child: Text(
                                                 valueOrDefault<String>(
                                                   modelModelsRecord?.name,
-                                                  'name',
+                                                  'Faw',
                                                 ),
                                                 textAlign: TextAlign.center,
                                                 style: FlutterFlowTheme.of(
@@ -1076,8 +1087,8 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: List.generate(
-                                                          features.length,
-                                                          (featuresIndex) {
+                                                              features.length,
+                                                              (featuresIndex) {
                                                         final featuresItem =
                                                             features[
                                                                 featuresIndex];
@@ -1101,8 +1112,11 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                 featuresItem,
                                                           ),
                                                         );
-                                                      }).divide(SizedBox(
-                                                          height: 45.0)),
+                                                      })
+                                                          .divide(SizedBox(
+                                                              height: 45.0))
+                                                          .addToEnd(SizedBox(
+                                                              height: 30.0)),
                                                     );
                                                   },
                                                 ),
