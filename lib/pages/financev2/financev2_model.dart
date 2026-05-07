@@ -1,5 +1,5 @@
 import '/backend/backend.dart';
-import '/components/bank_card_widget.dart';
+import '/components/bank_card/bank_card_widget.dart';
 import '/components/finance_card_vehicle_widget.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
