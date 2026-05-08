@@ -304,12 +304,18 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                               MainAxisAlignment.center,
                                           children: [
                                             Flexible(
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/apple-maps-wordmark.svg',
-                                                  fit: BoxFit.cover,
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 2.0, 0.0, 2.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: SvgPicture.asset(
+                                                    'assets/images/apple-maps-wordmark.svg',
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
                                             ),
