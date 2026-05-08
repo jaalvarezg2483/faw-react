@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_web_view.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -177,35 +178,38 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 25.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'LOCATION_CARD_Container_bzi0yxfh_ON_TAP');
-                                      await launchURL(
-                                          widget!.location!.googleLink);
-                                    },
-                                    child: Container(
-                                      width: 180.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .alternate,
-                                        borderRadius:
-                                            BorderRadius.circular(24.0),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 7.0, 10.0, 7.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Flexible(
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'LOCATION_CARD_Container_bzi0yxfh_ON_TAP');
+                                    await launchURL(
+                                        widget!.location!.googleLink);
+                                  },
+                                  child: Container(
+                                    width: 180.0,
+                                    height: MediaQuery.sizeOf(context).width <
+                                            kBreakpointMedium
+                                        ? 35.0
+                                        : 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderRadius: BorderRadius.circular(24.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 7.0, 10.0, 7.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Flexible(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -215,17 +219,59 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                                 ),
                                               ),
                                             ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ),
                                 ),
                               ),
                               Flexible(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 25.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'LOCATION_CARD_Container_cszz94wo_ON_TAP');
+                                    await launchURL(widget!.location!.wazeLink);
+                                  },
+                                  child: Container(
+                                    width: 180.0,
+                                    height: MediaQuery.sizeOf(context).width <
+                                            kBreakpointMedium
+                                        ? 35.0
+                                        : 50.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
+                                      borderRadius: BorderRadius.circular(24.0),
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 7.0, 10.0, 7.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Flexible(
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.asset(
+                                                'assets/images/Waze.png',
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if (widget!.location?.isRepairShop ?? true)
+                                Flexible(
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -233,12 +279,16 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'LOCATION_CARD_Container_cszz94wo_ON_TAP');
+                                          'LOCATION_CARD_Container_0h7mchpa_ON_TAP');
                                       await launchURL(
-                                          widget!.location!.wazeLink);
+                                          widget!.location!.appleMapsLink);
                                     },
                                     child: Container(
                                       width: 180.0,
+                                      height: MediaQuery.sizeOf(context).width <
+                                              kBreakpointMedium
+                                          ? 35.0
+                                          : 50.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .alternate,
@@ -250,13 +300,15 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                             10.0, 7.0, 10.0, 7.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Flexible(
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/Waze.png',
+                                                child: SvgPicture.asset(
+                                                  'assets/images/apple-maps-wordmark.svg',
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
@@ -267,8 +319,7 @@ class _LocationCardWidgetState extends State<LocationCardWidget> {
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
+                            ].divide(SizedBox(width: 20.0)),
                           ),
                         ),
                         Container(

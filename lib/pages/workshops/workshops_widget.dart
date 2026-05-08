@@ -341,7 +341,7 @@ class _WorkshopsWidgetState extends State<WorkshopsWidget> {
                                         0.0, 0.0, 0.0, 100.0),
                                     child: Container(
                                       width: MediaQuery.sizeOf(context).width *
-                                          0.7,
+                                          0.8,
                                       decoration: BoxDecoration(),
                                       child: Builder(
                                         builder: (context) {

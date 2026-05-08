@@ -86,6 +86,11 @@ class UbicacionesRecord extends FirestoreRecord {
   List<String> get specialities => _specialities ?? const [];
   bool hasSpecialities() => _specialities != null;
 
+  // "appleMapsLink" field.
+  String? _appleMapsLink;
+  String get appleMapsLink => _appleMapsLink ?? '';
+  bool hasAppleMapsLink() => _appleMapsLink != null;
+
   void _initializeFields() {
     _order = castToType<int>(snapshotData['order']);
     _name = snapshotData['name'] as String?;
@@ -101,6 +106,7 @@ class UbicacionesRecord extends FirestoreRecord {
     _isRepairShop = snapshotData['isRepairShop'] as bool?;
     _isActive = snapshotData['isActive'] as bool?;
     _specialities = getDataList(snapshotData['specialities']);
+    _appleMapsLink = snapshotData['appleMapsLink'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -151,6 +157,7 @@ Map<String, dynamic> createUbicacionesRecordData({
   bool? isBranchOffice,
   bool? isRepairShop,
   bool? isActive,
+  String? appleMapsLink,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -167,6 +174,7 @@ Map<String, dynamic> createUbicacionesRecordData({
       'isBranchOffice': isBranchOffice,
       'isRepairShop': isRepairShop,
       'isActive': isActive,
+      'appleMapsLink': appleMapsLink,
     }.withoutNulls,
   );
 
@@ -192,7 +200,8 @@ class UbicacionesRecordDocumentEquality implements Equality<UbicacionesRecord> {
         e1?.isBranchOffice == e2?.isBranchOffice &&
         e1?.isRepairShop == e2?.isRepairShop &&
         e1?.isActive == e2?.isActive &&
-        listEquality.equals(e1?.specialities, e2?.specialities);
+        listEquality.equals(e1?.specialities, e2?.specialities) &&
+        e1?.appleMapsLink == e2?.appleMapsLink;
   }
 
   @override
@@ -210,7 +219,8 @@ class UbicacionesRecordDocumentEquality implements Equality<UbicacionesRecord> {
         e?.isBranchOffice,
         e?.isRepairShop,
         e?.isActive,
-        e?.specialities
+        e?.specialities,
+        e?.appleMapsLink
       ]);
 
   @override
