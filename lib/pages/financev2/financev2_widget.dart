@@ -915,7 +915,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       );
                                                     },
                                                     carouselController: _model
-                                                            .carouselController1 ??=
+                                                            .carouselController ??=
                                                         CarouselSliderController(),
                                                     options: CarouselOptions(
                                                       initialPage: max(
@@ -936,7 +936,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       autoPlay: false,
                                                       onPageChanged: (index,
                                                               _) =>
-                                                          _model.carouselCurrentIndex1 =
+                                                          _model.carouselCurrentIndex =
                                                               index,
                                                     ),
                                                   ),
@@ -1039,7 +1039,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                             );
                                                           },
                                                           carouselController: _model
-                                                                  .carouselController2 ??=
+                                                                  .carouselMOBController ??=
                                                               CarouselSliderController(),
                                                           options:
                                                               CarouselOptions(
@@ -1063,7 +1063,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                             autoPlay: false,
                                                             onPageChanged: (index,
                                                                     _) =>
-                                                                _model.carouselCurrentIndex2 =
+                                                                _model.carouselMOBCurrentIndex =
                                                                     index,
                                                           ),
                                                         ),
@@ -1078,83 +1078,127 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       MainAxisAlignment
                                                           .spaceBetween,
                                                   children: [
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      20.0,
-                                                                      20.0,
-                                                                      20.0),
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x6957636C),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          30.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(
-                                                                          10.0),
-                                                              child: Icon(
-                                                                Icons
-                                                                    .arrow_back_ios_new,
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'FINANCEV2_PAGE_Column_rijbpfnc_ON_TAP');
+                                                        await _model
+                                                            .carouselMOBController
+                                                            ?.previousPage(
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  300),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        20.0,
+                                                                        20.0,
+                                                                        20.0),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 color: Color(
-                                                                    0xA014181B),
-                                                                size: 24.0,
+                                                                    0x6957636C),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            30.0),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            10.0),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .arrow_back_ios_new,
+                                                                  color: Color(
+                                                                      0xA014181B),
+                                                                  size: 24.0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
-                                                    Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      20.0,
-                                                                      20.0,
-                                                                      0.0,
-                                                                      20.0),
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0x6957636C),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          30.0),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsets
-                                                                      .all(
-                                                                          10.0),
-                                                              child: Icon(
-                                                                Icons
-                                                                    .arrow_forward_ios_sharp,
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'FINANCEV2_PAGE_Column_fth29agf_ON_TAP');
+                                                        await _model
+                                                            .carouselMOBController
+                                                            ?.nextPage(
+                                                          duration: Duration(
+                                                              milliseconds:
+                                                                  300),
+                                                          curve: Curves.ease,
+                                                        );
+                                                      },
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        20.0,
+                                                                        20.0,
+                                                                        0.0,
+                                                                        20.0),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
                                                                 color: Color(
-                                                                    0xA014181B),
-                                                                size: 24.0,
+                                                                    0x6957636C),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            30.0),
+                                                              ),
+                                                              child: Padding(
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .all(
+                                                                            10.0),
+                                                                child: Icon(
+                                                                  Icons
+                                                                      .arrow_forward_ios_sharp,
+                                                                  color: Color(
+                                                                      0xA014181B),
+                                                                  size: 24.0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ],
                                                 ),

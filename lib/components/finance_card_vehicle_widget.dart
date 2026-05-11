@@ -184,8 +184,10 @@ class _FinanceCardVehicleWidgetState extends State<FinanceCardVehicleWidget> {
                     padding:
                         EdgeInsetsDirectional.fromSTEB(20.0, 12.0, 20.0, 30.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'FINANCE_CARD_VEHICLE_SELECCIONAR_BTN_ON_');
+                        await widget.callback?.call();
                       },
                       text: 'Seleccionar',
                       options: FFButtonOptions(
