@@ -533,6 +533,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                   'FINANCEV2_Container_uskettet_CALLBACK');
                                               _model.vehicleSelected =
                                                   wrapModelsRecord;
+                                              _model.paso = 2;
                                               safeSetState(() {});
                                             },
                                           );

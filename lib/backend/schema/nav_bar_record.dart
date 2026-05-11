@@ -61,6 +61,11 @@ class NavBarRecord extends FirestoreRecord {
   String get parentGroup => _parentGroup ?? '';
   bool hasParentGroup() => _parentGroup != null;
 
+  // "isIndented" field.
+  bool? _isIndented;
+  bool get isIndented => _isIndented ?? false;
+  bool hasIsIndented() => _isIndented != null;
+
   void _initializeFields() {
     _order = castToType<int>(snapshotData['order']);
     _name = snapshotData['name'] as String?;
@@ -71,6 +76,7 @@ class NavBarRecord extends FirestoreRecord {
     _isSectionHeader = snapshotData['isSectionHeader'] as bool?;
     _groupKey = snapshotData['groupKey'] as String?;
     _parentGroup = snapshotData['parentGroup'] as String?;
+    _isIndented = snapshotData['isIndented'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -116,6 +122,7 @@ Map<String, dynamic> createNavBarRecordData({
   bool? isSectionHeader,
   String? groupKey,
   String? parentGroup,
+  bool? isIndented,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -128,6 +135,7 @@ Map<String, dynamic> createNavBarRecordData({
       'isSectionHeader': isSectionHeader,
       'groupKey': groupKey,
       'parentGroup': parentGroup,
+      'isIndented': isIndented,
     }.withoutNulls,
   );
 
@@ -147,7 +155,8 @@ class NavBarRecordDocumentEquality implements Equality<NavBarRecord> {
         e1?.urlPage == e2?.urlPage &&
         e1?.isSectionHeader == e2?.isSectionHeader &&
         e1?.groupKey == e2?.groupKey &&
-        e1?.parentGroup == e2?.parentGroup;
+        e1?.parentGroup == e2?.parentGroup &&
+        e1?.isIndented == e2?.isIndented;
   }
 
   @override
@@ -160,7 +169,8 @@ class NavBarRecordDocumentEquality implements Equality<NavBarRecord> {
         e?.urlPage,
         e?.isSectionHeader,
         e?.groupKey,
-        e?.parentGroup
+        e?.parentGroup,
+        e?.isIndented
       ]);
 
   @override

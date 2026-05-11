@@ -227,34 +227,59 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                       children: [
                                         if (containerVarItem.isSectionHeader ==
                                             true)
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'NAV_BAR_MOBV2_COMP_Headers_ON_TAP');
-                                              if (FFAppState()
-                                                      .expandedNavSection ==
-                                                  containerVarItem.groupKey) {
-                                                FFAppState()
-                                                    .expandedNavSection = '';
-                                                safeSetState(() {});
-                                              } else {
-                                                FFAppState()
-                                                        .expandedNavSection =
-                                                    containerVarItem.groupKey;
-                                                safeSetState(() {});
-                                              }
-                                            },
-                                            child: Text(
-                                              containerVarItem.name,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    font: GoogleFonts.inter(
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'NAV_BAR_MOBV2_COMP_Headers_ON_TAP');
+                                                if (FFAppState()
+                                                        .expandedNavSection ==
+                                                    containerVarItem.groupKey) {
+                                                  FFAppState()
+                                                      .expandedNavSection = '';
+                                                  safeSetState(() {});
+                                                } else {
+                                                  FFAppState()
+                                                          .expandedNavSection =
+                                                      containerVarItem.groupKey;
+                                                  safeSetState(() {});
+                                                }
+                                              },
+                                              child: Text(
+                                                containerVarItem.name,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: containerVarItem
+                                                                  .name ==
+                                                              FFAppState()
+                                                                  .menuOptionActive
+                                                          ? FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      fontSize: 18.0,
+                                                      letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontStyle:
@@ -263,25 +288,7 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                                               .bodyMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: containerVarItem
-                                                                .name ==
-                                                            FFAppState()
-                                                                .menuOptionActive
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    fontSize: 18.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
+                                              ),
                                             ),
                                           ),
                                         if ((containerVarItem.isSectionHeader ==
@@ -295,48 +302,83 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                                         .expandedNavSection ==
                                                     containerVarItem
                                                         .parentGroup)))
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'NAV_BAR_MOBV2_COMP_Items_ON_TAP');
-                                              if (containerVarItem.isLink) {
-                                                await launchURL(
-                                                    containerVarItem.urlPage);
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    valueOrDefault<double>(
+                                                      containerVarItem
+                                                              .isIndented
+                                                          ? 20.0
+                                                          : 0.0,
+                                                      0.0,
+                                                    ),
+                                                    10.0,
+                                                    0.0,
+                                                    10.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'NAV_BAR_MOBV2_COMP_Items_ON_TAP');
+                                                if (containerVarItem.isLink) {
+                                                  await launchURL(
+                                                      containerVarItem.urlPage);
+                                                  FFAppState().isModelSelected =
+                                                      false;
+                                                  FFAppState().models = [];
+                                                  safeSetState(() {});
+                                                  return;
+                                                } else {
+                                                  await actions.navigateToPage(
+                                                    context,
+                                                    containerVarItem.page,
+                                                  );
+                                                }
+
+                                                _model.isMenuActive =
+                                                    !_model.isMenuActive;
+                                                safeSetState(() {});
+                                                FFAppState().isMenuMobile =
+                                                    !(FFAppState()
+                                                            .isMenuMobile ??
+                                                        true);
+                                                safeSetState(() {});
                                                 FFAppState().isModelSelected =
                                                     false;
                                                 FFAppState().models = [];
                                                 safeSetState(() {});
-                                                return;
-                                              } else {
-                                                await actions.navigateToPage(
-                                                  context,
-                                                  containerVarItem.page,
-                                                );
-                                              }
-
-                                              _model.isMenuActive =
-                                                  !_model.isMenuActive;
-                                              safeSetState(() {});
-                                              FFAppState().isMenuMobile =
-                                                  !(FFAppState().isMenuMobile ??
-                                                      true);
-                                              safeSetState(() {});
-                                              FFAppState().isModelSelected =
-                                                  false;
-                                              FFAppState().models = [];
-                                              safeSetState(() {});
-                                            },
-                                            child: Text(
-                                              containerVarItem.name,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    font: GoogleFonts.inter(
+                                              },
+                                              child: Text(
+                                                containerVarItem.name,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      font: GoogleFonts.inter(
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                                      color: containerVarItem
+                                                                  .name ==
+                                                              FFAppState()
+                                                                  .menuOptionActive
+                                                          ? FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondary
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primary,
+                                                      fontSize: 18.0,
+                                                      letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontStyle:
@@ -345,25 +387,7 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                                               .bodyMedium
                                                               .fontStyle,
                                                     ),
-                                                    color: containerVarItem
-                                                                .name ==
-                                                            FFAppState()
-                                                                .menuOptionActive
-                                                        ? FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondary
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    fontSize: 18.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
+                                              ),
                                             ),
                                           ),
                                       ],
