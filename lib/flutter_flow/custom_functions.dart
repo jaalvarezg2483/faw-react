@@ -41,3 +41,18 @@ String? getImageURL(
   }
   return type;
 }
+
+List<BankStruct> filterBanksList(
+  List<BankStruct> banksList,
+  List<CustomPaymentTermsRecord>? banksToBeExcluded,
+) {
+  // given banksList and banksToBeExcluded lists exclude from banksList the elements which its "name" property appears in banksToBeExcluded in the property "bank"
+// Create a set of bank names to be excluded for faster lookup
+  final excludedBankNames =
+      banksToBeExcluded?.map((bank) => bank.bank).toSet() ?? {};
+
+  // Filter the banksList to exclude banks that are in the excludedBankNames set
+  return banksList
+      .where((bank) => !excludedBankNames.contains(bank.name))
+      .toList();
+}

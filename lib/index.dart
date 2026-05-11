@@ -14,3 +14,5 @@ export '/pages/workshops/workshops_widget.dart' show WorkshopsWidget;
 export '/pages/site_map/site_map_widget.dart' show SiteMapWidget;
 export '/pages/models/models_widget.dart' show ModelsWidget;
 export '/pages/financev2/financev2_widget.dart' show Financev2Widget;
+export '/pages/cabezales/cabezales_widget.dart' show CabezalesWidget;
+export '/pages/vagonetas/vagonetas_widget.dart' show VagonetasWidget;

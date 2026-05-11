@@ -46,6 +46,21 @@ class NavBarRecord extends FirestoreRecord {
   String get urlPage => _urlPage ?? '';
   bool hasUrlPage() => _urlPage != null;
 
+  // "isSectionHeader" field.
+  bool? _isSectionHeader;
+  bool get isSectionHeader => _isSectionHeader ?? false;
+  bool hasIsSectionHeader() => _isSectionHeader != null;
+
+  // "groupKey" field.
+  String? _groupKey;
+  String get groupKey => _groupKey ?? '';
+  bool hasGroupKey() => _groupKey != null;
+
+  // "parentGroup" field.
+  String? _parentGroup;
+  String get parentGroup => _parentGroup ?? '';
+  bool hasParentGroup() => _parentGroup != null;
+
   void _initializeFields() {
     _order = castToType<int>(snapshotData['order']);
     _name = snapshotData['name'] as String?;
@@ -53,6 +68,9 @@ class NavBarRecord extends FirestoreRecord {
     _isActive = snapshotData['isActive'] as bool?;
     _isLink = snapshotData['isLink'] as bool?;
     _urlPage = snapshotData['urlPage'] as String?;
+    _isSectionHeader = snapshotData['isSectionHeader'] as bool?;
+    _groupKey = snapshotData['groupKey'] as String?;
+    _parentGroup = snapshotData['parentGroup'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,6 +113,9 @@ Map<String, dynamic> createNavBarRecordData({
   bool? isActive,
   bool? isLink,
   String? urlPage,
+  bool? isSectionHeader,
+  String? groupKey,
+  String? parentGroup,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,6 +125,9 @@ Map<String, dynamic> createNavBarRecordData({
       'isActive': isActive,
       'isLink': isLink,
       'urlPage': urlPage,
+      'isSectionHeader': isSectionHeader,
+      'groupKey': groupKey,
+      'parentGroup': parentGroup,
     }.withoutNulls,
   );
 
@@ -120,12 +144,24 @@ class NavBarRecordDocumentEquality implements Equality<NavBarRecord> {
         e1?.page == e2?.page &&
         e1?.isActive == e2?.isActive &&
         e1?.isLink == e2?.isLink &&
-        e1?.urlPage == e2?.urlPage;
+        e1?.urlPage == e2?.urlPage &&
+        e1?.isSectionHeader == e2?.isSectionHeader &&
+        e1?.groupKey == e2?.groupKey &&
+        e1?.parentGroup == e2?.parentGroup;
   }
 
   @override
-  int hash(NavBarRecord? e) => const ListEquality()
-      .hash([e?.order, e?.name, e?.page, e?.isActive, e?.isLink, e?.urlPage]);
+  int hash(NavBarRecord? e) => const ListEquality().hash([
+        e?.order,
+        e?.name,
+        e?.page,
+        e?.isActive,
+        e?.isLink,
+        e?.urlPage,
+        e?.isSectionHeader,
+        e?.groupKey,
+        e?.parentGroup
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is NavBarRecord;

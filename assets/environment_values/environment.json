@@ -1,0 +1,4 @@
+{
+  "URLBackendProd": "https://grupopurdy-websites-backend.azurewebsites.net/api",
+"URLBackendDev": "https://grupopurdy-websites-backend-staging.azurewebsites.net/api"
+}

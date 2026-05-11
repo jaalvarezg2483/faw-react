@@ -77,4 +77,10 @@ class FFAppState extends ChangeNotifier {
   set menuOptionActive(String value) {
     _menuOptionActive = value;
   }
+
+  String _expandedNavSection = '';
+  String get expandedNavSection => _expandedNavSection;
+  set expandedNavSection(String value) {
+    _expandedNavSection = value;
+  }
 }

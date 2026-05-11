@@ -149,6 +149,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ParamType.String,
             ),
           ),
+        ),
+        FFRoute(
+          name: CabezalesWidget.routeName,
+          path: CabezalesWidget.routePath,
+          builder: (context, params) => CabezalesWidget(),
+        ),
+        FFRoute(
+          name: VagonetasWidget.routeName,
+          path: VagonetasWidget.routePath,
+          builder: (context, params) => VagonetasWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,7 +11,12 @@ import 'bank_card_model.dart';
 export 'bank_card_model.dart';
 
 class BankCardWidget extends StatefulWidget {
-  const BankCardWidget({super.key});
+  const BankCardWidget({
+    super.key,
+    required this.bankData,
+  });
+
+  final BankStruct? bankData;
 
   @override
   State<BankCardWidget> createState() => _BankCardWidgetState();
@@ -58,7 +64,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Image.network(
-              'https://picsum.photos/seed/804/600',
+              widget!.bankData!.imageUrl,
               width: 200.0,
               height: 70.0,
               fit: BoxFit.cover,
@@ -104,7 +110,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Text(
-                          '1%',
+                          '${widget!.bankData?.tasa?.toString()}%',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     font: GoogleFonts.inter(
@@ -369,7 +375,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                         size: 24.0,
                       ),
                       Text(
-                        '1 años',
+                        '${widget!.bankData?.plazos?.toString()} años',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               font: GoogleFonts.inter(
                                 fontWeight: FontWeight.bold,

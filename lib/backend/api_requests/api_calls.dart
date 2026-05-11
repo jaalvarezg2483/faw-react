@@ -120,6 +120,100 @@ class SendEmailQuotationCall {
 
 /// End BackendAPI Group Code
 
+/// Start BackendWithVariableURLByEnv Group Code
+
+class BackendWithVariableURLByEnvGroup {
+  static String getBaseUrl({
+    String? urlBackendProd,
+    String? urlBackendDev,
+  }) {
+    urlBackendProd ??= FFDevEnvironmentValues().URLBackendProd;
+    urlBackendDev ??= FFDevEnvironmentValues().URLBackendDev;
+    return '${urlBackendDev}';
+  }
+
+  static Map<String, String> headers = {
+    'authorization': '5a90e16787a5b2c496f28f08c17321d3',
+  };
+  static GetBanksDataCall getBanksDataCall = GetBanksDataCall();
+  static GetPrimaCall getPrimaCall = GetPrimaCall();
+}
+
+class GetBanksDataCall {
+  Future<ApiCallResponse> call({
+    String? urlBackendProd,
+    String? urlBackendDev,
+  }) async {
+    urlBackendProd ??= FFDevEnvironmentValues().URLBackendProd;
+    urlBackendDev ??= FFDevEnvironmentValues().URLBackendDev;
+    final baseUrl = BackendWithVariableURLByEnvGroup.getBaseUrl(
+      urlBackendProd: urlBackendProd,
+      urlBackendDev: urlBackendDev,
+    );
+
+    return ApiManager.instance.makeApiCall(
+      callName: 'getBanksData',
+      apiUrl: '${baseUrl}/Banks/financing-options?website=FAW',
+      callType: ApiCallType.GET,
+      headers: {
+        'authorization': '5a90e16787a5b2c496f28f08c17321d3',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetPrimaCall {
+  Future<ApiCallResponse> call({
+    String? id = '',
+    double? prima,
+    double? precioVehiculo,
+    double? purdySeguro = 0,
+    String? urlBackendProd,
+    String? urlBackendDev,
+  }) async {
+    urlBackendProd ??= FFDevEnvironmentValues().URLBackendProd;
+    urlBackendDev ??= FFDevEnvironmentValues().URLBackendDev;
+    final baseUrl = BackendWithVariableURLByEnvGroup.getBaseUrl(
+      urlBackendProd: urlBackendProd,
+      urlBackendDev: urlBackendDev,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "id": "${escapeStringForJson(id)}",
+  "prima": ${prima},
+  "precioVehiculo": ${precioVehiculo},
+  "purdySeguro": ${purdySeguro}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'getPrima',
+      apiUrl: '${baseUrl}/Banks/calculate-financing',
+      callType: ApiCallType.POST,
+      headers: {
+        'authorization': '5a90e16787a5b2c496f28f08c17321d3',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+/// End BackendWithVariableURLByEnv Group Code
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
@@ -165,4 +259,15 @@ String _serializeJson(dynamic jsonVar, [bool isList = false]) {
     }
     return isList ? '[]' : '{}';
   }
+}
+
+String? escapeStringForJson(String? input) {
+  if (input == null) {
+    return null;
+  }
+  return input
+      .replaceAll('\\', '\\\\')
+      .replaceAll('"', '\\"')
+      .replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t');
 }

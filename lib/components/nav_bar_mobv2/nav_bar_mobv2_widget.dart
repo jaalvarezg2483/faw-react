@@ -190,7 +190,7 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                     ),
                   );
                 }
-                List<NavBarRecord> containerNavBarRecordList = snapshot.data!;
+                List<NavBarRecord> newMenuNavBarRecordList = snapshot.data!;
 
                 return Container(
                   width: MediaQuery.sizeOf(context).width * 1.0,
@@ -207,82 +207,171 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Expanded(
-                          child: Builder(
-                            builder: (context) {
-                              final containerVar =
-                                  containerNavBarRecordList.toList();
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Builder(
+                              builder: (context) {
+                                final containerVar =
+                                    newMenuNavBarRecordList.toList();
 
-                              return Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: List.generate(containerVar.length,
-                                    (containerVarIndex) {
-                                  final containerVarItem =
-                                      containerVar[containerVarIndex];
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'NAV_BAR_MOBV2_COMP_Text_44n38erl_ON_TAP');
-                                      if (containerVarItem.isLink) {
-                                        await launchURL(
-                                            containerVarItem.urlPage);
-                                        FFAppState().isModelSelected = false;
-                                        FFAppState().models = [];
-                                        safeSetState(() {});
-                                        return;
-                                      } else {
-                                        await actions.navigateToPage(
-                                          context,
-                                          containerVarItem.page,
-                                        );
-                                      }
-
-                                      _model.isMenuActive =
-                                          !_model.isMenuActive;
-                                      safeSetState(() {});
-                                      FFAppState().isMenuMobile =
-                                          !(FFAppState().isMenuMobile ?? true);
-                                      safeSetState(() {});
-                                      FFAppState().isModelSelected = false;
-                                      FFAppState().models = [];
-                                      safeSetState(() {});
-                                    },
-                                    child: Text(
-                                      containerVarItem.name,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            font: GoogleFonts.inter(
-                                              fontWeight: FontWeight.w600,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .fontStyle,
+                                return Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: List.generate(containerVar.length,
+                                      (containerVarIndex) {
+                                    final containerVarItem =
+                                        containerVar[containerVarIndex];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        if (containerVarItem.isSectionHeader ==
+                                            true)
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'NAV_BAR_MOBV2_COMP_Headers_ON_TAP');
+                                              if (FFAppState()
+                                                      .expandedNavSection ==
+                                                  containerVarItem.groupKey) {
+                                                FFAppState()
+                                                    .expandedNavSection = '';
+                                                safeSetState(() {});
+                                              } else {
+                                                FFAppState()
+                                                        .expandedNavSection =
+                                                    containerVarItem.groupKey;
+                                                safeSetState(() {});
+                                              }
+                                            },
+                                            child: Text(
+                                              containerVarItem.name,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: containerVarItem
+                                                                .name ==
+                                                            FFAppState()
+                                                                .menuOptionActive
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    fontSize: 18.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
                                             ),
-                                            color: containerVarItem.name ==
-                                                    FFAppState()
-                                                        .menuOptionActive
-                                                ? FlutterFlowTheme.of(context)
-                                                    .secondary
-                                                : FlutterFlowTheme.of(context)
-                                                    .primary,
-                                            fontSize: 18.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            fontStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyMedium
-                                                    .fontStyle,
                                           ),
-                                    ),
-                                  );
-                                }).divide(SizedBox(height: 25.0)),
-                              );
-                            },
+                                        if ((containerVarItem.isSectionHeader ==
+                                                false) &&
+                                            ((containerVarItem.parentGroup ==
+                                                        null ||
+                                                    containerVarItem
+                                                            .parentGroup ==
+                                                        '') ||
+                                                (FFAppState()
+                                                        .expandedNavSection ==
+                                                    containerVarItem
+                                                        .parentGroup)))
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'NAV_BAR_MOBV2_COMP_Items_ON_TAP');
+                                              if (containerVarItem.isLink) {
+                                                await launchURL(
+                                                    containerVarItem.urlPage);
+                                                FFAppState().isModelSelected =
+                                                    false;
+                                                FFAppState().models = [];
+                                                safeSetState(() {});
+                                                return;
+                                              } else {
+                                                await actions.navigateToPage(
+                                                  context,
+                                                  containerVarItem.page,
+                                                );
+                                              }
+
+                                              _model.isMenuActive =
+                                                  !_model.isMenuActive;
+                                              safeSetState(() {});
+                                              FFAppState().isMenuMobile =
+                                                  !(FFAppState().isMenuMobile ??
+                                                      true);
+                                              safeSetState(() {});
+                                              FFAppState().isModelSelected =
+                                                  false;
+                                              FFAppState().models = [];
+                                              safeSetState(() {});
+                                            },
+                                            child: Text(
+                                              containerVarItem.name,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font: GoogleFonts.inter(
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    color: containerVarItem
+                                                                .name ==
+                                                            FFAppState()
+                                                                .menuOptionActive
+                                                        ? FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    fontSize: 18.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                          ),
+                                      ],
+                                    );
+                                  }),
+                                );
+                              },
+                            ),
                           ),
                         ),
                         Padding(
@@ -298,7 +387,7 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   logFirebaseEvent(
-                                      'NAV_BAR_MOBV2_COMP_Icon_cuwkw4s1_ON_TAP');
+                                      'NAV_BAR_MOBV2_COMP_Icon_xruqjiis_ON_TAP');
                                   await launchURL(
                                       'https://www.facebook.com/share/orQ9LgyG8Ejs6nqj/?mibextid=JRoKGi');
                                 },
@@ -316,7 +405,7 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   logFirebaseEvent(
-                                      'NAV_BAR_MOBV2_COMP_Icon_7jxebryx_ON_TAP');
+                                      'NAV_BAR_MOBV2_COMP_Icon_ksam7uwx_ON_TAP');
                                   await launchURL(
                                       'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
                                 },
@@ -334,7 +423,7 @@ class _NavBarMobv2WidgetState extends State<NavBarMobv2Widget> {
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
                                   logFirebaseEvent(
-                                      'NAV_BAR_MOBV2_COMP_Icon_ab2y1jhq_ON_TAP');
+                                      'NAV_BAR_MOBV2_COMP_Icon_y76ht4n7_ON_TAP');
                                   await launchURL(
                                       'https://www.linkedin.com/company/faw-trucks-costa-rica/');
                                 },

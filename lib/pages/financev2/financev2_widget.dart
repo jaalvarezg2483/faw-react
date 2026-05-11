@@ -1,4 +1,6 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
+import '/backend/schema/structs/index.dart';
 import '/components/bank_card/bank_card_widget.dart';
 import '/components/finance_card_vehicle_widget.dart';
 import '/components/footer/footer_widget.dart';
@@ -9,6 +11,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -73,6 +76,30 @@ class _Financev2WidgetState extends State<Financev2Widget> {
         ).then((s) => s.firstOrNull);
         _model.paso = 2;
         _model.vehicleSelected = _model.queryVehicleOnLoad;
+        safeSetState(() {});
+      }
+      _model.banksCustomConfig = await queryCustomPaymentTermsRecordOnce(
+        queryBuilder: (customPaymentTermsRecord) =>
+            customPaymentTermsRecord.where(
+          'code',
+          isEqualTo: _model.vehicleSelected?.code,
+        ),
+      );
+      _model.getBanksData =
+          await BackendWithVariableURLByEnvGroup.getBanksDataCall.call();
+
+      if ((_model.getBanksData?.succeeded ?? true)) {
+        _model.bankList = (getJsonField(
+          (_model.getBanksData?.jsonBody ?? ''),
+          r'''$.data''',
+          true,
+        )!
+                .toList()
+                .map<BankStruct?>(BankStruct.maybeFromMap)
+                .toList() as Iterable<BankStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<BankStruct>();
         safeSetState(() {});
       }
     });
@@ -856,51 +883,282 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                         ),
                                               ),
                                             ),
-                                            Container(
-                                              width: double.infinity,
-                                              height: 650.0,
-                                              child: CarouselSlider(
-                                                items: [
-                                                  wrapWithModel(
-                                                    model:
-                                                        _model.bankCardModel1,
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: BankCardWidget(),
+                                            Builder(
+                                              builder: (context) {
+                                                final banksDesktop = functions
+                                                    .filterBanksList(
+                                                        _model.bankList
+                                                            .toList(),
+                                                        _model.banksCustomConfig
+                                                            ?.where((e) => !e
+                                                                .hasBankActive)
+                                                            .toList()
+                                                            ?.toList())
+                                                    .toList();
+
+                                                return Container(
+                                                  width: double.infinity,
+                                                  height: 650.0,
+                                                  child: CarouselSlider.builder(
+                                                    itemCount:
+                                                        banksDesktop.length,
+                                                    itemBuilder: (context,
+                                                        banksDesktopIndex, _) {
+                                                      final banksDesktopItem =
+                                                          banksDesktop[
+                                                              banksDesktopIndex];
+                                                      return BankCardWidget(
+                                                        key: Key(
+                                                            'Keyxoi_${banksDesktopIndex}_of_${banksDesktop.length}'),
+                                                        bankData:
+                                                            banksDesktopItem,
+                                                      );
+                                                    },
+                                                    carouselController: _model
+                                                            .carouselController1 ??=
+                                                        CarouselSliderController(),
+                                                    options: CarouselOptions(
+                                                      initialPage: max(
+                                                          0,
+                                                          min(
+                                                              2,
+                                                              banksDesktop
+                                                                      .length -
+                                                                  1)),
+                                                      viewportFraction: 0.33,
+                                                      disableCenter: true,
+                                                      enlargeCenterPage: true,
+                                                      enlargeFactor: 0.25,
+                                                      enableInfiniteScroll:
+                                                          true,
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      autoPlay: false,
+                                                      onPageChanged: (index,
+                                                              _) =>
+                                                          _model.carouselCurrentIndex1 =
+                                                              index,
+                                                    ),
                                                   ),
-                                                  wrapWithModel(
-                                                    model:
-                                                        _model.bankCardModel2,
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: BankCardWidget(),
-                                                  ),
-                                                  wrapWithModel(
-                                                    model:
-                                                        _model.bankCardModel3,
-                                                    updateCallback: () =>
-                                                        safeSetState(() {}),
-                                                    child: BankCardWidget(),
-                                                  ),
-                                                ],
-                                                carouselController: _model
-                                                        .carouselController ??=
-                                                    CarouselSliderController(),
-                                                options: CarouselOptions(
-                                                  initialPage: 2,
-                                                  viewportFraction: 0.33,
-                                                  disableCenter: true,
-                                                  enlargeCenterPage: true,
-                                                  enlargeFactor: 0.25,
-                                                  enableInfiniteScroll: true,
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  autoPlay: false,
-                                                  onPageChanged: (index, _) =>
-                                                      _model.carouselCurrentIndex =
-                                                          index,
-                                                ),
+                                                );
+                                              },
+                                            ),
+                                          ].divide(SizedBox(height: 18.0)),
+                                        ),
+                                      ),
+                                    ),
+                                  if (responsiveVisibility(
+                                    context: context,
+                                    tablet: false,
+                                    tabletLandscape: false,
+                                    desktop: false,
+                                  ))
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primaryBackground,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 20.0, 0.0, 30.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 20.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Entidades disponibles',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 20.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
                                               ),
+                                            ),
+                                            Stack(
+                                              alignment: AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          32.0, 0.0, 32.0, 0.0),
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      final banksMobile = functions
+                                                          .filterBanksList(
+                                                              _model.bankList
+                                                                  .toList(),
+                                                              _model
+                                                                  .banksCustomConfig
+                                                                  ?.where((e) =>
+                                                                      !e.hasBankActive)
+                                                                  .toList()
+                                                                  ?.toList())
+                                                          .toList();
+
+                                                      return Container(
+                                                        width: double.infinity,
+                                                        height: 650.0,
+                                                        child: CarouselSlider
+                                                            .builder(
+                                                          itemCount: banksMobile
+                                                              .length,
+                                                          itemBuilder: (context,
+                                                              banksMobileIndex,
+                                                              _) {
+                                                            final banksMobileItem =
+                                                                banksMobile[
+                                                                    banksMobileIndex];
+                                                            return BankCardWidget(
+                                                              key: Key(
+                                                                  'Keyht2_${banksMobileIndex}_of_${banksMobile.length}'),
+                                                              bankData:
+                                                                  banksMobileItem,
+                                                            );
+                                                          },
+                                                          carouselController: _model
+                                                                  .carouselController2 ??=
+                                                              CarouselSliderController(),
+                                                          options:
+                                                              CarouselOptions(
+                                                            initialPage: max(
+                                                                0,
+                                                                min(
+                                                                    1,
+                                                                    banksMobile
+                                                                            .length -
+                                                                        1)),
+                                                            viewportFraction:
+                                                                1.0,
+                                                            disableCenter: true,
+                                                            enlargeCenterPage:
+                                                                false,
+                                                            enlargeFactor: 0.0,
+                                                            enableInfiniteScroll:
+                                                                true,
+                                                            scrollDirection:
+                                                                Axis.horizontal,
+                                                            autoPlay: false,
+                                                            onPageChanged: (index,
+                                                                    _) =>
+                                                                _model.carouselCurrentIndex2 =
+                                                                    index,
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      20.0,
+                                                                      20.0,
+                                                                      20.0),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0x6957636C),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          30.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                          10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .arrow_back_ios_new,
+                                                                color: Color(
+                                                                    0xA014181B),
+                                                                size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      20.0,
+                                                                      20.0,
+                                                                      0.0,
+                                                                      20.0),
+                                                          child: Container(
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0x6957636C),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          30.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(
+                                                                          10.0),
+                                                              child: Icon(
+                                                                Icons
+                                                                    .arrow_forward_ios_sharp,
+                                                                color: Color(
+                                                                    0xA014181B),
+                                                                size: 24.0,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
                                             ),
                                           ].divide(SizedBox(height: 18.0)),
                                         ),
