@@ -58,12 +58,12 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
 
   ///  State fields for stateful widgets in this page.
 
+  // Stores action output result for [Backend Call - API (getBanksData)] action in Financev2 widget.
+  ApiCallResponse? getBanksData;
   // Stores action output result for [Firestore Query - Query a collection] action in Financev2 widget.
   ModelsRecord? queryVehicleOnLoad;
   // Stores action output result for [Firestore Query - Query a collection] action in Financev2 widget.
   List<CustomPaymentTermsRecord>? banksCustomConfig;
-  // Stores action output result for [Backend Call - API (getBanksData)] action in Financev2 widget.
-  ApiCallResponse? getBanksData;
   // Model for NavBarv2 component.
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.

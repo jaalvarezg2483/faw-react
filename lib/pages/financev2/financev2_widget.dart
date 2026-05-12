@@ -61,6 +61,23 @@ class _Financev2WidgetState extends State<Financev2Widget> {
       );
       FFAppState().menuOptionActive = 'Financiamiento';
       safeSetState(() {});
+      _model.getBanksData =
+          await BackendWithVariableURLByEnvGroup.getBanksDataCall.call();
+
+      if ((_model.getBanksData?.succeeded ?? true)) {
+        _model.bankList = (getJsonField(
+          (_model.getBanksData?.jsonBody ?? ''),
+          r'''$.data''',
+          true,
+        )!
+                .toList()
+                .map<BankStruct?>(BankStruct.maybeFromMap)
+                .toList() as Iterable<BankStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<BankStruct>();
+        safeSetState(() {});
+      }
       if (widget!.vehicleName != null && widget!.vehicleName != '') {
         _model.queryVehicleOnLoad = await queryModelsRecordOnce(
           queryBuilder: (modelsRecord) => modelsRecord
@@ -87,23 +104,6 @@ class _Financev2WidgetState extends State<Financev2Widget> {
         );
         _model.excludedBanksForSelectedVehicle =
             _model.banksCustomConfig!.toList().cast<CustomPaymentTermsRecord>();
-        safeSetState(() {});
-      }
-      _model.getBanksData =
-          await BackendWithVariableURLByEnvGroup.getBanksDataCall.call();
-
-      if ((_model.getBanksData?.succeeded ?? true)) {
-        _model.bankList = (getJsonField(
-          (_model.getBanksData?.jsonBody ?? ''),
-          r'''$.data''',
-          true,
-        )!
-                .toList()
-                .map<BankStruct?>(BankStruct.maybeFromMap)
-                .toList() as Iterable<BankStruct?>)
-            .withoutNulls
-            .toList()
-            .cast<BankStruct>();
         safeSetState(() {});
       }
     });
