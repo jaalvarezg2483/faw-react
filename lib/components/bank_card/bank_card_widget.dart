@@ -47,6 +47,28 @@ class _BankCardWidgetState extends State<BankCardWidget> {
       _model.minimumDownPayment =
           ((widget!.vehiclePrice!) * widget!.bankData!.prima) / 100;
       safeSetState(() {});
+      safeSetState(() {
+        _model.textController?.text = _model.minimumDownPayment!.toString();
+      });
+      _model.initialGetPrima =
+          await BackendWithVariableURLByEnvGroup.getPrimaCall.call(
+        id: widget!.bankData?.id,
+        prima: _model.minimumDownPayment,
+        precioVehiculo: widget!.vehiclePrice,
+        purdySeguro: 0.0,
+      );
+
+      if ((_model.initialGetPrima?.succeeded ?? true)) {
+        _model.cuotaBancaria =
+            BackendWithVariableURLByEnvGroup.getPrimaCall.cuotaBancaria(
+          (_model.initialGetPrima?.jsonBody ?? ''),
+        );
+        _model.cuotaMensual =
+            BackendWithVariableURLByEnvGroup.getPrimaCall.cuotaMensual(
+          (_model.initialGetPrima?.jsonBody ?? ''),
+        );
+        safeSetState(() {});
+      }
     });
 
     _model.textController ??=

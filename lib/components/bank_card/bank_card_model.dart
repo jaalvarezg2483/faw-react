@@ -29,6 +29,8 @@ class BankCardModel extends FlutterFlowModel<BankCardWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - API (getPrima)] action in bankCard widget.
+  ApiCallResponse? initialGetPrima;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
