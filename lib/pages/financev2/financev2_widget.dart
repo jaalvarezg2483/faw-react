@@ -74,8 +74,9 @@ class _Financev2WidgetState extends State<Financev2Widget> {
               ),
           singleRecord: true,
         ).then((s) => s.firstOrNull);
-        _model.paso = 2;
         _model.vehicleSelected = _model.queryVehicleOnLoad;
+        safeSetState(() {});
+        _model.paso = 2;
         safeSetState(() {});
         _model.banksCustomConfig = await queryCustomPaymentTermsRecordOnce(
           queryBuilder: (customPaymentTermsRecord) =>
@@ -757,7 +758,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              'Total \$${(_model.vehicleSelected?.promoPrice != null) && (_model.vehicleSelected!.promoPrice < _model.vehicleSelected!.priceBase.toDouble()) ? _model.vehicleSelected?.promoPrice?.toString() : _model.vehicleSelected?.priceBase?.toString()}',
+                                              'Total \$${(_model.vehicleSelected?.promoPrice != null) && (_model.vehicleSelected!.promoPrice < _model.vehicleSelected!.priceBase.toDouble()) && (_model.vehicleSelected!.promoPrice > 0.0) ? _model.vehicleSelected?.promoPrice?.toString() : _model.vehicleSelected?.priceBase?.toString()}',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
