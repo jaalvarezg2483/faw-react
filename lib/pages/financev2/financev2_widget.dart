@@ -922,7 +922,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       initialPage: max(
                                                           0,
                                                           min(
-                                                              2,
+                                                              1,
                                                               banksDesktop
                                                                       .length -
                                                                   1)),
@@ -1047,7 +1047,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                             initialPage: max(
                                                                 0,
                                                                 min(
-                                                                    1,
+                                                                    0,
                                                                     banksMobile
                                                                             .length -
                                                                         1)),

@@ -83,4 +83,33 @@ class FFAppState extends ChangeNotifier {
   set expandedNavSection(String value) {
     _expandedNavSection = value;
   }
+
+  List<DynamicBannerStruct> _banners = [];
+  List<DynamicBannerStruct> get banners => _banners;
+  set banners(List<DynamicBannerStruct> value) {
+    _banners = value;
+  }
+
+  void addToBanners(DynamicBannerStruct value) {
+    banners.add(value);
+  }
+
+  void removeFromBanners(DynamicBannerStruct value) {
+    banners.remove(value);
+  }
+
+  void removeAtIndexFromBanners(int index) {
+    banners.removeAt(index);
+  }
+
+  void updateBannersAtIndex(
+    int index,
+    DynamicBannerStruct Function(DynamicBannerStruct) updateFn,
+  ) {
+    banners[index] = updateFn(_banners[index]);
+  }
+
+  void insertAtIndexInBanners(int index, DynamicBannerStruct value) {
+    banners.insert(index, value);
+  }
 }

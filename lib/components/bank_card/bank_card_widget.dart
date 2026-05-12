@@ -67,7 +67,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
               widget!.bankData!.imageUrl,
               width: 200.0,
               height: 70.0,
-              fit: BoxFit.cover,
+              fit: BoxFit.contain,
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
