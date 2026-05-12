@@ -908,11 +908,23 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       final banksDesktopItem =
                                                           banksDesktop[
                                                               banksDesktopIndex];
-                                                      return BankCardWidget(
-                                                        key: Key(
-                                                            'Keyxoi_${banksDesktopIndex}_of_${banksDesktop.length}'),
-                                                        bankData:
-                                                            banksDesktopItem,
+                                                      return wrapWithModel(
+                                                        model: _model
+                                                            .bankCardModels1
+                                                            .getModel(
+                                                          banksDesktopIndex
+                                                              .toString(),
+                                                          banksDesktopIndex,
+                                                        ),
+                                                        updateCallback: () =>
+                                                            safeSetState(() {}),
+                                                        child: BankCardWidget(
+                                                          key: Key(
+                                                            'Keyxoi_${banksDesktopIndex.toString()}',
+                                                          ),
+                                                          bankData:
+                                                              banksDesktopItem,
+                                                        ),
                                                       );
                                                     },
                                                     carouselController: _model
@@ -1032,11 +1044,25 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                             final banksMobileItem =
                                                                 banksMobile[
                                                                     banksMobileIndex];
-                                                            return BankCardWidget(
-                                                              key: Key(
-                                                                  'Keyht2_${banksMobileIndex}_of_${banksMobile.length}'),
-                                                              bankData:
-                                                                  banksMobileItem,
+                                                            return wrapWithModel(
+                                                              model: _model
+                                                                  .bankCardModels2
+                                                                  .getModel(
+                                                                banksMobileIndex
+                                                                    .toString(),
+                                                                banksMobileIndex,
+                                                              ),
+                                                              updateCallback: () =>
+                                                                  safeSetState(
+                                                                      () {}),
+                                                              child:
+                                                                  BankCardWidget(
+                                                                key: Key(
+                                                                  'Keyht2_${banksMobileIndex.toString()}',
+                                                                ),
+                                                                bankData:
+                                                                    banksMobileItem,
+                                                              ),
                                                             );
                                                           },
                                                           carouselController: _model

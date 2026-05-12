@@ -56,10 +56,14 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 1;
 
+  // Models for bankCard dynamic component.
+  late FlutterFlowDynamicModels<BankCardModel> bankCardModels1;
   // State field(s) for CarouselMOB widget.
   CarouselSliderController? carouselMOBController;
   int carouselMOBCurrentIndex = 0;
 
+  // Models for bankCard dynamic component.
+  late FlutterFlowDynamicModels<BankCardModel> bankCardModels2;
   // Model for Footer component.
   late FooterModel footerModel;
 
@@ -67,6 +71,8 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   void initState(BuildContext context) {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
+    bankCardModels1 = FlutterFlowDynamicModels(() => BankCardModel());
+    bankCardModels2 = FlutterFlowDynamicModels(() => BankCardModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
@@ -74,6 +80,8 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   void dispose() {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
+    bankCardModels1.dispose();
+    bankCardModels2.dispose();
     footerModel.dispose();
   }
 }
