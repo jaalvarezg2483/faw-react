@@ -54,13 +54,13 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   late NavBarMobv2Model navBarMobv2Model;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
-  int carouselCurrentIndex = 2;
+  int carouselCurrentIndex = 1;
 
   // Models for bankCard dynamic component.
   late FlutterFlowDynamicModels<BankCardModel> bankCardModels1;
   // State field(s) for CarouselMOB widget.
   CarouselSliderController? carouselMOBController;
-  int carouselMOBCurrentIndex = 1;
+  int carouselMOBCurrentIndex = 0;
 
   // Models for bankCard dynamic component.
   late FlutterFlowDynamicModels<BankCardModel> bankCardModels2;
