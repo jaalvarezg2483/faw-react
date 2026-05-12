@@ -609,63 +609,6 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                     ),
               ),
             ),
-            Text(
-              'id: ${widget!.bankData?.id}    tasa:  ${widget!.bankData?.tasa?.toString()}  comision:  ${widget!.bankData?.comision?.toString()}  prima:  ${widget!.bankData?.prima?.toString()}  precio vehiculo:   ${widget!.vehiclePrice?.toString()}prima minima variable de componente:${_model.minimumDownPayment?.toString()}',
-              textAlign: TextAlign.justify,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                  ),
-            ),
-            Text(
-              getJsonField(
-                (_model.initialGetPrima?.jsonBody ?? ''),
-                r'''$.data''',
-              ).toString(),
-              textAlign: TextAlign.justify,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                  ),
-            ),
-            Text(
-              getJsonField(
-                (_model.getPrimaResult?.jsonBody ?? ''),
-                r'''$.data''',
-              ).toString(),
-              textAlign: TextAlign.justify,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                  ),
-            ),
             if (widget!.bankData?.disclaimer != null &&
                 widget!.bankData?.disclaimer != '')
               Text(
