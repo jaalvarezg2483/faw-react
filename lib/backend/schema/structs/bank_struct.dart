@@ -20,6 +20,8 @@ class BankStruct extends FFFirebaseStruct {
     int? fixedRateMonths,
     String? imageUrl,
     String? disclaimer,
+    double? basePrima,
+    double? currentPrima,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
@@ -31,6 +33,8 @@ class BankStruct extends FFFirebaseStruct {
         _fixedRateMonths = fixedRateMonths,
         _imageUrl = imageUrl,
         _disclaimer = disclaimer,
+        _basePrima = basePrima,
+        _currentPrima = currentPrima,
         super(firestoreUtilData);
 
   // "id" field.
@@ -116,6 +120,25 @@ class BankStruct extends FFFirebaseStruct {
 
   bool hasDisclaimer() => _disclaimer != null;
 
+  // "basePrima" field.
+  double? _basePrima;
+  double get basePrima => _basePrima ?? 0.0;
+  set basePrima(double? val) => _basePrima = val;
+
+  void incrementBasePrima(double amount) => basePrima = basePrima + amount;
+
+  bool hasBasePrima() => _basePrima != null;
+
+  // "currentPrima" field.
+  double? _currentPrima;
+  double get currentPrima => _currentPrima ?? 0.0;
+  set currentPrima(double? val) => _currentPrima = val;
+
+  void incrementCurrentPrima(double amount) =>
+      currentPrima = currentPrima + amount;
+
+  bool hasCurrentPrima() => _currentPrima != null;
+
   static BankStruct fromMap(Map<String, dynamic> data) => BankStruct(
         id: data['id'] as String?,
         name: data['name'] as String?,
@@ -127,6 +150,8 @@ class BankStruct extends FFFirebaseStruct {
         fixedRateMonths: castToType<int>(data['fixedRateMonths']),
         imageUrl: data['imageUrl'] as String?,
         disclaimer: data['disclaimer'] as String?,
+        basePrima: castToType<double>(data['basePrima']),
+        currentPrima: castToType<double>(data['currentPrima']),
       );
 
   static BankStruct? maybeFromMap(dynamic data) =>
@@ -143,6 +168,8 @@ class BankStruct extends FFFirebaseStruct {
         'fixedRateMonths': _fixedRateMonths,
         'imageUrl': _imageUrl,
         'disclaimer': _disclaimer,
+        'basePrima': _basePrima,
+        'currentPrima': _currentPrima,
       }.withoutNulls;
 
   @override
@@ -186,6 +213,14 @@ class BankStruct extends FFFirebaseStruct {
         'disclaimer': serializeParam(
           _disclaimer,
           ParamType.String,
+        ),
+        'basePrima': serializeParam(
+          _basePrima,
+          ParamType.double,
+        ),
+        'currentPrima': serializeParam(
+          _currentPrima,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -241,6 +276,16 @@ class BankStruct extends FFFirebaseStruct {
           ParamType.String,
           false,
         ),
+        basePrima: deserializeParam(
+          data['basePrima'],
+          ParamType.double,
+          false,
+        ),
+        currentPrima: deserializeParam(
+          data['currentPrima'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -258,7 +303,9 @@ class BankStruct extends FFFirebaseStruct {
         order == other.order &&
         fixedRateMonths == other.fixedRateMonths &&
         imageUrl == other.imageUrl &&
-        disclaimer == other.disclaimer;
+        disclaimer == other.disclaimer &&
+        basePrima == other.basePrima &&
+        currentPrima == other.currentPrima;
   }
 
   @override
@@ -272,7 +319,9 @@ class BankStruct extends FFFirebaseStruct {
         order,
         fixedRateMonths,
         imageUrl,
-        disclaimer
+        disclaimer,
+        basePrima,
+        currentPrima
       ]);
 }
 
@@ -287,6 +336,8 @@ BankStruct createBankStruct({
   int? fixedRateMonths,
   String? imageUrl,
   String? disclaimer,
+  double? basePrima,
+  double? currentPrima,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,
@@ -303,6 +354,8 @@ BankStruct createBankStruct({
       fixedRateMonths: fixedRateMonths,
       imageUrl: imageUrl,
       disclaimer: disclaimer,
+      basePrima: basePrima,
+      currentPrima: currentPrima,
       firestoreUtilData: FirestoreUtilData(
         clearUnsetFields: clearUnsetFields,
         create: create,

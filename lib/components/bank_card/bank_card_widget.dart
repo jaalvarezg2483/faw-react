@@ -1,10 +1,13 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'bank_card_model.dart';
@@ -14,9 +17,11 @@ class BankCardWidget extends StatefulWidget {
   const BankCardWidget({
     super.key,
     required this.bankData,
+    required this.vehiclePrice,
   });
 
   final BankStruct? bankData;
+  final double? vehiclePrice;
 
   @override
   State<BankCardWidget> createState() => _BankCardWidgetState();
@@ -36,7 +41,16 @@ class _BankCardWidgetState extends State<BankCardWidget> {
     super.initState();
     _model = createModel(context, () => BankCardModel());
 
-    _model.textController ??= TextEditingController();
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('BANK_CARD_COMP_bankCard_ON_INIT_STATE');
+      _model.minimumDownPayment =
+          ((widget!.vehiclePrice!) * widget!.bankData!.prima) / 100;
+      safeSetState(() {});
+    });
+
+    _model.textController ??=
+        TextEditingController(text: _model.minimumDownPayment?.toString());
     _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -176,16 +190,74 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                               0.0, 0.0, 25.0, 0.0),
                           child: Container(
                             width: 50.0,
-                            height: 35.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .primaryBackground,
-                            ),
+                            decoration: BoxDecoration(),
                             child: Container(
                               width: 50.0,
                               child: TextFormField(
                                 controller: _model.textController,
                                 focusNode: _model.textFieldFocusNode,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.textController',
+                                  Duration(milliseconds: 2000),
+                                  () async {
+                                    logFirebaseEvent(
+                                        'BANK_CARD_TextField_hx61xtjt_ON_TEXTFIEL');
+                                    var _shouldSetState = false;
+                                    _model.currentDownPayment = double.tryParse(
+                                        _model.textController.text);
+                                    safeSetState(() {});
+                                    if (_model.currentDownPayment! <
+                                        _model.minimumDownPayment!) {
+                                      _model.showErrorWhenTooSmall = true;
+                                      safeSetState(() {});
+                                      if (_shouldSetState) safeSetState(() {});
+                                      return;
+                                    } else {
+                                      if (_model.currentDownPayment! >
+                                          widget!.vehiclePrice!) {
+                                        _model.showErrorWhenTooBig = true;
+                                        safeSetState(() {});
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      } else {
+                                        _model.showErrorWhenTooBig = false;
+                                        _model.showErrorWhenTooSmall = false;
+                                        safeSetState(() {});
+                                      }
+                                    }
+
+                                    _model.getPrimaResult =
+                                        await BackendWithVariableURLByEnvGroup
+                                            .getPrimaCall
+                                            .call(
+                                      id: widget!.bankData?.id,
+                                      prima: double.tryParse(
+                                          _model.textController.text),
+                                      precioVehiculo: widget!.vehiclePrice,
+                                      purdySeguro: 0.0,
+                                    );
+
+                                    _shouldSetState = true;
+                                    if ((_model.getPrimaResult?.succeeded ??
+                                        true)) {
+                                      _model.cuotaBancaria =
+                                          BackendWithVariableURLByEnvGroup
+                                              .getPrimaCall
+                                              .cuotaBancaria(
+                                        (_model.getPrimaResult?.jsonBody ?? ''),
+                                      );
+                                      _model.cuotaMensual =
+                                          BackendWithVariableURLByEnvGroup
+                                              .getPrimaCall
+                                              .cuotaMensual(
+                                        (_model.getPrimaResult?.jsonBody ?? ''),
+                                      );
+                                      safeSetState(() {});
+                                    }
+                                    if (_shouldSetState) safeSetState(() {});
+                                  },
+                                ),
                                 autofocus: false,
                                 enabled: true,
                                 obscureText: false,
@@ -213,7 +285,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                  hintText: 'TextField',
+                                  hintText: '20000',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
@@ -235,35 +307,16 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                                             .labelMedium
                                             .fontStyle,
                                       ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Color(0x00000000),
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  errorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
-                                  focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: FlutterFlowTheme.of(context).error,
-                                      width: 1.0,
-                                    ),
-                                    borderRadius: BorderRadius.circular(8.0),
-                                  ),
+                                  enabledBorder: InputBorder.none,
+                                  focusedBorder: InputBorder.none,
+                                  errorBorder: InputBorder.none,
+                                  focusedErrorBorder: InputBorder.none,
                                   filled: true,
+                                  fillColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  contentPadding:
+                                      EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 12.0, 10.0, 12.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -285,6 +338,13 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                maxLength: 6,
+                                buildCounter: (context,
+                                        {required currentLength,
+                                        required isFocused,
+                                        maxLength}) =>
+                                    null,
+                                keyboardType: TextInputType.number,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).primaryText,
                                 enableInteractiveSelection: true,
@@ -300,38 +360,70 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                 ),
               ].divide(SizedBox(width: 5.0)),
             ),
-            Text(
-              'El monto de prima no puede ser mayor a \$',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+            if (_model.showErrorWhenTooBig)
+              Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).error,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                  child: Text(
+                    'El monto de prima no puede ser mayor a \$${widget!.vehiclePrice?.toString()}',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                   ),
-            ),
-            Text(
-              'El monto de prima no puede ser menor a \$',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                ),
+              ),
+            if (_model.showErrorWhenTooSmall)
+              Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).error,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                child: Padding(
+                  padding:
+                      EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                  child: Text(
+                    'El monto de prima no puede ser menor a \$${_model.minimumDownPayment?.toString()}',
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          font: GoogleFonts.inter(
+                            fontWeight: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontWeight,
+                            fontStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .fontStyle,
+                          ),
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          letterSpacing: 0.0,
+                          fontWeight: FlutterFlowTheme.of(context)
+                              .bodyMedium
+                              .fontWeight,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
                   ),
-            ),
+                ),
+              ),
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -434,7 +526,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                                 ),
                           ),
                           Text(
-                            '\$123',
+                            '\$${_model.cuotaBancaria?.toString()}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -480,7 +572,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
               child: Text(
-                '\$123',
+                '\$${_model.cuotaMensual?.toString()}',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight: FontWeight.bold,
@@ -495,39 +587,28 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                     ),
               ),
             ),
-            Text(
-              'Disclaimer',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
+            if (widget!.bankData?.disclaimer != null &&
+                widget!.bankData?.disclaimer != '')
+              Text(
+                valueOrDefault<String>(
+                  widget!.bankData?.disclaimer,
+                  '* Los precios indicados son únicamente de referencia.',
+                ),
+                textAlign: TextAlign.justify,
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      font: GoogleFonts.inter(
+                        fontWeight:
+                            FlutterFlowTheme.of(context).bodyMedium.fontWeight,
+                        fontStyle:
+                            FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                      ),
+                      letterSpacing: 0.0,
                       fontWeight:
                           FlutterFlowTheme.of(context).bodyMedium.fontWeight,
                       fontStyle:
                           FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                  ),
-            ),
-            Text(
-              '* Los precios aquí indicados son únicamente de referencia. No incluyen el costo del seguro, el cual podrá variar según las condiciones de cada modelo o cliente. Consultá con nuestros asesores para obtener un presupuesto final.',
-              textAlign: TextAlign.center,
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    font: GoogleFonts.inter(
-                      fontWeight:
-                          FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
-                    letterSpacing: 0.0,
-                    fontWeight:
-                        FlutterFlowTheme.of(context).bodyMedium.fontWeight,
-                    fontStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                  ),
-            ),
+              ),
             RichText(
               textScaler: MediaQuery.of(context).textScaler,
               text: TextSpan(
@@ -552,7 +633,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                         ),
                   ),
                   TextSpan(
-                    text: 'https://www.volkswagencb.cr/reglamento',
+                    text: 'https://www.fawtrucks.cr/reglamento',
                     style: GoogleFonts.interTight(
                       fontWeight: FontWeight.w500,
                     ),
@@ -572,7 +653,7 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                           FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                     ),
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.justify,
             ),
           ].divide(SizedBox(height: 8.0)),
         ),

@@ -927,6 +927,26 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                           ),
                                                           bankData:
                                                               banksDesktopItem,
+                                                          vehiclePrice: (_model
+                                                                          .vehicleSelected
+                                                                          ?.promoPrice !=
+                                                                      null) &&
+                                                                  (_model.vehicleSelected!
+                                                                          .promoPrice >
+                                                                      0.0) &&
+                                                                  (_model.vehicleSelected!
+                                                                          .promoPrice <
+                                                                      _model
+                                                                          .vehicleSelected!
+                                                                          .priceBase
+                                                                          .toDouble())
+                                                              ? _model
+                                                                  .vehicleSelected!
+                                                                  .promoPrice
+                                                              : _model
+                                                                  .vehicleSelected!
+                                                                  .priceBase
+                                                                  .toDouble(),
                                                         ),
                                                       );
                                                     },
@@ -1069,6 +1089,19 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                                 ),
                                                                 bankData:
                                                                     banksMobileItem,
+                                                                vehiclePrice: (_model.vehicleSelected?.promoPrice != null) &&
+                                                                        (_model.vehicleSelected!.promoPrice >
+                                                                            0.0) &&
+                                                                        (_model.vehicleSelected!.promoPrice <
+                                                                            _model.vehicleSelected!.priceBase
+                                                                                .toDouble())
+                                                                    ? _model
+                                                                        .vehicleSelected!
+                                                                        .promoPrice
+                                                                    : _model
+                                                                        .vehicleSelected!
+                                                                        .priceBase
+                                                                        .toDouble(),
                                                               ),
                                                             );
                                                           },

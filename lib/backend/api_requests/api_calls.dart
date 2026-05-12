@@ -210,6 +210,15 @@ class GetPrimaCall {
       alwaysAllowBody: false,
     );
   }
+
+  dynamic cuotaBancaria(dynamic response) => getJsonField(
+        response,
+        r'''$.data.cuotaBancaria''',
+      );
+  dynamic cuotaMensual(dynamic response) => getJsonField(
+        response,
+        r'''$.data.cuotaMensual''',
+      );
 }
 
 /// End BackendWithVariableURLByEnv Group Code
