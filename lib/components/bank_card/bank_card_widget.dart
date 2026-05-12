@@ -586,8 +586,9 @@ class _BankCardWidgetState extends State<BankCardWidget>
                             Text(
                               '\$${formatNumber(
                                 _model.cuotaBancaria,
-                                formatType: FormatType.decimal,
-                                decimalType: DecimalType.periodDecimal,
+                                formatType: FormatType.custom,
+                                format: '####.00',
+                                locale: '',
                               )}',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -644,8 +645,9 @@ class _BankCardWidgetState extends State<BankCardWidget>
                 child: Text(
                   '\$${formatNumber(
                     _model.cuotaMensual,
-                    formatType: FormatType.decimal,
-                    decimalType: DecimalType.periodDecimal,
+                    formatType: FormatType.custom,
+                    format: '####.00',
+                    locale: '',
                   )}',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
