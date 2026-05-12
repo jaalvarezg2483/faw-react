@@ -1,3 +1,4 @@
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -69,137 +70,183 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                   context: context,
                   phone: false,
                 ))
-                  Builder(
-                    builder: (context) {
-                      final bannerSlides = FFAppState()
-                          .banners
-                          .where((e) =>
-                              (e.section == widget!.section) &&
-                              (e.enable == true))
-                          .toList()
-                          .sortedList(keyOf: (e) => e.order, desc: false)
-                          .toList();
+                  StreamBuilder<List<BannersRecord>>(
+                    stream: queryBannersRecord(
+                      queryBuilder: (bannersRecord) => bannersRecord
+                          .where(
+                            'section',
+                            isEqualTo: widget!.section,
+                          )
+                          .where(
+                            'enable',
+                            isEqualTo: true,
+                          )
+                          .orderBy('order'),
+                      singleRecord: true,
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      List<BannersRecord> carouselDesktopBannersRecordList =
+                          snapshot.data!;
+                      // Return an empty Container when the item does not exist.
+                      if (snapshot.data!.isEmpty) {
+                        return Container();
+                      }
+                      final carouselDesktopBannersRecord =
+                          carouselDesktopBannersRecordList.isNotEmpty
+                              ? carouselDesktopBannersRecordList.first
+                              : null;
 
-                      return Container(
-                        width: MediaQuery.sizeOf(context).width,
-                        height: MediaQuery.sizeOf(context).height - 100.0,
-                        child: CarouselSlider.builder(
-                          itemCount: bannerSlides.length,
-                          itemBuilder: (context, bannerSlidesIndex, _) {
-                            final bannerSlidesItem =
-                                bannerSlides[bannerSlidesIndex];
-                            return Builder(
-                              builder: (context) {
-                                if (bannerSlidesItem.type == 'IMAGE') {
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      if (responsiveVisibility(
-                                        context: context,
-                                        phone: false,
-                                        tablet: false,
-                                        tabletLandscape: false,
-                                      ))
-                                        Flexible(
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                .width,
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height -
-                                                100.0,
-                                            decoration: BoxDecoration(),
-                                            child: Visibility(
-                                              visible: responsiveVisibility(
-                                                context: context,
-                                                phone: false,
-                                                tablet: false,
-                                                tabletLandscape: false,
-                                              ),
-                                              child: Image.network(
-                                                valueOrDefault<String>(
-                                                  bannerSlidesItem.imageUrl,
-                                                  'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-volkswagen-trucks-x34ekg/assets/u02ej423ppae/1441x687px.jpg',
-                                                ),
+                      return Builder(
+                        builder: (context) {
+                          final bannerSlides = FFAppState()
+                              .banners
+                              .where((e) =>
+                                  (e.section == widget!.section) &&
+                                  (e.enable == true))
+                              .toList()
+                              .sortedList(keyOf: (e) => e.order, desc: false)
+                              .toList();
+
+                          return Container(
+                            width: MediaQuery.sizeOf(context).width,
+                            height: MediaQuery.sizeOf(context).height - 100.0,
+                            child: CarouselSlider.builder(
+                              itemCount: bannerSlides.length,
+                              itemBuilder: (context, bannerSlidesIndex, _) {
+                                final bannerSlidesItem =
+                                    bannerSlides[bannerSlidesIndex];
+                                return Builder(
+                                  builder: (context) {
+                                    if (bannerSlidesItem.type == 'IMAGE') {
+                                      return Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                            tablet: false,
+                                            tabletLandscape: false,
+                                          ))
+                                            Flexible(
+                                              child: Container(
                                                 width:
                                                     MediaQuery.sizeOf(context)
                                                         .width,
-                                                fit: BoxFit.fill,
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height -
+                                                        100.0,
+                                                decoration: BoxDecoration(),
+                                                child: Visibility(
+                                                  visible: responsiveVisibility(
+                                                    context: context,
+                                                    phone: false,
+                                                    tablet: false,
+                                                    tabletLandscape: false,
+                                                  ),
+                                                  child: Image.network(
+                                                    valueOrDefault<String>(
+                                                      bannerSlidesItem.imageUrl,
+                                                      'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-volkswagen-trucks-x34ekg/assets/u02ej423ppae/1441x687px.jpg',
+                                                    ),
+                                                    width: MediaQuery.sizeOf(
+                                                            context)
+                                                        .width,
+                                                    fit: BoxFit.fill,
+                                                  ),
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                    ],
-                                  );
-                                } else if (bannerSlidesItem.type == 'VIDEO') {
-                                  return Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      if (responsiveVisibility(
-                                        context: context,
-                                        phone: false,
-                                      ))
-                                        Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width,
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height -
-                                              100.0,
-                                          decoration: BoxDecoration(),
-                                          child: FlutterFlowVideoPlayer(
-                                            path: valueOrDefault<String>(
-                                              bannerSlidesItem.videoUrl,
-                                              'https://assets.mixkit.co/videos/529/529-720.mp4',
+                                        ],
+                                      );
+                                    } else if (bannerSlidesItem.type ==
+                                        'VIDEO') {
+                                      return Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
+                                        children: [
+                                          if (responsiveVisibility(
+                                            context: context,
+                                            phone: false,
+                                          ))
+                                            Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                  .width,
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height -
+                                                  100.0,
+                                              decoration: BoxDecoration(),
+                                              child: FlutterFlowVideoPlayer(
+                                                path: valueOrDefault<String>(
+                                                  bannerSlidesItem.videoUrl,
+                                                  'https://assets.mixkit.co/videos/529/529-720.mp4',
+                                                ),
+                                                videoType: VideoType.network,
+                                                width:
+                                                    MediaQuery.sizeOf(context)
+                                                        .width,
+                                                autoPlay: true,
+                                                looping: true,
+                                                showControls: false,
+                                                allowFullScreen: true,
+                                                allowPlaybackSpeedMenu: false,
+                                              ),
                                             ),
-                                            videoType: VideoType.network,
-                                            width: MediaQuery.sizeOf(context)
-                                                .width,
-                                            autoPlay: true,
-                                            looping: true,
-                                            showControls: false,
-                                            allowFullScreen: true,
-                                            allowPlaybackSpeedMenu: false,
-                                          ),
+                                        ],
+                                      );
+                                    } else {
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                         ),
-                                    ],
-                                  );
-                                } else {
-                                  return Container(
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                  );
-                                }
+                                      );
+                                    }
+                                  },
+                                );
                               },
-                            );
-                          },
-                          carouselController:
-                              _model.carouselDesktopController ??=
-                                  CarouselSliderController(),
-                          options: CarouselOptions(
-                            initialPage:
-                                max(0, min(0, bannerSlides.length - 1)),
-                            viewportFraction: 1.0,
-                            disableCenter: true,
-                            enlargeCenterPage: false,
-                            enlargeFactor: 0.0,
-                            enableInfiniteScroll: true,
-                            scrollDirection: Axis.horizontal,
-                            autoPlay: true,
-                            autoPlayAnimationDuration:
-                                Duration(milliseconds: 1400),
-                            autoPlayInterval:
-                                Duration(milliseconds: (1400 + 4000)),
-                            autoPlayCurve: Curves.linear,
-                            pauseAutoPlayInFiniteScroll: true,
-                            onPageChanged: (index, _) =>
-                                _model.carouselDesktopCurrentIndex = index,
-                          ),
-                        ),
+                              carouselController:
+                                  _model.carouselDesktopController ??=
+                                      CarouselSliderController(),
+                              options: CarouselOptions(
+                                initialPage:
+                                    max(0, min(0, bannerSlides.length - 1)),
+                                viewportFraction: 1.0,
+                                disableCenter: true,
+                                enlargeCenterPage: false,
+                                enlargeFactor: 0.0,
+                                enableInfiniteScroll: true,
+                                scrollDirection: Axis.horizontal,
+                                autoPlay: true,
+                                autoPlayAnimationDuration:
+                                    Duration(milliseconds: 1400),
+                                autoPlayInterval:
+                                    Duration(milliseconds: (1400 + 4000)),
+                                autoPlayCurve: Curves.linear,
+                                pauseAutoPlayInFiniteScroll: true,
+                                onPageChanged: (index, _) =>
+                                    _model.carouselDesktopCurrentIndex = index,
+                              ),
+                            ),
+                          );
+                        },
                       );
                     },
                   ),

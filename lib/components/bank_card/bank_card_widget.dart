@@ -1,13 +1,16 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'bank_card_model.dart';
@@ -27,8 +30,11 @@ class BankCardWidget extends StatefulWidget {
   State<BankCardWidget> createState() => _BankCardWidgetState();
 }
 
-class _BankCardWidgetState extends State<BankCardWidget> {
+class _BankCardWidgetState extends State<BankCardWidget>
+    with TickerProviderStateMixin {
   late BankCardModel _model;
+
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void setState(VoidCallback callback) {
@@ -69,11 +75,40 @@ class _BankCardWidgetState extends State<BankCardWidget> {
         );
         safeSetState(() {});
       }
+      _model.showLoading = false;
+      safeSetState(() {});
     });
 
     _model.textController ??=
         TextEditingController(text: _model.minimumDownPayment?.toString());
     _model.textFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'iconOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          RotateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 800.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'iconOnPageLoadAnimation2': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          RotateEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 800.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -547,29 +582,37 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                                       .fontStyle,
                                 ),
                           ),
-                          Text(
-                            '\$${formatNumber(
-                              _model.cuotaBancaria,
-                              formatType: FormatType.decimal,
-                              decimalType: DecimalType.periodDecimal,
-                            )}',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  font: GoogleFonts.inter(
+                          if (!_model.showLoading)
+                            Text(
+                              '\$${formatNumber(
+                                _model.cuotaBancaria,
+                                formatType: FormatType.decimal,
+                                decimalType: DecimalType.periodDecimal,
+                              )}',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    font: GoogleFonts.inter(
+                                      fontWeight: FontWeight.w600,
+                                      fontStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .fontStyle,
+                                    ),
+                                    fontSize: 16.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                     fontStyle: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .fontStyle,
                                   ),
-                                  fontSize: 16.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  fontStyle: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .fontStyle,
-                                ),
-                          ),
+                            ),
+                          if (_model.showLoading)
+                            Icon(
+                              Icons.restart_alt_rounded,
+                              color: FlutterFlowTheme.of(context).primaryText,
+                              size: 27.0,
+                            ).animateOnPageLoad(
+                                animationsMap['iconOnPageLoadAnimation1']!),
                         ],
                       ),
                     ],
@@ -595,28 +638,38 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                     ),
               ),
             ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
-              child: Text(
-                '\$${formatNumber(
-                  _model.cuotaMensual,
-                  formatType: FormatType.decimal,
-                  decimalType: DecimalType.periodDecimal,
-                )}',
-                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                      font: GoogleFonts.inter(
+            if (!_model.showLoading)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                child: Text(
+                  '\$${formatNumber(
+                    _model.cuotaMensual,
+                    formatType: FormatType.decimal,
+                    decimalType: DecimalType.periodDecimal,
+                  )}',
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                        font: GoogleFonts.inter(
+                          fontWeight: FontWeight.bold,
+                          fontStyle:
+                              FlutterFlowTheme.of(context).bodyMedium.fontStyle,
+                        ),
+                        fontSize: 24.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
                         fontStyle:
                             FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                       ),
-                      fontSize: 24.0,
-                      letterSpacing: 0.0,
-                      fontWeight: FontWeight.bold,
-                      fontStyle:
-                          FlutterFlowTheme.of(context).bodyMedium.fontStyle,
-                    ),
+                ),
               ),
-            ),
+            if (_model.showLoading)
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
+                child: Icon(
+                  Icons.restart_alt_rounded,
+                  color: FlutterFlowTheme.of(context).primaryText,
+                  size: 44.0,
+                ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation2']!),
+              ),
             if (widget!.bankData?.disclaimer != null &&
                 widget!.bankData?.disclaimer != '')
               Text(
