@@ -548,7 +548,11 @@ class _BankCardWidgetState extends State<BankCardWidget> {
                                 ),
                           ),
                           Text(
-                            '\$${_model.cuotaBancaria?.toString()}',
+                            '\$${formatNumber(
+                              _model.cuotaBancaria,
+                              formatType: FormatType.decimal,
+                              decimalType: DecimalType.periodDecimal,
+                            )}',
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -594,7 +598,11 @@ class _BankCardWidgetState extends State<BankCardWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
               child: Text(
-                '\$${_model.cuotaMensual?.toString()}',
+                '\$${formatNumber(
+                  _model.cuotaMensual,
+                  formatType: FormatType.decimal,
+                  decimalType: DecimalType.periodDecimal,
+                )}',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight: FontWeight.bold,

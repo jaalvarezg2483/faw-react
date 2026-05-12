@@ -758,7 +758,28 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              'Total \$${(_model.vehicleSelected?.promoPrice != null) && (_model.vehicleSelected!.promoPrice < _model.vehicleSelected!.priceBase.toDouble()) && (_model.vehicleSelected!.promoPrice > 0.0) ? _model.vehicleSelected?.promoPrice?.toString() : _model.vehicleSelected?.priceBase?.toString()}',
+                                              'Total \$${formatNumber(
+                                                (_model.vehicleSelected
+                                                                ?.promoPrice !=
+                                                            null) &&
+                                                        (_model.vehicleSelected!
+                                                                .promoPrice <
+                                                            _model
+                                                                .vehicleSelected!
+                                                                .priceBase
+                                                                .toDouble()) &&
+                                                        (_model.vehicleSelected!
+                                                                .promoPrice >
+                                                            0.0)
+                                                    ? _model.vehicleSelected
+                                                        ?.promoPrice
+                                                    : _model.vehicleSelected
+                                                        ?.priceBase
+                                                        ?.toDouble(),
+                                                formatType: FormatType.decimal,
+                                                decimalType:
+                                                    DecimalType.commaDecimal,
+                                              )}',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
