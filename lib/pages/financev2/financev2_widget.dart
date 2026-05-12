@@ -28,10 +28,10 @@ export 'financev2_model.dart';
 class Financev2Widget extends StatefulWidget {
   const Financev2Widget({
     super.key,
-    this.vehicle,
+    this.vehicleName,
   });
 
-  final String? vehicle;
+  final String? vehicleName;
 
   static String routeName = 'Financev2';
   static String routePath = '/financiamiento';
@@ -61,12 +61,12 @@ class _Financev2WidgetState extends State<Financev2Widget> {
       );
       FFAppState().menuOptionActive = 'Financiamiento';
       safeSetState(() {});
-      if (widget!.vehicle != null && widget!.vehicle != '') {
+      if (widget!.vehicleName != null && widget!.vehicleName != '') {
         _model.queryVehicleOnLoad = await queryModelsRecordOnce(
           queryBuilder: (modelsRecord) => modelsRecord
               .where(
                 'slug',
-                isEqualTo: widget!.vehicle,
+                isEqualTo: widget!.vehicleName,
               )
               .where(
                 'enable',

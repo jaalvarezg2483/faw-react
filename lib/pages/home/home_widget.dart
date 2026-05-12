@@ -106,7 +106,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Expanded(
+                      Flexible(
                         child: wrapWithModel(
                           model: _model.homeBannerModel,
                           updateCallback: () => safeSetState(() {}),

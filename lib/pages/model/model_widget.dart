@@ -629,7 +629,8 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                 context.pushNamed(
                                                   Financev2Widget.routeName,
                                                   queryParameters: {
-                                                    'vehicle': serializeParam(
+                                                    'vehicleName':
+                                                        serializeParam(
                                                       modelModelsRecord?.slug,
                                                       ParamType.String,
                                                     ),

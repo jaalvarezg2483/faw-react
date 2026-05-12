@@ -119,7 +119,7 @@ class _FinanceCardVehicleWidgetState extends State<FinanceCardVehicleWidget> {
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
               child: Text(
-                '\$123',
+                '\$${(widget!.vehicle?.promoPrice != null) && (widget!.vehicle!.promoPrice > 0.0) && (widget!.vehicle!.promoPrice < widget!.vehicle!.priceBase.toDouble()) ? widget!.vehicle?.promoPrice?.toString() : widget!.vehicle?.priceBase?.toString()}',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight:

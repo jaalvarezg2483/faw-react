@@ -144,8 +144,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: Financev2Widget.routeName,
           path: Financev2Widget.routePath,
           builder: (context, params) => Financev2Widget(
-            vehicle: params.getParam(
-              'vehicle',
+            vehicleName: params.getParam(
+              'vehicleName',
               ParamType.String,
             ),
           ),
