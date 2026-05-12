@@ -77,14 +77,17 @@ class _Financev2WidgetState extends State<Financev2Widget> {
         _model.paso = 2;
         _model.vehicleSelected = _model.queryVehicleOnLoad;
         safeSetState(() {});
+        _model.banksCustomConfig = await queryCustomPaymentTermsRecordOnce(
+          queryBuilder: (customPaymentTermsRecord) =>
+              customPaymentTermsRecord.where(
+            'code',
+            isEqualTo: _model.vehicleSelected?.code,
+          ),
+        );
+        _model.excludedBanksForSelectedVehicle =
+            _model.banksCustomConfig!.toList().cast<CustomPaymentTermsRecord>();
+        safeSetState(() {});
       }
-      _model.banksCustomConfig = await queryCustomPaymentTermsRecordOnce(
-        queryBuilder: (customPaymentTermsRecord) =>
-            customPaymentTermsRecord.where(
-          'code',
-          isEqualTo: _model.vehicleSelected?.code,
-        ),
-      );
       _model.getBanksData =
           await BackendWithVariableURLByEnvGroup.getBanksDataCall.call();
 
@@ -535,6 +538,25 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                   wrapModelsRecord;
                                               _model.paso = 2;
                                               safeSetState(() {});
+                                              _model.banksCustomConfig2 =
+                                                  await queryCustomPaymentTermsRecordOnce(
+                                                queryBuilder:
+                                                    (customPaymentTermsRecord) =>
+                                                        customPaymentTermsRecord
+                                                            .where(
+                                                  'code',
+                                                  isEqualTo: _model
+                                                      .vehicleSelected?.code,
+                                                ),
+                                              );
+                                              _model.excludedBanksForSelectedVehicle =
+                                                  _model.banksCustomConfig2!
+                                                      .toList()
+                                                      .cast<
+                                                          CustomPaymentTermsRecord>();
+                                              safeSetState(() {});
+
+                                              safeSetState(() {});
                                             },
                                           );
                                         }),
@@ -890,11 +912,11 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                     .filterBanksList(
                                                         _model.bankList
                                                             .toList(),
-                                                        _model.banksCustomConfig
-                                                            ?.where((e) => !e
+                                                        _model
+                                                            .excludedBanksForSelectedVehicle
+                                                            .where((e) => !e
                                                                 .hasBankActive)
-                                                            .toList()
-                                                            ?.toList())
+                                                            .toList())
                                                     .sortedList(
                                                         keyOf: (e) => e.order,
                                                         desc: false)
@@ -1047,11 +1069,10 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                               _model.bankList
                                                                   .toList(),
                                                               _model
-                                                                  .banksCustomConfig
-                                                                  ?.where((e) => !e
+                                                                  .excludedBanksForSelectedVehicle
+                                                                  .where((e) => !e
                                                                       .hasBankActive)
-                                                                  .toList()
-                                                                  ?.toList())
+                                                                  .toList())
                                                           .sortedList(
                                                               keyOf: (e) =>
                                                                   e.order,

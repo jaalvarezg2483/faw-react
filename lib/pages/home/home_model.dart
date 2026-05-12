@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
+import '/components/home_banner/home_banner_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/section_title_with_button/section_title_with_button_widget.dart';
@@ -31,6 +32,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
   late NavBarMobv2Model navBarMobv2Model;
+  // Model for HomeBanner component.
+  late HomeBannerModel homeBannerModel;
   // Models for VehicleCard dynamic component.
   late FlutterFlowDynamicModels<VehicleCardModel> vehicleCardModels;
   // Model for SectionTitleWithButton component.
@@ -48,6 +51,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void initState(BuildContext context) {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
+    homeBannerModel = createModel(context, () => HomeBannerModel());
     vehicleCardModels = FlutterFlowDynamicModels(() => VehicleCardModel());
     sectionTitleWithButtonModel1 =
         createModel(context, () => SectionTitleWithButtonModel());
@@ -64,6 +68,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void dispose() {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
+    homeBannerModel.dispose();
     vehicleCardModels.dispose();
     sectionTitleWithButtonModel1.dispose();
     sectionTitleWithButtonModel2.dispose();

@@ -1,5 +1,6 @@
 import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
+import '/components/home_banner/home_banner_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
 import '/components/section_title_with_button/section_title_with_button_widget.dart';
@@ -105,52 +106,12 @@ class _HomeWidgetState extends State<HomeWidget> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      StreamBuilder<List<BannersRecord>>(
-                        stream: queryBannersRecord(
-                          queryBuilder: (bannersRecord) => bannersRecord.where(
-                            'section',
-                            isEqualTo: 'Inicio',
-                          ),
-                          singleRecord: true,
+                      Expanded(
+                        child: wrapWithModel(
+                          model: _model.homeBannerModel,
+                          updateCallback: () => safeSetState(() {}),
+                          child: HomeBannerWidget(),
                         ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: CircularProgressIndicator(
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    FlutterFlowTheme.of(context).primary,
-                                  ),
-                                ),
-                              ),
-                            );
-                          }
-                          List<BannersRecord> bannerBannersRecordList =
-                              snapshot.data!;
-                          // Return an empty Container when the item does not exist.
-                          if (snapshot.data!.isEmpty) {
-                            return Container();
-                          }
-                          final bannerBannersRecord =
-                              bannerBannersRecordList.isNotEmpty
-                                  ? bannerBannersRecordList.first
-                                  : null;
-
-                          return Container(
-                            width: MediaQuery.sizeOf(context).width * 1.0,
-                            decoration: BoxDecoration(),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: Image.network(
-                                bannerBannersRecord!.bannerUrl,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          );
-                        },
                       ),
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(

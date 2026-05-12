@@ -40,6 +40,22 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   void updateBankListAtIndex(int index, Function(BankStruct) updateFn) =>
       bankList[index] = updateFn(bankList[index]);
 
+  List<CustomPaymentTermsRecord> excludedBanksForSelectedVehicle = [];
+  void addToExcludedBanksForSelectedVehicle(CustomPaymentTermsRecord item) =>
+      excludedBanksForSelectedVehicle.add(item);
+  void removeFromExcludedBanksForSelectedVehicle(
+          CustomPaymentTermsRecord item) =>
+      excludedBanksForSelectedVehicle.remove(item);
+  void removeAtIndexFromExcludedBanksForSelectedVehicle(int index) =>
+      excludedBanksForSelectedVehicle.removeAt(index);
+  void insertAtIndexInExcludedBanksForSelectedVehicle(
+          int index, CustomPaymentTermsRecord item) =>
+      excludedBanksForSelectedVehicle.insert(index, item);
+  void updateExcludedBanksForSelectedVehicleAtIndex(
+          int index, Function(CustomPaymentTermsRecord) updateFn) =>
+      excludedBanksForSelectedVehicle[index] =
+          updateFn(excludedBanksForSelectedVehicle[index]);
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Firestore Query - Query a collection] action in Financev2 widget.
@@ -52,6 +68,8 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
   late NavBarMobv2Model navBarMobv2Model;
+  // Stores action output result for [Firestore Query - Query a collection] action in FinanceCardVehicle widget.
+  List<CustomPaymentTermsRecord>? banksCustomConfig2;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 1;
