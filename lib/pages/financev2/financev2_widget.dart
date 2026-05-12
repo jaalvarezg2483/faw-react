@@ -895,6 +895,9 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                                 .hasBankActive)
                                                             .toList()
                                                             ?.toList())
+                                                    .sortedList(
+                                                        keyOf: (e) => e.order,
+                                                        desc: false)
                                                     .toList();
 
                                                 return Container(
@@ -934,7 +937,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       initialPage: max(
                                                           0,
                                                           min(
-                                                              1,
+                                                              2,
                                                               banksDesktop
                                                                       .length -
                                                                   1)),
@@ -1025,10 +1028,14 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                                   .toList(),
                                                               _model
                                                                   .banksCustomConfig
-                                                                  ?.where((e) =>
-                                                                      !e.hasBankActive)
+                                                                  ?.where((e) => !e
+                                                                      .hasBankActive)
                                                                   .toList()
                                                                   ?.toList())
+                                                          .sortedList(
+                                                              keyOf: (e) =>
+                                                                  e.order,
+                                                              desc: false)
                                                           .toList();
 
                                                       return Container(
@@ -1073,7 +1080,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                             initialPage: max(
                                                                 0,
                                                                 min(
-                                                                    0,
+                                                                    1,
                                                                     banksMobile
                                                                             .length -
                                                                         1)),
