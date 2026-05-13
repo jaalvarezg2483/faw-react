@@ -159,6 +159,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: VagonetasWidget.routeName,
           path: VagonetasWidget.routePath,
           builder: (context, params) => VagonetasWidget(),
+        ),
+        FFRoute(
+          name: ReglamentsWidget.routeName,
+          path: ReglamentsWidget.routePath,
+          builder: (context, params) => ReglamentsWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

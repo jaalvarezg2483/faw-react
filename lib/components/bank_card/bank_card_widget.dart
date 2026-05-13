@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:math';
 import 'dart:ui';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -584,11 +585,14 @@ class _BankCardWidgetState extends State<BankCardWidget>
                           ),
                           if (!_model.showLoading)
                             Text(
-                              '\$${formatNumber(
-                                _model.cuotaBancaria,
-                                formatType: FormatType.custom,
-                                format: '####.00',
-                                locale: '',
+                              '\$${valueOrDefault<String>(
+                                formatNumber(
+                                  _model.cuotaBancaria,
+                                  formatType: FormatType.custom,
+                                  format: '###0.00',
+                                  locale: '',
+                                ),
+                                '0',
                               )}',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -644,12 +648,15 @@ class _BankCardWidgetState extends State<BankCardWidget>
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: Text(
-                  '\$${formatNumber(
-                    _model.cuotaMensual,
-                    formatType: FormatType.custom,
-                    format: '####.00',
-                    locale: '',
-                  )}',
+                  valueOrDefault<String>(
+                    '\$${formatNumber(
+                      _model.cuotaMensual,
+                      formatType: FormatType.custom,
+                      format: '###0.00',
+                      locale: '',
+                    )}',
+                    '0',
+                  ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         font: GoogleFonts.inter(
                           fontWeight: FontWeight.bold,
@@ -724,6 +731,14 @@ class _BankCardWidgetState extends State<BankCardWidget>
                     style: GoogleFonts.interTight(
                       fontWeight: FontWeight.w500,
                     ),
+                    mouseCursor: SystemMouseCursors.click,
+                    recognizer: TapGestureRecognizer()
+                      ..onTap = () async {
+                        logFirebaseEvent(
+                            'BANK_CARD_RichTextSpan_pz8llg7e_ON_TAP');
+
+                        context.pushNamed(ReglamentsWidget.routeName);
+                      },
                   )
                 ],
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
