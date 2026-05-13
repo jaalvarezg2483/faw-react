@@ -649,11 +649,14 @@ class _BankCardWidgetState extends State<BankCardWidget>
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: Text(
                   valueOrDefault<String>(
-                    '\$${formatNumber(
-                      _model.cuotaMensual,
-                      formatType: FormatType.custom,
-                      format: '###0.00',
-                      locale: '',
+                    '\$${valueOrDefault<String>(
+                      formatNumber(
+                        _model.cuotaMensual,
+                        formatType: FormatType.custom,
+                        format: '###0.00',
+                        locale: '',
+                      ),
+                      '0',
                     )}',
                     '0',
                   ),
