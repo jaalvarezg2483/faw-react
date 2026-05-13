@@ -520,7 +520,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                     children: [
                       Icon(
                         Icons.radio_button_checked,
-                        color: FlutterFlowTheme.of(context).primaryText,
+                        color: FlutterFlowTheme.of(context).primary,
                         size: 24.0,
                       ),
                       Text(
@@ -599,6 +599,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                                           .bodyMedium
                                           .fontStyle,
                                     ),
+                                    color: FlutterFlowTheme.of(context).primary,
                                     fontSize: 16.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -610,7 +611,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                           if (_model.showLoading)
                             Icon(
                               Icons.restart_alt_rounded,
-                              color: FlutterFlowTheme.of(context).primaryText,
+                              color: FlutterFlowTheme.of(context).primary,
                               size: 27.0,
                             ).animateOnPageLoad(
                                 animationsMap['iconOnPageLoadAnimation1']!),
@@ -655,6 +656,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                           fontStyle:
                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
+                        color: FlutterFlowTheme.of(context).primary,
                         fontSize: 24.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.bold,
@@ -668,7 +670,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 15.0),
                 child: Icon(
                   Icons.restart_alt_rounded,
-                  color: FlutterFlowTheme.of(context).primaryText,
+                  color: FlutterFlowTheme.of(context).primary,
                   size: 44.0,
                 ).animateOnPageLoad(animationsMap['iconOnPageLoadAnimation2']!),
               ),

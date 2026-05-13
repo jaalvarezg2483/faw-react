@@ -41,18 +41,12 @@ class BannersRecord extends FirestoreRecord {
   String get bannerUrlMobile => _bannerUrlMobile ?? '';
   bool hasBannerUrlMobile() => _bannerUrlMobile != null;
 
-  // "type" field.
-  String? _type;
-  String get type => _type ?? '';
-  bool hasType() => _type != null;
-
   void _initializeFields() {
     _bannerUrl = snapshotData['bannerUrl'] as String?;
     _section = snapshotData['section'] as String?;
     _enable = snapshotData['enable'] as bool?;
     _order = castToType<int>(snapshotData['order']);
     _bannerUrlMobile = snapshotData['bannerUrlMobile'] as String?;
-    _type = snapshotData['type'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -95,7 +89,6 @@ Map<String, dynamic> createBannersRecordData({
   bool? enable,
   int? order,
   String? bannerUrlMobile,
-  String? type,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -104,7 +97,6 @@ Map<String, dynamic> createBannersRecordData({
       'enable': enable,
       'order': order,
       'bannerUrlMobile': bannerUrlMobile,
-      'type': type,
     }.withoutNulls,
   );
 
@@ -120,19 +112,12 @@ class BannersRecordDocumentEquality implements Equality<BannersRecord> {
         e1?.section == e2?.section &&
         e1?.enable == e2?.enable &&
         e1?.order == e2?.order &&
-        e1?.bannerUrlMobile == e2?.bannerUrlMobile &&
-        e1?.type == e2?.type;
+        e1?.bannerUrlMobile == e2?.bannerUrlMobile;
   }
 
   @override
-  int hash(BannersRecord? e) => const ListEquality().hash([
-        e?.bannerUrl,
-        e?.section,
-        e?.enable,
-        e?.order,
-        e?.bannerUrlMobile,
-        e?.type
-      ]);
+  int hash(BannersRecord? e) => const ListEquality().hash(
+      [e?.bannerUrl, e?.section, e?.enable, e?.order, e?.bannerUrlMobile]);
 
   @override
   bool isValidKey(Object? o) => o is BannersRecord;
