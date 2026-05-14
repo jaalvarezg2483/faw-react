@@ -1365,7 +1365,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Image.asset(
-                                                'assets/images/image_2026-02-06_105233391.png',
+                                                'assets/images/Taller_VW_y_Higer_1.png',
                                                 width: 414.0,
                                                 fit: BoxFit.cover,
                                               ),

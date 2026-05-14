@@ -86,7 +86,7 @@ class FFAppState extends ChangeNotifier {
 
   List<DynamicBannerStruct> _banners = [
     DynamicBannerStruct.fromSerializableMap(jsonDecode(
-        '{\"id\":\"banner01\",\"type\":\"IMAGE\",\"section\":\"Home\",\"enable\":\"true\",\"imageUrl\":\"https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-volkswagen-trucks-x34ekg/assets/u02ej423ppae/1441x687px.jpg\",\"imageUrlMobile\":\"https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-volkswagen-trucks-x34ekg/assets/bllwnwnkavbb/362x255px.jpg\",\"videoUrl\":\"https://assets.mixkit.co/videos/529/529-720.mp4\",\"order\":\"1\"}')),
+        '{\"id\":\"banner01\",\"type\":\"IMAGE\",\"section\":\"Home\",\"enable\":\"true\",\"imageUrl\":\"https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/p4axulg04wdr/BannerDesktop.png\",\"imageUrlMobile\":\"https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/lxzoc856nm6x/banerMobile.png\",\"videoUrl\":\"https://assets.mixkit.co/videos/529/529-720.mp4\",\"order\":\"1\"}')),
     DynamicBannerStruct.fromSerializableMap(jsonDecode(
         '{\"id\":\"banner02\",\"type\":\"VIDEO\",\"section\":\"Home\",\"enable\":\"true\",\"imageUrl\":\"https://picsum.photos/seed/712/600\",\"imageUrlMobile\":\"\",\"videoUrl\":\"https://assets.mixkit.co/videos/21083/21083-720.mp4\",\"order\":\"2\"}'))
   ];

@@ -267,6 +267,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                                     if (_model.currentDownPayment! <
                                         _model.minimumDownPayment!) {
                                       _model.showErrorWhenTooSmall = true;
+                                      _model.showErrorWhenTooBig = false;
                                       safeSetState(() {});
                                       if (_shouldSetState) safeSetState(() {});
                                       return;
@@ -274,6 +275,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                                       if (_model.currentDownPayment! >
                                           widget!.vehiclePrice!) {
                                         _model.showErrorWhenTooBig = true;
+                                        _model.showErrorWhenTooSmall = false;
                                         safeSetState(() {});
                                         if (_shouldSetState)
                                           safeSetState(() {});
