@@ -83,38 +83,4 @@ class FFAppState extends ChangeNotifier {
   set expandedNavSection(String value) {
     _expandedNavSection = value;
   }
-
-  List<DynamicBannerStruct> _banners = [
-    DynamicBannerStruct.fromSerializableMap(jsonDecode(
-        '{\"id\":\"banner01\",\"type\":\"IMAGE\",\"section\":\"Home\",\"enable\":\"true\",\"imageUrl\":\"https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/p4axulg04wdr/BannerDesktop.png\",\"imageUrlMobile\":\"https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-faw-pcp5lv/assets/ms41e7puvr8s/YnfbKdBpoP1VDLs0Ssrc-FawBannerMobile.jpg\",\"videoUrl\":\"https://assets.mixkit.co/videos/529/529-720.mp4\",\"order\":\"1\"}')),
-    DynamicBannerStruct.fromSerializableMap(jsonDecode(
-        '{\"id\":\"banner02\",\"type\":\"VIDEO\",\"section\":\"Home\",\"enable\":\"true\",\"imageUrl\":\"https://picsum.photos/seed/712/600\",\"imageUrlMobile\":\"\",\"videoUrl\":\"https://assets.mixkit.co/videos/21083/21083-720.mp4\",\"order\":\"2\"}'))
-  ];
-  List<DynamicBannerStruct> get banners => _banners;
-  set banners(List<DynamicBannerStruct> value) {
-    _banners = value;
-  }
-
-  void addToBanners(DynamicBannerStruct value) {
-    banners.add(value);
-  }
-
-  void removeFromBanners(DynamicBannerStruct value) {
-    banners.remove(value);
-  }
-
-  void removeAtIndexFromBanners(int index) {
-    banners.removeAt(index);
-  }
-
-  void updateBannersAtIndex(
-    int index,
-    DynamicBannerStruct Function(DynamicBannerStruct) updateFn,
-  ) {
-    banners[index] = updateFn(_banners[index]);
-  }
-
-  void insertAtIndexInBanners(int index, DynamicBannerStruct value) {
-    banners.insert(index, value);
-  }
 }

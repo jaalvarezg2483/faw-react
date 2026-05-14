@@ -41,12 +41,30 @@ class BannersRecord extends FirestoreRecord {
   String get bannerUrlMobile => _bannerUrlMobile ?? '';
   bool hasBannerUrlMobile() => _bannerUrlMobile != null;
 
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
+
+  // "videoUrl" field.
+  String? _videoUrl;
+  String get videoUrl => _videoUrl ?? '';
+  bool hasVideoUrl() => _videoUrl != null;
+
+  // "videoMobileUrl" field.
+  String? _videoMobileUrl;
+  String get videoMobileUrl => _videoMobileUrl ?? '';
+  bool hasVideoMobileUrl() => _videoMobileUrl != null;
+
   void _initializeFields() {
     _bannerUrl = snapshotData['bannerUrl'] as String?;
     _section = snapshotData['section'] as String?;
     _enable = snapshotData['enable'] as bool?;
     _order = castToType<int>(snapshotData['order']);
     _bannerUrlMobile = snapshotData['bannerUrlMobile'] as String?;
+    _type = snapshotData['type'] as String?;
+    _videoUrl = snapshotData['videoUrl'] as String?;
+    _videoMobileUrl = snapshotData['videoMobileUrl'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -89,6 +107,9 @@ Map<String, dynamic> createBannersRecordData({
   bool? enable,
   int? order,
   String? bannerUrlMobile,
+  String? type,
+  String? videoUrl,
+  String? videoMobileUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -97,6 +118,9 @@ Map<String, dynamic> createBannersRecordData({
       'enable': enable,
       'order': order,
       'bannerUrlMobile': bannerUrlMobile,
+      'type': type,
+      'videoUrl': videoUrl,
+      'videoMobileUrl': videoMobileUrl,
     }.withoutNulls,
   );
 
@@ -112,12 +136,23 @@ class BannersRecordDocumentEquality implements Equality<BannersRecord> {
         e1?.section == e2?.section &&
         e1?.enable == e2?.enable &&
         e1?.order == e2?.order &&
-        e1?.bannerUrlMobile == e2?.bannerUrlMobile;
+        e1?.bannerUrlMobile == e2?.bannerUrlMobile &&
+        e1?.type == e2?.type &&
+        e1?.videoUrl == e2?.videoUrl &&
+        e1?.videoMobileUrl == e2?.videoMobileUrl;
   }
 
   @override
-  int hash(BannersRecord? e) => const ListEquality().hash(
-      [e?.bannerUrl, e?.section, e?.enable, e?.order, e?.bannerUrlMobile]);
+  int hash(BannersRecord? e) => const ListEquality().hash([
+        e?.bannerUrl,
+        e?.section,
+        e?.enable,
+        e?.order,
+        e?.bannerUrlMobile,
+        e?.type,
+        e?.videoUrl,
+        e?.videoMobileUrl
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is BannersRecord;

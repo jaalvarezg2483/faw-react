@@ -1,4 +1,4 @@
-import '/backend/schema/structs/index.dart';
+import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -50,8 +50,6 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -69,28 +67,50 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                   context: context,
                   phone: false,
                 ))
-                  Builder(
-                    builder: (context) {
-                      final bannerSlides = FFAppState()
-                          .banners
-                          .where((e) =>
-                              (e.section == widget!.section) &&
-                              (e.enable == true))
-                          .toList()
-                          .sortedList(keyOf: (e) => e.order, desc: false)
-                          .toList();
+                  StreamBuilder<List<BannersRecord>>(
+                    stream: queryBannersRecord(
+                      queryBuilder: (bannersRecord) => bannersRecord
+                          .where(
+                            'section',
+                            isEqualTo: widget!.section,
+                          )
+                          .where(
+                            'enable',
+                            isEqualTo: true,
+                          )
+                          .orderBy('order'),
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: CircularProgressIndicator(
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                FlutterFlowTheme.of(context).primary,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      List<BannersRecord> carouselDesktopBannersRecordList =
+                          snapshot.data!;
 
                       return Container(
                         width: MediaQuery.sizeOf(context).width,
                         height: MediaQuery.sizeOf(context).height - 100.0,
                         child: CarouselSlider.builder(
-                          itemCount: bannerSlides.length,
-                          itemBuilder: (context, bannerSlidesIndex, _) {
-                            final bannerSlidesItem =
-                                bannerSlides[bannerSlidesIndex];
+                          itemCount: carouselDesktopBannersRecordList.length,
+                          itemBuilder: (context, carouselDesktopIndex, _) {
+                            final carouselDesktopBannersRecord =
+                                carouselDesktopBannersRecordList[
+                                    carouselDesktopIndex];
                             return Builder(
                               builder: (context) {
-                                if (bannerSlidesItem.type == 'IMAGE') {
+                                if (carouselDesktopBannersRecord.type ==
+                                    'IMAGE') {
                                   return Row(
                                     mainAxisSize: MainAxisSize.min,
                                     crossAxisAlignment:
@@ -118,10 +138,8 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                                 tabletLandscape: false,
                                               ),
                                               child: Image.network(
-                                                valueOrDefault<String>(
-                                                  bannerSlidesItem.imageUrl,
-                                                  'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-volkswagen-trucks-x34ekg/assets/u02ej423ppae/1441x687px.jpg',
-                                                ),
+                                                carouselDesktopBannersRecord
+                                                    .bannerUrl,
                                                 width:
                                                     MediaQuery.sizeOf(context)
                                                         .width,
@@ -132,7 +150,8 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                         ),
                                     ],
                                   );
-                                } else if (bannerSlidesItem.type == 'VIDEO') {
+                                } else if (carouselDesktopBannersRecord.type ==
+                                    'VIDEO') {
                                   return Row(
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment:
@@ -150,10 +169,8 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                               100.0,
                                           decoration: BoxDecoration(),
                                           child: FlutterFlowVideoPlayer(
-                                            path: valueOrDefault<String>(
-                                              bannerSlidesItem.videoUrl,
-                                              'https://assets.mixkit.co/videos/529/529-720.mp4',
-                                            ),
+                                            path: carouselDesktopBannersRecord
+                                                .videoUrl,
                                             videoType: VideoType.network,
                                             width: MediaQuery.sizeOf(context)
                                                 .width,
@@ -181,8 +198,12 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                               _model.carouselDesktopController ??=
                                   CarouselSliderController(),
                           options: CarouselOptions(
-                            initialPage:
-                                max(0, min(0, bannerSlides.length - 1)),
+                            initialPage: max(
+                                0,
+                                min(
+                                    0,
+                                    carouselDesktopBannersRecordList.length -
+                                        1)),
                             viewportFraction: 1.0,
                             disableCenter: true,
                             enlargeCenterPage: false,
@@ -278,28 +299,50 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                     tabletLandscape: false,
                     desktop: false,
                   ))
-                    Builder(
-                      builder: (context) {
-                        final bannerSlides = FFAppState()
-                            .banners
-                            .where((e) =>
-                                (e.section == widget!.section) &&
-                                (e.enable == true))
-                            .toList()
-                            .sortedList(keyOf: (e) => e.order, desc: false)
-                            .toList();
+                    StreamBuilder<List<BannersRecord>>(
+                      stream: queryBannersRecord(
+                        queryBuilder: (bannersRecord) => bannersRecord
+                            .where(
+                              'section',
+                              isEqualTo: widget!.section,
+                            )
+                            .where(
+                              'enable',
+                              isEqualTo: true,
+                            )
+                            .orderBy('order'),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: CircularProgressIndicator(
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                  FlutterFlowTheme.of(context).primary,
+                                ),
+                              ),
+                            ),
+                          );
+                        }
+                        List<BannersRecord> carouselMobileBannersRecordList =
+                            snapshot.data!;
 
                         return Container(
                           width: MediaQuery.sizeOf(context).width,
                           height: 290.0,
                           child: CarouselSlider.builder(
-                            itemCount: bannerSlides.length,
-                            itemBuilder: (context, bannerSlidesIndex, _) {
-                              final bannerSlidesItem =
-                                  bannerSlides[bannerSlidesIndex];
+                            itemCount: carouselMobileBannersRecordList.length,
+                            itemBuilder: (context, carouselMobileIndex, _) {
+                              final carouselMobileBannersRecord =
+                                  carouselMobileBannersRecordList[
+                                      carouselMobileIndex];
                               return Builder(
                                 builder: (context) {
-                                  if (bannerSlidesItem.type == 'IMAGE') {
+                                  if (carouselMobileBannersRecord.type ==
+                                      'IMAGE') {
                                     return Row(
                                       mainAxisSize: MainAxisSize.min,
                                       crossAxisAlignment:
@@ -312,10 +355,8 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                           desktop: false,
                                         ))
                                           Image.network(
-                                            valueOrDefault<String>(
-                                              bannerSlidesItem.imageUrlMobile,
-                                              'https://storage.googleapis.com/flutterflow-enterprise-usc.appspot.com/projects/web-volkswagen-trucks-x34ekg/assets/bllwnwnkavbb/362x255px.jpg',
-                                            ),
+                                            carouselMobileBannersRecord
+                                                .bannerUrlMobile,
                                             width: MediaQuery.sizeOf(context)
                                                 .width,
                                             height: 290.0,
@@ -323,7 +364,8 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                           ),
                                       ],
                                     );
-                                  } else if (bannerSlidesItem.type == 'VIDEO') {
+                                  } else if (carouselMobileBannersRecord.type ==
+                                      'VIDEO') {
                                     return Row(
                                       mainAxisSize: MainAxisSize.max,
                                       crossAxisAlignment:
@@ -340,10 +382,8 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                                 .width,
                                             decoration: BoxDecoration(),
                                             child: FlutterFlowVideoPlayer(
-                                              path: valueOrDefault<String>(
-                                                bannerSlidesItem.videoUrl,
-                                                'https://assets.mixkit.co/videos/529/529-720.mp4',
-                                              ),
+                                              path: carouselMobileBannersRecord
+                                                  .videoMobileUrl,
                                               videoType: VideoType.network,
                                               width: MediaQuery.sizeOf(context)
                                                   .width,
@@ -371,8 +411,12 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                 _model.carouselMobileController ??=
                                     CarouselSliderController(),
                             options: CarouselOptions(
-                              initialPage:
-                                  max(0, min(0, bannerSlides.length - 1)),
+                              initialPage: max(
+                                  0,
+                                  min(
+                                      0,
+                                      carouselMobileBannersRecordList.length -
+                                          1)),
                               viewportFraction: 1.0,
                               disableCenter: true,
                               enlargeCenterPage: false,
