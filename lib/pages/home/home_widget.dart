@@ -110,7 +110,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                         child: wrapWithModel(
                           model: _model.homeBannerModel,
                           updateCallback: () => safeSetState(() {}),
-                          child: HomeBannerWidget(),
+                          child: HomeBannerWidget(
+                            section: 'Inicio',
+                          ),
                         ),
                       ),
                       Padding(
