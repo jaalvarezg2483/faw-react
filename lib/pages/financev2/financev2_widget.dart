@@ -597,7 +597,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                   valueOrDefault<double>(
                                     MediaQuery.sizeOf(context).width <
                                             kBreakpointSmall
-                                        ? 30.0
+                                        ? 18.0
                                         : 80.0,
                                     0.0,
                                   ),
@@ -605,7 +605,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                   valueOrDefault<double>(
                                     MediaQuery.sizeOf(context).width <
                                             kBreakpointSmall
-                                        ? 30.0
+                                        ? 18.0
                                         : 80.0,
                                     0.0,
                                   ),
