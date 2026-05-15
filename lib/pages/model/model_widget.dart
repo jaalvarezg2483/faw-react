@@ -1328,55 +1328,43 @@ class _ModelWidgetState extends State<ModelWidget> {
                                             ),
                                           ],
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 20.0, 0.0, 0.0),
-                                          child: Container(
-                                            width: MediaQuery.sizeOf(context)
-                                                    .width *
-                                                1.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Flexible(
-                                                      child: Text(
-                                                        'Planes de Mantenimiento',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  font:
-                                                                      GoogleFonts
-                                                                          .inter(
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    fontStyle: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .fontStyle,
-                                                                  ),
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .primary,
-                                                                  fontSize:
-                                                                      MediaQuery.sizeOf(context).width <
-                                                                              500.0
-                                                                          ? 25.0
-                                                                          : 40.0,
-                                                                  letterSpacing:
-                                                                      0.0,
+                                        if (responsiveVisibility(
+                                          context: context,
+                                          phone: false,
+                                          tablet: false,
+                                          tabletLandscape: false,
+                                          desktop: false,
+                                        ))
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 20.0, 0.0, 0.0),
+                                            child: Container(
+                                              width: MediaQuery.sizeOf(context)
+                                                      .width *
+                                                  1.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Flexible(
+                                                        child: Text(
+                                                          'Planes de Mantenimiento',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                font:
+                                                                    GoogleFonts
+                                                                        .inter(
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
@@ -1385,100 +1373,119 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                                       .bodyMedium
                                                                       .fontStyle,
                                                                 ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 20.0, 0.0, 0.0),
-                                                  child: StreamBuilder<
-                                                      List<
-                                                          MaintenancePlansRecord>>(
-                                                    stream:
-                                                        queryMaintenancePlansRecord(
-                                                      queryBuilder:
-                                                          (maintenancePlansRecord) =>
-                                                              maintenancePlansRecord
-                                                                  .where(
-                                                                    'code',
-                                                                    isEqualTo:
-                                                                        modelModelsRecord
-                                                                            ?.code,
-                                                                  )
-                                                                  .where(
-                                                                    'enabled',
-                                                                    isEqualTo:
-                                                                        true,
-                                                                  )
-                                                                  .orderBy(
-                                                                      'order'),
-                                                    ),
-                                                    builder:
-                                                        (context, snapshot) {
-                                                      // Customize what your widget looks like when it's loading.
-                                                      if (!snapshot.hasData) {
-                                                        return Center(
-                                                          child: SizedBox(
-                                                            width: 50.0,
-                                                            height: 50.0,
-                                                            child:
-                                                                CircularProgressIndicator(
-                                                              valueColor:
-                                                                  AlwaysStoppedAnimation<
-                                                                      Color>(
-                                                                FlutterFlowTheme.of(
+                                                                color: FlutterFlowTheme.of(
                                                                         context)
                                                                     .primary,
+                                                                fontSize:
+                                                                    MediaQuery.sizeOf(context).width <
+                                                                            500.0
+                                                                        ? 25.0
+                                                                        : 40.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                fontStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
                                                               ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }
-                                                      List<MaintenancePlansRecord>
-                                                          columnListMaintenancePlansRecordList =
-                                                          snapshot.data!;
-
-                                                      return Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: List.generate(
-                                                            columnListMaintenancePlansRecordList
-                                                                .length,
-                                                            (columnListIndex) {
-                                                          final columnListMaintenancePlansRecord =
-                                                              columnListMaintenancePlansRecordList[
-                                                                  columnListIndex];
-                                                          return wrapWithModel(
-                                                            model: _model
-                                                                .maintenancePlanItemModels
-                                                                .getModel(
-                                                              columnListMaintenancePlansRecord
-                                                                  .id,
-                                                              columnListIndex,
-                                                            ),
-                                                            updateCallback: () =>
-                                                                safeSetState(
-                                                                    () {}),
-                                                            child:
-                                                                MaintenancePlanItemWidget(
-                                                              key: Key(
-                                                                'Keytxo_${columnListMaintenancePlansRecord.id}',
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 20.0,
+                                                                0.0, 0.0),
+                                                    child: StreamBuilder<
+                                                        List<
+                                                            MaintenancePlansRecord>>(
+                                                      stream:
+                                                          queryMaintenancePlansRecord(
+                                                        queryBuilder:
+                                                            (maintenancePlansRecord) =>
+                                                                maintenancePlansRecord
+                                                                    .where(
+                                                                      'code',
+                                                                      isEqualTo:
+                                                                          modelModelsRecord
+                                                                              ?.code,
+                                                                    )
+                                                                    .where(
+                                                                      'enabled',
+                                                                      isEqualTo:
+                                                                          true,
+                                                                    )
+                                                                    .orderBy(
+                                                                        'order'),
+                                                      ),
+                                                      builder:
+                                                          (context, snapshot) {
+                                                        // Customize what your widget looks like when it's loading.
+                                                        if (!snapshot.hasData) {
+                                                          return Center(
+                                                            child: SizedBox(
+                                                              width: 50.0,
+                                                              height: 50.0,
+                                                              child:
+                                                                  CircularProgressIndicator(
+                                                                valueColor:
+                                                                    AlwaysStoppedAnimation<
+                                                                        Color>(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primary,
+                                                                ),
                                                               ),
-                                                              maintenancePlan:
-                                                                  columnListMaintenancePlansRecord,
                                                             ),
                                                           );
-                                                        }),
-                                                      );
-                                                    },
+                                                        }
+                                                        List<MaintenancePlansRecord>
+                                                            columnListMaintenancePlansRecordList =
+                                                            snapshot.data!;
+
+                                                        return Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: List.generate(
+                                                              columnListMaintenancePlansRecordList
+                                                                  .length,
+                                                              (columnListIndex) {
+                                                            final columnListMaintenancePlansRecord =
+                                                                columnListMaintenancePlansRecordList[
+                                                                    columnListIndex];
+                                                            return wrapWithModel(
+                                                              model: _model
+                                                                  .maintenancePlanItemModels
+                                                                  .getModel(
+                                                                columnListMaintenancePlansRecord
+                                                                    .id,
+                                                                columnListIndex,
+                                                              ),
+                                                              updateCallback: () =>
+                                                                  safeSetState(
+                                                                      () {}),
+                                                              child:
+                                                                  MaintenancePlanItemWidget(
+                                                                key: Key(
+                                                                  'Keytxo_${columnListMaintenancePlansRecord.id}',
+                                                                ),
+                                                                maintenancePlan:
+                                                                    columnListMaintenancePlansRecord,
+                                                              ),
+                                                            );
+                                                          }),
+                                                        );
+                                                      },
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           ),
-                                        ),
                                         StreamBuilder<List<GaleriaRecord>>(
                                           stream: queryGaleriaRecord(
                                             parent:

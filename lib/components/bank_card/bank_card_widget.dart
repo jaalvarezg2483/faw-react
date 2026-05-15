@@ -124,7 +124,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
       child: Material(
         color: Colors.transparent,
         elevation: widget!.bankData?.order == 1 ? 3.0 : 0.0,
