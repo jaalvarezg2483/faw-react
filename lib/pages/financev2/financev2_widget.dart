@@ -1007,8 +1007,8 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                                   1)),
                                                       viewportFraction: 0.33,
                                                       disableCenter: true,
-                                                      enlargeCenterPage: true,
-                                                      enlargeFactor: 0.25,
+                                                      enlargeCenterPage: false,
+                                                      enlargeFactor: 0.0,
                                                       enableInfiniteScroll:
                                                           true,
                                                       scrollDirection:
