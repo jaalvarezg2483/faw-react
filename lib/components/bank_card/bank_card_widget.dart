@@ -127,7 +127,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
       padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
       child: Material(
         color: Colors.transparent,
-        elevation: widget!.bankData?.order == 1 ? 3.0 : 0.0,
+        elevation: 3.0,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
         ),
