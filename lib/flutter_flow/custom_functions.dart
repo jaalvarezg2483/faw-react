@@ -56,3 +56,18 @@ List<BankStruct> filterBanksList(
       .where((bank) => !excludedBankNames.contains(bank.name))
       .toList();
 }
+
+dynamic convertBanksToJson(List<BankStruct> banks) {
+  return banks.map((bank) {
+    return {
+      "Nombre": bank.name,
+      "Tasa": bank.tasa,
+      "Plazos": bank.plazos,
+      "Comision": bank.comision,
+      "Prima": bank.prima,
+      "Id": bank.id,
+      "image": bank.imageUrl,
+      "fixedRateMonths": bank.fixedRateMonths,
+    };
+  }).toList();
+}

@@ -164,6 +164,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: ReglamentsWidget.routeName,
           path: ReglamentsWidget.routePath,
           builder: (context, params) => ReglamentsWidget(),
+        ),
+        FFRoute(
+          name: FinanceFormWidget.routeName,
+          path: FinanceFormWidget.routePath,
+          builder: (context, params) => FinanceFormWidget(
+            modelo: params.getParam(
+              'modelo',
+              ParamType.String,
+            ),
+            code: params.getParam(
+              'code',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
       observers: [routeObserver],

@@ -17,3 +17,4 @@ export '/pages/financev2/financev2_widget.dart' show Financev2Widget;
 export '/pages/cabezales/cabezales_widget.dart' show CabezalesWidget;
 export '/pages/vagonetas/vagonetas_widget.dart' show VagonetasWidget;
 export '/pages/reglaments/reglaments_widget.dart' show ReglamentsWidget;
+export '/pages/finance_form/finance_form_widget.dart' show FinanceFormWidget;

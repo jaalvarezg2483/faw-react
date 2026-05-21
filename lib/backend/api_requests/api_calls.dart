@@ -20,8 +20,7 @@ class BackendAPIGroup {
     'Authorization': '5a90e16787a5b2c496f28f08c17321d3',
   };
   static SendContactFormCall sendContactFormCall = SendContactFormCall();
-  static SendEmailQuotationCall sendEmailQuotationCall =
-      SendEmailQuotationCall();
+  static SendEmailContactCall sendEmailContactCall = SendEmailContactCall();
 }
 
 class SendContactFormCall {
@@ -72,7 +71,7 @@ class SendContactFormCall {
   }
 }
 
-class SendEmailQuotationCall {
+class SendEmailContactCall {
   Future<ApiCallResponse> call({
     String? identification = '',
     String? name = '',
@@ -99,7 +98,7 @@ class SendEmailQuotationCall {
   "models": ${models}
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'SendEmailQuotation',
+      callName: 'SendEmailContact',
       apiUrl: '${baseUrl}/api/faw/Notifications/SendEmailQuotation',
       callType: ApiCallType.POST,
       headers: {
@@ -137,6 +136,8 @@ class BackendWithVariableURLByEnvGroup {
   };
   static GetBanksDataCall getBanksDataCall = GetBanksDataCall();
   static GetPrimaCall getPrimaCall = GetPrimaCall();
+  static SendEmailQuotationCall sendEmailQuotationCall =
+      SendEmailQuotationCall();
 }
 
 class GetBanksDataCall {
@@ -219,6 +220,72 @@ class GetPrimaCall {
         response,
         r'''$.data.cuotaMensual''',
       );
+}
+
+class SendEmailQuotationCall {
+  Future<ApiCallResponse> call({
+    String? identification = '',
+    String? name = '',
+    String? surname = '',
+    String? email = '',
+    String? phonenumber = '',
+    String? comment = '',
+    bool? wantToGetFollowUp = true,
+    bool? allowToUseInformation = true,
+    String? purdySeguro = '0',
+    String? modelName = '',
+    String? modelFilename = '',
+    String? modelPrice = '',
+    String? banks = '[]',
+    String? urlBackendProd,
+    String? urlBackendDev,
+  }) async {
+    urlBackendProd ??= FFDevEnvironmentValues().URLBackendProd;
+    urlBackendDev ??= FFDevEnvironmentValues().URLBackendDev;
+    final baseUrl = BackendWithVariableURLByEnvGroup.getBaseUrl(
+      urlBackendProd: urlBackendProd,
+      urlBackendDev: urlBackendDev,
+    );
+
+    final ffApiRequestBody = '''
+{
+"docType": 1,
+  "identification": "${escapeStringForJson(identification)}",
+  "name": "${escapeStringForJson(name)}",
+  "surname": "${escapeStringForJson(surname)}",
+  "email": "${escapeStringForJson(email)}",
+  "phonenumber": "${escapeStringForJson(phonenumber)}",
+  "comment": "${escapeStringForJson(comment)}",
+  "wantToGetFollowUp": true,
+  "allowToUseInformation": true,
+  "models": [
+    {
+      "name": "${escapeStringForJson(modelName)}",
+      "filename": "${escapeStringForJson(modelFilename)}",
+      "price": ${escapeStringForJson(modelPrice)}
+    }
+  ],
+  "purdySeguro": 0,
+"bancos": ${escapeStringForJson(banks)}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'sendEmailQuotation',
+      apiUrl: '${baseUrl}/xpeng/Notifications/SendEmailQuotation',
+      callType: ApiCallType.POST,
+      headers: {
+        'authorization': '5a90e16787a5b2c496f28f08c17321d3',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 /// End BackendWithVariableURLByEnv Group Code

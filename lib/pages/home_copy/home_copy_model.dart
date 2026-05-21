@@ -176,7 +176,7 @@ class HomeCopyModel extends FlutterFlowModel<HomeCopyWidget> {
   bool? checkboxValue;
   // Stores action output result for [Validate Form] action in Button widget.
   bool? formValidation;
-  // Stores action output result for [Backend Call - API (SendEmailQuotation)] action in Button widget.
+  // Stores action output result for [Backend Call - API (SendEmailContact)] action in Button widget.
   ApiCallResponse? apiResultFormHome;
   // Model for SectionTitleWithButton component.
   late SectionTitleWithButtonModel sectionTitleWithButtonModel1;

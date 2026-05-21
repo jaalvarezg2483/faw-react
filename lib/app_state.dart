@@ -83,4 +83,39 @@ class FFAppState extends ChangeNotifier {
   set expandedNavSection(String value) {
     _expandedNavSection = value;
   }
+
+  List<String> _IdTypesList = [
+    'Cédula Física',
+    'Cédula Jurídica',
+    'DIMEX',
+    'Pasaporte',
+    'Otro'
+  ];
+  List<String> get IdTypesList => _IdTypesList;
+  set IdTypesList(List<String> value) {
+    _IdTypesList = value;
+  }
+
+  void addToIdTypesList(String value) {
+    IdTypesList.add(value);
+  }
+
+  void removeFromIdTypesList(String value) {
+    IdTypesList.remove(value);
+  }
+
+  void removeAtIndexFromIdTypesList(int index) {
+    IdTypesList.removeAt(index);
+  }
+
+  void updateIdTypesListAtIndex(
+    int index,
+    String Function(String) updateFn,
+  ) {
+    IdTypesList[index] = updateFn(_IdTypesList[index]);
+  }
+
+  void insertAtIndexInIdTypesList(int index, String value) {
+    IdTypesList.insert(index, value);
+  }
 }

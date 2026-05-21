@@ -2724,7 +2724,7 @@ class _HomeCopyWidgetState extends State<HomeCopyWidget> {
                                                                   true)) {
                                                             _model.apiResultFormHome =
                                                                 await BackendAPIGroup
-                                                                    .sendEmailQuotationCall
+                                                                    .sendEmailContactCall
                                                                     .call(
                                                               identification:
                                                                   () {
