@@ -25,7 +25,7 @@ import 'package:webviewx_plus/webviewx_plus.dart';
 class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   ///  Local state fields for this page.
 
-  bool isIdNotSelected = true;
+  bool isIdNotSelected = false;
 
   List<BankStruct> banks = [];
   void addToBanks(BankStruct item) => banks.add(item);
@@ -190,6 +190,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Campo requerido';
+    }
+
+    if (val.length < 8) {
+      return 'Ingrese 8 dígitos';
     }
 
     return null;

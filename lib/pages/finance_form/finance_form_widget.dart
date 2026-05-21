@@ -204,7 +204,9 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'FINANCE_FORM_Container_hwakgkch_ON_TAP');
-                                              context.safePop();
+
+                                              context.pushNamed(
+                                                  Financev2Widget.routeName);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -2213,6 +2215,12 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                     lineHeight:
                                                                         1.6,
                                                                   ),
+                                                              maxLength: 8,
+                                                              buildCounter: (context,
+                                                                      {required currentLength,
+                                                                      required isFocused,
+                                                                      maxLength}) =>
+                                                                  null,
                                                               cursorColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)

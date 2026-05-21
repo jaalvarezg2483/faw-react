@@ -1432,7 +1432,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                 logFirebaseEvent(
                                                     'FINANCEV2_PAGE_Container_yk0oqcgu_ON_TAP');
                                                 await launchURL(
-                                                    'https://api.whatsapp.com/send/?phone=50685891000&text=Hola+quiero+informaci%C3%B3n+de+FAW&type=phone_number&app_absent=0');
+                                                    'https://api.whatsapp.com/send/?phone=50685891000&text=Hola+deseo+solicitar+prueba+de+manejo&type=phone_number&app_absent=0');
                                               },
                                               child: Container(
                                                 width: 450.0,
