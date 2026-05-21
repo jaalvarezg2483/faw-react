@@ -11,12 +11,15 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'finance_form_model.dart';
 export 'finance_form_model.dart';
 
@@ -77,6 +80,13 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
         _model.excludedBanks =
             _model.getExcludedBanks!.toList().cast<CustomPaymentTermsRecord>();
         safeSetState(() {});
+        _model.vehicleSelected = await queryModelsRecordOnce(
+          queryBuilder: (modelsRecord) => modelsRecord.where(
+            'code',
+            isEqualTo: widget!.code,
+          ),
+          singleRecord: true,
+        ).then((s) => s.firstOrNull);
       }
     });
 
@@ -186,26 +196,39 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(100.0),
-                                              border: Border.all(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                width: 1.0,
+                                          InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'FINANCE_FORM_Container_hwakgkch_ON_TAP');
+                                              context.safePop();
+                                            },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        100.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  width: 1.0,
+                                                ),
                                               ),
-                                            ),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(6.0, 7.0, 7.0, 7.0),
-                                              child: Icon(
-                                                Icons.arrow_back_ios_new,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primary,
-                                                size: 21.0,
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        6.0, 7.0, 7.0, 7.0),
+                                                child: Icon(
+                                                  Icons.arrow_back_ios_new,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primary,
+                                                  size: 21.0,
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -354,7 +377,11 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                           ),
                                                     ),
                                                     Text(
-                                                      widget!.modelo,
+                                                      valueOrDefault<String>(
+                                                        _model.vehicleSelected
+                                                            ?.name,
+                                                        'modelo',
+                                                      ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -2381,6 +2408,9 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                     lineHeight:
                                                                         1.6,
                                                                   ),
+                                                              keyboardType:
+                                                                  TextInputType
+                                                                      .emailAddress,
                                                               cursorColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
@@ -2701,8 +2731,8 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                 width: 10.0)),
                                                           ),
                                                         ),
-                                                        if (_model
-                                                            .isIdNotSelected)
+                                                        if (!_model
+                                                            .checkboxValue1!)
                                                           Padding(
                                                             padding: EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -2873,8 +2903,8 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                 width: 10.0)),
                                                           ),
                                                         ),
-                                                        if (_model
-                                                            .isIdNotSelected)
+                                                        if (!_model
+                                                            .checkboxValue2!)
                                                           Padding(
                                                             padding: EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -2944,8 +2974,8 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                   ),
                                                                   0.0),
                                                           child: FFButtonWidget(
-                                                            onPressed: (_model
-                                                                        .checkboxValue1! ||
+                                                            onPressed: !(_model
+                                                                        .checkboxValue1! &&
                                                                     _model
                                                                         .checkboxValue2!)
                                                                 ? null
@@ -2964,30 +2994,98 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                               .validate()) {
                                                                         return;
                                                                       }
-                                                                      ScaffoldMessenger.of(
-                                                                              context)
-                                                                          .showSnackBar(
-                                                                        SnackBar(
-                                                                          content:
-                                                                              Text(
-                                                                            'Formulario valido',
-                                                                            style:
-                                                                                TextStyle(
-                                                                              color: FlutterFlowTheme.of(context).primaryText,
-                                                                            ),
-                                                                          ),
-                                                                          duration:
-                                                                              Duration(milliseconds: 4000),
-                                                                          backgroundColor:
-                                                                              FlutterFlowTheme.of(context).secondary,
-                                                                        ),
+                                                                      _model.sendEmailResult = await BackendWithVariableURLByEnvGroup
+                                                                          .sendEmailQuotationCall
+                                                                          .call(
+                                                                        identification:
+                                                                            () {
+                                                                          if (_model.iDDropDownValue ==
+                                                                              FFAppState().IdTypesList.elementAtOrNull(
+                                                                                  0)) {
+                                                                            return _model.iDFisicaTxtTextController.text;
+                                                                          } else if (_model.iDDropDownValue ==
+                                                                              FFAppState().IdTypesList.elementAtOrNull(
+                                                                                  1)) {
+                                                                            return _model.iDJuridicaTxtTextController.text;
+                                                                          } else if (_model.iDDropDownValue ==
+                                                                              FFAppState().IdTypesList.elementAtOrNull(
+                                                                                  2)) {
+                                                                            return _model.iDDimexTxtTextController.text;
+                                                                          } else if (_model.iDDropDownValue ==
+                                                                              FFAppState().IdTypesList.elementAtOrNull(3)) {
+                                                                            return _model.iDPasaporteTxtTextController.text;
+                                                                          } else {
+                                                                            return _model.iDOtroTxtTextController.text;
+                                                                          }
+                                                                        }(),
+                                                                        name: _model
+                                                                            .nombreTxtTextController
+                                                                            .text,
+                                                                        surname: _model
+                                                                            .apellidoTxtTextController
+                                                                            .text,
+                                                                        email: _model
+                                                                            .emailTxtTextController
+                                                                            .text,
+                                                                        phonenumber: _model
+                                                                            .telefonoTxtTextController
+                                                                            .text,
+                                                                        comment: _model
+                                                                            .commentTxtTextController
+                                                                            .text,
+                                                                        modelName: _model
+                                                                            .vehicleSelected
+                                                                            ?.name,
+                                                                        modelFilename: _model
+                                                                            .vehicleSelected
+                                                                            ?.urlTechSpec,
+                                                                        modelPrice: _model
+                                                                            .vehicleSelected
+                                                                            ?.priceBase
+                                                                            ?.toString(),
+                                                                        banks: functions
+                                                                            .convertBanksToJson(_model.filteredBankList.toList())
+                                                                            .toString(),
+                                                                        purdySeguro:
+                                                                            '0',
                                                                       );
+
+                                                                      if ((_model
+                                                                              .sendEmailResult
+                                                                              ?.succeeded ??
+                                                                          true)) {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (alertDialogContext) {
+                                                                            return WebViewAware(
+                                                                              child: AlertDialog(
+                                                                                title: Text('Cotización enviada'),
+                                                                                content: Text('Hemos enviado a la cotización al correo que ingresaste'),
+                                                                                actions: [
+                                                                                  TextButton(
+                                                                                    onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                    child: Text('Ok'),
+                                                                                  ),
+                                                                                ],
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        );
+
+                                                                        context.pushNamed(
+                                                                            Financev2Widget.routeName);
+                                                                      }
                                                                     } else {
                                                                       _model.isIdNotSelected =
                                                                           true;
                                                                       safeSetState(
                                                                           () {});
                                                                     }
+
+                                                                    safeSetState(
+                                                                        () {});
                                                                   },
                                                             text: 'ENVIAR',
                                                             options:

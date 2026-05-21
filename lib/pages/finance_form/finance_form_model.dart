@@ -11,6 +11,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'finance_form_widget.dart' show FinanceFormWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -18,6 +20,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 
 class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   ///  Local state fields for this page.
@@ -65,6 +68,8 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   ApiCallResponse? getBanksResult;
   // Stores action output result for [Firestore Query - Query a collection] action in FinanceForm widget.
   List<CustomPaymentTermsRecord>? getExcludedBanks;
+  // Stores action output result for [Firestore Query - Query a collection] action in FinanceForm widget.
+  ModelsRecord? vehicleSelected;
   // Model for NavBarv2 component.
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
@@ -79,7 +84,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   String? _iDFisicaTxtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo requerido';
     }
 
     if (!RegExp('^\\d{9}\$').hasMatch(val)) {
@@ -95,7 +100,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   String? _iDJuridicaTxtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo requerido';
     }
 
     if (!RegExp('^\\d{10}\$').hasMatch(val)) {
@@ -111,7 +116,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   String? _iDDimexTxtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo requerido';
     }
 
     if (!RegExp('^\\d{11,12}\$').hasMatch(val)) {
@@ -128,7 +133,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   String? _iDPasaporteTxtTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo requerido';
     }
 
     if (!RegExp('^\\d{11,12}\$').hasMatch(val)) {
@@ -143,7 +148,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   String? Function(BuildContext, String?)? iDOtroTxtTextControllerValidator;
   String? _iDOtroTxtTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
-      return 'Field is required';
+      return 'Campo requerido';
     }
 
     if (!RegExp('^\\d{11,12}\$').hasMatch(val)) {
@@ -219,6 +224,8 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
+  // Stores action output result for [Backend Call - API (sendEmailQuotation)] action in Button widget.
+  ApiCallResponse? sendEmailResult;
   // Model for Redes component.
   late RedesModel redesModel;
   // Model for Footer component.

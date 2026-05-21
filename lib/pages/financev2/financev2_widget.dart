@@ -1740,7 +1740,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                       ),
                                                       Flexible(
                                                         child: Text(
-                                                          'Enviar cotización al correo',
+                                                          'Solicitar seguimiento',
                                                           style: FlutterFlowTheme
                                                                   .of(context)
                                                               .bodyMedium
