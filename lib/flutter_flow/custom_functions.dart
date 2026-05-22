@@ -58,7 +58,7 @@ List<BankStruct> filterBanksList(
 }
 
 dynamic convertBanksToJson(List<BankStruct> banks) {
-  List<dynamic> formattedList = banks.map((bank) {
+  return banks.map((bank) {
     return {
       "Nombre": bank.name,
       "Tasa": bank.tasa,
@@ -70,6 +70,4 @@ dynamic convertBanksToJson(List<BankStruct> banks) {
       "fixedRateMonths": bank.fixedRateMonths,
     };
   }).toList();
-  // Convert the list of maps to JSON
-  return jsonEncode(formattedList);
 }
