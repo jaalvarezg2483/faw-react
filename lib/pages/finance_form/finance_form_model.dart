@@ -87,6 +87,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       return 'Campo requerido';
     }
 
+    if (val.length < 9) {
+      return 'Ingrese 9 dígitos';
+    }
+
     if (!RegExp('^\\d{9}\$').hasMatch(val)) {
       return 'Ingresa un formato válido  para el tipo de identificación seleccionado';
     }
@@ -101,6 +105,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Campo requerido';
+    }
+
+    if (val.length < 10) {
+      return 'Ingrese 10 dígitos';
     }
 
     if (!RegExp('^\\d{10}\$').hasMatch(val)) {
@@ -119,6 +127,12 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       return 'Campo requerido';
     }
 
+    if (val.length < 11) {
+      return 'Ingrese al menos 11 dígitos';
+    }
+    if (val.length > 12) {
+      return 'Máximo de dígitos permitidos: 12';
+    }
     if (!RegExp('^\\d{11,12}\$').hasMatch(val)) {
       return 'Ingresa un formato válido  para el tipo de identificación seleccionado';
     }
@@ -136,7 +150,13 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       return 'Campo requerido';
     }
 
-    if (!RegExp('^\\d{11,12}\$').hasMatch(val)) {
+    if (val.length < 6) {
+      return 'Ingrese al menos 6 caracteres';
+    }
+    if (val.length > 9) {
+      return 'Máximo de caracteres permitidos: 9';
+    }
+    if (!RegExp('^[A-Z0-9]{6,9}\$').hasMatch(val)) {
       return 'Ingresa un formato válido  para el tipo de identificación seleccionado';
     }
     return null;
@@ -151,7 +171,13 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       return 'Campo requerido';
     }
 
-    if (!RegExp('^\\d{11,12}\$').hasMatch(val)) {
+    if (val.length < 6) {
+      return 'Ingrese al menos 6 caracteres';
+    }
+    if (val.length > 15) {
+      return 'Máximo de caracteres permitidos: 15';
+    }
+    if (!RegExp('^[A-Za-z0-9]{1,15}\$').hasMatch(val)) {
       return 'Ingresa un formato válido  para el tipo de identificación seleccionado';
     }
     return null;
@@ -166,6 +192,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       return 'Campo requerido';
     }
 
+    if (val.length < 2) {
+      return 'Ingrese al menos 2 caracteres';
+    }
+
     return null;
   }
 
@@ -177,6 +207,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Campo requerido';
+    }
+
+    if (val.length < 2) {
+      return 'Ingrese al menos 2 caracteres';
     }
 
     return null;
@@ -208,6 +242,13 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       return 'Campo requerido';
     }
 
+    if (val.length < 10) {
+      return 'Ingrese al menos 10 caracteres';
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Debes ingresar una dirección de correo electrónico válida.';
+    }
     return null;
   }
 
@@ -219,6 +260,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Campo requerido';
+    }
+
+    if (val.length < 5) {
+      return 'Ingrese al menos 5 caracteres';
     }
 
     return null;

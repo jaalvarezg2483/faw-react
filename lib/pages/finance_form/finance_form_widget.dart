@@ -206,7 +206,14 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                   'FINANCE_FORM_Container_hwakgkch_ON_TAP');
 
                                               context.pushNamed(
-                                                  Financev2Widget.routeName);
+                                                Financev2Widget.routeName,
+                                                queryParameters: {
+                                                  'vehicleName': serializeParam(
+                                                    widget!.modelo,
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
+                                              );
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -1622,7 +1629,7 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                                 1.6,
                                                                           ),
                                                                       maxLength:
-                                                                          12,
+                                                                          15,
                                                                       buildCounter: (context,
                                                                               {required currentLength,
                                                                               required isFocused,
@@ -2615,6 +2622,12 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                         1.6,
                                                                   ),
                                                               maxLines: 4,
+                                                              maxLength: 200,
+                                                              buildCounter: (context,
+                                                                      {required currentLength,
+                                                                      required isFocused,
+                                                                      maxLength}) =>
+                                                                  null,
                                                               cursorColor:
                                                                   FlutterFlowTheme.of(
                                                                           context)
