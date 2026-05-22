@@ -270,7 +270,7 @@ class SendEmailQuotationCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'sendEmailQuotation',
-      apiUrl: '${baseUrl}/faw/Notifications/SendEmailFinancingQuotation',
+      apiUrl: '${baseUrl}/vwtrucks/Notifications/SendEmailFinancingQuotation',
       callType: ApiCallType.POST,
       headers: {
         'authorization': '5a90e16787a5b2c496f28f08c17321d3',
