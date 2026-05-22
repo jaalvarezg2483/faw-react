@@ -65,7 +65,7 @@ dynamic convertBanksToJson(List<BankStruct> banks) {
       "Plazos": bank.plazos,
       "Comision": bank.comision,
       "Prima": bank.prima,
-      "Id": bank.id,
+      "Id": bank.order,
       "image": bank.imageUrl,
       "fixedRateMonths": bank.fixedRateMonths,
     };

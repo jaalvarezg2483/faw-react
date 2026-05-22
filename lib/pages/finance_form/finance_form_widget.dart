@@ -87,6 +87,12 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
           ),
           singleRecord: true,
         ).then((s) => s.firstOrNull);
+        _model.filteredBankList = functions
+            .filterBanksList(
+                _model.banks.toList(), _model.excludedBanks.toList())
+            .toList()
+            .cast<BankStruct>();
+        safeSetState(() {});
       }
     });
 
@@ -2423,6 +2429,12 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                     lineHeight:
                                                                         1.6,
                                                                   ),
+                                                              maxLength: 40,
+                                                              buildCounter: (context,
+                                                                      {required currentLength,
+                                                                      required isFocused,
+                                                                      maxLength}) =>
+                                                                  null,
                                                               keyboardType:
                                                                   TextInputType
                                                                       .emailAddress,
@@ -3007,6 +3019,10 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                             null &&
                                                                         _model.iDDropDownValue !=
                                                                             '') {
+                                                                      _model.isIdNotSelected =
+                                                                          false;
+                                                                      safeSetState(
+                                                                          () {});
                                                                       if (_model.formKey.currentState ==
                                                                               null ||
                                                                           !_model
