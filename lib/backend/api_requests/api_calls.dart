@@ -236,7 +236,7 @@ class SendEmailQuotationCall {
     String? modelName = '',
     String? modelFilename = '',
     String? modelPrice = '',
-    String? banks = '[]',
+    dynamic? banksJson,
     String? urlBackendProd,
     String? urlBackendDev,
   }) async {
@@ -247,6 +247,7 @@ class SendEmailQuotationCall {
       urlBackendDev: urlBackendDev,
     );
 
+    final banks = _serializeJson(banksJson);
     final ffApiRequestBody = '''
 {
 "docType": 1,
@@ -266,7 +267,7 @@ class SendEmailQuotationCall {
     }
   ],
   "purdySeguro": 0,
-"bancos": ${escapeStringForJson(banks)}
+"bancos": ${banks}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'sendEmailQuotation',

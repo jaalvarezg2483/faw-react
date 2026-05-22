@@ -3080,9 +3080,9 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                             .vehicleSelected
                                                                             ?.priceBase
                                                                             ?.toString(),
-                                                                        banks: functions
-                                                                            .convertBanksToJson(_model.filteredBankList.toList())
-                                                                            .toString(),
+                                                                        banksJson: functions.convertBanksToJson(_model
+                                                                            .filteredBankList
+                                                                            .toList()),
                                                                         purdySeguro:
                                                                             '0',
                                                                       );
