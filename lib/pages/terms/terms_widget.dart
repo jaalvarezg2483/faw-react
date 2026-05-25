@@ -1,7 +1,6 @@
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -846,11 +845,6 @@ class _TermsWidgetState extends State<TermsWidget> {
                             ),
                             Container(
                               decoration: BoxDecoration(),
-                              child: wrapWithModel(
-                                model: _model.redesModel,
-                                updateCallback: () => safeSetState(() {}),
-                                child: RedesWidget(),
-                              ),
                             ),
                             Container(
                               height: 115.0,

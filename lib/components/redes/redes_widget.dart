@@ -118,7 +118,7 @@ class _RedesWidgetState extends State<RedesWidget> {
                               logFirebaseEvent(
                                   'REDES_COMP_Icon_ylo5d54d_ON_TAP');
                               await launchURL(
-                                  'https://www.instagram.com/fawtruckscostarica/profilecard/?igsh=OWx2MGtmcnE4MGE1');
+                                  'https://www.instagram.com/fawtruckscostarica');
                             },
                             child: FaIcon(
                               FontAwesomeIcons.instagram,

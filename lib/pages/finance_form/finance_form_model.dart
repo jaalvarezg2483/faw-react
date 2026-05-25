@@ -4,7 +4,6 @@ import '/backend/schema/structs/index.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -275,8 +274,6 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   bool? checkboxValue2;
   // Stores action output result for [Backend Call - API (sendEmailQuotation)] action in Button widget.
   ApiCallResponse? sendEmailResult;
-  // Model for Redes component.
-  late RedesModel redesModel;
   // Model for Footer component.
   late FooterModel footerModel;
 
@@ -296,7 +293,6 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
     telefonoTxtTextControllerValidator = _telefonoTxtTextControllerValidator;
     emailTxtTextControllerValidator = _emailTxtTextControllerValidator;
     commentTxtTextControllerValidator = _commentTxtTextControllerValidator;
-    redesModel = createModel(context, () => RedesModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
@@ -334,7 +330,6 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
     commentTxtFocusNode?.dispose();
     commentTxtTextController?.dispose();
 
-    redesModel.dispose();
     footerModel.dispose();
   }
 }

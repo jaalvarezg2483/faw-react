@@ -354,7 +354,7 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                                             width: MediaQuery.sizeOf(context)
                                                 .width,
                                             height: 290.0,
-                                            fit: BoxFit.cover,
+                                            fit: BoxFit.fitWidth,
                                           ),
                                       ],
                                     );

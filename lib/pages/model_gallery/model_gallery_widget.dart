@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -1762,15 +1761,6 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                       ),
                                     );
                                   },
-                                ),
-                                Container(
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  decoration: BoxDecoration(),
-                                  child: wrapWithModel(
-                                    model: _model.redesModel,
-                                    updateCallback: () => safeSetState(() {}),
-                                    child: RedesWidget(),
-                                  ),
                                 ),
                                 Container(
                                   width: MediaQuery.sizeOf(context).width * 1.0,

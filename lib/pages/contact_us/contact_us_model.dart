@@ -4,7 +4,6 @@ import '/components/footer/footer_widget.dart';
 import '/components/location_card/location_card_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -175,8 +174,6 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
   bool? formValidation;
   // Stores action output result for [Backend Call - API (SendContactForm)] action in Container widget.
   ApiCallResponse? apiResultFormHome;
-  // Model for Redes component.
-  late RedesModel redesModel;
   // Model for Footer component.
   late FooterModel footerModel;
 
@@ -195,7 +192,6 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
     correoTextControllerValidator = _correoTextControllerValidator;
     telTextControllerValidator = _telTextControllerValidator;
     comenTextControllerValidator = _comenTextControllerValidator;
-    redesModel = createModel(context, () => RedesModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
@@ -233,7 +229,6 @@ class ContactUsModel extends FlutterFlowModel<ContactUsWidget> {
     comenFocusNode?.dispose();
     comenTextController?.dispose();
 
-    redesModel.dispose();
     footerModel.dispose();
   }
 }

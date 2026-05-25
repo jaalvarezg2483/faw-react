@@ -2,7 +2,6 @@ import '/backend/backend.dart';
 import '/components/footer/footer_widget.dart';
 import '/components/nav_bar_mobv2/nav_bar_mobv2_widget.dart';
 import '/components/nav_barv2/nav_barv2_widget.dart';
-import '/components/redes/redes_widget.dart';
 import '/flutter_flow/flutter_flow_expanded_image_view.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -43,8 +42,6 @@ class ModelGalleryModel extends FlutterFlowModel<ModelGalleryWidget> {
   CarouselSliderController? carouselIn2Controller;
   int carouselIn2CurrentIndex = 0;
 
-  // Model for Redes component.
-  late RedesModel redesModel;
   // Model for Footer component.
   late FooterModel footerModel;
 
@@ -52,7 +49,6 @@ class ModelGalleryModel extends FlutterFlowModel<ModelGalleryWidget> {
   void initState(BuildContext context) {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
-    redesModel = createModel(context, () => RedesModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
@@ -60,7 +56,6 @@ class ModelGalleryModel extends FlutterFlowModel<ModelGalleryWidget> {
   void dispose() {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
-    redesModel.dispose();
     footerModel.dispose();
   }
 }
