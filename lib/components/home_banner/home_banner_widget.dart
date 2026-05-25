@@ -210,13 +210,7 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                             enlargeFactor: 0.0,
                             enableInfiniteScroll: true,
                             scrollDirection: Axis.horizontal,
-                            autoPlay: true,
-                            autoPlayAnimationDuration:
-                                Duration(milliseconds: 1400),
-                            autoPlayInterval:
-                                Duration(milliseconds: (1400 + 4000)),
-                            autoPlayCurve: Curves.linear,
-                            pauseAutoPlayInFiniteScroll: true,
+                            autoPlay: false,
                             onPageChanged: (index, _) =>
                                 _model.carouselDesktopCurrentIndex = index,
                           ),
@@ -423,13 +417,7 @@ class _HomeBannerWidgetState extends State<HomeBannerWidget> {
                               enlargeFactor: 0.0,
                               enableInfiniteScroll: true,
                               scrollDirection: Axis.horizontal,
-                              autoPlay: true,
-                              autoPlayAnimationDuration:
-                                  Duration(milliseconds: 1400),
-                              autoPlayInterval:
-                                  Duration(milliseconds: (1400 + 4000)),
-                              autoPlayCurve: Curves.linear,
-                              pauseAutoPlayInFiniteScroll: true,
+                              autoPlay: false,
                               onPageChanged: (index, _) =>
                                   _model.carouselMobileCurrentIndex = index,
                             ),
