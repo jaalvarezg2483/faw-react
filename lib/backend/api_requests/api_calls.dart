@@ -128,7 +128,7 @@ class BackendWithVariableURLByEnvGroup {
   }) {
     urlBackendProd ??= FFDevEnvironmentValues().URLBackendProd;
     urlBackendDev ??= FFDevEnvironmentValues().URLBackendDev;
-    return '${urlBackendDev}';
+    return '${urlBackendProd}';
   }
 
   static Map<String, String> headers = {
