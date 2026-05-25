@@ -2516,7 +2516,7 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                           .fontStyle,
                                                                     ),
                                                                 hintText:
-                                                                    'Comentario',
+                                                                    '*Comentario',
                                                                 hintStyle: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -3103,7 +3103,7 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
+                                                                                    child: Text('Aceptar'),
                                                                                   ),
                                                                                 ],
                                                                               ),

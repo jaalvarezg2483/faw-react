@@ -757,34 +757,49 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                         Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            Text(
-                                              'Total \$${formatNumber(
-                                                (_model.vehicleSelected
-                                                                ?.promoPrice !=
-                                                            null) &&
-                                                        (_model.vehicleSelected!
-                                                                .promoPrice <
-                                                            _model
-                                                                .vehicleSelected!
-                                                                .priceBase
-                                                                .toDouble()) &&
-                                                        (_model.vehicleSelected!
-                                                                .promoPrice >
-                                                            0.0)
-                                                    ? _model.vehicleSelected
-                                                        ?.promoPrice
-                                                    : _model.vehicleSelected
-                                                        ?.priceBase
-                                                        ?.toDouble(),
-                                                formatType: FormatType.decimal,
-                                                decimalType:
-                                                    DecimalType.commaDecimal,
-                                              )}',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        font: GoogleFonts.inter(
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 0.0, 0.0, 20.0),
+                                              child: Text(
+                                                'Total \$${formatNumber(
+                                                  (_model.vehicleSelected
+                                                                  ?.promoPrice !=
+                                                              null) &&
+                                                          (_model.vehicleSelected!
+                                                                  .promoPrice <
+                                                              _model.vehicleSelected!
+                                                                  .priceBase
+                                                                  .toDouble()) &&
+                                                          (_model.vehicleSelected!
+                                                                  .promoPrice >
+                                                              0.0)
+                                                      ? _model.vehicleSelected
+                                                          ?.promoPrice
+                                                      : _model.vehicleSelected
+                                                          ?.priceBase
+                                                          ?.toDouble(),
+                                                  formatType:
+                                                      FormatType.decimal,
+                                                  decimalType:
+                                                      DecimalType.commaDecimal,
+                                                )}',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          font:
+                                                              GoogleFonts.inter(
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            fontStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .fontStyle,
+                                                          ),
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w600,
                                                           fontStyle:
@@ -793,16 +808,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                                                   .bodyMedium
                                                                   .fontStyle,
                                                         ),
-                                                        fontSize: 16.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        fontStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .fontStyle,
-                                                      ),
+                                              ),
                                             ),
                                           ],
                                         ),
