@@ -608,45 +608,7 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                         : 80.0,
                                     0.0,
                                   ),
-                                  valueOrDefault<double>(
-                                    () {
-                                      if (MediaQuery.sizeOf(context).width <
-                                          kBreakpointSmall) {
-                                        return 60.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointMedium) {
-                                        return 60.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          kBreakpointLarge) {
-                                        return 200.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1280.0) {
-                                        return 400.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          1500.0) {
-                                        return 60.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          2000.0) {
-                                        return 250.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          2250.0) {
-                                        return 350.0;
-                                      } else if (MediaQuery.sizeOf(context)
-                                              .width <
-                                          2500.0) {
-                                        return 600.0;
-                                      } else {
-                                        return 60.0;
-                                      }
-                                    }(),
-                                    0.0,
-                                  )),
+                                  60.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.center,
