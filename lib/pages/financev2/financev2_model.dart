@@ -69,6 +69,8 @@ class Financev2Model extends FlutterFlowModel<Financev2Widget> {
   late NavBarMobv2Model navBarMobv2Model;
   // Stores action output result for [Firestore Query - Query a collection] action in FinanceCardVehicle widget.
   List<CustomPaymentTermsRecord>? banksCustomConfig2;
+  // Stores action output result for [Firestore Query - Query a collection] action in FinanceCardVehicle widget.
+  List<CustomPaymentTermsRecord>? banksCustomConfig1;
   // State field(s) for Carousel widget.
   CarouselSliderController? carouselController;
   int carouselCurrentIndex = 1;

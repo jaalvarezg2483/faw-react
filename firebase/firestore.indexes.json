@@ -51,6 +51,28 @@
           "order": "ASCENDING"
         },
         {
+          "fieldPath": "isProd",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Models",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "enable",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isDevelop",
+          "order": "ASCENDING"
+        },
+        {
           "fieldPath": "order",
           "order": "ASCENDING"
         }
@@ -126,6 +148,42 @@
       "fields": [
         {
           "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Models",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "enable",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "order",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "Models",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "enable",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "type",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "isProd",
           "order": "ASCENDING"
         },
         {

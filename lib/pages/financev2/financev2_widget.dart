@@ -489,80 +489,182 @@ class _Financev2WidgetState extends State<Financev2Widget> {
                                       ],
                                     ),
                                   ),
-                                  StreamBuilder<List<ModelsRecord>>(
-                                    stream: queryModelsRecord(),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
-                                          child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: CircularProgressIndicator(
-                                              valueColor:
-                                                  AlwaysStoppedAnimation<Color>(
-                                                FlutterFlowTheme.of(context)
-                                                    .primary,
+                                  if (FFDevEnvironmentValues().isProd)
+                                    StreamBuilder<List<ModelsRecord>>(
+                                      stream: queryModelsRecord(
+                                        queryBuilder: (modelsRecord) =>
+                                            modelsRecord
+                                                .where(
+                                                  'enable',
+                                                  isEqualTo: true,
+                                                )
+                                                .where(
+                                                  'isProd',
+                                                  isEqualTo: true,
+                                                ),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                        );
-                                      }
-                                      List<ModelsRecord> wrapModelsRecordList =
-                                          snapshot.data!;
-
-                                      return Wrap(
-                                        spacing: 0.0,
-                                        runSpacing: 0.0,
-                                        alignment: WrapAlignment.start,
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.start,
-                                        direction: Axis.horizontal,
-                                        runAlignment: WrapAlignment.start,
-                                        verticalDirection:
-                                            VerticalDirection.down,
-                                        clipBehavior: Clip.none,
-                                        children: List.generate(
-                                            wrapModelsRecordList.length,
-                                            (wrapIndex) {
-                                          final wrapModelsRecord =
-                                              wrapModelsRecordList[wrapIndex];
-                                          return FinanceCardVehicleWidget(
-                                            key: Key(
-                                                'Keyusk_${wrapIndex}_of_${wrapModelsRecordList.length}'),
-                                            vehicle: wrapModelsRecord,
-                                            callback: () async {
-                                              logFirebaseEvent(
-                                                  'FINANCEV2_Container_uskettet_CALLBACK');
-                                              _model.vehicleSelected =
-                                                  wrapModelsRecord;
-                                              _model.paso = 2;
-                                              safeSetState(() {});
-                                              _model.banksCustomConfig2 =
-                                                  await queryCustomPaymentTermsRecordOnce(
-                                                queryBuilder:
-                                                    (customPaymentTermsRecord) =>
-                                                        customPaymentTermsRecord
-                                                            .where(
-                                                  'code',
-                                                  isEqualTo: _model
-                                                      .vehicleSelected?.code,
-                                                ),
-                                              );
-                                              _model.excludedBanksForSelectedVehicle =
-                                                  _model.banksCustomConfig2!
-                                                      .toList()
-                                                      .cast<
-                                                          CustomPaymentTermsRecord>();
-                                              safeSetState(() {});
-
-                                              safeSetState(() {});
-                                            },
                                           );
-                                        }),
-                                      );
-                                    },
-                                  ),
+                                        }
+                                        List<ModelsRecord>
+                                            wrapModelsRecordList =
+                                            snapshot.data!;
+
+                                        return Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: List.generate(
+                                              wrapModelsRecordList.length,
+                                              (wrapIndex) {
+                                            final wrapModelsRecord =
+                                                wrapModelsRecordList[wrapIndex];
+                                            return FinanceCardVehicleWidget(
+                                              key: Key(
+                                                  'Keyusk_${wrapIndex}_of_${wrapModelsRecordList.length}'),
+                                              vehicle: wrapModelsRecord,
+                                              callback: () async {
+                                                logFirebaseEvent(
+                                                    'FINANCEV2_Container_uskettet_CALLBACK');
+                                                _model.vehicleSelected =
+                                                    wrapModelsRecord;
+                                                _model.paso = 2;
+                                                safeSetState(() {});
+                                                _model.banksCustomConfig2 =
+                                                    await queryCustomPaymentTermsRecordOnce(
+                                                  queryBuilder:
+                                                      (customPaymentTermsRecord) =>
+                                                          customPaymentTermsRecord
+                                                              .where(
+                                                    'code',
+                                                    isEqualTo: _model
+                                                        .vehicleSelected?.code,
+                                                  ),
+                                                );
+                                                _model.excludedBanksForSelectedVehicle =
+                                                    _model.banksCustomConfig2!
+                                                        .toList()
+                                                        .cast<
+                                                            CustomPaymentTermsRecord>();
+                                                safeSetState(() {});
+
+                                                safeSetState(() {});
+                                              },
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    ),
+                                  if (!FFDevEnvironmentValues().isProd)
+                                    StreamBuilder<List<ModelsRecord>>(
+                                      stream: queryModelsRecord(
+                                        queryBuilder: (modelsRecord) =>
+                                            modelsRecord
+                                                .where(
+                                                  'enable',
+                                                  isEqualTo: true,
+                                                )
+                                                .where(
+                                                  'isDevelop',
+                                                  isEqualTo: true,
+                                                ),
+                                      ),
+                                      builder: (context, snapshot) {
+                                        // Customize what your widget looks like when it's loading.
+                                        if (!snapshot.hasData) {
+                                          return Center(
+                                            child: SizedBox(
+                                              width: 50.0,
+                                              height: 50.0,
+                                              child: CircularProgressIndicator(
+                                                valueColor:
+                                                    AlwaysStoppedAnimation<
+                                                        Color>(
+                                                  FlutterFlowTheme.of(context)
+                                                      .primary,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                        List<ModelsRecord>
+                                            wrapModelsRecordList =
+                                            snapshot.data!;
+
+                                        return Wrap(
+                                          spacing: 0.0,
+                                          runSpacing: 0.0,
+                                          alignment: WrapAlignment.start,
+                                          crossAxisAlignment:
+                                              WrapCrossAlignment.start,
+                                          direction: Axis.horizontal,
+                                          runAlignment: WrapAlignment.start,
+                                          verticalDirection:
+                                              VerticalDirection.down,
+                                          clipBehavior: Clip.none,
+                                          children: List.generate(
+                                              wrapModelsRecordList.length,
+                                              (wrapIndex) {
+                                            final wrapModelsRecord =
+                                                wrapModelsRecordList[wrapIndex];
+                                            return FinanceCardVehicleWidget(
+                                              key: Key(
+                                                  'Key0wr_${wrapIndex}_of_${wrapModelsRecordList.length}'),
+                                              vehicle: wrapModelsRecord,
+                                              callback: () async {
+                                                logFirebaseEvent(
+                                                    'FINANCEV2_Container_0wrwiffk_CALLBACK');
+                                                _model.vehicleSelected =
+                                                    wrapModelsRecord;
+                                                _model.paso = 2;
+                                                safeSetState(() {});
+                                                _model.banksCustomConfig1 =
+                                                    await queryCustomPaymentTermsRecordOnce(
+                                                  queryBuilder:
+                                                      (customPaymentTermsRecord) =>
+                                                          customPaymentTermsRecord
+                                                              .where(
+                                                    'code',
+                                                    isEqualTo: _model
+                                                        .vehicleSelected?.code,
+                                                  ),
+                                                );
+                                                _model.excludedBanksForSelectedVehicle =
+                                                    _model.banksCustomConfig1!
+                                                        .toList()
+                                                        .cast<
+                                                            CustomPaymentTermsRecord>();
+                                                safeSetState(() {});
+
+                                                safeSetState(() {});
+                                              },
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    ),
                                 ].divide(SizedBox(height: () {
                                   if (MediaQuery.sizeOf(context).width <
                                       kBreakpointSmall) {

@@ -23,6 +23,7 @@ class FFDevEnvironmentValues {
       final data = await json.decode(response);
       _URLBackendProd = data['URLBackendProd'];
       _URLBackendDev = data['URLBackendDev'];
+      _isProd = data['isProd'];
     } catch (e) {
       print('Error loading environment values: $e');
     }
@@ -33,4 +34,7 @@ class FFDevEnvironmentValues {
 
   String _URLBackendDev = '';
   String get URLBackendDev => _URLBackendDev;
+
+  bool _isProd = false;
+  bool get isProd => _isProd;
 }

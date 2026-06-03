@@ -81,6 +81,21 @@ class ModelsRecord extends FirestoreRecord {
   String get description => _description ?? '';
   bool hasDescription() => _description != null;
 
+  // "type" field.
+  String? _type;
+  String get type => _type ?? '';
+  bool hasType() => _type != null;
+
+  // "isProd" field.
+  bool? _isProd;
+  bool get isProd => _isProd ?? false;
+  bool hasIsProd() => _isProd != null;
+
+  // "isDevelop" field.
+  bool? _isDevelop;
+  bool get isDevelop => _isDevelop ?? false;
+  bool hasIsDevelop() => _isDevelop != null;
+
   void _initializeFields() {
     _urlImage = snapshotData['urlImage'] as String?;
     _name = snapshotData['name'] as String?;
@@ -95,6 +110,9 @@ class ModelsRecord extends FirestoreRecord {
     _promoPrice = castToType<double>(snapshotData['promoPrice']);
     _slug = snapshotData['slug'] as String?;
     _description = snapshotData['description'] as String?;
+    _type = snapshotData['type'] as String?;
+    _isProd = snapshotData['isProd'] as bool?;
+    _isDevelop = snapshotData['isDevelop'] as bool?;
   }
 
   static CollectionReference get collection =>
@@ -144,6 +162,9 @@ Map<String, dynamic> createModelsRecordData({
   double? promoPrice,
   String? slug,
   String? description,
+  String? type,
+  bool? isProd,
+  bool? isDevelop,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -160,6 +181,9 @@ Map<String, dynamic> createModelsRecordData({
       'promoPrice': promoPrice,
       'slug': slug,
       'description': description,
+      'type': type,
+      'isProd': isProd,
+      'isDevelop': isDevelop,
     }.withoutNulls,
   );
 
@@ -183,7 +207,10 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e1?.urlTechSpec == e2?.urlTechSpec &&
         e1?.promoPrice == e2?.promoPrice &&
         e1?.slug == e2?.slug &&
-        e1?.description == e2?.description;
+        e1?.description == e2?.description &&
+        e1?.type == e2?.type &&
+        e1?.isProd == e2?.isProd &&
+        e1?.isDevelop == e2?.isDevelop;
   }
 
   @override
@@ -200,7 +227,10 @@ class ModelsRecordDocumentEquality implements Equality<ModelsRecord> {
         e?.urlTechSpec,
         e?.promoPrice,
         e?.slug,
-        e?.description
+        e?.description,
+        e?.type,
+        e?.isProd,
+        e?.isDevelop
       ]);
 
   @override

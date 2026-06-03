@@ -199,6 +199,14 @@ class _ModelsWidgetState extends State<ModelsWidget> {
                                           'enable',
                                           isEqualTo: true,
                                         )
+                                        .where(
+                                          'type',
+                                          isEqualTo: 'Camion',
+                                        )
+                                        .where(
+                                          'isProd',
+                                          isEqualTo: true,
+                                        )
                                         .orderBy('order'),
                                   ),
                                   builder: (context, snapshot) {
