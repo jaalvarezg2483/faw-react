@@ -147,163 +147,320 @@ class _ModelsWidgetState extends State<ModelsWidget> {
                                     ),
                               ),
                             ),
-                            Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              decoration: BoxDecoration(),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    valueOrDefault<double>(
-                                      () {
-                                        if (MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall) {
-                                          return 40.0;
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            kBreakpointMedium) {
-                                          return 40.0;
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            kBreakpointLarge) {
-                                          return 60.0;
-                                        } else {
-                                          return 60.0;
-                                        }
-                                      }(),
+                            if (FFDevEnvironmentValues().isProd)
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 60.0;
+                                          } else {
+                                            return 60.0;
+                                          }
+                                        }(),
+                                        0.0,
+                                      ),
                                       0.0,
+                                      valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 60.0;
+                                          } else {
+                                            return 60.0;
+                                          }
+                                        }(),
+                                        0.0,
+                                      ),
+                                      0.0),
+                                  child: StreamBuilder<List<ModelsRecord>>(
+                                    stream: queryModelsRecord(
+                                      queryBuilder: (modelsRecord) =>
+                                          modelsRecord
+                                              .where(
+                                                'enable',
+                                                isEqualTo: true,
+                                              )
+                                              .where(
+                                                'isProd',
+                                                isEqualTo: true,
+                                              )
+                                              .orderBy('order'),
                                     ),
-                                    0.0,
-                                    valueOrDefault<double>(
-                                      () {
-                                        if (MediaQuery.sizeOf(context).width <
-                                            kBreakpointSmall) {
-                                          return 40.0;
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            kBreakpointMedium) {
-                                          return 40.0;
-                                        } else if (MediaQuery.sizeOf(context)
-                                                .width <
-                                            kBreakpointLarge) {
-                                          return 60.0;
-                                        } else {
-                                          return 60.0;
-                                        }
-                                      }(),
-                                      0.0,
-                                    ),
-                                    0.0),
-                                child: StreamBuilder<List<ModelsRecord>>(
-                                  stream: queryModelsRecord(
-                                    queryBuilder: (modelsRecord) => modelsRecord
-                                        .where(
-                                          'enable',
-                                          isEqualTo: true,
-                                        )
-                                        .where(
-                                          'type',
-                                          isEqualTo: 'Camion',
-                                        )
-                                        .where(
-                                          'isProd',
-                                          isEqualTo: true,
-                                        )
-                                        .orderBy('order'),
-                                  ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: CircularProgressIndicator(
-                                            valueColor:
-                                                AlwaysStoppedAnimation<Color>(
-                                              FlutterFlowTheme.of(context)
-                                                  .primary,
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<ModelsRecord> wrapModelsRecordList =
-                                        snapshot.data!;
-
-                                    return Wrap(
-                                      spacing: 35.0,
-                                      runSpacing: 35.0,
-                                      alignment: WrapAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          WrapCrossAlignment.start,
-                                      direction: Axis.horizontal,
-                                      runAlignment: WrapAlignment.center,
-                                      verticalDirection: VerticalDirection.down,
-                                      clipBehavior: Clip.none,
-                                      children: List.generate(
-                                          wrapModelsRecordList.length,
-                                          (wrapIndex) {
-                                        final wrapModelsRecord =
-                                            wrapModelsRecordList[wrapIndex];
-                                        return Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 30.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'MODELS_PAGE_Container_vhmrss3q_ON_TAP');
-
-                                              context.pushNamed(
-                                                ModelWidget.routeName,
-                                                pathParameters: {
-                                                  'slug': serializeParam(
-                                                    wrapModelsRecord.slug,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
-                                            },
-                                            child: wrapWithModel(
-                                              model: _model.vehicleCardModels
-                                                  .getModel(
-                                                wrapIndex.toString(),
-                                                wrapIndex,
-                                              ),
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child: VehicleCardWidget(
-                                                key: Key(
-                                                  'Keyvhm_${wrapIndex.toString()}',
-                                                ),
-                                                name: wrapModelsRecord.name,
-                                                passengers:
-                                                    wrapModelsRecord.passengers,
-                                                transmission: wrapModelsRecord
-                                                    .transmission,
-                                                code: wrapModelsRecord.code,
-                                                price: wrapModelsRecord
-                                                    .priceBase
-                                                    .toDouble(),
-                                                urlImage:
-                                                    wrapModelsRecord.urlImage,
-                                                urlTechSpec: wrapModelsRecord
-                                                    .urlTechSpec,
-                                                promoPrice:
-                                                    wrapModelsRecord.promoPrice,
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
                                               ),
                                             ),
                                           ),
                                         );
-                                      }),
-                                    );
-                                  },
+                                      }
+                                      List<ModelsRecord> wrapModelsRecordList =
+                                          snapshot.data!;
+
+                                      return Wrap(
+                                        spacing: 35.0,
+                                        runSpacing: 35.0,
+                                        alignment: WrapAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.center,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            wrapModelsRecordList.length,
+                                            (wrapIndex) {
+                                          final wrapModelsRecord =
+                                              wrapModelsRecordList[wrapIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 30.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'MODELS_PAGE_Container_vhmrss3q_ON_TAP');
+
+                                                context.pushNamed(
+                                                  ModelWidget.routeName,
+                                                  pathParameters: {
+                                                    'slug': serializeParam(
+                                                      wrapModelsRecord.slug,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: wrapWithModel(
+                                                model: _model.vehicleCardModels1
+                                                    .getModel(
+                                                  wrapIndex.toString(),
+                                                  wrapIndex,
+                                                ),
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child: VehicleCardWidget(
+                                                  key: Key(
+                                                    'Keyvhm_${wrapIndex.toString()}',
+                                                  ),
+                                                  name: wrapModelsRecord.name,
+                                                  passengers: wrapModelsRecord
+                                                      .passengers,
+                                                  transmission: wrapModelsRecord
+                                                      .transmission,
+                                                  code: wrapModelsRecord.code,
+                                                  price: wrapModelsRecord
+                                                      .priceBase
+                                                      .toDouble(),
+                                                  urlImage:
+                                                      wrapModelsRecord.urlImage,
+                                                  urlTechSpec: wrapModelsRecord
+                                                      .urlTechSpec,
+                                                  promoPrice: wrapModelsRecord
+                                                      .promoPrice,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
                                 ),
                               ),
-                            ),
+                            if (!FFDevEnvironmentValues().isProd)
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                decoration: BoxDecoration(),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 60.0;
+                                          } else {
+                                            return 60.0;
+                                          }
+                                        }(),
+                                        0.0,
+                                      ),
+                                      0.0,
+                                      valueOrDefault<double>(
+                                        () {
+                                          if (MediaQuery.sizeOf(context).width <
+                                              kBreakpointSmall) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointMedium) {
+                                            return 40.0;
+                                          } else if (MediaQuery.sizeOf(context)
+                                                  .width <
+                                              kBreakpointLarge) {
+                                            return 60.0;
+                                          } else {
+                                            return 60.0;
+                                          }
+                                        }(),
+                                        0.0,
+                                      ),
+                                      0.0),
+                                  child: StreamBuilder<List<ModelsRecord>>(
+                                    stream: queryModelsRecord(
+                                      queryBuilder: (modelsRecord) =>
+                                          modelsRecord
+                                              .where(
+                                                'enable',
+                                                isEqualTo: true,
+                                              )
+                                              .where(
+                                                'isDevelop',
+                                                isEqualTo: true,
+                                              )
+                                              .orderBy('order'),
+                                    ),
+                                    builder: (context, snapshot) {
+                                      // Customize what your widget looks like when it's loading.
+                                      if (!snapshot.hasData) {
+                                        return Center(
+                                          child: SizedBox(
+                                            width: 50.0,
+                                            height: 50.0,
+                                            child: CircularProgressIndicator(
+                                              valueColor:
+                                                  AlwaysStoppedAnimation<Color>(
+                                                FlutterFlowTheme.of(context)
+                                                    .primary,
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }
+                                      List<ModelsRecord> wrapModelsRecordList =
+                                          snapshot.data!;
+
+                                      return Wrap(
+                                        spacing: 35.0,
+                                        runSpacing: 35.0,
+                                        alignment: WrapAlignment.spaceBetween,
+                                        crossAxisAlignment:
+                                            WrapCrossAlignment.start,
+                                        direction: Axis.horizontal,
+                                        runAlignment: WrapAlignment.center,
+                                        verticalDirection:
+                                            VerticalDirection.down,
+                                        clipBehavior: Clip.none,
+                                        children: List.generate(
+                                            wrapModelsRecordList.length,
+                                            (wrapIndex) {
+                                          final wrapModelsRecord =
+                                              wrapModelsRecordList[wrapIndex];
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 30.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                logFirebaseEvent(
+                                                    'MODELS_PAGE_Container_cijfzh0i_ON_TAP');
+
+                                                context.pushNamed(
+                                                  ModelWidget.routeName,
+                                                  pathParameters: {
+                                                    'slug': serializeParam(
+                                                      wrapModelsRecord.slug,
+                                                      ParamType.String,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              },
+                                              child: wrapWithModel(
+                                                model: _model.vehicleCardModels2
+                                                    .getModel(
+                                                  wrapIndex.toString(),
+                                                  wrapIndex,
+                                                ),
+                                                updateCallback: () =>
+                                                    safeSetState(() {}),
+                                                child: VehicleCardWidget(
+                                                  key: Key(
+                                                    'Keycij_${wrapIndex.toString()}',
+                                                  ),
+                                                  name: wrapModelsRecord.name,
+                                                  passengers: wrapModelsRecord
+                                                      .passengers,
+                                                  transmission: wrapModelsRecord
+                                                      .transmission,
+                                                  code: wrapModelsRecord.code,
+                                                  price: wrapModelsRecord
+                                                      .priceBase
+                                                      .toDouble(),
+                                                  urlImage:
+                                                      wrapModelsRecord.urlImage,
+                                                  urlTechSpec: wrapModelsRecord
+                                                      .urlTechSpec,
+                                                  promoPrice: wrapModelsRecord
+                                                      .promoPrice,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ),
                           ].divide(SizedBox(height: 32.0)),
                         ),
                       ),

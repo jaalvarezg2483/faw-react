@@ -21,7 +21,9 @@ class ModelsModel extends FlutterFlowModel<ModelsWidget> {
   // Model for NavBarMobv2 component.
   late NavBarMobv2Model navBarMobv2Model;
   // Models for VehicleCard dynamic component.
-  late FlutterFlowDynamicModels<VehicleCardModel> vehicleCardModels;
+  late FlutterFlowDynamicModels<VehicleCardModel> vehicleCardModels1;
+  // Models for VehicleCard dynamic component.
+  late FlutterFlowDynamicModels<VehicleCardModel> vehicleCardModels2;
   // Model for Footer component.
   late FooterModel footerModel;
 
@@ -29,7 +31,8 @@ class ModelsModel extends FlutterFlowModel<ModelsWidget> {
   void initState(BuildContext context) {
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
-    vehicleCardModels = FlutterFlowDynamicModels(() => VehicleCardModel());
+    vehicleCardModels1 = FlutterFlowDynamicModels(() => VehicleCardModel());
+    vehicleCardModels2 = FlutterFlowDynamicModels(() => VehicleCardModel());
     footerModel = createModel(context, () => FooterModel());
   }
 
@@ -37,7 +40,8 @@ class ModelsModel extends FlutterFlowModel<ModelsWidget> {
   void dispose() {
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
-    vehicleCardModels.dispose();
+    vehicleCardModels1.dispose();
+    vehicleCardModels2.dispose();
     footerModel.dispose();
   }
 }
