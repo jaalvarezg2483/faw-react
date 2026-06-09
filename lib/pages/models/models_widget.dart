@@ -205,6 +205,10 @@ class _ModelsWidgetState extends State<ModelsWidget> {
                                                 'isProd',
                                                 isEqualTo: true,
                                               )
+                                              .where(
+                                                'type',
+                                                isEqualTo: 'Camion',
+                                              )
                                               .orderBy('order'),
                                     ),
                                     builder: (context, snapshot) {
@@ -361,6 +365,10 @@ class _ModelsWidgetState extends State<ModelsWidget> {
                                               .where(
                                                 'isDevelop',
                                                 isEqualTo: true,
+                                              )
+                                              .where(
+                                                'type',
+                                                isEqualTo: 'Camion',
                                               )
                                               .orderBy('order'),
                                     ),
