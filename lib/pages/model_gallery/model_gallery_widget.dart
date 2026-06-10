@@ -1444,7 +1444,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                             enlargeFactor:
                                                                                 0.25,
                                                                             enableInfiniteScroll:
-                                                                                true,
+                                                                                false,
                                                                             scrollDirection:
                                                                                 Axis.horizontal,
                                                                             autoPlay:
@@ -1669,7 +1669,7 @@ class _ModelGalleryWidgetState extends State<ModelGalleryWidget> {
                                                                           enlargeFactor:
                                                                               1.0,
                                                                           enableInfiniteScroll:
-                                                                              true,
+                                                                              false,
                                                                           scrollDirection:
                                                                               Axis.horizontal,
                                                                           autoPlay:
