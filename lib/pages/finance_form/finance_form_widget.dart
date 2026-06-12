@@ -210,7 +210,7 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                               logFirebaseEvent(
                                                   'FINANCE_FORM_Container_hwakgkch_ON_TAP');
 
-                                              context.pushNamed(
+                                              context.goNamed(
                                                 Financev2Widget.routeName,
                                                 queryParameters: {
                                                   'vehicleName': serializeParam(
