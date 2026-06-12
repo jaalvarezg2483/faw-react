@@ -211,14 +211,7 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                   'FINANCE_FORM_Container_hwakgkch_ON_TAP');
 
                                               context.goNamed(
-                                                Financev2Widget.routeName,
-                                                queryParameters: {
-                                                  'vehicleName': serializeParam(
-                                                    widget!.modelo,
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
+                                                  Financev2Widget.routeName);
                                             },
                                             child: Container(
                                               decoration: BoxDecoration(
