@@ -812,7 +812,7 @@ class _ModelWidgetState extends State<ModelWidget> {
                                                 logFirebaseEvent(
                                                     'MODEL_IR_A_RESERVAR_EN_LNEA_BTN_ON_TAP');
                                                 await launchURL(
-                                                    'https://purdygo.com/buscar-vehiculos?isFromReservation=true&isfromCtalogo=false&stateProcess=reservation&brand=FAW');
+                                                    'https://purdygo.com/reserva-en-linea?brand=FAW&model=FAW+TIGER');
                                               },
                                               text: 'Ir a Reservar en Línea',
                                               options: FFButtonOptions(
