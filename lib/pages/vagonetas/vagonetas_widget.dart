@@ -122,7 +122,7 @@ class _VagonetasWidgetState extends State<VagonetasWidget> {
                                   0.0,
                                   34.0),
                               child: Text(
-                                'Camiones:',
+                                'Vagonetas:',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
