@@ -2131,7 +2131,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     'HOME_PAGE_Container_1j4b7whb_CALLBACK');
 
                                                 context.pushNamed(
-                                                    Financev1Widget.routeName);
+                                                    Financev2Widget.routeName);
                                               },
                                             ),
                                           ),
