@@ -122,7 +122,7 @@ class _CabezalesWidgetState extends State<CabezalesWidget> {
                                   0.0,
                                   34.0),
                               child: Text(
-                                'Camiones:',
+                                'Cabezales:',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
