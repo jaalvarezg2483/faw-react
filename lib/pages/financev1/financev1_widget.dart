@@ -847,7 +847,7 @@ class _Financev1WidgetState extends State<Financev1Widget> {
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                         child: Image.asset(
-                                          'assets/images/Logo-CAFSA-principal_Mesa-de-trabajo-1.png',
+                                          'assets/images/cafsa-new-logo.png',
                                           fit: BoxFit.contain,
                                         ),
                                       ),
