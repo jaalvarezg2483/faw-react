@@ -220,7 +220,7 @@ class _VehicleCardWidgetState extends State<VehicleCardWidget> {
                   decoration: BoxDecoration(),
                   child: Image.network(
                     widget!.urlImage!,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ].divide(SizedBox(height: 10.0)),
