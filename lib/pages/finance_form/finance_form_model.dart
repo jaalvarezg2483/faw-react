@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'finance_form_widget.dart' show FinanceFormWidget;
@@ -272,6 +273,10 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
+  // Stores action output result for [Custom Action - executeRecaptchaV3] action in Button widget.
+  String? recaptchaToken;
+  // Stores action output result for [Backend Call - API (Validate Recaptcha)] action in Button widget.
+  ApiCallResponse? resultValidateRecaptcha;
   // Stores action output result for [Backend Call - API (sendEmailQuotation)] action in Button widget.
   ApiCallResponse? sendEmailResult;
   // Model for Footer component.

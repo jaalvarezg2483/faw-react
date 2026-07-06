@@ -10,6 +10,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -3007,6 +3008,8 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                 : () async {
                                                                     logFirebaseEvent(
                                                                         'FINANCE_FORM_PAGE_ENVIAR_BTN_ON_TAP');
+                                                                    var _shouldSetState =
+                                                                        false;
                                                                     if (_model.iDDropDownValue !=
                                                                             null &&
                                                                         _model.iDDropDownValue !=
@@ -3023,66 +3026,19 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                               .validate()) {
                                                                         return;
                                                                       }
-                                                                      _model.sendEmailResult = await BackendWithVariableURLByEnvGroup
-                                                                          .sendEmailQuotationCall
-                                                                          .call(
-                                                                        identification:
-                                                                            () {
-                                                                          if (_model.iDDropDownValue ==
-                                                                              FFAppState().IdTypesList.elementAtOrNull(
-                                                                                  0)) {
-                                                                            return _model.iDFisicaTxtTextController.text;
-                                                                          } else if (_model.iDDropDownValue ==
-                                                                              FFAppState().IdTypesList.elementAtOrNull(
-                                                                                  1)) {
-                                                                            return _model.iDJuridicaTxtTextController.text;
-                                                                          } else if (_model.iDDropDownValue ==
-                                                                              FFAppState().IdTypesList.elementAtOrNull(
-                                                                                  2)) {
-                                                                            return _model.iDDimexTxtTextController.text;
-                                                                          } else if (_model.iDDropDownValue ==
-                                                                              FFAppState().IdTypesList.elementAtOrNull(3)) {
-                                                                            return _model.iDPasaporteTxtTextController.text;
-                                                                          } else {
-                                                                            return _model.iDOtroTxtTextController.text;
-                                                                          }
-                                                                        }(),
-                                                                        name: _model
-                                                                            .nombreTxtTextController
-                                                                            .text,
-                                                                        surname: _model
-                                                                            .apellidoTxtTextController
-                                                                            .text,
-                                                                        email: _model
-                                                                            .emailTxtTextController
-                                                                            .text,
-                                                                        phonenumber: _model
-                                                                            .telefonoTxtTextController
-                                                                            .text,
-                                                                        comment: _model
-                                                                            .commentTxtTextController
-                                                                            .text,
-                                                                        modelName: _model
-                                                                            .vehicleSelected
-                                                                            ?.name,
-                                                                        modelFilename: _model
-                                                                            .vehicleSelected
-                                                                            ?.urlTechSpec,
-                                                                        modelPrice: _model
-                                                                            .vehicleSelected
-                                                                            ?.priceBase
-                                                                            ?.toString(),
-                                                                        banksJson: functions.convertBanksToJson(_model
-                                                                            .filteredBankList
-                                                                            .toList()),
-                                                                        purdySeguro:
-                                                                            '0',
+                                                                      _model.recaptchaToken =
+                                                                          await actions
+                                                                              .executeRecaptchaV3(
+                                                                        FFDevEnvironmentValues()
+                                                                            .RecaptchaPublicKey,
+                                                                        'faw_cotizacion',
                                                                       );
-
-                                                                      if ((_model
-                                                                              .sendEmailResult
-                                                                              ?.succeeded ??
-                                                                          true)) {
+                                                                      _shouldSetState =
+                                                                          true;
+                                                                      if (_model.recaptchaToken ==
+                                                                              null ||
+                                                                          _model.recaptchaToken ==
+                                                                              '') {
                                                                         await showDialog(
                                                                           context:
                                                                               context,
@@ -3090,31 +3046,136 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: Text('Cotización enviada'),
-                                                                                content: Text('Hemos enviado a la cotización al correo que ingresaste'),
+                                                                                title: Text('Validación de seguridad'),
+                                                                                content: Text('No fue posible completar la validación de seguridad. Por favor, inténtalo nuevamente. Si el problema persiste, recarga la página e inténtalo otra vez.'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Aceptar'),
+                                                                                    child: Text('Ok'),
                                                                                   ),
                                                                                 ],
                                                                               ),
                                                                             );
                                                                           },
                                                                         );
+                                                                        if (_shouldSetState)
+                                                                          safeSetState(
+                                                                              () {});
+                                                                        return;
+                                                                      } else {
+                                                                        _model.resultValidateRecaptcha = await BackendWithVariableURLByEnvGroup
+                                                                            .validateRecaptchaCall
+                                                                            .call();
 
-                                                                        context.pushNamed(
-                                                                            Financev2Widget.routeName);
+                                                                        _shouldSetState =
+                                                                            true;
+                                                                        if ((_model.resultValidateRecaptcha?.succeeded ??
+                                                                            true)) {
+                                                                          _model.sendEmailResult = await BackendWithVariableURLByEnvGroup
+                                                                              .sendEmailQuotationCall
+                                                                              .call(
+                                                                            identification:
+                                                                                () {
+                                                                              if (_model.iDDropDownValue == FFAppState().IdTypesList.elementAtOrNull(0)) {
+                                                                                return _model.iDFisicaTxtTextController.text;
+                                                                              } else if (_model.iDDropDownValue == FFAppState().IdTypesList.elementAtOrNull(1)) {
+                                                                                return _model.iDJuridicaTxtTextController.text;
+                                                                              } else if (_model.iDDropDownValue == FFAppState().IdTypesList.elementAtOrNull(2)) {
+                                                                                return _model.iDDimexTxtTextController.text;
+                                                                              } else if (_model.iDDropDownValue == FFAppState().IdTypesList.elementAtOrNull(3)) {
+                                                                                return _model.iDPasaporteTxtTextController.text;
+                                                                              } else {
+                                                                                return _model.iDOtroTxtTextController.text;
+                                                                              }
+                                                                            }(),
+                                                                            name:
+                                                                                _model.nombreTxtTextController.text,
+                                                                            surname:
+                                                                                _model.apellidoTxtTextController.text,
+                                                                            email:
+                                                                                _model.emailTxtTextController.text,
+                                                                            phonenumber:
+                                                                                _model.telefonoTxtTextController.text,
+                                                                            comment:
+                                                                                _model.commentTxtTextController.text,
+                                                                            modelName:
+                                                                                _model.vehicleSelected?.name,
+                                                                            modelFilename:
+                                                                                _model.vehicleSelected?.urlTechSpec,
+                                                                            modelPrice:
+                                                                                _model.vehicleSelected?.priceBase?.toString(),
+                                                                            banksJson:
+                                                                                functions.convertBanksToJson(_model.filteredBankList.toList()),
+                                                                            purdySeguro:
+                                                                                '0',
+                                                                          );
+
+                                                                          _shouldSetState =
+                                                                              true;
+                                                                          if ((_model.sendEmailResult?.succeeded ??
+                                                                              true)) {
+                                                                            await showDialog(
+                                                                              context: context,
+                                                                              builder: (alertDialogContext) {
+                                                                                return WebViewAware(
+                                                                                  child: AlertDialog(
+                                                                                    title: Text('Cotización enviada'),
+                                                                                    content: Text('Hemos enviado a la cotización al correo que ingresaste'),
+                                                                                    actions: [
+                                                                                      TextButton(
+                                                                                        onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                        child: Text('Aceptar'),
+                                                                                      ),
+                                                                                    ],
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            );
+
+                                                                            context.pushNamed(Financev2Widget.routeName);
+                                                                          }
+                                                                          if (_shouldSetState)
+                                                                            safeSetState(() {});
+                                                                          return;
+                                                                        } else {
+                                                                          await showDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (alertDialogContext) {
+                                                                              return WebViewAware(
+                                                                                child: AlertDialog(
+                                                                                  title: Text('Validación de seguridad'),
+                                                                                  content: Text('No fue posible completar la validación de seguridad. Por favor, inténtalo nuevamente. Si el problema persiste, recarga la página e inténtalo otra vez.'),
+                                                                                  actions: [
+                                                                                    TextButton(
+                                                                                      onPressed: () => Navigator.pop(alertDialogContext),
+                                                                                      child: Text('Aceptar'),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          );
+                                                                          if (_shouldSetState)
+                                                                            safeSetState(() {});
+                                                                          return;
+                                                                        }
                                                                       }
                                                                     } else {
                                                                       _model.isIdNotSelected =
                                                                           true;
                                                                       safeSetState(
                                                                           () {});
+                                                                      if (_shouldSetState)
+                                                                        safeSetState(
+                                                                            () {});
+                                                                      return;
                                                                     }
 
-                                                                    safeSetState(
-                                                                        () {});
+                                                                    if (_shouldSetState)
+                                                                      safeSetState(
+                                                                          () {});
                                                                   },
                                                             text: 'ENVIAR',
                                                             options:

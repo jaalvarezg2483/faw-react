@@ -24,6 +24,7 @@ class FFDevEnvironmentValues {
       _URLBackendProd = data['URLBackendProd'];
       _URLBackendDev = data['URLBackendDev'];
       _isProd = data['isProd'];
+      _RecaptchaPublicKey = data['RecaptchaPublicKey'];
     } catch (e) {
       print('Error loading environment values: $e');
     }
@@ -37,4 +38,7 @@ class FFDevEnvironmentValues {
 
   bool _isProd = false;
   bool get isProd => _isProd;
+
+  String _RecaptchaPublicKey = '';
+  String get RecaptchaPublicKey => _RecaptchaPublicKey;
 }

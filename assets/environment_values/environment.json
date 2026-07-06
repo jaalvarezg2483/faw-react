@@ -1,5 +1,6 @@
 {
   "URLBackendProd": "https://grupopurdy-websites-backend.azurewebsites.net/api",
 "URLBackendDev": "https://grupopurdy-websites-backend-staging.azurewebsites.net/api",
-"isProd": true
+"isProd": false,
+"RecaptchaPublicKey": "6LeBmEEtAAAAAEkYNrm1DAfNSxl1qMNREjzzk4UM"
 }

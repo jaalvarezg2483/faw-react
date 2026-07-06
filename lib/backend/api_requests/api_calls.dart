@@ -136,6 +136,7 @@ class BackendWithVariableURLByEnvGroup {
   };
   static GetBanksDataCall getBanksDataCall = GetBanksDataCall();
   static GetPrimaCall getPrimaCall = GetPrimaCall();
+  static ValidateRecaptchaCall validateRecaptchaCall = ValidateRecaptchaCall();
   static SendEmailQuotationCall sendEmailQuotationCall =
       SendEmailQuotationCall();
 }
@@ -196,6 +197,53 @@ class GetPrimaCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getPrima',
       apiUrl: '${baseUrl}/Banks/calculate-financing',
+      callType: ApiCallType.POST,
+      headers: {
+        'authorization': '5a90e16787a5b2c496f28f08c17321d3',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  dynamic cuotaBancaria(dynamic response) => getJsonField(
+        response,
+        r'''$.data.cuotaBancaria''',
+      );
+  dynamic cuotaMensual(dynamic response) => getJsonField(
+        response,
+        r'''$.data.cuotaMensual''',
+      );
+}
+
+class ValidateRecaptchaCall {
+  Future<ApiCallResponse> call({
+    String? recaptchaToken = '',
+    String? urlBackendProd,
+    String? urlBackendDev,
+  }) async {
+    urlBackendProd ??= FFDevEnvironmentValues().URLBackendProd;
+    urlBackendDev ??= FFDevEnvironmentValues().URLBackendDev;
+    final baseUrl = BackendWithVariableURLByEnvGroup.getBaseUrl(
+      urlBackendProd: urlBackendProd,
+      urlBackendDev: urlBackendDev,
+    );
+
+    final ffApiRequestBody = '''
+{
+  "token": "${escapeStringForJson(recaptchaToken)}",
+  "marca": "Faw"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Validate Recaptcha',
+      apiUrl: '${baseUrl}/Security/ValidateReCaptcha',
       callType: ApiCallType.POST,
       headers: {
         'authorization': '5a90e16787a5b2c496f28f08c17321d3',
