@@ -3031,7 +3031,7 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                               .executeRecaptchaV3(
                                                                         FFDevEnvironmentValues()
                                                                             .RecaptchaPublicKey,
-                                                                        'faw_cotizacion',
+                                                                        'cotizacion',
                                                                       );
                                                                       _shouldSetState =
                                                                           true;
