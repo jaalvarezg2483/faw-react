@@ -3046,12 +3046,12 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                               (alertDialogContext) {
                                                                             return WebViewAware(
                                                                               child: AlertDialog(
-                                                                                title: Text('Validación de seguridad'),
-                                                                                content: Text('No fue posible completar la validación de seguridad. Por favor, inténtalo nuevamente. Si el problema persiste, recarga la página e inténtalo otra vez.'),
+                                                                                title: Text('La operación no pudo completarse'),
+                                                                                content: Text('Inténtalo nuevamente.'),
                                                                                 actions: [
                                                                                   TextButton(
                                                                                     onPressed: () => Navigator.pop(alertDialogContext),
-                                                                                    child: Text('Ok'),
+                                                                                    child: Text('Cerrar'),
                                                                                   ),
                                                                                 ],
                                                                               ),
@@ -3145,8 +3145,8 @@ class _FinanceFormWidgetState extends State<FinanceFormWidget> {
                                                                                 (alertDialogContext) {
                                                                               return WebViewAware(
                                                                                 child: AlertDialog(
-                                                                                  title: Text('Validación de seguridad'),
-                                                                                  content: Text('No fue posible completar la validación de seguridad. Por favor, inténtalo nuevamente. Si el problema persiste, recarga la página e inténtalo otra vez.'),
+                                                                                  title: Text('No se pudo procesar la solicitud'),
+                                                                                  content: Text('Inténtalo nuevamente.'),
                                                                                   actions: [
                                                                                     TextButton(
                                                                                       onPressed: () => Navigator.pop(alertDialogContext),
