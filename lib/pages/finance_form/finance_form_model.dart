@@ -70,6 +70,8 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   List<CustomPaymentTermsRecord>? getExcludedBanks;
   // Stores action output result for [Firestore Query - Query a collection] action in FinanceForm widget.
   ModelsRecord? vehicleSelected;
+  // State field(s) for Column widget.
+  ScrollController? columnController;
   // Model for NavBarv2 component.
   late NavBarv2Model navBarv2Model;
   // Model for NavBarMobv2 component.
@@ -273,6 +275,8 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
+  // Stores action output result for [Validate Form] action in Button widget.
+  bool? resultValidateForm;
   // Stores action output result for [Custom Action - executeRecaptchaV3] action in Button widget.
   String? recaptchaToken;
   // Stores action output result for [Backend Call - API (Validate Recaptcha)] action in Button widget.
@@ -284,6 +288,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
 
   @override
   void initState(BuildContext context) {
+    columnController = ScrollController();
     navBarv2Model = createModel(context, () => NavBarv2Model());
     navBarMobv2Model = createModel(context, () => NavBarMobv2Model());
     iDFisicaTxtTextControllerValidator = _iDFisicaTxtTextControllerValidator;
@@ -303,6 +308,7 @@ class FinanceFormModel extends FlutterFlowModel<FinanceFormWidget> {
 
   @override
   void dispose() {
+    columnController?.dispose();
     navBarv2Model.dispose();
     navBarMobv2Model.dispose();
     iDFisicaTxtFocusNode?.dispose();
