@@ -557,7 +557,7 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
+                                                    'Aseguran que tu vehículo tendrá un rendimiento óptimo y seguro.',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -635,7 +635,7 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
+                                                    'Alarga la vida útil de las piezas de desgaste cuidando tu bolsillo.',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -713,7 +713,7 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
+                                                    'Se realizan con materiales y repuestos originales con el mejor rendimiento y durabilidad.',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
@@ -791,7 +791,7 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                                                       .fromSTEB(
                                                           11.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    'Diseñados por el fabricante según los requerimientos técnicos y especificaciones de tu vehículo. ',
+                                                    'Son realizados por técnicos expertos, capacitados y certificados por el fabricante.',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
