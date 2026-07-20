@@ -46,6 +46,11 @@ class MaintenancePlansRecord extends FirestoreRecord {
   bool get enabled => _enabled ?? false;
   bool hasEnabled() => _enabled != null;
 
+  // "planImageUrl2" field.
+  String? _planImageUrl2;
+  String get planImageUrl2 => _planImageUrl2 ?? '';
+  bool hasPlanImageUrl2() => _planImageUrl2 != null;
+
   void _initializeFields() {
     _id = snapshotData['id'] as String?;
     _code = snapshotData['code'] as String?;
@@ -53,6 +58,7 @@ class MaintenancePlansRecord extends FirestoreRecord {
     _planImageUrl = snapshotData['planImageUrl'] as String?;
     _order = castToType<int>(snapshotData['order']);
     _enabled = snapshotData['enabled'] as bool?;
+    _planImageUrl2 = snapshotData['planImageUrl2'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -97,6 +103,7 @@ Map<String, dynamic> createMaintenancePlansRecordData({
   String? planImageUrl,
   int? order,
   bool? enabled,
+  String? planImageUrl2,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -106,6 +113,7 @@ Map<String, dynamic> createMaintenancePlansRecordData({
       'planImageUrl': planImageUrl,
       'order': order,
       'enabled': enabled,
+      'planImageUrl2': planImageUrl2,
     }.withoutNulls,
   );
 
@@ -123,12 +131,20 @@ class MaintenancePlansRecordDocumentEquality
         e1?.name == e2?.name &&
         e1?.planImageUrl == e2?.planImageUrl &&
         e1?.order == e2?.order &&
-        e1?.enabled == e2?.enabled;
+        e1?.enabled == e2?.enabled &&
+        e1?.planImageUrl2 == e2?.planImageUrl2;
   }
 
   @override
-  int hash(MaintenancePlansRecord? e) => const ListEquality()
-      .hash([e?.id, e?.code, e?.name, e?.planImageUrl, e?.order, e?.enabled]);
+  int hash(MaintenancePlansRecord? e) => const ListEquality().hash([
+        e?.id,
+        e?.code,
+        e?.name,
+        e?.planImageUrl,
+        e?.order,
+        e?.enabled,
+        e?.planImageUrl2
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is MaintenancePlansRecord;
