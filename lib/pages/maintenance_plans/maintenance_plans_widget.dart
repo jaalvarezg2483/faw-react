@@ -970,154 +970,144 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                             ),
                           ),
                         ),
-                        if (responsiveVisibility(
-                          context: context,
-                          phone: false,
-                          tablet: false,
-                          tabletLandscape: false,
-                          desktop: false,
-                        ))
-                          StreamBuilder<List<MaintenancePlansRecord>>(
-                            stream: queryMaintenancePlansRecord(
-                              queryBuilder: (maintenancePlansRecord) =>
-                                  maintenancePlansRecord
-                                      .where(
-                                        'enabled',
-                                        isEqualTo: true,
-                                      )
-                                      .orderBy('order'),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: CircularProgressIndicator(
-                                      valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
-                                      ),
+                        StreamBuilder<List<MaintenancePlansRecord>>(
+                          stream: queryMaintenancePlansRecord(
+                            queryBuilder: (maintenancePlansRecord) =>
+                                maintenancePlansRecord
+                                    .where(
+                                      'enabled',
+                                      isEqualTo: true,
+                                    )
+                                    .orderBy('order'),
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      FlutterFlowTheme.of(context).primary,
                                     ),
-                                  ),
-                                );
-                              }
-                              List<MaintenancePlansRecord>
-                                  containerPlansFawHiddenMaintenancePlansRecordList =
-                                  snapshot.data!;
-
-                              return Container(
-                                width: MediaQuery.sizeOf(context).width * 1.0,
-                                decoration: BoxDecoration(
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointMedium
-                                            ? 40.0
-                                            : 100.0,
-                                        0.0,
-                                      ),
-                                      40.0,
-                                      valueOrDefault<double>(
-                                        MediaQuery.sizeOf(context).width <
-                                                kBreakpointMedium
-                                            ? 40.0
-                                            : 100.0,
-                                        0.0,
-                                      ),
-                                      40.0),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 20.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Flexible(
-                                              child: Text(
-                                                'Planes de mantenimiento disponible para que escojás: ',
-                                                textAlign: TextAlign.start,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          font: GoogleFonts
-                                                              .interTight(
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            fontStyle:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .fontStyle,
-                                                          ),
-                                                          fontSize: MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width <
-                                                                  500.0
-                                                              ? 20.0
-                                                              : 40.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontStyle:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyMedium
-                                                                  .fontStyle,
-                                                        ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Builder(
-                                        builder: (context) {
-                                          final plansList =
-                                              containerPlansFawHiddenMaintenancePlansRecordList
-                                                  .toList();
-
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children:
-                                                List.generate(plansList.length,
-                                                    (plansListIndex) {
-                                              final plansListItem =
-                                                  plansList[plansListIndex];
-                                              return wrapWithModel(
-                                                model: _model
-                                                    .maintenancePlanItemModels
-                                                    .getModel(
-                                                  plansListItem.id,
-                                                  plansListIndex,
-                                                ),
-                                                updateCallback: () =>
-                                                    safeSetState(() {}),
-                                                child:
-                                                    MaintenancePlanItemWidget(
-                                                  key: Key(
-                                                    'Keyzt8_${plansListItem.id}',
-                                                  ),
-                                                  maintenancePlan:
-                                                      plansListItem,
-                                                ),
-                                              );
-                                            }),
-                                          );
-                                        },
-                                      ),
-                                    ],
                                   ),
                                 ),
                               );
-                            },
-                          ),
+                            }
+                            List<MaintenancePlansRecord>
+                                containerPlansFawHiddenMaintenancePlansRecordList =
+                                snapshot.data!;
+
+                            return Container(
+                              width: MediaQuery.sizeOf(context).width * 1.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    valueOrDefault<double>(
+                                      MediaQuery.sizeOf(context).width <
+                                              kBreakpointMedium
+                                          ? 40.0
+                                          : 100.0,
+                                      0.0,
+                                    ),
+                                    40.0,
+                                    valueOrDefault<double>(
+                                      MediaQuery.sizeOf(context).width <
+                                              kBreakpointMedium
+                                          ? 40.0
+                                          : 100.0,
+                                      0.0,
+                                    ),
+                                    40.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 20.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Flexible(
+                                            child: Text(
+                                              'Planes de mantenimiento disponible para que escojás: ',
+                                              textAlign: TextAlign.start,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    font:
+                                                        GoogleFonts.interTight(
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .fontStyle,
+                                                    ),
+                                                    fontSize: MediaQuery.sizeOf(
+                                                                    context)
+                                                                .width <
+                                                            500.0
+                                                        ? 20.0
+                                                        : 40.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium
+                                                            .fontStyle,
+                                                  ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Builder(
+                                      builder: (context) {
+                                        final plansList =
+                                            containerPlansFawHiddenMaintenancePlansRecordList
+                                                .toList();
+
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children:
+                                              List.generate(plansList.length,
+                                                  (plansListIndex) {
+                                            final plansListItem =
+                                                plansList[plansListIndex];
+                                            return wrapWithModel(
+                                              model: _model
+                                                  .maintenancePlanItemModels
+                                                  .getModel(
+                                                plansListItem.id,
+                                                plansListIndex,
+                                              ),
+                                              updateCallback: () =>
+                                                  safeSetState(() {}),
+                                              child: MaintenancePlanItemWidget(
+                                                key: Key(
+                                                  'Keyzt8_${plansListItem.id}',
+                                                ),
+                                                maintenancePlan: plansListItem,
+                                              ),
+                                            );
+                                          }),
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                         Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           decoration: BoxDecoration(
