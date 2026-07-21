@@ -937,7 +937,7 @@ class _MaintenancePlansWidgetState extends State<MaintenancePlansWidget> {
                                   children: [
                                     Flexible(
                                       child: Text(
-                                        '• 3 ó 6 meses sin intereses.\n• Purdy Cuotas hasta 36 meses\n• Hasta 12 meses sin intereses con tarjeta PURDY CAFSA',
+                                        '• 4 ó 6 meses sin intereses.\n• Purdy Cuotas hasta 36 meses',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
