@@ -282,23 +282,23 @@ class _MaintenancePlanItemWidgetState extends State<MaintenancePlanItemWidget>
                                   type: PageTransitionType.fade,
                                   child: FlutterFlowExpandedImageView(
                                     image: Image.network(
-                                      widget!.maintenancePlan!.planImageUrl,
+                                      widget!.maintenancePlan!.planImageUrl2,
                                       fit: BoxFit.contain,
                                     ),
                                     allowRotation: false,
-                                    tag: widget!.maintenancePlan!.planImageUrl,
+                                    tag: widget!.maintenancePlan!.planImageUrl2,
                                     useHeroAnimation: true,
                                   ),
                                 ),
                               );
                             },
                             child: Hero(
-                              tag: widget!.maintenancePlan!.planImageUrl,
+                              tag: widget!.maintenancePlan!.planImageUrl2,
                               transitionOnUserGestures: true,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
-                                  widget!.maintenancePlan!.planImageUrl,
+                                  widget!.maintenancePlan!.planImageUrl2,
                                   width: () {
                                     if (MediaQuery.sizeOf(context).width <
                                         kBreakpointSmall) {
