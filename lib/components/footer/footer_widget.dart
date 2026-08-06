@@ -801,7 +801,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                   logFirebaseEvent(
                                       'FOOTER_COMP_TextReglamento_ON_TAP');
                                   await launchURL(
-                                      'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2FTE%CC%81RMINOS%20Y%20CONDICIONES%20FAW_HIGER.pdf?alt=media&token=ede31ebe-a62e-425f-ad9c-8c24a6c84541');
+                                      'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzv%2Farchive%2FEBIN35ISEQ9c4B5XmhkX-TE%CC%81RMINOS%20Y%20CONDICIONES%20FAW.pdf?alt=media&token=c5fae89c-46a6-45d5-b945-d3c75cb6fe46');
                                 },
                                 child: Text(
                                   'Reglamento',
@@ -1164,7 +1164,7 @@ class _FooterWidgetState extends State<FooterWidget> {
                                               logFirebaseEvent(
                                                   'FOOTER_COMP_TextLink_ON_TAP');
                                               await launchURL(
-                                                  'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2FTE%CC%81RMINOS%20Y%20CONDICIONES%20FAW_HIGER.pdf?alt=media&token=ede31ebe-a62e-425f-ad9c-8c24a6c84541');
+                                                  'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzv%2Farchive%2FEBIN35ISEQ9c4B5XmhkX-TE%CC%81RMINOS%20Y%20CONDICIONES%20FAW.pdf?alt=media&token=c5fae89c-46a6-45d5-b945-d3c75cb6fe46');
                                             },
                                             child: Text(
                                               'Reglamento',
