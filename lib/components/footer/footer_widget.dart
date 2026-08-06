@@ -791,39 +791,8 @@ class _FooterWidgetState extends State<FooterWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'FOOTER_COMP_TextReglamento_ON_TAP');
-                                  await launchURL(
-                                      'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzv%2Farchive%2FEBIN35ISEQ9c4B5XmhkX-TE%CC%81RMINOS%20Y%20CONDICIONES%20FAW.pdf?alt=media&token=c5fae89c-46a6-45d5-b945-d3c75cb6fe46');
-                                },
-                                child: Text(
-                                  'Reglamento',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        font: GoogleFonts.inter(
-                                          fontWeight: FontWeight.w600,
-                                          fontStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium
-                                                  .fontStyle,
-                                        ),
-                                        fontSize: 16.0,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .fontStyle,
-                                      ),
-                                ),
-                              ),
                               InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -1163,11 +1132,12 @@ class _FooterWidgetState extends State<FooterWidget> {
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'FOOTER_COMP_TextLink_ON_TAP');
-                                              await launchURL(
-                                                  'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzv%2Farchive%2FEBIN35ISEQ9c4B5XmhkX-TE%CC%81RMINOS%20Y%20CONDICIONES%20FAW.pdf?alt=media&token=c5fae89c-46a6-45d5-b945-d3c75cb6fe46');
+
+                                              context.pushNamed(
+                                                  TermsWidget.routeName);
                                             },
                                             child: Text(
-                                              'Reglamento',
+                                              'Términos y condiciones',
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -1204,12 +1174,11 @@ class _FooterWidgetState extends State<FooterWidget> {
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'FOOTER_COMP_TextLink_ON_TAP');
-
-                                              context.pushNamed(
-                                                  SiteMapWidget.routeName);
+                                              await launchURL(
+                                                  'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzy%2Farchive%2F50bUIEfnzTkdrs75dAdJ-POL%C3%8DTICA%20DE%20COOKIES%20(1).pdf?alt=media&token=06dcd7aa-829d-4148-9f5b-22eec4b33db7');
                                             },
                                             child: Text(
-                                              'Mapa',
+                                              'Cookies',
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -1259,10 +1228,10 @@ class _FooterWidgetState extends State<FooterWidget> {
                                                   'FOOTER_COMP_TextLink_ON_TAP');
 
                                               context.pushNamed(
-                                                  TermsWidget.routeName);
+                                                  SiteMapWidget.routeName);
                                             },
                                             child: Text(
-                                              'Términos y condiciones',
+                                              'Mapa',
                                               textAlign: TextAlign.center,
                                               style:
                                                   FlutterFlowTheme.of(context)
@@ -1349,44 +1318,6 @@ class _FooterWidgetState extends State<FooterWidget> {
                                             logFirebaseEvent(
                                                 'FOOTER_COMP_TextLink_ON_TAP');
                                             await launchURL(
-                                                'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzy%2Farchive%2F50bUIEfnzTkdrs75dAdJ-POL%C3%8DTICA%20DE%20COOKIES%20(1).pdf?alt=media&token=06dcd7aa-829d-4148-9f5b-22eec4b33db7');
-                                          },
-                                          child: Text(
-                                            'Cookies',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  font: GoogleFonts.inter(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .fontStyle,
-                                                  ),
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium
-                                                          .fontStyle,
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'FOOTER_COMP_TextLink_ON_TAP');
-                                            await launchURL(
                                                 'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzx%2Farchive%2FjjKuOci8yJmQXTf2yLuP-20250125%20GARANTIA%20DE%20LEY%20V.2025-AUTO.pdf?alt=media&token=a1a9bea0-3a5b-4d87-83c2-4bf896be0ce4');
                                           },
                                           child: Text(
@@ -1415,6 +1346,54 @@ class _FooterWidgetState extends State<FooterWidget> {
                                           ),
                                         ),
                                       ),
+                                      if (responsiveVisibility(
+                                        context: context,
+                                        phone: false,
+                                        tablet: false,
+                                        tabletLandscape: false,
+                                        desktop: false,
+                                      ))
+                                        Expanded(
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'FOOTER_COMP_TextLink_ON_TAP');
+                                              await launchURL(
+                                                  'https://firebasestorage.googleapis.com/v0/b/faw-cms.appspot.com/o/Documentos%2Fzzzzzzzzzzzzzzzzzzzv%2Farchive%2FEBIN35ISEQ9c4B5XmhkX-TE%CC%81RMINOS%20Y%20CONDICIONES%20FAW.pdf?alt=media&token=c5fae89c-46a6-45d5-b945-d3c75cb6fe46');
+                                            },
+                                            child: Text(
+                                              'Reglamento',
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        font: GoogleFonts.inter(
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          fontStyle:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMedium
+                                                                  .fontStyle,
+                                                        ),
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .fontStyle,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
                                     ],
                                   ),
                                 ]
