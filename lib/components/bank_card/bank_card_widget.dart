@@ -735,6 +735,7 @@ class _BankCardWidgetState extends State<BankCardWidget>
                           fontStyle:
                               FlutterFlowTheme.of(context).bodyMedium.fontStyle,
                         ),
+                        fontSize: 12.0,
                         letterSpacing: 0.0,
                         fontWeight:
                             FlutterFlowTheme.of(context).bodyMedium.fontWeight,
