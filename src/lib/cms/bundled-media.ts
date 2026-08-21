@@ -12,7 +12,6 @@ type Catalog = {
 function normalizeName(value: string) {
   return value
     .toLowerCase()
-    .replace(/-\d+(?=\.[^.]+$)/, '')
     .replace(/4\.3/g, '43')
     .replace(/5\.8/g, '58')
     .replace(/[^a-z0-9]/g, '')
