@@ -25,6 +25,11 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# payload.config.ts parses DATABASE_URL / PAYLOAD_SECRET at import time during
+# `next build`. Railway injects the real values at runtime, not during Docker build.
+ENV DATABASE_URL=postgresql://127.0.0.1:5432/build
+ENV PAYLOAD_SECRET=build-time-placeholder-secret
+
 # Next.js collects completely anonymous telemetry data about general usage.
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
