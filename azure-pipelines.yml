@@ -1,9 +1,6 @@
 name: faw-react-mirror-$(Date:yyyyMMdd)$(Rev:.r)
 
-trigger:
-  branches:
-    include:
-      - faw-react
+trigger: none
 
 pr: none
 
