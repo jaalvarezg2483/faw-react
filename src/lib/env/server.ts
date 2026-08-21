@@ -5,6 +5,7 @@ const serverEnvironmentSchema = z
     NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
     DATABASE_URL: z.string().min(1, 'DATABASE_URL es requerida'),
     PAYLOAD_SECRET: z.string().min(16, 'PAYLOAD_SECRET debe tener al menos 16 caracteres'),
+    NEXT_PUBLIC_SERVER_URL: z.string().url().optional(),
     STORAGE_PROVIDER: z.enum(['local', 'azure']).default('local'),
     AZURE_STORAGE_CONNECTION_STRING: z.string().optional(),
     AZURE_STORAGE_CONTAINER: z.string().optional(),

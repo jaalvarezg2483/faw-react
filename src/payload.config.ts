@@ -31,13 +31,32 @@ loadEnv({ path: path.resolve(dirname, '../.env') })
 const environment = getServerEnvironment()
 
 export default buildConfig({
+  serverURL: environment.NEXT_PUBLIC_SERVER_URL,
   admin: {
     user: Users.slug,
+    avatar: {
+      Component: '@/components/admin/AdminAvatar#AdminAvatar',
+    },
     importMap: {
       baseDir: path.resolve(dirname),
     },
     meta: {
-      titleSuffix: ' — FAW CMS',
+      titleSuffix: '— FAW CMS',
+      icons: [
+        {
+          rel: 'icon',
+          type: 'image/png',
+          url: '/favicon.png',
+        },
+      ],
+    },
+    components: {
+      beforeNavLinks: ['@/components/admin/AdminNavBrand#AdminNavBrand'],
+      beforeDashboard: ['@/components/admin/AdminDashboardIntro#AdminDashboardIntro'],
+      graphics: {
+        Logo: '@/components/admin/AdminLogo#AdminLogo',
+        Icon: '@/components/admin/AdminIcon#AdminIcon',
+      },
     },
   },
   collections: [
