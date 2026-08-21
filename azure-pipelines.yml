@@ -1,76 +1,45 @@
-name: Azure Static Web Apps WebFaw CI/CD
+name: faw-react-railway-$(Date:yyyyMMdd)$(Rev:.r)
 
-pr:
-  branches:
-    include:
-      - master
-      - master.deploy
 trigger:
   branches:
     include:
-      - master
-      - master.deploy
+      - faw-react
 
-jobs:
-- job: build_and_deploy_job
-  displayName: Build and Deploy Job
-  condition: or(eq(variables['Build.Reason'], 'Manual'), or(eq(variables['Build.Reason'], 'PullRequest'), eq(variables['Build.Reason'], 'IndividualCI')))
-  pool:
-    vmImage: ubuntu-latest
-  variables:
-  - group: digital-team-variables
-  - name: app_location
-    value: "build/web"
-  steps:
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: faw-railway-ci
+
+steps:
   - checkout: self
-    submodules: true
-    
-  - task: CopyFiles@2
+    clean: true
+
+  - task: NodeTool@0
+    displayName: Use Node.js 20
     inputs:
-      SourceFolder: "$(Build.SourcesDirectory)"
-      Contents: "**/manifest.json"
-      TargetFolder: "$(Build.SourcesDirectory)/build/web"
-      
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: '$(Build.SourcesDirectory)'
-      Contents: '**/routes.json'
-      TargetFolder: '$(Build.SourcesDirectory)/build/web'
-      
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: '$(Build.SourcesDirectory)'
-      Contents: '**/staticwebapp.config.json'
-      TargetFolder: '$(Build.SourcesDirectory)/build/web'
- 
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: '$(Build.SourcesDirectory)/static_web'
-      Contents: '**'
-      TargetFolder: '$(Build.SourcesDirectory)/build/web'
-    
-  - script: |
-      sudo apt update
-      sudo apt install -y lib32stdc++6
-      git clone https://github.com/flutter/flutter.git --depth 1 -b 3.38.5
-      export PATH="$PATH:`pwd`/flutter/bin"
-      flutter --version
-      flutter pub get
-      flutter build web --release
-    displayName: "Install Flutter and Build web"
-    
-  - task: AzureStaticWebApp@0
-    inputs:
-      azure_static_web_apps_api_token: $(token-static-web-app-faw)
-      app_location: "$(app_location)"
-      output_location: "$(app_location)"
-      deployment_environment: "preview"
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
-    
-  - task: AzureStaticWebApp@0
-    inputs:
-      azure_static_web_apps_api_token: $(token-static-web-app-faw)
-      app_location: "$(app_location)"
-      output_location: "$(app_location)"
-      production_branch: "master.deploy"
-    condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master.deploy'))
+      versionSpec: 20.x
+
+  - script: npm install --global @railway/cli@5.26.0
+    displayName: Install Railway CLI
+
+  - bash: |
+      set -euo pipefail
+
+      if [[ -z "${RAILWAY_TOKEN:-}" || "${RAILWAY_TOKEN}" == '$('* ]]; then
+        echo "RAILWAY_TOKEN is missing. Add it as a secret in faw-railway-ci."
+        exit 1
+      fi
+
+      railway up . \
+        --path-as-root \
+        --ci \
+        --project 3a07649e-e813-4d92-b7e3-a5a3939ea76c \
+        --environment production \
+        --service faw-web \
+        --message "Azure DevOps $(Build.SourceVersion)"
+    displayName: Deploy faw-web to Railway
+    env:
+      RAILWAY_TOKEN: $(RAILWAY_TOKEN)

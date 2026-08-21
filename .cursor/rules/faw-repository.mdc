@@ -1,0 +1,10 @@
+---
+description: Repository, branch, database, and deployment constraints for the FAW migration
+alwaysApply: true
+---
+
+- Work only in the Azure DevOps repository `WebFaw-Flutterflow`.
+- Keep the migration work on branch `faw-react`; do not switch to or push migration commits to `master` or `master.deploy`.
+- The only application database is PostgreSQL through `@payloadcms/db-postgres`.
+- Production deploys run through `azure-pipelines.yml` and target Railway project `faw-trucks`, environment `production`, service `faw-web`.
+- Preserve concurrent user and agent changes. Inspect the working tree before editing, and do not reset, clean, force-push, or overwrite unrelated work.
