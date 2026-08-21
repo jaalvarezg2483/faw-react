@@ -20,7 +20,6 @@ import { Header } from './globals/Header'
 import { Footer } from './globals/Footer'
 import { HomePage } from './globals/HomePage'
 import { seedCmsIfEmpty } from './seed/cms'
-import { restoreMissingMediaFiles } from './seed/restore-media'
 import { getStoragePlugins } from './payload/storage'
 import { migrations } from './migrations'
 import { getServerEnvironment } from './lib/env/server'
@@ -94,6 +93,5 @@ export default buildConfig({
   plugins: getStoragePlugins(),
   onInit: async (payload) => {
     await seedCmsIfEmpty(payload)
-    await restoreMissingMediaFiles(payload)
   },
 })
