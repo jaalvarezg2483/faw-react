@@ -1,6 +1,5 @@
 import type { CollectionConfig } from 'payload'
 
-import { getMediaDir } from '../lib/cms/media-dir'
 import { publicContentAccess } from '../lib/payload/access'
 import { liveHooksFor } from './hooks/revalidate-site'
 
@@ -19,8 +18,7 @@ export const Media: CollectionConfig = {
     { name: 'description', type: 'textarea' },
   ],
   upload: {
-    // Production uses a Railway volume at /data/media. /tmp is wiped on every deploy.
-    staticDir: getMediaDir(),
+    staticDir: process.env.MEDIA_DIR || (process.env.NODE_ENV === 'production' ? '/tmp/faw-media' : 'media'),
     disableLocalStorage: process.env.STORAGE_PROVIDER === 'azure',
     displayPreview: true,
     focalPoint: true,

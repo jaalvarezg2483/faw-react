@@ -1,8 +1,6 @@
-import { copyFileSync, existsSync, readdirSync, statSync } from 'fs'
+import { existsSync, readdirSync } from 'fs'
 import path from 'path'
 import type { Payload } from 'payload'
-
-import { getMediaDir } from '../lib/cms/media-dir'
 
 const ROOT = process.cwd()
 const SOURCE_DIRS = ['public/cms', 'public/assets', 'media']
@@ -39,10 +37,7 @@ function collectSources() {
   return { byExact, byNormalized }
 }
 
-function findSource(
-  filename: string,
-  catalog: ReturnType<typeof collectSources>,
-) {
+function findSource(filename: string, catalog: ReturnType<typeof collectSources>) {
   return (
     catalog.byExact.get(filename.toLowerCase()) ||
     catalog.byNormalized.get(normalizeName(filename)) ||
@@ -51,7 +46,6 @@ function findSource(
 }
 
 export async function restoreMissingMediaFiles(payload: Payload) {
-  const dir = getMediaDir()
   const catalog = collectSources()
   const existing = await payload.find({
     collection: 'media',
@@ -67,9 +61,6 @@ export async function restoreMissingMediaFiles(payload: Payload) {
     const filename = typeof doc.filename === 'string' ? doc.filename : ''
     if (!filename) continue
 
-    const dest = path.join(dir, filename)
-    if (existsSync(dest) && statSync(dest).size > 0) continue
-
     const source = findSource(filename, catalog)
     if (!source) {
       missing += 1
@@ -77,13 +68,24 @@ export async function restoreMissingMediaFiles(payload: Payload) {
       continue
     }
 
-    copyFileSync(source, dest)
-    restored += 1
+    try {
+      await payload.update({
+        collection: 'media',
+        id: doc.id,
+        data: {
+          alt: doc.alt,
+          title: doc.title,
+        },
+        filePath: source,
+        overrideAccess: true,
+      })
+      restored += 1
+    } catch (error) {
+      payload.logger.error(`[cms] No se pudo restaurar ${filename}: ${String(error)}`)
+    }
   }
 
   if (restored || missing) {
-    payload.logger.info(
-      `[cms] Media restaurada en ${dir}: ${restored} copiados, ${missing} sin origen`,
-    )
+    payload.logger.info(`[cms] Media reinyectada: ${restored} archivos, ${missing} sin origen`)
   }
 }
