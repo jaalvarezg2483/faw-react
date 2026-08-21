@@ -1,4 +1,4 @@
-name: faw-react-railway-$(Date:yyyyMMdd)$(Rev:.r)
+name: faw-react-mirror-$(Date:yyyyMMdd)$(Rev:.r)
 
 trigger:
   branches:
@@ -10,9 +10,6 @@ pr: none
 pool:
   vmImage: ubuntu-latest
 
-variables:
-  - group: faw-railway-ci
-
 steps:
   - checkout: self
     clean: true
@@ -22,24 +19,17 @@ steps:
     inputs:
       versionSpec: 20.x
 
-  - script: npm install --global @railway/cli@5.26.0
-    displayName: Install Railway CLI
+  - script: corepack enable
+    displayName: Enable pnpm
 
-  - bash: |
-      set -euo pipefail
+  - script: pnpm install --frozen-lockfile
+    displayName: Install dependencies
 
-      if [[ -z "${RAILWAY_TOKEN:-}" || "${RAILWAY_TOKEN}" == '$('* ]]; then
-        echo "RAILWAY_TOKEN is missing. Add it as a secret in faw-railway-ci."
-        exit 1
-      fi
+  - script: pnpm lint
+    displayName: Lint
 
-      railway up . \
-        --path-as-root \
-        --ci \
-        --project 3a07649e-e813-4d92-b7e3-a5a3939ea76c \
-        --environment production \
-        --service faw-web \
-        --message "Azure DevOps $(Build.SourceVersion)"
-    displayName: Deploy faw-web to Railway
-    env:
-      RAILWAY_TOKEN: $(RAILWAY_TOKEN)
+  - script: pnpm format:check
+    displayName: Check formatting
+
+  - script: pnpm type-check
+    displayName: Type-check
