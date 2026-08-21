@@ -13,7 +13,12 @@ import { liveHooksFor } from './hooks/revalidate-site'
 export const Pages: CollectionConfig = {
   slug: 'pages',
   labels: { singular: 'Página', plural: 'Páginas' },
-  admin: { useAsTitle: 'title', defaultColumns: ['title', 'slug', '_status', 'updatedAt'] },
+  admin: {
+    useAsTitle: 'title',
+    defaultColumns: ['title', 'slug', '_status', 'updatedAt'],
+    description:
+      'Listado de páginas del sitio. Inicio, modelos, talleres, planes, servicios y financiamiento también se editan en sus colecciones y en Globals.',
+  },
   access: {
     read: ({ req }) => (req.user ? true : { _status: { equals: 'published' } }),
     create: authenticated,

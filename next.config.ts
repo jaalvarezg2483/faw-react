@@ -33,9 +33,11 @@ const nextConfig: NextConfig = {
   },
   images: {
     localPatterns: [
-      {
-        pathname: '/api/media/file/**',
-      },
+      { pathname: '/api/media/file/**' },
+      { pathname: '/media/**' },
+      { pathname: '/logos/**' },
+      { pathname: '/cms/**' },
+      { pathname: '/assets/**' },
     ],
     remotePatterns: [
       {

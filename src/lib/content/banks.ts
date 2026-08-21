@@ -21,8 +21,7 @@ export const banks: BankOption[] = [
     prima: 30,
     order: 1,
     fixedRateMonths: 96,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/purdy-cotizador.appspot.com/o/Banks%2Ffaw_cafsa%2Fimagen%2FcYMemRPhqVu98vCXEHps-kFXStfY9datbDZ6NQ3vG-cafsa-new-logo.png?alt=media&token=03b49317-9757-43dc-9cef-34e2b3d623f6',
+    imageUrl: '/media/cafsa.png',
     disclaimer:
       'Cuota corresponde a cálculo realizado en Leasing Operativo en Función Financiera, con tasa fija de CAFSA aplicable para los primeros 48 meses. \n\nPrimas desde el 10% para asalariados y 20% para trabajadores independientes. Cuotas calculadas con seguro aproximado. Las condiciones finales de financiamiento quedan sujetas a las políticas internas del comité de crédito. Aplican condiciones.',
   },
@@ -35,8 +34,7 @@ export const banks: BankOption[] = [
     prima: 25,
     order: 2,
     fixedRateMonths: 60,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/purdy-cotizador.appspot.com/o/Banks%2Ffaw_facileasing%2Fimagen%2FWkegOlrqibykAZJpsXAI-facileasing.png?alt=media&token=9aacabdc-d129-4419-950a-24fbdd6b99f8',
+    imageUrl: '/media/facileasing.png',
     disclaimer:
       '**Cuota corresponde al cálculo realizado con tasa fija de Facileasing aplicable por 3 años valida hasta el 31 de mayo 2026. Esta cuota es un aproximado y no incluye monto de Seguro. Para confirmar la cuota final, podés consultar con un asesor de ventas.',
   },
@@ -49,8 +47,7 @@ export const banks: BankOption[] = [
     prima: 20,
     order: 3,
     fixedRateMonths: 96,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/purdy-cotizador.appspot.com/o/Banks%2Ffaw_bn%2Fimagen%2Fz7I6EaDPuwqRwHCwTjK7-bn.png?alt=media&token=33f7f682-bf06-4000-bbbf-46a99302c13f',
+    imageUrl: '/media/banco-nacional.png',
     disclaimer:
       '* Los precios aquí indicados son únicamente de referencia. No incluyen el costo del seguro, el cual podrá variar según las condiciones de cada modelo o cliente. Consultá con nuestros asesores para obtener un presupuesto final.',
   },
@@ -63,8 +60,7 @@ export const banks: BankOption[] = [
     prima: 20,
     order: 4,
     fixedRateMonths: 96,
-    imageUrl:
-      'https://firebasestorage.googleapis.com/v0/b/purdy-cotizador.appspot.com/o/Banks%2Ffaw_bac%2Fimagen%2FFKfGEPbHOvUvfYyeC119-BAC.png?alt=media&token=3d04180e-19f6-41f1-b15f-c8deaccce1c7',
+    imageUrl: '/media/bac.png',
     disclaimer:
       '* Los precios aquí indicados son únicamente de referencia. No incluyen el costo del seguro, el cual podrá variar según las condiciones de cada modelo o cliente. Consultá con nuestros asesores para obtener un presupuesto final.',
   },
