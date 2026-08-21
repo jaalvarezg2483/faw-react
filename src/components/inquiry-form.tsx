@@ -1,11 +1,6 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import Alert from '@mui/material/Alert'
-import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import TextField from '@mui/material/TextField'
 import { useState } from 'react'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 
@@ -16,6 +11,14 @@ type Props = {
   variant?: 'contact' | 'workshops'
 }
 
+const ID_PLACEHOLDERS: Record<string, string> = {
+  '1': '* Identificación (Cédula Física)',
+  '2': '* Identificación (Cédula Juridica)',
+  '3': '* Identificación (DIMEX)',
+  '4': '* Identificación (Pasaporte)',
+  '5': '* Identificación (Otro)',
+}
+
 export function InquiryForm({
   title = 'Solicitá acá más información:',
   variant = 'contact',
@@ -24,7 +27,6 @@ export function InquiryForm({
   const {
     control,
     handleSubmit,
-    setError,
     formState: { errors, isSubmitting },
   } = useForm<InquiryFormValues>({
     resolver: zodResolver(inquirySchema),
@@ -36,28 +38,21 @@ export function InquiryForm({
       email: '',
       phone: '',
       comment: '',
-      accepted: false,
+      accepted: variant === 'workshops',
       marketing: false,
     },
   })
 
   const idType = useWatch({ control, name: 'idType' })
-  const comment = useWatch({ control, name: 'comment' })
+  const comment = useWatch({ control, name: 'comment' }) ?? ''
 
-  const submit = handleSubmit(async (values) => {
-    if (variant === 'workshops' && !values.marketing) {
-      setError('marketing', { message: 'Debes autorizar el uso de tus datos de contacto' })
-      return
-    }
+  const submit = handleSubmit(() => {
     setDone(true)
   })
 
   if (done) {
     return <p className="form-ok">¡Listo!</p>
   }
-
-  const idLabel =
-    idType === '1' || !idType ? '* Identificación (Cédula Física)' : '* Identificación'
 
   return (
     <form
@@ -66,160 +61,136 @@ export function InquiryForm({
       noValidate
     >
       <p className="faw-form__lead">{title}</p>
+
       <Controller
         name="idType"
         control={control}
         render={({ field }) => (
-          <TextField
+          <select
             {...field}
             value={field.value ?? ''}
-            select
-            slotProps={{ select: { native: true } }}
-            label="Tipo de identificación"
-            required
-            error={Boolean(errors.idType)}
-            helperText={errors.idType?.message}
+            aria-label="Tipo de identificación"
+            className={field.value ? undefined : 'faw-form__empty'}
           >
-            <option value="">Seleccionar</option>
+            <option value="">* Tipo de identificación</option>
             <option value="1">Cédula Física</option>
             <option value="2">Cédula Jurídica</option>
             <option value="3">DIMEX</option>
             <option value="4">Pasaporte</option>
             <option value="5">Otro</option>
-          </TextField>
+          </select>
         )}
       />
+      {errors.idType ? <p className="form-error">{errors.idType.message}</p> : null}
+
       <Controller
         name="identification"
         control={control}
         render={({ field }) => (
-          <TextField
+          <input
             {...field}
-            label={idLabel}
-            required
-            error={Boolean(errors.identification)}
-            helperText={errors.identification?.message}
+            aria-label="Identificación"
+            placeholder={idType ? ID_PLACEHOLDERS[idType] : '* Identificación'}
           />
         )}
       />
+      {errors.identification ? <p className="form-error">{errors.identification.message}</p> : null}
+
       <Controller
         name="name"
         control={control}
         render={({ field }) => (
-          <TextField
-            {...field}
-            label="Nombre"
-            autoComplete="given-name"
-            required
-            error={Boolean(errors.name)}
-            helperText={errors.name?.message}
-          />
+          <input {...field} autoComplete="given-name" aria-label="Nombre" placeholder="* Nombre" />
         )}
       />
+      {errors.name ? <p className="form-error">{errors.name.message}</p> : null}
+
       <Controller
         name="surname"
         control={control}
         render={({ field }) => (
-          <TextField
+          <input
             {...field}
-            label="Apellido"
             autoComplete="family-name"
-            required
-            error={Boolean(errors.surname)}
-            helperText={errors.surname?.message}
+            aria-label="Apellido"
+            placeholder="* Apellido"
           />
         )}
       />
+      {errors.surname ? <p className="form-error">{errors.surname.message}</p> : null}
+
       <Controller
         name="email"
         control={control}
         render={({ field }) => (
-          <TextField
+          <input
             {...field}
             type="email"
-            label="Correo electrónico"
             autoComplete="email"
-            required
-            error={Boolean(errors.email)}
-            helperText={errors.email?.message}
+            aria-label="Correo electrónico"
+            placeholder="* Correo electrónico"
           />
         )}
       />
+      {errors.email ? <p className="form-error">{errors.email.message}</p> : null}
+
       <Controller
         name="phone"
         control={control}
         render={({ field }) => (
-          <TextField
+          <input
             {...field}
-            label="Teléfono"
             autoComplete="tel"
-            required
-            slotProps={{ htmlInput: { inputMode: 'numeric' } }}
-            error={Boolean(errors.phone)}
-            helperText={errors.phone?.message}
+            inputMode="numeric"
+            aria-label="Teléfono"
+            placeholder="* Teléfono"
           />
         )}
       />
-      <Controller
-        name="comment"
-        control={control}
-        render={({ field }) => (
-          <TextField
-            {...field}
-            label={`Comentarios ${comment.length}/300`}
-            multiline
-            minRows={4}
-            slotProps={{ htmlInput: { maxLength: 300 } }}
-            error={Boolean(errors.comment)}
-            helperText={errors.comment?.message}
-          />
-        )}
-      />
+      {errors.phone ? <p className="form-error">{errors.phone.message}</p> : null}
+
+      <div className="faw-form__comment">
+        <Controller
+          name="comment"
+          control={control}
+          render={({ field }) => (
+            <textarea
+              {...field}
+              aria-label="Comentarios"
+              placeholder="* Comentarios"
+              maxLength={300}
+            />
+          )}
+        />
+        <span className="faw-form__count">{comment.length}/300</span>
+      </div>
+      {errors.comment ? <p className="form-error">{errors.comment.message}</p> : null}
+
       <Controller
         name="accepted"
         control={control}
         render={({ field }) => (
-          <FormControlLabel
-            className="faw-form__check"
-            control={
-              <Checkbox checked={field.value} onChange={(_, checked) => field.onChange(checked)} />
-            }
-            label={
-              <span>
-                He leído y estoy de acuerdo con los <a href="/terms">Términos y Condiciones</a>
-              </span>
-            }
-          />
+          <label className="faw-form__check">
+            <input
+              type="checkbox"
+              checked={Boolean(field.value)}
+              onChange={(event) => field.onChange(event.target.checked)}
+            />
+            <span>
+              He leído y estoy de acuerdo con los <a href="/terms">Términos y Condiciones</a>
+            </span>
+          </label>
         )}
       />
-      {errors.accepted ? <Alert severity="error">{errors.accepted.message}</Alert> : null}
-      {variant === 'workshops' ? (
-        <Controller
-          name="marketing"
-          control={control}
-          render={({ field }) => (
-            <FormControlLabel
-              className="faw-form__check"
-              control={
-                <Checkbox
-                  checked={field.value}
-                  onChange={(_, checked) => field.onChange(checked)}
-                />
-              }
-              label="Autorizo a Grupo Purdy el envío de información de sus productos y la utilización de mis datos de contacto"
-            />
-          )}
-        />
-      ) : null}
-      {errors.marketing ? <Alert severity="error">{errors.marketing.message}</Alert> : null}
-      <Button
+      {errors.accepted ? <p className="form-error">{errors.accepted.message}</p> : null}
+
+      <button
         className={variant === 'workshops' ? 'btn-solid btn-solid--pill' : 'btn-solid'}
         type="submit"
-        variant="contained"
         disabled={isSubmitting}
       >
         Enviar
-      </Button>
+      </button>
     </form>
   )
 }

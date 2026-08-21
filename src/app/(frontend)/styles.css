@@ -859,9 +859,10 @@ a.pill {
   font-size: 14px;
 }
 
-.faw-form input,
+.faw-form input:not([type='checkbox']),
 .faw-form select,
 .faw-form textarea {
+  width: 100%;
   height: 44px;
   border: 0;
   border-radius: 10px;
@@ -869,24 +870,65 @@ a.pill {
   padding: 0 12px;
   font-family: inherit;
   font-size: 14px;
+  color: var(--faw-text);
+}
+
+.faw-form input::placeholder,
+.faw-form textarea::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.faw-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23555' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+}
+
+.faw-form__empty {
+  color: #757575;
 }
 
 .faw-form textarea {
   height: 110px;
-  padding: 10px 12px;
-  resize: vertical;
+  padding: 10px 12px 28px;
+  resize: none;
 }
 
-.faw-form__check {
+.faw-form__comment {
+  position: relative;
+}
+
+.faw-form__count {
+  position: absolute;
+  right: 12px;
+  bottom: 10px;
+  font-size: 12px;
+  color: #8a8a8a;
+  pointer-events: none;
+}
+
+.faw-form .faw-form__check {
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--faw-text);
+  cursor: pointer;
 }
 
 .faw-form__check input {
-  height: auto;
+  appearance: auto;
+  height: 18px;
   width: 18px;
   margin-top: 2px;
+  flex: none;
+  accent-color: var(--faw-blue);
+  background: transparent;
 }
 
 .form-error {
@@ -977,7 +1019,7 @@ a.pill {
   color: #9aa0a6;
 }
 
-.quote-form input,
+.quote-form input:not([type='checkbox']),
 .quote-form select,
 .quote-form textarea,
 .quote-form__fake {
@@ -991,6 +1033,20 @@ a.pill {
   font-size: 16px;
   color: var(--faw-text);
   text-align: left;
+}
+
+.quote-form input::placeholder,
+.quote-form textarea::placeholder {
+  color: #9aa0a6;
+  opacity: 1;
+}
+
+.quote-form select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23555' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
 }
 
 .quote-form textarea {
@@ -1014,8 +1070,11 @@ a.pill {
 .quote-form__check input {
   width: 18px;
   min-height: 18px;
+  height: 18px;
   margin-top: 4px;
   padding: 0;
+  accent-color: var(--faw-blue);
+  background: transparent;
 }
 
 .quote-form__submit {
@@ -1413,14 +1472,15 @@ a.pill {
 }
 
 .location-accordion {
-  width: min(920px, 82%);
+  width: 100%;
+  max-width: none;
   margin: 0 auto 90px;
   border: 1px solid #d4d4d4;
   background: var(--faw-white);
 }
 
 .location-accordion--contact {
-  width: min(920px, 70%);
+  width: 100%;
   margin: 15px auto 80px;
 }
 
@@ -1470,14 +1530,14 @@ a.pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   flex: none;
-  border: 1.5px solid #222;
+  border: 2px solid var(--faw-blue);
   border-radius: 50%;
-  color: #222;
-  font-size: 16px;
-  font-weight: 400;
+  color: var(--faw-blue);
+  font-size: 18px;
+  font-weight: 500;
   line-height: 1;
 }
 
@@ -1490,7 +1550,7 @@ a.pill {
 }
 
 .location-card__name {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--faw-blue);
 }
@@ -1498,47 +1558,75 @@ a.pill {
 .location-card__body {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding: 0 15px 15px;
+  gap: 18px;
+  padding: 0 18px 22px;
+}
+
+.location-card__embed {
+  display: block;
+  width: 100%;
+  height: 180px;
+  border: 0;
+  background: #e8eaed;
 }
 
 .location-card__maps {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 12px;
 }
 
 .location-card__map {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
-  min-width: 180px;
-  padding: 7px 10px;
+  height: 44px;
+  min-width: 160px;
+  padding: 6px 14px;
   border-radius: 24px;
   background: var(--faw-page);
 }
 
 .location-card__map img {
-  height: 32px;
+  height: 28px;
   width: auto;
 }
 
-.location-card__meta,
-.location-card__services,
-.location-card__address {
+.location-card__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px 40px;
+  align-items: start;
+}
+
+.location-card__col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.location-card__line {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
   margin: 0;
+  color: var(--faw-text);
   font-size: 14px;
   line-height: 1.45;
 }
 
-.location-card__meta a,
-.location-card__address {
+.location-card__line svg {
+  flex: none;
+  margin-top: 1px;
+  color: var(--faw-blue);
+}
+
+.location-card__line a {
   color: var(--faw-text);
 }
 
 .location-card__services ul {
-  margin: 10px 0 0;
+  margin: 8px 0 0 32px;
   padding: 0;
   list-style: none;
 }
@@ -1651,6 +1739,7 @@ a.pill {
 
 .faw-form--workshops .btn-solid--pill,
 .btn-solid--pill {
+  align-self: center;
   width: min(100%, 400px);
   max-width: 400px;
   height: 50px;
@@ -2078,7 +2167,16 @@ a.pill {
   }
 
   .location-card__name {
-    font-size: 14px;
+    font-size: 16px;
+  }
+
+  .location-card__embed {
+    height: 150px;
+  }
+
+  .location-card__details {
+    grid-template-columns: 1fr;
+    gap: 18px;
   }
 
   .location-card__map {

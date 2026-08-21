@@ -4,6 +4,7 @@ import config from '@payload-config'
 
 import { mediaUrl } from '@/lib/cms/media-url'
 import { homeFallback } from './home-fallback'
+import { locations as fallbackLocations } from './site'
 import type {
   HomeBanner,
   HomeContent,
@@ -147,23 +148,28 @@ async function loadHomeContent(): Promise<HomeContent> {
     const mappedLocations: SiteLocation[] =
       locationsRes.docs.length === 0
         ? homeFallback.locations
-        : locationsRes.docs.map((doc) => ({
-            id: String(doc.id),
-            name: String(doc.name ?? ''),
-            isBranchOffice: Boolean(doc.isBranchOffice),
-            isRepairShop: Boolean(doc.isRepairShop),
-            address: String(doc.address ?? ''),
-            phone: String(doc.phone ?? ''),
-            branchHours: String(doc.branchHours ?? ''),
-            workshopHours: String(doc.workshopHours ?? ''),
-            googleLink: String(doc.googleLink ?? ''),
-            wazeLink: String(doc.wazeLink ?? ''),
-            appleMapsLink: String(doc.appleMapsLink ?? ''),
-            specialities: String(doc.specialities ?? '')
+        : locationsRes.docs.map((doc) => {
+            const fallback = fallbackLocations.find((item) => item.name === String(doc.name ?? ''))
+            const specialities = String(doc.specialities ?? '')
               .split('\n')
               .map((item) => item.trim())
-              .filter(Boolean),
-          }))
+              .filter(Boolean)
+
+            return {
+              id: String(doc.id),
+              name: String(doc.name ?? ''),
+              isBranchOffice: Boolean(doc.isBranchOffice),
+              isRepairShop: Boolean(doc.isRepairShop),
+              address: String(doc.address ?? '') || fallback?.address || '',
+              phone: String(doc.phone ?? '') || fallback?.phone || '',
+              branchHours: String(doc.branchHours ?? '') || fallback?.branchHours || '',
+              workshopHours: String(doc.workshopHours ?? '') || fallback?.workshopHours || '',
+              googleLink: String(doc.googleLink ?? '') || fallback?.googleLink || '',
+              wazeLink: String(doc.wazeLink ?? '') || fallback?.wazeLink || '',
+              appleMapsLink: String(doc.appleMapsLink ?? '') || fallback?.appleMapsLink || '',
+              specialities: specialities.length > 0 ? specialities : fallback?.specialities || [],
+            }
+          })
 
     const plans =
       plansRes.docs.length === 0

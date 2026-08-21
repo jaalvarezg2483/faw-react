@@ -154,6 +154,7 @@ export async function seedCmsIfEmpty(payload: Payload) {
         googleLink: location.googleLink,
         wazeLink: location.wazeLink,
         appleMapsLink: location.appleMapsLink,
+        specialities: location.specialities.join('\n'),
         isBranchOffice: location.isBranchOffice,
         isRepairShop: location.isRepairShop,
         isActive: true,

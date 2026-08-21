@@ -1,11 +1,6 @@
 'use client'
 
 import { zodResolver } from '@hookform/resolvers/zod'
-import Alert from '@mui/material/Alert'
-import Button from '@mui/material/Button'
-import Checkbox from '@mui/material/Checkbox'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import TextField from '@mui/material/TextField'
 import { useState } from 'react'
 import { Controller, useForm, useWatch } from 'react-hook-form'
 import type { HomeModel } from '@/lib/content/types'
@@ -63,8 +58,8 @@ export function FollowUpForm({ model }: Props) {
       phone: '',
       email: '',
       comment: '',
-      accepted: true,
-      authorized: true,
+      accepted: false,
+      authorized: false,
     },
   })
 
@@ -127,170 +122,149 @@ export function FollowUpForm({ model }: Props) {
         <form className="quote-form" onSubmit={submit} noValidate>
           <h2>MIS DATOS</h2>
           <p className="quote-form__hint">*Campos obligatorios</p>
+
           <Controller
             name="idType"
             control={control}
             render={({ field }) => (
-              <TextField
+              <select
                 {...field}
                 value={field.value ?? ''}
-                select
-                slotProps={{ select: { native: true } }}
-                label="Tipo de identificación"
-                required
-                error={Boolean(errors.idType)}
-                helperText={errors.idType?.message}
+                aria-label="Tipo de identificación"
+                className={field.value ? undefined : 'faw-form__empty'}
               >
-                <option value="">Tipo de identificación</option>
+                <option value="">*Tipo de identificación</option>
                 {ID_OPTIONS.map((item) => (
                   <option key={item.value} value={item.value}>
                     {item.label}
                   </option>
                 ))}
-              </TextField>
+              </select>
             )}
           />
+          {errors.idType ? <p className="form-error">{errors.idType.message}</p> : null}
+
           <Controller
             name="identification"
             control={control}
             render={({ field }) => (
-              <TextField
-                {...field}
-                label={idPlaceholder}
-                required
-                error={Boolean(errors.identification)}
-                helperText={errors.identification?.message}
-              />
+              <input {...field} aria-label="Identificación" placeholder={idPlaceholder} />
             )}
           />
+          {errors.identification ? (
+            <p className="form-error">{errors.identification.message}</p>
+          ) : null}
+
           <Controller
             name="name"
             control={control}
             render={({ field }) => (
-              <TextField
+              <input
                 {...field}
-                label="Nombre"
                 autoComplete="given-name"
-                required
-                error={Boolean(errors.name)}
-                helperText={errors.name?.message}
+                aria-label="Nombre"
+                placeholder="*Nombre"
               />
             )}
           />
+          {errors.name ? <p className="form-error">{errors.name.message}</p> : null}
+
           <Controller
             name="surname"
             control={control}
             render={({ field }) => (
-              <TextField
+              <input
                 {...field}
-                label="Apellidos"
                 autoComplete="family-name"
-                required
-                error={Boolean(errors.surname)}
-                helperText={errors.surname?.message}
+                aria-label="Apellidos"
+                placeholder="*Apellidos"
               />
             )}
           />
+          {errors.surname ? <p className="form-error">{errors.surname.message}</p> : null}
+
           <Controller
             name="phone"
             control={control}
             render={({ field }) => (
-              <TextField
+              <input
                 {...field}
-                label="Teléfono"
                 autoComplete="tel"
-                required
-                slotProps={{ htmlInput: { inputMode: 'numeric' } }}
-                error={Boolean(errors.phone)}
-                helperText={errors.phone?.message}
+                inputMode="numeric"
+                aria-label="Teléfono"
+                placeholder="*Teléfono"
               />
             )}
           />
+          {errors.phone ? <p className="form-error">{errors.phone.message}</p> : null}
+
           <Controller
             name="email"
             control={control}
             render={({ field }) => (
-              <TextField
+              <input
                 {...field}
                 type="email"
-                label="Correo electrónico"
                 autoComplete="email"
-                required
-                error={Boolean(errors.email)}
-                helperText={errors.email?.message}
+                aria-label="Correo electrónico"
+                placeholder="*Correo electrónico"
               />
             )}
           />
+          {errors.email ? <p className="form-error">{errors.email.message}</p> : null}
+
           <Controller
             name="comment"
             control={control}
             render={({ field }) => (
-              <TextField
-                {...field}
-                label="Comentario"
-                multiline
-                minRows={4}
-                slotProps={{ htmlInput: { maxLength: 200 } }}
-                error={Boolean(errors.comment)}
-                helperText={errors.comment?.message}
-              />
+              <textarea {...field} aria-label="Comentario" placeholder="Comentario" maxLength={200} />
             )}
           />
+          {errors.comment ? <p className="form-error">{errors.comment.message}</p> : null}
+
           <Controller
             name="accepted"
             control={control}
             render={({ field }) => (
-              <FormControlLabel
-                className="quote-form__check"
-                control={
-                  <Checkbox
-                    checked={field.value}
-                    onChange={(_, checked) => field.onChange(checked)}
-                  />
-                }
-                label={
-                  <span>
-                    He leído y estoy de acuerdo con los <a href="/terms">Términos y Condiciones</a>
-                  </span>
-                }
-              />
+              <label className="quote-form__check">
+                <input
+                  type="checkbox"
+                  checked={Boolean(field.value)}
+                  onChange={(event) => field.onChange(event.target.checked)}
+                />
+                <span>
+                  He leído y estoy de acuerdo con los <a href="/terms">Términos y Condiciones</a>
+                </span>
+              </label>
             )}
           />
-          {errors.accepted ? <Alert severity="error">{errors.accepted.message}</Alert> : null}
+          {errors.accepted ? <p className="form-error">{errors.accepted.message}</p> : null}
+
           <Controller
             name="authorized"
             control={control}
             render={({ field }) => (
-              <FormControlLabel
-                className="quote-form__check"
-                control={
-                  <Checkbox
-                    checked={field.value}
-                    onChange={(_, checked) => field.onChange(checked)}
-                  />
-                }
-                label={
-                  <span>
-                    Al seleccionar esta casilla, autorizo y consiento de forma libre y expresa a
-                    Grupo Purdy, sus empleados, representantes, asesores externos e internos a
-                    tratar, recopilar, almacenar para uso de Grupo Purdy, la información relativa a
-                    mis datos personales, según lo indicado por este documento y/o lo permitido por
-                    la Ley.
-                  </span>
-                }
-              />
+              <label className="quote-form__check">
+                <input
+                  type="checkbox"
+                  checked={Boolean(field.value)}
+                  onChange={(event) => field.onChange(event.target.checked)}
+                />
+                <span>
+                  Al seleccionar esta casilla, autorizo y consiento de forma libre y expresa a Grupo
+                  Purdy, sus empleados, representantes, asesores externos e internos a tratar,
+                  recopilar, almacenar para uso de Grupo Purdy, la información relativa a mis datos
+                  personales, según lo indicado por este documento y/o lo permitido por la Ley.
+                </span>
+              </label>
             )}
           />
-          {errors.authorized ? <Alert severity="error">{errors.authorized.message}</Alert> : null}
-          {errors.root ? <Alert severity="error">{errors.root.message}</Alert> : null}
-          <Button
-            className="btn-solid quote-form__submit"
-            type="submit"
-            variant="contained"
-            disabled={isSubmitting}
-          >
+          {errors.authorized ? <p className="form-error">{errors.authorized.message}</p> : null}
+          {errors.root ? <p className="form-error">{errors.root.message}</p> : null}
+
+          <button className="btn-solid quote-form__submit" type="submit" disabled={isSubmitting}>
             ENVIAR
-          </Button>
+          </button>
         </form>
       </div>
     </section>

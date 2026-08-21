@@ -17,7 +17,7 @@ const contentSecurityPolicy = [
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https://gpdigitalsa.blob.core.windows.net https://www.google-analytics.com",
   "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com",
-  "frame-src 'self' https://www.googletagmanager.com",
+  "frame-src 'self' https://www.googletagmanager.com https://www.google.com https://www.google.co.cr https://maps.google.com",
   'upgrade-insecure-requests',
 ].join('; ')
 

@@ -10,6 +10,15 @@ export const PURDY_GO_URL =
 export const WORKSHOP_ADDRESS =
   'De la entrada principal de Ciudad Toyota, 100 metros al oeste, 250 metros al norte, San José, Las Ánimas, 10107'
 
+export const WORKSHOP_HOURS =
+  'Lunes a viernes de 7:00 a.m. a 5:30 p.m. y sábados de 8:00 a.m. a 1:00 p.m.'
+
+export const WORKSHOP_SPECIALITIES = [
+  'Cambio de Aceite',
+  'Mantenimiento Preventivo',
+  'Reparación General',
+]
+
 export const WA_INFO_TEXT = 'Hola quiero información de FAW'
 export const WA_POSTVENTA_TEXT = 'Hola deseo solicitar prueba de manejo'
 
@@ -47,11 +56,11 @@ export const locations: SiteLocation[] = [
     isBranchOffice: true,
     isRepairShop: true,
     address: WORKSHOP_ADDRESS,
-    phone: CENTRAL_PHONE,
-    branchHours: '',
-    workshopHours: '',
+    phone: '2519-7777',
+    branchHours: WORKSHOP_HOURS,
+    workshopHours: WORKSHOP_HOURS,
     ...mapLinks(WORKSHOP_ADDRESS, MAPS_URL),
-    specialities: [],
+    specialities: WORKSHOP_SPECIALITIES,
   },
   {
     id: 'purdy-center-cartago',
@@ -61,9 +70,9 @@ export const locations: SiteLocation[] = [
     address: 'Cartago, La Lima, contiguo a Almacén el Rey',
     phone: '(+506) 4080-6580',
     branchHours: '',
-    workshopHours: '',
+    workshopHours: WORKSHOP_HOURS,
     ...mapLinks('Purdy Center Cartago La Lima'),
-    specialities: [],
+    specialities: WORKSHOP_SPECIALITIES,
   },
   {
     id: 'purdy-center-grecia',
@@ -73,9 +82,9 @@ export const locations: SiteLocation[] = [
     address: 'De la entrada a Grecia 7 kilómetros, Edificio Fusión Inmobiliaria',
     phone: CENTRAL_PHONE,
     branchHours: '',
-    workshopHours: '',
+    workshopHours: WORKSHOP_HOURS,
     ...mapLinks('Purdy Center Grecia Edificio Fusion Inmobiliaria'),
-    specialities: [],
+    specialities: WORKSHOP_SPECIALITIES,
   },
   {
     id: 'purdy-center-nicoya',
@@ -85,9 +94,9 @@ export const locations: SiteLocation[] = [
     address: '1 km del cruce de Nicoya, carretera a Santa Cruz',
     phone: CENTRAL_PHONE,
     branchHours: '',
-    workshopHours: '',
+    workshopHours: WORKSHOP_HOURS,
     ...mapLinks('Purdy Center Nicoya carretera a Santa Cruz'),
-    specialities: [],
+    specialities: WORKSHOP_SPECIALITIES,
   },
 ]
 
