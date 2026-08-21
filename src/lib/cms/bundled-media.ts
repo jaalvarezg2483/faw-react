@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from 'fs'
 import path from 'path'
 
 const ROOT = process.cwd()
-const SOURCE_DIRS = ['public/media', 'public/cms', 'public/assets']
+const SOURCE_DIRS = ['public/media']
 
 type Catalog = {
   byExact: Map<string, string>
@@ -75,7 +75,7 @@ function findBundledFile(filename: string) {
   return null
 }
 
-/** Maps a Payload media filename to a bundled public URL that survives Railway deploys. */
+/** Maps a Payload media filename to /media/... in the repo folder. */
 export function bundledMediaUrl(filename?: string | null): string | null {
   if (!filename) return null
   const file = findBundledFile(filename)
