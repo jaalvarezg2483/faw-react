@@ -2,7 +2,7 @@ import { existsSync, readdirSync } from 'fs'
 import path from 'path'
 
 const ROOT = process.cwd()
-const SOURCE_DIRS = ['public/cms', 'public/assets']
+const SOURCE_DIRS = ['public/media', 'public/cms', 'public/assets']
 
 type Catalog = {
   byExact: Map<string, string>

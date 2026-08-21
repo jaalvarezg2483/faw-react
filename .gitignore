@@ -40,6 +40,7 @@ next-env.d.ts
 
 .env
 
+# Payload uploads (local). public/media is committed until Azure Blob is enabled.
 /media
 
 # PostgreSQL credentials and local data directories must never be committed

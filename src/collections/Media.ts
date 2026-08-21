@@ -33,7 +33,7 @@ export const Media: CollectionConfig = {
     { name: 'description', type: 'textarea' },
   ],
   upload: {
-    staticDir: process.env.MEDIA_DIR || (process.env.NODE_ENV === 'production' ? '/tmp/faw-media' : 'media'),
+    staticDir: process.env.MEDIA_DIR || 'public/media',
     disableLocalStorage: process.env.STORAGE_PROVIDER === 'azure',
     displayPreview: true,
     focalPoint: true,

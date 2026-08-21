@@ -4,7 +4,7 @@ node_modules
 .env
 .env.*
 !.env.example
-media
+/media
 *.db
 *.tsbuildinfo
 playwright-report
