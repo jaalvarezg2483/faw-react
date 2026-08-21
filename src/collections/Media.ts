@@ -1,5 +1,6 @@
 import type { CollectionConfig } from 'payload'
 
+import { getMediaDir } from '../lib/cms/media-dir'
 import { publicContentAccess } from '../lib/payload/access'
 import { liveHooksFor } from './hooks/revalidate-site'
 
@@ -18,9 +19,8 @@ export const Media: CollectionConfig = {
     { name: 'description', type: 'textarea' },
   ],
   upload: {
-    // Railway's application directory is read-only at runtime. This is only a
-    // temporary local fallback; Azure Storage disables local storage entirely.
-    staticDir: process.env.NODE_ENV === 'production' ? '/tmp/faw-media' : 'media',
+    // Production uses a Railway volume at /data/media. /tmp is wiped on every deploy.
+    staticDir: getMediaDir(),
     disableLocalStorage: process.env.STORAGE_PROVIDER === 'azure',
     displayPreview: true,
     focalPoint: true,
